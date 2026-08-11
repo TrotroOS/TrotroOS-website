@@ -570,6 +570,49 @@ a:hover {
   line-height: 1.55;
 }
 
+/* Commerce grid */
+
+.commerce-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.commerce-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.commerce-card__photo {
+  margin: 0;
+}
+
+.commerce-card__photo img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.commerce-card__body {
+  padding: 1.25rem;
+}
+
+.commerce-card__body h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.commerce-card__body p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
 /* Photo grid */
 
 .photo-strip {
@@ -1273,6 +1316,7 @@ a:hover {
   .feature-row--reverse,
   .safety-layout,
   .role-cards,
+  .commerce-grid,
   .steps-row,
   .news-row,
   .footer-grid {

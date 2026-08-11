@@ -15,12 +15,52 @@
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // Web app links
+  // Web app links — default to /app/ on same origin
   const webAppLinks = document.querySelectorAll('[data-web-app-link]');
-  const webAppUrl =
-    document.documentElement.getAttribute('data-web-app-url') || 'https://trotroos.app';
+  const configuredUrl = document.documentElement.getAttribute('data-web-app-url');
+  const webAppUrl = configuredUrl || '/app/';
   webAppLinks.forEach(el => {
     el.setAttribute('href', webAppUrl);
+  });
+
+  // PWA: service worker + install prompt
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+  }
+
+  let deferredInstallPrompt = null;
+  const installButtons = document.querySelectorAll('[data-install-app]');
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    installButtons.forEach(btn => {
+      btn.hidden = false;
+    });
+  });
+
+  installButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) {
+        window.location.href = webAppUrl;
+        return;
+      }
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installButtons.forEach(b => {
+        b.hidden = true;
+      });
+    });
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    installButtons.forEach(btn => {
+      btn.hidden = true;
+    });
   });
 
   // Track page handling

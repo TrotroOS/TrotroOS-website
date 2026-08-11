@@ -16,10 +16,36 @@ Static marketing site for [trotroos.app](https://trotroos.app).
 From the repo root:
 
 ```bash
+# Marketing site only
+npm run website:preview
+
+# Build full web app into website/app/ (run before deploy)
+npm run website:build
+
+# Then preview — marketing at / and app at /app/
 npm run website:preview
 ```
 
-Then open http://localhost:3000
+- http://localhost:3000 — marketing site
+- http://localhost:3000/app/ — full TrotroOS web app (installable PWA)
+
+## Web app (PWA)
+
+The marketing site and Expo web export deploy together:
+
+| URL | Content |
+| --- | --- |
+| `/` | Marketing landing (static) |
+| `/app/` | Full TrotroOS app in the browser |
+| `/manifest.webmanifest` | Install-to-homescreen manifest |
+
+Rebuild the app after code changes:
+
+```bash
+npm run website:build
+```
+
+Then commit `website/app/`, `website/icons/`, and `website/manifest.webmanifest` before pushing to the website repo.
 
 ## Deploy to trotroos.app
 

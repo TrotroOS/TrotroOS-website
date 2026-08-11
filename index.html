@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GH" data-web-app-url="https://trotroos.app">
+<html lang="en-GH" data-web-app-url="/app/">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,7 +28,12 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="TrotroOS — Trotro rides, live in Kumasi" />
     <link rel="canonical" href="https://trotroos.app/" />
-    <meta name="theme-color" content="#fafaf8" />
+    <meta name="theme-color" content="#e04a00" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="TrotroOS" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -74,6 +79,7 @@
         <nav class="site-nav" data-site-nav aria-label="Main">
           <a href="#passengers">Passengers</a>
           <a href="#operators">Operators</a>
+          <a href="#commerce">Market &amp; Eats</a>
           <a href="#safety">Safety</a>
           <a href="/news.html">News</a>
           <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
@@ -94,9 +100,12 @@
               run every day.
             </p>
             <div class="hero-actions" id="download">
-              <a class="btn btn-primary btn-lg" href="https://trotroos.app" data-web-app-link>
+              <a class="btn btn-primary btn-lg" href="/app/" data-web-app-link>
                 Open web app
               </a>
+              <button type="button" class="btn btn-outline btn-lg install-btn" data-install-app hidden>
+                Install app
+              </button>
               <a
                 class="btn btn-outline btn-lg"
                 href="mailto:trotroapp@gmail.com?subject=TrotroOS%20Android%20beta"
@@ -266,10 +275,10 @@
             <article class="role-card">
               <div class="role-card__icon" aria-hidden="true">03</div>
               <div class="role-card__body">
-                <h3>TrotroRide &amp; Market</h3>
+                <h3>TrotroRide</h3>
                 <p>
-                  Shared-car requests for longer runs. Local listings, cart checkout, eats and
-                  parcel delivery — one MoMo wallet across modes.
+                  Shared-car requests for longer runs — incoming offer sheets and live GPS for
+                  mid-route pickups on Tech Junction ↔ Ayeduase corridors.
                 </p>
               </div>
             </article>
@@ -277,7 +286,76 @@
         </div>
       </section>
 
-      <section class="section photo-strip" aria-label="Trotro in Ghana">
+      <section class="section" id="commerce">
+        <div class="container">
+          <header class="section-intro">
+            <h2>Trotro Market, Eats &amp; Courier</h2>
+            <p>
+              Buy from Kejetia traders, order from roadside food vendors, or send a parcel across
+              town — same MoMo wallet you use for fares.
+            </p>
+          </header>
+          <div class="commerce-grid">
+            <article class="commerce-card">
+              <figure class="commerce-card__photo">
+                <img
+                  src="/images/photos/hong-kong-market.jpg"
+                  width="1120"
+                  height="630"
+                  alt="Busy open-air market stalls with shoppers and traders"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="commerce-card__body">
+                <h3>Trotro Market</h3>
+                <p>
+                  Peer listings from traders at Kejetia, Hong Kong Market, and Adum. Browse
+                  fabric, electronics, and everyday goods — add to cart and checkout with MoMo
+                  or cash meetup.
+                </p>
+              </div>
+            </article>
+            <article class="commerce-card">
+              <figure class="commerce-card__photo">
+                <img
+                  src="/images/photos/food-vendors.jpg"
+                  width="1600"
+                  height="1157"
+                  alt="African street food vendors cooking and serving at an outdoor market"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="commerce-card__body">
+                <h3>Trotro Eats</h3>
+                <p>
+                  Local food vendors list jollof, waakye, kelewele, and banku on the app. Order
+                  for pickup at the station or delivery to your corridor stop.
+                </p>
+              </div>
+            </article>
+            <article class="commerce-card">
+              <figure class="commerce-card__photo">
+                <img
+                  src="/images/photos/courier-delivery.jpg"
+                  width="2000"
+                  height="1455"
+                  alt="Courier on a scooter delivering a food package"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="commerce-card__body">
+                <h3>Courier &amp; parcels</h3>
+                <p>
+                  Send documents, phones, or market purchases across Kumasi. Couriers see incoming
+                  jobs on a dashboard and share live GPS until drop-off.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted photo-strip" aria-label="Trotro in Ghana">
         <div class="container">
           <header class="section-intro section-intro--narrow">
             <h2>Built for how Ghana actually moves</h2>
@@ -444,9 +522,12 @@
             <p>Open the web app or email us for Android beta access in Kumasi.</p>
           </div>
           <div class="cta-band__actions">
-            <a class="btn btn-primary btn-lg" href="https://trotroos.app" data-web-app-link
+            <a class="btn btn-primary btn-lg" href="/app/" data-web-app-link
               >Open web app</a
             >
+            <button type="button" class="btn btn-outline btn-lg install-btn" data-install-app hidden>
+              Install app
+            </button>
             <a class="btn btn-outline btn-lg" href="mailto:trotroapp@gmail.com">Contact</a>
           </div>
         </div>
@@ -473,6 +554,7 @@
           <ul class="footer-links">
             <li><a href="#passengers">Passengers</a></li>
             <li><a href="#operators">Operators</a></li>
+            <li><a href="#commerce">Market &amp; Eats</a></li>
             <li><a href="#safety">Safety</a></li>
             <li><a href="/track.html">Trip Guardian</a></li>
           </ul>

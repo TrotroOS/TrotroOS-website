@@ -10,6 +10,21 @@
     { "source": "/partners", "destination": "/partners.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/accessibility", "destination": "/accessibility.html" },
-    { "source": "/security", "destination": "/security.html" }
+    { "source": "/security", "destination": "/security.html" },
+    { "source": "/app", "destination": "/app/index.html" },
+    { "source": "/app/:path*", "destination": "/app/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
+    }
   ]
 }
