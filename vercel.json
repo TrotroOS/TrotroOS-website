@@ -4,7 +4,7 @@
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/track", "destination": "/track.html" },
     { "source": "/track/:path*", "destination": "/track.html" },
-    { "source": "/invite", "destination": "/" },
+    { "source": "/invite", "destination": "/app/" },
     { "source": "/news", "destination": "/news.html" },
     { "source": "/careers", "destination": "/careers.html" },
     { "source": "/partners", "destination": "/partners.html" },
@@ -12,7 +12,10 @@
     { "source": "/accessibility", "destination": "/accessibility.html" },
     { "source": "/security", "destination": "/security.html" },
     { "source": "/app", "destination": "/app/index.html" },
-    { "source": "/app/:path*", "destination": "/app/:path*" }
+    {
+      "source": "/app/:path((?!_expo/)(?!assets/)(?!favicon\\.ico)(?!manifest\\.webmanifest).*)",
+      "destination": "/app/index.html"
+    }
   ],
   "headers": [
     {
@@ -25,6 +28,10 @@
     {
       "source": "/manifest.webmanifest",
       "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
+    },
+    {
+      "source": "/app/_expo/static/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
   ]
 }

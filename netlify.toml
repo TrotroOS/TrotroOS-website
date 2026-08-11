@@ -20,7 +20,7 @@
 
 [[redirects]]
   from = "/invite"
-  to = "/"
+  to = "/app/"
   status = 302
 
 [[redirects]]
@@ -58,6 +58,28 @@
   to = "/app/index.html"
   status = 200
 
+# Expo web static assets — must not fall through to SPA fallback
+[[redirects]]
+  from = "/app/_expo/*"
+  to = "/app/_expo/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/app/assets/*"
+  to = "/app/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/app/favicon.ico"
+  to = "/app/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/app/manifest.webmanifest"
+  to = "/app/manifest.webmanifest"
+  status = 200
+
+# Client-side routes inside the Expo web app
 [[redirects]]
   from = "/app/*"
   to = "/app/index.html"

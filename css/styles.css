@@ -919,6 +919,14 @@ a:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.track-web-btn {
+  margin-top: 0.65rem;
+}
+
+.track-page .track-card .btn-outline {
+  width: 100%;
+}
+
 /* Footer */
 
 .site-footer {

@@ -71,15 +71,25 @@
     const statusEl = document.querySelector('[data-track-status]');
     const messageEl = document.querySelector('[data-track-message]');
     const openBtn = document.querySelector('[data-open-app]');
+    const openWebBtn = document.querySelector('[data-open-web-track]');
+
+    const webAppBase = document.documentElement.getAttribute('data-web-app-url') || '/app/';
+    const webTrackUrl = token
+      ? `${webAppBase.replace(/\/?$/, '/')}track?token=${encodeURIComponent(token)}`
+      : webAppBase;
 
     if (token) {
       if (statusEl) statusEl.textContent = 'Live';
       if (messageEl) {
         messageEl.textContent =
-          'Open the TrotroOS app to view full live GPS tracking for this shared trip.';
+          'Open TrotroOS in your browser for live GPS, or use the native app if installed.';
       }
       if (openBtn) {
         openBtn.href = `trotroos://track/live?token=${encodeURIComponent(token)}`;
+      }
+      if (openWebBtn) {
+        openWebBtn.href = webTrackUrl;
+        openWebBtn.hidden = false;
       }
     } else {
       if (statusEl) statusEl.textContent = 'Waiting';
@@ -88,6 +98,7 @@
           'This link is missing a track token. Open the link from Trip Guardian in the app.';
       }
       if (openBtn) openBtn.style.display = 'none';
+      if (openWebBtn) openWebBtn.style.display = 'none';
     }
   }
 
