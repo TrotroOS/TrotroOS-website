@@ -51,22 +51,22 @@
     }
   }
 
-  // Phone mockup mode tabs — swap screenshot image
-  const modeTabs = document.querySelectorAll('.mode-tab');
+  // Hero device tabs — swap screenshot image
+  const modeTabs = document.querySelectorAll('.device-tab, .mode-tab');
   const previewImage = document.querySelector('[data-preview-image]');
 
   const modeImages = {
     passenger: {
-      src: '/images/screens/find-ride.svg',
-      alt: 'TrotroOS Find Ride screen showing live mates on a Kumasi corridor map',
+      src: '/images/store/01-find-ride.png',
+      alt: 'Find Ride screen showing live mates on a Kumasi corridor map',
     },
     mate: {
-      src: '/images/screens/mate-dashboard.svg',
-      alt: 'TrotroOS Mate dashboard with GPS broadcasting and incoming seat bids',
+      src: '/images/store/04-mate-dashboard.png',
+      alt: 'Mate dashboard with GPS broadcasting and incoming seat bids',
     },
     station: {
-      src: '/images/screens/station-master.svg',
-      alt: 'TrotroOS Station Master screen with live dispatch and queue counts',
+      src: '/images/store/03-station-master.png',
+      alt: 'Station Master screen with live dispatch and queue counts',
     },
   };
 
@@ -220,29 +220,6 @@
         }
       }
     });
-  });
-
-  // Initialize AOS-like animations for elements entering viewport
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px',
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-up');
-        observer.unobserve(entry.target); // Stop observing once animated
-      }
-    });
-  }, observerOptions);
-
-  // Observe elements that should animate on scroll
-  const animateElements = document.querySelectorAll(
-    '.bento-card, .gallery-item, .platform-stat, .timeline-step, .testimonial-card, .news-card, .feature-card, .tech-card, .use-case-card, .step'
-  );
-  animateElements.forEach(el => {
-    observer.observe(el);
   });
 
   // Mobile menu keyboard accessibility

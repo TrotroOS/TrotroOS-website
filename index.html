@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TrotroOS — Live trotro mobility for Kumasi</title>
+    <title>TrotroOS — Trotro rides, live in Kumasi</title>
     <meta
       name="description"
-      content="Reserve trotro seats, bid for rides, track live GPS, pay with MoMo, and run mate or station operations — one platform built for how Ghana moves."
+      content="Reserve a seat, track your mate live, pay with MoMo. TrotroOS connects passengers, mates, and stations on the corridors you already use."
     />
     <meta
       name="keywords"
-      content="trotro, TrotroOS, Kumasi transport, Ghana mobility, MoMo, live tracking, TrotroRide, mate app, Bid and Ride"
+      content="trotro, TrotroOS, Kumasi transport, Ghana mobility, MoMo, live tracking, mate app"
     />
     <meta name="author" content="TrotroOS" />
-    <meta property="og:title" content="TrotroOS — Live trotro mobility for Kumasi" />
+    <meta property="og:title" content="TrotroOS — Trotro rides, live in Kumasi" />
     <meta
       property="og:description"
-      content="Reserve seats, join queues, share Trip Guardian links, and pay with MoMo — built for passengers, mates, drivers, and stations."
+      content="Reserve seats, follow live GPS, share Trip Guardian links, and pay with MoMo."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://trotroos.app/" />
@@ -26,13 +26,13 @@
     <meta name="twitter:image" content="https://trotroos.app/images/og-cover.png" />
     <meta property="og:locale" content="en_GH" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TrotroOS — Live trotro mobility for Kumasi" />
+    <meta name="twitter:title" content="TrotroOS — Trotro rides, live in Kumasi" />
     <link rel="canonical" href="https://trotroos.app/" />
-    <meta name="theme-color" content="#0c1210" />
+    <meta name="theme-color" content="#fafaf8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/styles.css" />
@@ -44,21 +44,19 @@
         "name": "TrotroOS",
         "applicationCategory": "TravelApplication",
         "operatingSystem": "Android, iOS, Web",
-        "description": "Unified real-time trotro mobility platform for Kumasi, Ghana.",
+        "description": "Live trotro mobility platform for Kumasi, Ghana.",
         "url": "https://trotroos.app",
         "author": { "@type": "Organization", "name": "TrotroOS" }
       }
     </script>
   </head>
   <body class="page-home">
-    <div class="hero-glow" aria-hidden="true"></div>
-
-    <header class="site-header site-header--dark">
+    <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/">
           <img
-            class="brand-wordmark brand-wordmark--light"
-            src="/brand/trotroos-wordmark-dark.svg"
+            class="brand-wordmark"
+            src="/brand/trotroos-wordmark.svg"
             width="168"
             height="34"
             alt="TrotroOS"
@@ -74,11 +72,9 @@
           <span></span><span></span><span></span>
         </button>
         <nav class="site-nav" data-site-nav aria-label="Main">
-          <a href="#platform">Platform</a>
-          <a href="#modes">Modes</a>
-          <a href="#gallery">Screens</a>
+          <a href="#passengers">Passengers</a>
+          <a href="#operators">Operators</a>
           <a href="#safety">Safety</a>
-          <a href="#how">How it works</a>
           <a href="/news.html">News</a>
           <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
           <a class="btn btn-primary" href="#download">Get the app</a>
@@ -87,384 +83,276 @@
     </header>
 
     <main>
-      <section class="hero hero-premium">
-        <div class="container hero-premium-grid">
+      <section class="hero">
+        <div class="container hero-grid">
           <div class="hero-copy">
-            <div class="eyebrow eyebrow--live">
-              <span class="pulse-dot"></span>
-              Kumasi pilot · live corridors
-            </div>
-            <h1>
-              The mobility layer for
-              <em>trotro</em>
-              — not against it.
-            </h1>
+            <p class="hero-label">Kumasi pilot</p>
+            <h1>See the trotro before you run for it.</h1>
             <p class="hero-lead">
-              One app for passengers reserving seats, mates broadcasting GPS, TrotroRide drivers
-              filling shared cars, station dispatch, Bid&nbsp;&amp;&nbsp;Ride, market, eats, and
-              parcel delivery — with MoMo-native payments and Trip Guardian safety built in.
+              Live mate GPS on Tech Junction, Kejetia, KNUST, and Ayeduase corridors.
+              Reserve a seat, bid your fare, or join the queue — pay with MoMo when you board.
             </p>
             <div class="hero-actions" id="download">
               <a class="btn btn-primary btn-lg" href="https://trotroos.app" data-web-app-link>
                 Open web app
               </a>
               <a
-                class="btn btn-secondary btn-lg"
+                class="btn btn-outline btn-lg"
                 href="mailto:trotroapp@gmail.com?subject=TrotroOS%20Android%20beta"
               >
-                Request Android beta
+                Request beta access
               </a>
             </div>
-            <p class="hero-note">
-              Google Play &amp; App Store listings coming soon ·
-              <a href="/track.html">Trip Guardian track links</a>
+            <p class="hero-meta">
+              Store listings coming soon ·
+              <a href="/track.html">Trip Guardian sharing</a>
             </p>
-            <dl class="hero-metrics">
-              <div>
-                <dt>8+</dt>
-                <dd>Product modes</dd>
-              </div>
-              <div>
-                <dt>Live</dt>
-                <dd>GPS &amp; queues</dd>
-              </div>
-              <div>
-                <dt>MoMo</dt>
-                <dd>Native payments</dd>
-              </div>
-              <div>
-                <dt>GH</dt>
-                <dd>Built in Ghana</dd>
-              </div>
-            </dl>
           </div>
 
-          <div class="hero-visual">
-            <div class="phone-mockup phone-mockup--photo">
-              <div class="phone-notch"></div>
-              <div class="phone-screen phone-screen--image">
-                <img
-                  class="phone-screenshot"
-                  src="/images/screens/find-ride.svg"
-                  width="390"
-                  height="844"
-                  alt="TrotroOS Find Ride screen showing live mates on a Kumasi corridor map"
-                  data-preview-image
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
+          <div class="hero-device">
+            <div class="device-frame">
+              <img
+                class="device-screenshot"
+                src="/images/store/01-find-ride.png"
+                width="390"
+                height="844"
+                alt="Find Ride screen showing live mates along a Kumasi corridor"
+                data-preview-image
+                loading="eager"
+                decoding="async"
+              />
             </div>
-            <div class="mode-tabs mode-tabs--hero" role="tablist" aria-label="App preview modes">
-              <button type="button" class="mode-tab is-active" data-mode="passenger">
+            <div class="device-tabs" role="tablist" aria-label="App preview">
+              <button type="button" class="device-tab is-active" data-mode="passenger">
                 Passenger
               </button>
-              <button type="button" class="mode-tab" data-mode="mate">Mate</button>
-              <button type="button" class="mode-tab" data-mode="station">Station</button>
+              <button type="button" class="device-tab" data-mode="mate">Mate</button>
+              <button type="button" class="device-tab" data-mode="station">Station</button>
             </div>
-            <div class="hero-float hero-float--trust">
-              <span class="float-icon">🛡</span>
-              <div>
-                <strong>Trip Guardian</strong>
-                <span>Share live GPS via WhatsApp</span>
-              </div>
-            </div>
-            <div class="hero-float hero-float--momo">
-              <span class="float-icon">📱</span>
-              <div>
-                <strong>MoMo ready</strong>
-                <span>Wallet · GhQR · pay on board</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="corridor-marquee" aria-label="Popular Kumasi corridors">
-          <div class="marquee-track">
-            <span>Tech Junction → Ayeduase</span>
-            <span>Kejetia → KNUST</span>
-            <span>Ayeduase → Tech Junction</span>
-            <span>Adum → Asokwa</span>
-            <span>Santasi → Kejetia</span>
-            <span>Bantama → Tech Junction</span>
-            <span>Tech Junction → Ayeduase</span>
-            <span>Kejetia → KNUST</span>
-            <span>Ayeduase → Tech Junction</span>
-            <span>Adum → Asokwa</span>
           </div>
         </div>
       </section>
 
-      <section class="section section-kumasi">
-        <div class="container kumasi-banner">
-          <img
-            class="kumasi-banner__art"
-            src="/images/kumasi-corridor.svg"
-            width="1200"
-            height="600"
-            alt="Illustration of a trotro van broadcasting live GPS along a Kumasi corridor from Tech Junction to Ayeduase"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="kumasi-banner__copy">
-            <p class="section-kicker section-kicker--light">Kumasi corridors</p>
-            <h2>Live GPS on the routes you already take.</h2>
-            <p>
-              Mates broadcast position every few seconds. Passengers see real vehicles — not demo
-              pins — on Tech Junction, Kejetia, KNUST, and Ayeduase corridors.
-            </p>
-          </div>
+      <div class="corridor-bar" aria-label="Active corridors">
+        <div class="container corridor-bar-inner">
+          <span class="corridor-bar-label">Corridors</span>
+          <ul class="corridor-list">
+            <li>Tech Junction — Ayeduase</li>
+            <li>Kejetia — KNUST</li>
+            <li>Adum — Asokwa</li>
+            <li>Santasi — Kejetia</li>
+            <li>Bantama — Tech Junction</li>
+          </ul>
         </div>
-      </section>
+      </div>
 
-      <section class="section" id="platform">
+      <section class="section" id="passengers">
         <div class="container">
-          <div class="section-header section-header--left">
-            <p class="section-kicker">One platform</p>
-            <h2>Everything informal transport needs — in one app.</h2>
-            <p>
-              TrotroOS does not replace trotros. It gives passengers clarity, gives mates and
-              stations real-time demand, and gives operators MoMo-ready earnings — on the corridors
-              Kumasi already runs.
-            </p>
-          </div>
-          <div class="platform-stats">
-            <article class="platform-stat">
-              <h3>Real-time first</h3>
-              <p>Live mate GPS, queue subscriptions, and seat bids synced passenger ↔ mate.</p>
+          <header class="section-intro">
+            <h2>For passengers</h2>
+            <p>Less waiting at the roadside. More certainty about seat and fare.</p>
+          </header>
+          <div class="feature-rows">
+            <article class="feature-row">
+              <div class="feature-row__copy">
+                <h3>Find Ride</h3>
+                <p>
+                  Mates with active GPS appear on your corridor map — not placeholder pins.
+                  Tap to reserve a seat before the van fills up.
+                </p>
+              </div>
+              <figure class="feature-row__media">
+                <img
+                  src="/images/store/01-find-ride.png"
+                  width="390"
+                  height="844"
+                  alt="Find Ride map with live mate locations"
+                  loading="lazy"
+                />
+              </figure>
             </article>
-            <article class="platform-stat">
-              <h3>Offline resilient</h3>
-              <p>Queues and bookings degrade gracefully when connectivity drops at the station.</p>
+            <article class="feature-row feature-row--reverse">
+              <div class="feature-row__copy">
+                <h3>Bid &amp; Ride</h3>
+                <p>
+                  Name your fare and wait for a mate to accept. Offers sync to the mate dashboard
+                  in real time, with a pickup code when you're matched.
+                </p>
+              </div>
+              <figure class="feature-row__media">
+                <img
+                  src="/images/screens/png/bid-ride.png"
+                  width="390"
+                  height="844"
+                  alt="Bid and Ride fare offer screen"
+                  loading="lazy"
+                />
+              </figure>
             </article>
-            <article class="platform-stat">
-              <h3>Role switching</h3>
-              <p>One profile — passenger, mate, TrotroRide driver, courier, vendor, station admin.</p>
+            <article class="feature-row">
+              <div class="feature-row__copy">
+                <h3>Trip Guardian</h3>
+                <p>
+                  Share a track link over WhatsApp so family follows your trip in the browser —
+                  no app install needed on their end.
+                </p>
+                <a class="text-link" href="/track.html">How track links work →</a>
+              </div>
+              <figure class="feature-row__media">
+                <img
+                  src="/images/screens/png/trip-guardian.png"
+                  width="390"
+                  height="844"
+                  alt="Trip Guardian live sharing screen"
+                  loading="lazy"
+                />
+              </figure>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-dark" id="modes">
+      <section class="section section-muted" id="operators">
         <div class="container">
-          <div class="section-header">
-            <p class="section-kicker section-kicker--light">Product modes</p>
-            <h2>Built for every seat in the vehicle.</h2>
-            <p>From roadside passenger to station master — each mode shares the same live data layer.</p>
-          </div>
-          <div class="bento-grid">
-            <article class="bento-card bento-card--wide bento-card--image">
+          <header class="section-intro">
+            <h2>For mates &amp; stations</h2>
+            <p>One live data layer for everyone running the vehicle or the queue.</p>
+          </header>
+          <div class="role-cards">
+            <article class="role-card">
               <img
-                class="bento-card__thumb"
-                src="/images/screens/bid-ride.svg"
+                class="role-card__img"
+                src="/images/store/04-mate-dashboard.png"
                 width="390"
                 height="844"
                 alt=""
                 loading="lazy"
-                decoding="async"
               />
-              <div class="bento-card__body">
-                <span class="bento-tag">Passengers</span>
-                <h3>Find Ride &amp; Bid&nbsp;&amp;&nbsp;Ride</h3>
+              <div class="role-card__body">
+                <h3>Mate dashboard</h3>
                 <p>
-                  Browse live mates with active GPS only — no fake demo vehicles. Name your fare, bid
-                  for a seat, or join the waiting queue until a trip matches.
+                  Broadcast GPS, accept seat bids, board passengers, and issue verification codes
+                  on accept.
                 </p>
               </div>
             </article>
-            <article class="bento-card bento-card--image">
+            <article class="role-card">
               <img
-                class="bento-card__thumb"
-                src="/images/screens/trip-guardian.svg"
+                class="role-card__img"
+                src="/images/store/03-station-master.png"
                 width="390"
                 height="844"
                 alt=""
                 loading="lazy"
-                decoding="async"
               />
-              <div class="bento-card__body">
-                <span class="bento-tag">Safety</span>
-                <h3>Trip Guardian</h3>
-                <p>Share a browser track link so family follows your trip in real time.</p>
-              </div>
-            </article>
-            <article class="bento-card bento-card--image">
-              <img
-                class="bento-card__thumb"
-                src="/images/screens/find-ride.svg"
-                width="390"
-                height="844"
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="bento-card__body">
-                <span class="bento-tag">Payments</span>
-                <h3>MoMo &amp; wallet</h3>
-                <p>In-app wallet top-ups, GhQR, and pay-on-board flows for Ghana.</p>
-              </div>
-            </article>
-            <article class="bento-card bento-card--image">
-              <img
-                class="bento-card__thumb"
-                src="/images/screens/mate-dashboard.svg"
-                width="390"
-                height="844"
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="bento-card__body">
-                <span class="bento-tag">Mates</span>
-                <h3>Mate dashboard</h3>
-                <p>Start trips, accept seat bids, board passengers, verification codes on accept.</p>
-              </div>
-            </article>
-            <article class="bento-card bento-card--image">
-              <img
-                class="bento-card__thumb"
-                src="/images/screens/bid-ride.svg"
-                width="390"
-                height="844"
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="bento-card__body">
-                <span class="bento-tag">Drivers</span>
-                <h3>TrotroRide</h3>
-                <p>Shared-car requests, incoming offer sheets, live route for mid-route pickups.</p>
-              </div>
-            </article>
-            <article class="bento-card bento-card--image">
-              <img
-                class="bento-card__thumb"
-                src="/images/screens/station-master.svg"
-                width="390"
-                height="844"
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="bento-card__body">
-                <span class="bento-tag">Stations</span>
+              <div class="role-card__body">
                 <h3>Station Master</h3>
-                <p>Dispatch queues, route demand, crowd reports, and push when passengers join.</p>
+                <p>
+                  Dispatch queues, read route demand, and get notified when passengers join a
+                  corridor wait list.
+                </p>
               </div>
             </article>
-            <article class="bento-card bento-card--image">
+            <article class="role-card">
               <img
-                class="bento-card__thumb"
-                src="/images/screens/market.svg"
+                class="role-card__img"
+                src="/images/screens/png/market.png"
                 width="390"
                 height="844"
                 alt=""
                 loading="lazy"
-                decoding="async"
               />
-              <div class="bento-card__body">
-                <span class="bento-tag">Commerce</span>
-                <h3>Trotro Market</h3>
-                <p>Peer listings with cart and checkout — local buy/sell inside the app.</p>
-              </div>
-            </article>
-            <article class="bento-card bento-card--wide bento-card--image">
-              <img
-                class="bento-card__thumb"
-                src="/images/screens/find-ride.svg"
-                width="390"
-                height="844"
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="bento-card__body">
-                <span class="bento-tag">Super-app</span>
-                <h3>Eats &amp; delivery</h3>
-                <p>Food vendors, parcel send, courier dashboard — one wallet across modes.</p>
+              <div class="role-card__body">
+                <h3>Market &amp; more</h3>
+                <p>
+                  TrotroRide shared cars, local listings with cart checkout, eats and parcel
+                  delivery — one wallet across modes.
+                </p>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-alt" id="how">
+      <section class="section" id="how">
         <div class="container">
-          <div class="section-header">
-            <p class="section-kicker">How it works</p>
-            <h2>From queue to boarding — without guesswork.</h2>
-          </div>
-          <ol class="timeline">
-            <li class="timeline-step">
-              <span class="timeline-num">01</span>
-              <h3>Pick your corridor</h3>
-              <p>Tech Junction, Ayeduase, Kejetia, KNUST — the routes you already use every day.</p>
+          <header class="section-intro section-intro--narrow">
+            <h2>How a trip works</h2>
+          </header>
+          <ol class="steps-row">
+            <li>
+              <span class="steps-row__num">1</span>
+              <h3>Choose corridor</h3>
+              <p>Pick the route you take daily — same names you use at the station.</p>
             </li>
-            <li class="timeline-step">
-              <span class="timeline-num">02</span>
-              <h3>Book, bid, or queue</h3>
-              <p>Reserve a mate seat, send a Bid&nbsp;&amp;&nbsp;Ride offer, or wait until a live trip matches.</p>
+            <li>
+              <span class="steps-row__num">2</span>
+              <h3>Book or bid</h3>
+              <p>Reserve on a live mate, send a fare bid, or wait in queue until one matches.</p>
             </li>
-            <li class="timeline-step">
-              <span class="timeline-num">03</span>
-              <h3>Track &amp; travel</h3>
-              <p>Follow live GPS, show your pickup verification code, pay with MoMo when prompted.</p>
+            <li>
+              <span class="steps-row__num">3</span>
+              <h3>Board &amp; pay</h3>
+              <p>Show your verification code, follow GPS, pay with MoMo or on board.</p>
             </li>
           </ol>
         </div>
       </section>
 
-      <section class="section" id="safety">
-        <div class="container safety-grid">
+      <section class="section section-dark" id="safety">
+        <div class="container safety-layout">
           <div class="safety-copy">
-            <p class="section-kicker">Trust &amp; safety</p>
-            <h2>Designed for disputes, not just demos.</h2>
+            <h2>Safety that holds up after the trip</h2>
             <p>
-              When a mate accepts your reservation, both sides get a random 6-digit pickup code —
-              proof of handoff if fare or seat disputes come up later.
+              When a mate accepts your reservation, both sides get a random six-digit pickup code.
+              It's proof of handoff if a fare or seat dispute comes up later.
             </p>
-            <ul class="safety-list">
+            <ul class="check-list">
               <li>Trip Guardian browser sharing for trusted contacts</li>
-              <li>Trust score and verification tiers on profiles</li>
-              <li>SOS and emergency services quick links</li>
-              <li>Crash reporting with user opt-out in privacy settings</li>
+              <li>Profile verification tiers and trust scores</li>
+              <li>SOS and emergency quick links in-app</li>
             </ul>
-            <a class="btn btn-outline" href="/security.html">Security practices →</a>
+            <a class="btn btn-light" href="/security.html">Security practices</a>
           </div>
-          <div class="safety-panel">
-            <div class="verification-demo">
-              <p class="verification-label">Pickup verification</p>
-              <p class="verification-code" data-verification-code>482916</p>
-              <p class="verification-hint">Show mate after boarding · expires with trip</p>
+          <div class="safety-aside">
+            <div class="code-card">
+              <p class="code-card__label">Pickup verification</p>
+              <p class="code-card__value" data-verification-code>482916</p>
+              <p class="code-card__hint">Show mate after boarding</p>
             </div>
-            <div class="live-corridor-demo">
-              <div class="demo-header">
-                <h3>Live corridor preview</h3>
-                <div class="demo-controls">
-                  <button class="btn btn-sm btn-outline" type="button" id="demo-start">
-                    Start demo
+            <div class="queue-demo">
+              <div class="queue-demo__head">
+                <h3>Live queue preview</h3>
+                <div class="queue-demo__actions">
+                  <button class="btn btn-sm btn-light-outline" type="button" id="demo-start">
+                    Start
                   </button>
-                  <button class="btn btn-sm btn-outline" type="button" id="demo-reset" disabled>
+                  <button
+                    class="btn btn-sm btn-light-outline"
+                    type="button"
+                    id="demo-reset"
+                    disabled
+                  >
                     Reset
                   </button>
                 </div>
               </div>
-              <ul class="route-list" id="route-list">
+              <ul class="queue-list" id="route-list">
                 <li>
                   <span>Tech Junction → Ayeduase</span>
-                  <span class="count" id="route1-status">Tap start</span>
+                  <span class="queue-count" id="route1-status">Tap start</span>
                 </li>
                 <li>
                   <span>Tech Junction → KNUST</span>
-                  <span class="count" id="route2-status">Tap start</span>
+                  <span class="queue-count" id="route2-status">Tap start</span>
                 </li>
                 <li>
                   <span>Kejetia → Ayeduase</span>
-                  <span class="count" id="route3-status">Tap start</span>
+                  <span class="queue-count" id="route3-status">Tap start</span>
                 </li>
                 <li>
                   <span>Ayeduase → Tech Junction</span>
-                  <span class="count" id="route4-status">Tap start</span>
+                  <span class="queue-count" id="route4-status">Tap start</span>
                 </li>
               </ul>
             </div>
@@ -472,191 +360,53 @@
         </div>
       </section>
 
-      <section class="section section-alt" id="gallery">
+      <section class="section section-muted" id="news">
         <div class="container">
-          <div class="section-header">
-            <p class="section-kicker">App preview</p>
-            <h2>See TrotroOS in action.</h2>
-            <p>
-              Screen mockups from the Kumasi pilot — replace with your own device captures anytime via
-              <code>website/images/screens/</code>.
-            </p>
-          </div>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <img
-                src="/images/screens/find-ride.svg"
-                width="390"
-                height="844"
-                alt="Find Ride screen with live mate map and seat reservation"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Find Ride · live mates</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img
-                src="/images/screens/bid-ride.svg"
-                width="390"
-                height="844"
-                alt="Bid and Ride screen with fare bid and mate responses"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Bid &amp; Ride · name your fare</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img
-                src="/images/screens/mate-dashboard.svg"
-                width="390"
-                height="844"
-                alt="Mate dashboard with GPS broadcasting and seat bids"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Mate dashboard · seat bids</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img
-                src="/images/screens/station-master.svg"
-                width="390"
-                height="844"
-                alt="Station Master dispatch and queue management"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Station Master · dispatch</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img
-                src="/images/screens/trip-guardian.svg"
-                width="390"
-                height="844"
-                alt="Trip Guardian live sharing and pickup verification code"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Trip Guardian · live share</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img
-                src="/images/screens/market.svg"
-                width="390"
-                height="844"
-                alt="Trotro Market listings with cart and MoMo checkout"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Trotro Market · cart</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="technology">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-kicker">Stack</p>
-            <h2>Production-grade, Kumasi-scale.</h2>
-          </div>
-          <div class="tech-strip">
-            <div class="tech-pill"><strong>Expo 54</strong> React Native</div>
-            <div class="tech-pill"><strong>Supabase</strong> Postgres + Realtime</div>
-            <div class="tech-pill"><strong>TomTom</strong> Maps &amp; routing</div>
-            <div class="tech-pill"><strong>Gemini</strong> Voice &amp; assistants</div>
-            <div class="tech-pill"><strong>Maestro</strong> E2E QA</div>
-            <div class="tech-pill"><strong>EAS</strong> Store builds</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="voices">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-kicker">Community</p>
-            <h2>Built with Kumasi commuters.</h2>
-          </div>
-          <div class="testimonials-slider">
-            <blockquote class="testimonial-card">
-              <p>
-                “I can see which corridor has a shorter queue before I leave KNUST — that alone
-                saves me twenty minutes on rush-hour mornings.”
-              </p>
-              <footer>— Pilot passenger, Ayeduase corridor</footer>
-            </blockquote>
-            <blockquote class="testimonial-card">
-              <p>
-                “Seat bids coming straight to my dashboard means I fill the van before I even reach
-                Tech Junction.”
-              </p>
-              <footer>— Mate operator, Tech Junction</footer>
-            </blockquote>
-            <blockquote class="testimonial-card">
-              <p>
-                “Trip Guardian let my family in Accra follow my Kejetia trip without calling every
-                ten minutes.”
-              </p>
-              <footer>— Weekend traveler</footer>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="news">
-        <div class="container">
-          <div class="section-header section-header--split">
+          <header class="section-intro section-intro--split">
             <div>
-              <p class="section-kicker">Updates</p>
-              <h2>Latest from the pilot.</h2>
+              <h2>Pilot updates</h2>
+              <p>What shipped recently in Kumasi.</p>
             </div>
-            <a href="/news.html" class="btn btn-outline">All news →</a>
-          </div>
-          <div class="news-grid">
-            <article class="news-card">
-              <time class="news-date" datetime="2026-08-11">Aug 11, 2026</time>
-              <h3>Live-only trips &amp; Bid&nbsp;&amp;&nbsp;Ride sync</h3>
+            <a href="/news.html" class="text-link">All news →</a>
+          </header>
+          <div class="news-row">
+            <article class="news-item">
+              <time datetime="2026-08-11">11 Aug 2026</time>
+              <h3>Live-only trips &amp; bid sync</h3>
               <p>
-                Browse feeds now show mates with active GPS only. Passenger bids reach the mate
-                dashboard in real time with pickup verification codes on accept.
+                Browse feeds show mates with active GPS only. Bids reach the mate dashboard in
+                real time with pickup codes on accept.
               </p>
             </article>
-            <article class="news-card">
-              <time class="news-date" datetime="2026-08-01">Aug 1, 2026</time>
+            <article class="news-item">
+              <time datetime="2026-08-01">1 Aug 2026</time>
               <h3>Trotro Market cart</h3>
               <p>
-                Add listings to cart, checkout from wallet or cash meetup — local commerce inside
-                TrotroOS.
-              </p>
-            </article>
-            <article class="news-card">
-              <time class="news-date" datetime="2026-07-15">Jul 15, 2026</time>
-              <h3>TrotroRide driver pilot</h3>
-              <p>
-                Shared-car mode with incoming request sheets and live GPS for Tech Junction ↔
-                Ayeduase.
+                Add listings to cart and checkout from wallet or cash meetup — local commerce
+                inside the app.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="cta-band cta-band--premium">
+      <section class="cta-band">
         <div class="container cta-band-inner">
           <div>
-            <h2>Ready for your next corridor?</h2>
-            <p>Open the web app today or email us for Android beta access in Kumasi.</p>
+            <h2>Try it on your corridor</h2>
+            <p>Open the web app or email us for Android beta access in Kumasi.</p>
           </div>
-          <div class="cta-actions">
+          <div class="cta-band__actions">
             <a class="btn btn-primary btn-lg" href="https://trotroos.app" data-web-app-link
               >Open web app</a
             >
-            <a class="btn btn-secondary btn-lg" href="mailto:trotroapp@gmail.com">Contact us</a>
+            <a class="btn btn-outline btn-lg" href="mailto:trotroapp@gmail.com">Contact</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer site-footer--premium">
+    <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand">
           <a class="brand" href="/">
@@ -668,16 +418,16 @@
               alt="TrotroOS"
             />
           </a>
-          <p>Smart mobility for Kumasi — built in Ghana, for how Ghana moves.</p>
+          <p>Live trotro mobility for Kumasi.</p>
           <a href="mailto:trotroapp@gmail.com">trotroapp@gmail.com</a>
         </div>
         <div>
           <strong>Product</strong>
           <ul class="footer-links">
-            <li><a href="#modes">Modes</a></li>
+            <li><a href="#passengers">Passengers</a></li>
+            <li><a href="#operators">Operators</a></li>
             <li><a href="#safety">Safety</a></li>
             <li><a href="/track.html">Trip Guardian</a></li>
-            <li><a href="#download">Download</a></li>
           </ul>
         </div>
         <div>
