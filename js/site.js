@@ -51,38 +51,6 @@
     }
   }
 
-  // Hero device tabs — swap screenshot image
-  const modeTabs = document.querySelectorAll('.device-tab, .mode-tab');
-  const previewImage = document.querySelector('[data-preview-image]');
-
-  const modeImages = {
-    passenger: {
-      src: '/images/store/01-find-ride.png',
-      alt: 'Find Ride screen showing live mates on a Kumasi corridor map',
-    },
-    mate: {
-      src: '/images/store/04-mate-dashboard.png',
-      alt: 'Mate dashboard with GPS broadcasting and incoming seat bids',
-    },
-    station: {
-      src: '/images/store/03-station-master.png',
-      alt: 'Station Master screen with live dispatch and queue counts',
-    },
-  };
-
-  modeTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const mode = tab.getAttribute('data-mode');
-      if (!mode || !modeImages[mode]) return;
-      modeTabs.forEach(t => t.classList.remove('is-active'));
-      tab.classList.add('is-active');
-      if (previewImage) {
-        previewImage.src = modeImages[mode].src;
-        previewImage.alt = modeImages[mode].alt;
-      }
-    });
-  });
-
   // Rotating verification code demo
   const verificationEl = document.querySelector('[data-verification-code]');
   if (verificationEl) {
