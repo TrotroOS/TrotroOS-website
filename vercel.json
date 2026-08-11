@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/track", "destination": "/track.html" },
+    { "source": "/track/:path*", "destination": "/track.html" },
+    { "source": "/invite", "destination": "/" },
+    { "source": "/news", "destination": "/news.html" },
+    { "source": "/careers", "destination": "/careers.html" },
+    { "source": "/partners", "destination": "/partners.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/accessibility", "destination": "/accessibility.html" },
+    { "source": "/security", "destination": "/security.html" }
+  ]
+}

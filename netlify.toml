@@ -1,0 +1,59 @@
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/track"
+  to = "/track.html"
+  status = 200
+
+[[redirects]]
+  from = "/track/*"
+  to = "/track.html"
+  status = 200
+
+[[redirects]]
+  from = "/invite"
+  to = "/"
+  status = 302
+
+[[redirects]]
+  from = "/news"
+  to = "/news.html"
+  status = 200
+
+[[redirects]]
+  from = "/careers"
+  to = "/careers.html"
+  status = 200
+
+[[redirects]]
+  from = "/partners"
+  to = "/partners.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/accessibility"
+  to = "/accessibility.html"
+  status = 200
+
+[[redirects]]
+  from = "/security"
+  to = "/security.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

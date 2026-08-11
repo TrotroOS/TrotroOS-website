@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none" role="img" aria-label="TrotroOS">
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+  <g stroke="#EEEEEE" stroke-width="1">
+    <path d="M128 0v1024M256 0v1024M384 0v1024M512 0v1024M640 0v1024M768 0v1024M896 0v1024"/>
+    <path d="M0 128h1024M0 256h1024M0 384h1024M0 512h1024M0 640h1024M0 768h1024M0 896h1024"/>
+  </g>
+  <g transform="translate(512 512)">
+    <path d="M-118 -42h236a14 14 0 0 1 14 14v32a14 14 0 0 1-14 14h-236a14 14 0 0 1-14-14v-32a14 14 0 0 1 14-14z" fill="#E04A00" opacity="0.1"/>
+    <path d="M-106 -28h212v5h-212z" fill="#E04A00"/>
+    <circle cx="-48" cy="28" r="50" stroke="#E04A00" stroke-width="10" fill="#FFFFFF"/>
+    <circle cx="-48" cy="12" r="17" fill="#0F766E"/>
+    <path d="M-48 29 L-60 62 L-36 62 Z" fill="#0F766E"/>
+    <path d="M16 -32 C54 -32 54 16 16 16 C-22 16 -22 64 16 64 C54 64 54 88 16 88" stroke="#000000" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M16 -32 C54 -32 54 16 16 16 C-22 16 -22 64 16 64 C54 64 54 88 16 88" stroke="#E04A00" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M16 -32 C54 -32 54 16 16 16 C-22 16 -22 64 16 64" stroke="#FFFFFF" stroke-width="3.5" stroke-dasharray="8 12" stroke-linecap="round" fill="none" opacity="0.92"/>
+  </g>
+</svg>

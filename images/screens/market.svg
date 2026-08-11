@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none" role="img" aria-label="TrotroOS Trotro Market screen">
+  <rect width="390" height="844" fill="#FAFAF9"/>
+  <text x="24" y="34" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#0A0A0A">9:41</text>
+  <text x="24" y="72" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#0A0A0A">Trotro Market</text>
+  <rect x="24" y="92" width="342" height="40" rx="20" fill="#F0F0EE"/>
+  <text x="44" y="118" font-family="system-ui,sans-serif" font-size="14" fill="#5C5C5C">Search listings...</text>
+  <rect x="24" y="148" width="160" height="200" rx="14" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="36" y="160" width="136" height="100" rx="10" fill="#FFE8DB"/>
+  <text x="36" y="280" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">KNUST textbook bundle</text>
+  <text x="36" y="300" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#E04A00">GHS 120</text>
+  <rect x="36" y="312" width="88" height="26" rx="13" fill="#0C1210"/>
+  <text x="52" y="330" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Add to cart</text>
+  <rect x="206" y="148" width="160" height="200" rx="14" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="218" y="160" width="136" height="100" rx="10" fill="#E0F2F1"/>
+  <text x="218" y="280" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Phone charger - new</text>
+  <text x="218" y="300" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#E04A00">GHS 35</text>
+  <rect x="24" y="368" width="342" height="56" rx="28" fill="#0C1210"/>
+  <text x="40" y="402" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Cart - 2 items - GHS 155</text>
+  <text x="290" y="402" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#E04A00">Checkout</text>
+  <rect x="24" y="448" width="342" height="160" rx="16" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <text x="40" y="480" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Pay with MoMo wallet</text>
+  <text x="40" y="508" font-family="system-ui,sans-serif" font-size="13" fill="#5C5C5C">Balance GHS 200.00 - instant checkout</text>
+  <rect x="40" y="528" width="310" height="56" rx="12" fill="#F5F5F3"/>
+  <text x="56" y="562" font-family="system-ui,sans-serif" font-size="13" fill="#5C5C5C">Or cash meetup at Tech Junction</text>
+</svg>

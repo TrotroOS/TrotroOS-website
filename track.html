@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live trip track — TrotroOS</title>
+    <meta name="description" content="Follow a shared TrotroOS trip with Trip Guardian live GPS." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-track-page>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/"
+          ><img
+            class="brand-wordmark"
+            src="/brand/trotroos-wordmark.svg"
+            width="148"
+            height="30"
+            alt="TrotroOS"
+        /></a>
+        <nav class="site-nav" data-site-nav>
+          <a href="/">Home</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="track-page">
+      <div class="track-card">
+        <div class="track-status"><span data-track-status>Loading</span></div>
+        <h1 style="margin: 0 0 0.75rem; font-size: 1.5rem">Trip Guardian track</h1>
+        <p data-track-message style="color: var(--text-muted); margin: 0 0 1.5rem">
+          Checking your link…
+        </p>
+        <a class="btn btn-primary" data-open-app href="#">Open in TrotroOS app</a>
+        <p style="margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted)">
+          Shared links refresh while the trip is active. For full map tracking, install the app.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        © <span data-year></span> TrotroOS · <a href="/">Home</a>
+      </div>
+    </footer>
+    <script src="/js/site.js" defer></script>
+  </body>
+</html>

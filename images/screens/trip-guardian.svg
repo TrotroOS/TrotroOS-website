@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none" role="img" aria-label="TrotroOS Trip Guardian screen">
+  <rect width="390" height="844" fill="#0C1210"/>
+  <text x="24" y="34" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">9:41</text>
+  <rect x="24" y="60" width="342" height="36" rx="18" fill="rgba(20,184,166,0.2)" stroke="#14B8A6"/>
+  <circle cx="44" cy="78" r="5" fill="#14B8A6"/>
+  <text x="58" y="83" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#14B8A6">Trip Guardian - Live</text>
+  <rect x="24" y="116" width="342" height="360" rx="16" fill="#152019"/>
+  <path d="M60 400 C140 320, 220 280, 300 200" stroke="#E04A00" stroke-width="4"/>
+  <circle cx="300" cy="200" r="12" fill="#E04A00"/>
+  <circle cx="300" cy="200" r="22" stroke="#E04A00" stroke-width="2" opacity="0.4"/>
+  <rect x="40" y="140" width="120" height="32" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <text x="52" y="161" font-family="system-ui,sans-serif" font-size="12" fill="#FFFFFF">Kejetia to Ayeduase</text>
+  <rect x="24" y="496" width="342" height="200" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)"/>
+  <text x="40" y="532" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Share live trip</text>
+  <text x="40" y="560" font-family="system-ui,sans-serif" font-size="13" fill="rgba(255,255,255,0.65)">Family can follow your GPS in the browser - no app required.</text>
+  <rect x="40" y="584" width="310" height="44" rx="12" fill="rgba(255,255,255,0.08)"/>
+  <text x="56" y="612" font-family="monospace" font-size="12" fill="#14B8A6">trotroos.app/track?token=abc</text>
+  <rect x="40" y="644" width="310" height="40" rx="20" fill="#E04A00"/>
+  <text x="148" y="669" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Share via WhatsApp</text>
+  <rect x="24" y="720" width="342" height="72" rx="14" fill="rgba(255,255,255,0.05)"/>
+  <text x="40" y="752" font-family="system-ui,sans-serif" font-size="13" fill="rgba(255,255,255,0.7)">Pickup code</text>
+  <text x="40" y="780" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#E04A00" letter-spacing="4">482916</text>
+</svg>

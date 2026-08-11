@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none" role="img" aria-label="TrotroOS Find Ride screen">
+  <rect width="390" height="844" fill="#FAFAF9"/>
+  <rect width="390" height="54" fill="#FFFFFF"/>
+  <text x="24" y="34" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#0A0A0A">9:41</text>
+  <rect x="24" y="68" width="342" height="44" rx="12" fill="#F0F0EE"/>
+  <text x="44" y="96" font-family="system-ui,sans-serif" font-size="14" fill="#5C5C5C">Tech Junction to Ayeduase</text>
+  <rect x="24" y="128" width="342" height="380" rx="16" fill="#152019"/>
+  <path d="M40 420 C120 340, 180 280, 260 220 S320 180, 350 160" stroke="#E04A00" stroke-width="3" stroke-dasharray="8 6" opacity="0.7"/>
+  <path d="M50 180 C130 200, 200 260, 280 320" stroke="#14B8A6" stroke-width="2" stroke-dasharray="6 8" opacity="0.5"/>
+  <circle cx="260" cy="220" r="10" fill="#E04A00"/>
+  <circle cx="260" cy="220" r="18" stroke="#E04A00" stroke-width="2" opacity="0.35"/>
+  <circle cx="120" cy="360" r="7" fill="#14B8A6"/>
+  <rect x="24" y="524" width="342" height="120" rx="16" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="40" y="540" width="72" height="24" rx="6" fill="#FFE8DB"/>
+  <text x="52" y="557" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#C74400">LIVE MATE</text>
+  <text x="40" y="588" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#0A0A0A">Ayeduase - 3 seats</text>
+  <text x="40" y="612" font-family="system-ui,sans-serif" font-size="13" fill="#5C5C5C">GHS 4.50 - ETA 6 min</text>
+  <rect x="270" y="560" width="80" height="36" rx="18" fill="#E04A00"/>
+  <text x="294" y="583" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Reserve</text>
+  <rect x="24" y="660" width="342" height="120" rx="16" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <text x="40" y="692" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#0A0A0A">Bid and Ride</text>
+  <text x="40" y="716" font-family="system-ui,sans-serif" font-size="13" fill="#5C5C5C">Name your fare - 2 drivers nearby</text>
+  <rect x="24" y="796" width="342" height="48" rx="24" fill="#0C1210"/>
+  <text x="155" y="826" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Find Ride</text>
+</svg>
