@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "live-only-trips-bid-sync",
+    "title": "Live-only trips & bid sync",
+    "summary": "Browse feeds show mates with active GPS only. Bids reach the mate dashboard in real time with pickup codes on accept.",
+    "tags": ["Feature update", "Bid & Ride"],
+    "published_at": "2026-08-11T09:00:00+00:00"
+  },
+  {
+    "slug": "trotro-market-cart",
+    "title": "Trotro Market cart",
+    "summary": "Add listings to cart and checkout from wallet or cash meetup — local commerce inside the app.",
+    "tags": ["Feature update", "Market"],
+    "published_at": "2026-08-01T09:00:00+00:00"
+  },
+  {
+    "slug": "asokwa-santasi-corridor",
+    "title": "Asokwa to Santasi corridor live",
+    "summary": "TrotroOS now supports the Asokwa–Santasi corridor with real-time queue tracking and seat reservations for morning and evening rush hours.",
+    "tags": ["Feature update", "New route"],
+    "published_at": "2026-08-01T09:00:00+00:00"
+  },
+  {
+    "slug": "trotoride-pilot-launch",
+    "title": "TrotroRide pilot launch",
+    "summary": "Shared-car mode is available on the Tech Junction ↔ Ayeduase corridor with incoming offer sheets and live GPS for mid-route pickups.",
+    "tags": ["Service launch", "TrotroRide"],
+    "published_at": "2026-07-15T09:00:00+00:00"
+  },
+  {
+    "slug": "momo-cashout-mates",
+    "title": "MoMo cashout for mates",
+    "summary": "Mates can cash out earnings to mobile money wallets after trips, with same-day processing for verified operators.",
+    "tags": ["Payments", "Mate dashboard"],
+    "published_at": "2026-06-30T09:00:00+00:00"
+  },
+  {
+    "slug": "trip-guardian-safety-update",
+    "title": "Trip Guardian safety update",
+    "summary": "Trip Guardian can notify emergency contacts when a trip deviates from its planned route or stops unexpectedly for an extended period.",
+    "tags": ["Safety", "Trip Guardian"],
+    "published_at": "2026-06-15T09:00:00+00:00"
+  },
+  {
+    "slug": "station-master-v2",
+    "title": "Station Master analytics",
+    "summary": "Station operators get peak-hour predictions, volume trends, and dispatch recommendations based on live corridor demand.",
+    "tags": ["Product update", "Station Master"],
+    "published_at": "2026-05-31T09:00:00+00:00"
+  }
+]
