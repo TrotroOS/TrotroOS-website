@@ -1,17 +1,14 @@
 {
   "name": "TrotroOS",
   "short_name": "TrotroOS",
-  "description": "Live trotro mobility for Kumasi — reserve seats, track mates, pay with MoMo.",
+  "description": "Live trotro mobility for Kumasi — demand heat map, trip chat, fare lock, seat reservations, and MoMo.",
   "start_url": "/app/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#e04a00",
-  "categories": [
-    "travel",
-    "navigation"
-  ],
+  "categories": ["travel", "navigation"],
   "icons": [
     {
       "src": "/icons/icon-192.png",

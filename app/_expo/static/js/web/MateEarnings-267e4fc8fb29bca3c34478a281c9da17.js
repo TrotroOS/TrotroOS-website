@@ -1,1 +1,221 @@
-__d(function(g,r,i,a,m,e,_d){var t=r(_d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const t=(0,r(_d[8]).useNavigation)(),{user:h,profile:f}=(0,r(_d[9]).useAuth)(),{todayStats:T}=(0,r(_d[10]).useMateTrip)(),{colors:E}=(0,r(_d[11]).useTheme)(),{showToast:p}=(0,r(_d[12]).useToast)(),[w,M]=(0,o.useState)(!1),[b,v]=(0,o.useState)(null),[_,k]=(0,o.useState)([]),[D,A]=(0,o.useState)(!0),[L,S]=(0,o.useState)(!1),[R,O]=(0,o.useState)('week'),[P,$]=(0,o.useState)(null),C=(0,o.useCallback)(async()=>{if(!h?.id)return;const[{data:t},{data:o}]=await Promise.all([(0,r(_d[13]).fetchMateEarningsSummary)(h.id),(0,r(_d[13]).fetchMateTripHistory)(h.id,24)]);v(t),k(o??[])},[h?.id]);(0,o.useEffect)(()=>{h?.id?C().finally(()=>A(!1)):A(!1)},[h?.id,C]);const G=(0,o.useCallback)(async()=>{S(!0),await C(),S(!1)},[C]),x=Boolean(f?.momo_merchant_code),j=(0,o.useMemo)(()=>b?'today'===R?{amount:b.todayEarned??0,trips:b.todayTrips??0,digital:b.digitalToday??0,cash:Math.max(0,(b.todayEarned??0)-(b.digitalToday??0)),eyebrow:'Today'}:'month'===R?{amount:b.monthEarned??0,trips:b.monthTrips??0,digital:b.digitalMonth??0,cash:Math.max(0,(b.monthEarned??0)-(b.digitalMonth??0)),eyebrow:'Last 30 days'}:{amount:b.weekEarned??0,trips:b.weekTrips??0,digital:b.digitalWeek??0,cash:Math.max(0,(b.weekEarned??0)-(b.digitalWeek??0)),eyebrow:'This week'}:{amount:0,trips:0,digital:0,cash:0,eyebrow:'This week'},[R,b]),B=(0,o.useMemo)(()=>P&&'week'===R?(b?.weekDays??[]).find(t=>t.key===P)??null:null,[P,R,b?.weekDays]),F=B?B.amount:j.amount,I=B?B.tripCount:j.trips,H=B?B.isToday?'Today':B.label:j.eyebrow,K=B?{gross:B.amount,digital:0,cash:B.amount}:{gross:j.amount,digital:j.digital,cash:j.cash},N=(0,r(_d[14]).formatMateEarningsBreakdown)(K),W=(0,o.useMemo)(()=>{let t=_;if('today'===R){const o=(0,r(_d[15]).toLocalDateKey)(new Date);t=(0,r(_d[15]).filterActivityByDay)(_,o,t=>t.ended_at)}else'week'===R&&P&&(t=(0,r(_d[15]).filterActivityByDay)(_,P,t=>t.ended_at));return t.map(t=>({id:t.id,title:t.route_label||'Trip',subtitle:[null!=t.boarded_count?`${t.boarded_count} pax`:null,(0,r(_d[15]).formatActivityTime)(t.ended_at)].filter(Boolean).join(' \xb7 '),amountLabel:(0,r(_d[15]).formatGhs)(t.earnings)}))},[_,R,P]),U=B?0:N.netDigital,Q='today'===R?(0,r(_d[15]).toLocalDateKey)(new Date):'month'===R?(0,r(_d[15]).toLocalDateKey)(new Date).slice(0,7):b?.weekDays?.[0]?.key??(0,r(_d[15]).toLocalDateKey)(new Date);if(D)return(0,c.jsx)(s.default,{title:"Earnings",subtitle:"Loading...",scroll:!0,gradientHeader:!0,children:(0,c.jsx)(l.default,{color:E.primary,style:{marginTop:40}})});return(0,c.jsx)(s.default,{title:"Earnings",subtitle:`${T.trips} trips today \xb7 ${(0,r(_d[15]).formatGhs)(T.earned??0)} collected`,scroll:!0,gradientHeader:!0,refreshControl:(0,c.jsx)(n.default,{refreshing:L,onRefresh:G,tintColor:E.primary}),children:(0,c.jsx)(u.default,{period:R,onPeriodChange:t=>{O(t),'week'!==t&&$(null)},headlineAmount:F,headlineEyebrow:H,metaLine:`${I} trip${1===I?'':'s'}`,takeHomeLine:B?null:`Est. take-home ${(0,r(_d[15]).formatGhs)(N.netTotal)}`,weekDays:b?.weekDays??[],selectedDayKey:P,onSelectDay:$,cashOut:{ready:U>0,label:U>0?'Digital earnings ready for wallet':'No unclaimed digital earnings in this period',available:U,hint:U>0?'Move MoMo/GhQR take-home to your wallet, then cash out to your personal MoMo number.':`${r(_d[18]).MATE_PAYOUT_HINT} Cash out from Wallet after claiming.`,ctaTitle:w?'Moving\u2026':U>0?'Move available to wallet':'Open wallet',onCta:U>0?async()=>{if(!h?.id||U<=0||w)return;M(!0);const o=y(h.id,R,Q),{error:l}=await(0,r(_d[16]).creditEarningsToWallet)(U,o,{source:'mate_earnings',period:R,periodKey:Q});M(!1),l?p({type:'error',title:'Could not move earnings',message:l.message}):(p({type:'success',title:'Moved to wallet',message:`${(0,r(_d[15]).formatGhs)(U)} is ready to cash out.`}),t.navigate(r(_d[17]).ROUTES.PROFILE_WALLET))}:()=>t.navigate(r(_d[17]).ROUTES.PROFILE_WALLET),secondaryCta:{label:x?`Merchant code ${f.momo_merchant_code} \xb7 Edit profile`:'Add MoMo merchant code for receiving fares',onPress:()=>t.navigate(r(_d[17]).ROUTES.PROFILE_EDIT)}},breakdown:[{label:'Gross collected',value:(0,r(_d[15]).formatGhs)(N.gross)},{label:'Cash on board',value:(0,r(_d[15]).formatGhs)(N.cash)},{label:'Digital (MoMo/GhQR)',value:(0,r(_d[15]).formatGhs)(N.digital)},...N.digital>0?[{label:`Platform fee (${r(_d[19]).PLATFORM_FEE_PERCENT}% on digital)`,value:`- ${(0,r(_d[15]).formatGhs)(N.platformFee)}`,tone:'fee'}]:[],{label:'Estimated take-home',value:(0,r(_d[15]).formatGhs)(N.netTotal),tone:'net'}],activity:W,emptyActivityText:"Complete trips from the Dashboard to see earnings activity here.",tips:[r(_d[18]).MATE_PLATFORM_FEE_LABEL,...r(_d[18]).MATE_EARNINGS_TIPS.slice(0,3)],footer:(0,c.jsx)(d.default,{title:"Back to dashboard",variant:"secondary",compact:!0,onPress:()=>t.navigate(r(_d[17]).ROUTES.MATE_DASHBOARD)})})})};var o=r(_d[1]),l=t(r(_d[2])),n=t(r(_d[3])),s=t(r(_d[4])),d=t(r(_d[5])),u=t(r(_d[6])),c=r(_d[7]);function y(t,o,l){return`earn-mate-${t}-${o}-${l}`}},1445,[1,5,373,105,1510,672,1706,183,382,501,1482,381,1386,687,686,691,1491,682,1705,508]);
+__d(
+  function (g, r, i, a, m, e, _d) {
+    var t = r(_d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const t = (0, r(_d[8]).useNavigation)(),
+          { user: h, profile: f } = (0, r(_d[9]).useAuth)(),
+          { todayStats: T } = (0, r(_d[10]).useMateTrip)(),
+          { colors: E } = (0, r(_d[11]).useTheme)(),
+          { showToast: p } = (0, r(_d[12]).useToast)(),
+          [w, M] = (0, o.useState)(!1),
+          [b, v] = (0, o.useState)(null),
+          [_, k] = (0, o.useState)([]),
+          [D, A] = (0, o.useState)(!0),
+          [L, S] = (0, o.useState)(!1),
+          [R, O] = (0, o.useState)('week'),
+          [P, $] = (0, o.useState)(null),
+          C = (0, o.useCallback)(async () => {
+            if (!h?.id) return;
+            const [{ data: t }, { data: o }] = await Promise.all([
+              (0, r(_d[13]).fetchMateEarningsSummary)(h.id),
+              (0, r(_d[13]).fetchMateTripHistory)(h.id, 24),
+            ]);
+            (v(t), k(o ?? []));
+          }, [h?.id]);
+        (0, o.useEffect)(() => {
+          h?.id ? C().finally(() => A(!1)) : A(!1);
+        }, [h?.id, C]);
+        const G = (0, o.useCallback)(async () => {
+            (S(!0), await C(), S(!1));
+          }, [C]),
+          x = Boolean(f?.momo_merchant_code),
+          j = (0, o.useMemo)(
+            () =>
+              b
+                ? 'today' === R
+                  ? {
+                      amount: b.todayEarned ?? 0,
+                      trips: b.todayTrips ?? 0,
+                      digital: b.digitalToday ?? 0,
+                      cash: Math.max(0, (b.todayEarned ?? 0) - (b.digitalToday ?? 0)),
+                      eyebrow: 'Today',
+                    }
+                  : 'month' === R
+                    ? {
+                        amount: b.monthEarned ?? 0,
+                        trips: b.monthTrips ?? 0,
+                        digital: b.digitalMonth ?? 0,
+                        cash: Math.max(0, (b.monthEarned ?? 0) - (b.digitalMonth ?? 0)),
+                        eyebrow: 'Last 30 days',
+                      }
+                    : {
+                        amount: b.weekEarned ?? 0,
+                        trips: b.weekTrips ?? 0,
+                        digital: b.digitalWeek ?? 0,
+                        cash: Math.max(0, (b.weekEarned ?? 0) - (b.digitalWeek ?? 0)),
+                        eyebrow: 'This week',
+                      }
+                : { amount: 0, trips: 0, digital: 0, cash: 0, eyebrow: 'This week' },
+            [R, b]
+          ),
+          B = (0, o.useMemo)(
+            () => (P && 'week' === R ? ((b?.weekDays ?? []).find(t => t.key === P) ?? null) : null),
+            [P, R, b?.weekDays]
+          ),
+          F = B ? B.amount : j.amount,
+          I = B ? B.tripCount : j.trips,
+          H = B ? (B.isToday ? 'Today' : B.label) : j.eyebrow,
+          K = B
+            ? { gross: B.amount, digital: 0, cash: B.amount }
+            : { gross: j.amount, digital: j.digital, cash: j.cash },
+          N = (0, r(_d[14]).formatMateEarningsBreakdown)(K),
+          W = (0, o.useMemo)(() => {
+            let t = _;
+            if ('today' === R) {
+              const o = (0, r(_d[15]).toLocalDateKey)(new Date());
+              t = (0, r(_d[15]).filterActivityByDay)(_, o, t => t.ended_at);
+            } else
+              'week' === R && P && (t = (0, r(_d[15]).filterActivityByDay)(_, P, t => t.ended_at));
+            return t.map(t => ({
+              id: t.id,
+              title: t.route_label || 'Trip',
+              subtitle: [
+                null != t.boarded_count ? `${t.boarded_count} pax` : null,
+                (0, r(_d[15]).formatActivityTime)(t.ended_at),
+              ]
+                .filter(Boolean)
+                .join(' \xb7 '),
+              amountLabel: (0, r(_d[15]).formatGhs)(t.earnings),
+            }));
+          }, [_, R, P]),
+          U = B ? 0 : N.netDigital,
+          Q =
+            'today' === R
+              ? (0, r(_d[15]).toLocalDateKey)(new Date())
+              : 'month' === R
+                ? (0, r(_d[15]).toLocalDateKey)(new Date()).slice(0, 7)
+                : (b?.weekDays?.[0]?.key ?? (0, r(_d[15]).toLocalDateKey)(new Date()));
+        if (D)
+          return (0, c.jsx)(s.default, {
+            title: 'Earnings',
+            subtitle: 'Loading...',
+            scroll: !0,
+            gradientHeader: !0,
+            children: (0, c.jsx)(l.default, { color: E.primary, style: { marginTop: 40 } }),
+          });
+        return (0, c.jsx)(s.default, {
+          title: 'Earnings',
+          subtitle: `${T.trips} trips today \xb7 ${(0, r(_d[15]).formatGhs)(T.earned ?? 0)} collected`,
+          scroll: !0,
+          gradientHeader: !0,
+          refreshControl: (0, c.jsx)(n.default, {
+            refreshing: L,
+            onRefresh: G,
+            tintColor: E.primary,
+          }),
+          children: (0, c.jsx)(u.default, {
+            period: R,
+            onPeriodChange: t => {
+              (O(t), 'week' !== t && $(null));
+            },
+            headlineAmount: F,
+            headlineEyebrow: H,
+            metaLine: `${I} trip${1 === I ? '' : 's'}`,
+            takeHomeLine: B ? null : `Est. take-home ${(0, r(_d[15]).formatGhs)(N.netTotal)}`,
+            weekDays: b?.weekDays ?? [],
+            selectedDayKey: P,
+            onSelectDay: $,
+            cashOut: {
+              ready: U > 0,
+              label:
+                U > 0
+                  ? 'Digital earnings ready for wallet'
+                  : 'No unclaimed digital earnings in this period',
+              available: U,
+              hint:
+                U > 0
+                  ? 'Move MoMo/GhQR take-home to your wallet, then cash out to your personal MoMo number.'
+                  : `${r(_d[18]).MATE_PAYOUT_HINT} Cash out from Wallet after claiming.`,
+              ctaTitle: w ? 'Moving\u2026' : U > 0 ? 'Move available to wallet' : 'Open wallet',
+              onCta:
+                U > 0
+                  ? async () => {
+                      if (!h?.id || U <= 0 || w) return;
+                      M(!0);
+                      const o = y(h.id, R, Q),
+                        { error: l } = await (0, r(_d[16]).creditEarningsToWallet)(U, o, {
+                          source: 'mate_earnings',
+                          period: R,
+                          periodKey: Q,
+                        });
+                      (M(!1),
+                        l
+                          ? p({
+                              type: 'error',
+                              title: 'Could not move earnings',
+                              message: l.message,
+                            })
+                          : (p({
+                              type: 'success',
+                              title: 'Moved to wallet',
+                              message: `${(0, r(_d[15]).formatGhs)(U)} is ready to cash out.`,
+                            }),
+                            t.navigate(r(_d[17]).ROUTES.PROFILE_WALLET)));
+                    }
+                  : () => t.navigate(r(_d[17]).ROUTES.PROFILE_WALLET),
+              secondaryCta: {
+                label: x
+                  ? `Merchant code ${f.momo_merchant_code} \xb7 Edit profile`
+                  : 'Add MoMo merchant code for receiving fares',
+                onPress: () => t.navigate(r(_d[17]).ROUTES.PROFILE_EDIT),
+              },
+            },
+            breakdown: [
+              { label: 'Gross collected', value: (0, r(_d[15]).formatGhs)(N.gross) },
+              { label: 'Cash on board', value: (0, r(_d[15]).formatGhs)(N.cash) },
+              { label: 'Digital (MoMo/GhQR)', value: (0, r(_d[15]).formatGhs)(N.digital) },
+              ...(N.digital > 0
+                ? [
+                    {
+                      label: `Platform fee (${r(_d[19]).PLATFORM_FEE_PERCENT}% on digital)`,
+                      value: `- ${(0, r(_d[15]).formatGhs)(N.platformFee)}`,
+                      tone: 'fee',
+                    },
+                  ]
+                : []),
+              {
+                label: 'Estimated take-home',
+                value: (0, r(_d[15]).formatGhs)(N.netTotal),
+                tone: 'net',
+              },
+            ],
+            activity: W,
+            emptyActivityText: 'Complete trips from the Dashboard to see earnings activity here.',
+            tips: [r(_d[18]).MATE_PLATFORM_FEE_LABEL, ...r(_d[18]).MATE_EARNINGS_TIPS.slice(0, 3)],
+            footer: (0, c.jsx)(d.default, {
+              title: 'Back to dashboard',
+              variant: 'secondary',
+              compact: !0,
+              onPress: () => t.navigate(r(_d[17]).ROUTES.MATE_DASHBOARD),
+            }),
+          }),
+        });
+      }));
+    var o = r(_d[1]),
+      l = t(r(_d[2])),
+      n = t(r(_d[3])),
+      s = t(r(_d[4])),
+      d = t(r(_d[5])),
+      u = t(r(_d[6])),
+      c = r(_d[7]);
+    function y(t, o, l) {
+      return `earn-mate-${t}-${o}-${l}`;
+    }
+  },
+  1445,
+  [
+    1, 5, 373, 105, 1510, 672, 1706, 183, 382, 501, 1482, 381, 1386, 687, 686, 691, 1491, 682, 1705,
+    508,
+  ]
+);

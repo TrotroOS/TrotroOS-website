@@ -1,1 +1,497 @@
-__d(function(g,_r,_i,a,m,_e,d){var e=_r(d[0]);Object.defineProperty(_e,"__esModule",{value:!0}),_e.default=function(){const e=(0,_r(d[14]).useNavigation)(),r=(0,_r(d[15]).useSafeAreaInsets)(),{profile:l}=(0,_r(d[16]).useAuth)(),{activeRide:h,driverLocation:S,rideEarnings:v,allDroppedOff:R,arriveAtPickup:C,startPassengerTrip:w,dropoffPassenger:T,markPassengerNoShow:k,endRide:P,cancelActiveRide:F,loading:D}=(0,_r(d[17]).useTRDriverRide)(),[_,B]=(0,t.useState)(!1),[H,A]=(0,t.useState)(!1),[L,M]=(0,t.useState)(!1),[E,z]=(0,t.useState)(null),N=h?.passengers??[],O=S??null,I=S?.speedKmh??0,$=S?.heading??0,W=h?.corridor??'Tech Junction \u2192 Ayeduase',V=(0,t.useMemo)(()=>(0,_r(d[18]).buildActiveRideWaypoints)(O,N,W),[O,N,W]),G=(0,t.useMemo)(()=>(0,_r(d[18]).getNextRideStop)(N,W),[N,W]),U=(0,t.useMemo)(()=>{if(!N.length)return[];const e=[];return N.forEach(t=>{e.push({type:'pickup',label:`${t.name} \xb7 ${t.pickup}`,id:`pu-${t.id}`})}),N.forEach(t=>{e.push({type:'dropoff',label:`${t.name} \xb7 ${t.dropoff}`,id:`do-${t.id}`})}),e},[N]),K=(0,_r(d[19]).getTrafficColor)(I||28),q=!R&&N.some(e=>'dropped_off'!==e.status);if(!h)return(0,y.jsx)(u.default,{icon:"car-outline",title:"No active ride",message:"Accept a request from the Dashboard to start your shared car ride.",actionLabel:"Go to Dashboard",onAction:()=>(0,_r(d[20]).navigateToMainTab)(e,_r(d[21]).ROUTES.TR_DRIVER_DASHBOARD)});const J=N.length,Y={rideId:h.id,route:h.corridor,etaMin:15,driverName:l?.full_name??'You',vehicleModel:l?.vehicle_type,plateNumber:l?.vehicle_registration,passengerNames:N.map(e=>e.name).join(', '),latitude:O?.latitude,longitude:O?.longitude};return(0,y.jsxs)(n.default,{style:j.container,children:[(0,y.jsxs)(n.default,{style:[j.rideHeader,{paddingTop:r.top+_r(d[22]).spacing.sm}],children:[(0,y.jsx)(i.default,{style:j.rideHeaderTitle,children:"Active Ride"}),(0,y.jsx)(s.TripGuardianShield,{onPress:()=>B(!0)})]}),(0,y.jsxs)(n.default,{style:j.topSection,children:[(0,y.jsx)(i.default,{style:j.routeTitle,children:h.corridor}),(0,y.jsx)(o.default,{horizontal:!0,showsHorizontalScrollIndicator:!1,style:j.stopsScroll,children:U.map((e,t)=>(0,y.jsx)(x,{label:e.label,type:e.type,isLast:t===U.length-1},e.id))})]}),(0,y.jsxs)(n.default,{style:j.mapSection,children:[(0,y.jsx)(p.default,{waypoints:V,corridor:W,driverCoord:O,heading:$,speedKmh:I,nextStop:G,fitRoute:!0,showCorridor:!1,showNavBanner:!0}),(0,y.jsx)(n.default,{style:[j.trafficBadge,{backgroundColor:K}],children:(0,y.jsxs)(i.default,{style:j.trafficText,children:[I>=24?'Clear':I>=15?'Moderate':'Heavy'," traffic",I>0?` \xb7 ${Math.round(I)} km/h`:'']})})]}),(0,y.jsxs)(n.default,{style:j.bottomSection,children:[(0,y.jsxs)(i.default,{style:j.earningsLabel,children:["This ride: GHS ",v.toFixed(2)," (",J," pax)"]}),(0,y.jsx)(o.default,{style:j.passengerList,contentContainerStyle:j.passengerListContent,children:N.map(e=>(0,y.jsx)(b,{passenger:e,onArrive:C,onStartTrip:w,onDropoff:T,onNoShow:z},e.id))}),R?(0,y.jsx)(c.default,{title:"End Ride",onPress:()=>A(!0),loading:D}):null,q?(0,y.jsx)(c.default,{title:"Cancel ride",variant:"ghost",onPress:()=>M(!0),loading:D}):null]}),(0,y.jsx)(f.default,{visible:H,title:"End ride?",message:"Confirm all passengers have been dropped off.",confirmLabel:"End Ride",onConfirm:async()=>{A(!1);const{error:t}=await P();t||(0,_r(d[20]).navigateToMainTab)(e,_r(d[21]).ROUTES.TR_DRIVER_DASHBOARD)},onCancel:()=>A(!1),loading:D}),(0,y.jsx)(f.default,{visible:L,title:"Cancel ride?",message:"Passengers will be notified. Only cancel if you cannot complete this trip.",confirmLabel:"Cancel ride",destructive:!0,onConfirm:async()=>{M(!1);const{error:t}=await F();t||(0,_r(d[20]).navigateToMainTab)(e,_r(d[21]).ROUTES.TR_DRIVER_DASHBOARD)},onCancel:()=>M(!1),loading:D}),(0,y.jsx)(f.default,{visible:Boolean(E),title:"Mark passenger no-show?",message:E?`${E.name} will be released from this ride and notified.`:'Passenger will be released from this ride.',confirmLabel:"Mark no-show",destructive:!0,onConfirm:async()=>{if(!E?.id)return;const t=E.id;z(null);const{error:o,rideEnded:r}=await k(t);!o&&r&&(0,_r(d[20]).navigateToMainTab)(e,_r(d[21]).ROUTES.TR_DRIVER_DASHBOARD)},onCancel:()=>z(null),loading:D}),(0,y.jsx)(s.default,{visible:_,onClose:()=>B(!1),role:"driver",trip:Y})]})};var t=_r(d[1]),o=e(_r(d[2])),r=e(_r(d[3])),i=e(_r(d[4])),n=e(_r(d[5])),l=e(_r(d[6])),s=(function(e,t){if("function"==typeof WeakMap)var o=new WeakMap,r=new WeakMap;return(function(e,t){if(!t&&e&&e.__esModule)return e;var i,n,l={__proto__:null,default:e};if(null===e||"object"!=typeof e&&"function"!=typeof e)return l;if(i=t?r:o){if(i.has(e))return i.get(e);i.set(e,l)}for(const t in e)"default"!==t&&{}.hasOwnProperty.call(e,t)&&((n=(i=Object.defineProperty)&&Object.getOwnPropertyDescriptor(e,t))&&(n.get||n.set)?i(l,t,n):l[t]=e[t]);return l})(e,t)})(_r(d[7])),c=e(_r(d[8])),f=e(_r(d[9])),u=e(_r(d[10])),p=e(_r(d[11])),h=e(_r(d[12])),y=_r(d[13]);function x({label:e,type:t,isLast:o}){return(0,y.jsxs)(n.default,{style:j.stopRow,children:[(0,y.jsx)(n.default,{style:[j.stopDot,'pickup'===t&&j.stopPickup,'dropoff'===t&&j.stopDropoff]}),o?null:(0,y.jsx)(n.default,{style:j.stopLine}),(0,y.jsxs)(n.default,{style:j.stopContent,children:[(0,y.jsx)(i.default,{style:j.stopType,children:'pickup'===t?'Pickup':'Drop-off'}),(0,y.jsx)(i.default,{style:j.stopLabel,children:e})]})]})}function b({passenger:e,onArrive:t,onStartTrip:o,onDropoff:r,onNoShow:l}){const s='pending_pickup'===e.status,f='arrived'===e.status,u='in_ride'===e.status,p='dropped_off'===e.status,x='cancelled'===e.status,b=s||f;return(0,y.jsxs)(n.default,{style:j.passengerCard,children:[(0,y.jsxs)(n.default,{style:j.passengerHeader,children:[(0,y.jsx)(i.default,{style:j.passengerName,children:e.name}),(0,y.jsx)(i.default,{style:j.passengerRating,children:Number(e.rating??0).toFixed(1)})]}),(0,y.jsxs)(i.default,{style:j.passengerPickup,children:[e.pickup," \u2192 ",e.dropoff]}),x?null:(0,y.jsx)(h.default,{phone:e.phone,operatorName:e.name??'Passenger',message:`Hi ${e.name??''}, I'm your TrotroRide driver. I'm at the pickup for ${e.pickup}.`,compact:!0}),x?(0,y.jsx)(n.default,{style:j.doneRow,children:(0,y.jsx)(i.default,{style:j.noShowLabel,children:"No-show \xb7 seat released"})}):null,p?(0,y.jsx)(n.default,{style:j.doneRow,children:(0,y.jsxs)(i.default,{style:j.doneCheck,children:["Collected GHS ",e.fare.toFixed(2)]})}):null,s?(0,y.jsx)(c.default,{title:"I've arrived at pickup",compact:!0,onPress:()=>t(e.id)}):null,f?(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(i.default,{style:j.arrivedHint,children:"Passenger notified \xb7 waiting at pickup"}),(0,y.jsx)(c.default,{title:"Start trip",compact:!0,onPress:()=>o(e.id)})]}):null,u?(0,y.jsx)(c.default,{title:"Complete drop-off",variant:"primary",compact:!0,onPress:()=>r(e.id)}):null,b?(0,y.jsx)(c.default,{title:"Passenger no-show",variant:"ghost",compact:!0,onPress:()=>l(e)}):null]})}const j=r.default.create({container:{flex:1,backgroundColor:l.default.background},rideHeader:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:_r(d[22]).spacing.md,paddingBottom:_r(d[22]).spacing.sm,backgroundColor:l.default.surfaceElevated,borderBottomWidth:1,borderBottomColor:l.default.border},rideHeaderTitle:{fontFamily:_r(d[22]).fontFamily.bold,fontSize:18,color:l.default.textPrimary},topSection:{padding:_r(d[22]).spacing.md,backgroundColor:l.default.surfaceElevated,borderBottomWidth:1,borderBottomColor:l.default.border},routeTitle:{fontFamily:_r(d[22]).fontFamily.bold,fontSize:18,color:l.default.textPrimary,marginBottom:_r(d[22]).spacing.sm},stopsScroll:{maxHeight:100},stopRow:{flexDirection:'row',alignItems:'flex-start',marginRight:_r(d[22]).spacing.lg,minWidth:160},stopDot:{width:10,height:10,borderRadius:5,backgroundColor:l.default.textMuted,marginTop:4,marginRight:_r(d[22]).spacing.sm},stopPickup:{backgroundColor:l.default.primary},stopDropoff:{backgroundColor:l.default.warning},stopLine:{position:'absolute',left:4,top:14,width:2,height:30,backgroundColor:l.default.border},stopContent:{flex:1},stopType:{fontFamily:_r(d[22]).fontFamily.medium,fontSize:11,color:l.default.textSecondary},stopLabel:{fontFamily:_r(d[22]).fontFamily.medium,fontSize:13,color:l.default.textPrimary},mapSection:{flex:1,position:'relative'},trafficBadge:{position:'absolute',top:_r(d[22]).spacing.md,right:_r(d[22]).spacing.md,paddingHorizontal:_r(d[22]).spacing.md,paddingVertical:_r(d[22]).spacing.sm,borderRadius:_r(d[22]).radius.pill},trafficText:{fontFamily:_r(d[22]).fontFamily.semiBold,fontSize:12,color:l.default.textPrimary},bottomSection:{maxHeight:'42%',backgroundColor:l.default.surfaceElevated,borderTopWidth:1,borderTopColor:l.default.border,padding:_r(d[22]).spacing.md},earningsLabel:{fontFamily:_r(d[22]).fontFamily.bold,fontSize:17,color:l.default.textPrimary,marginBottom:_r(d[22]).spacing.sm},passengerList:{flex:1},passengerListContent:{paddingBottom:_r(d[22]).spacing.sm},passengerCard:{backgroundColor:l.default.surface,borderRadius:_r(d[22]).radius.md,padding:_r(d[22]).spacing.md,marginBottom:_r(d[22]).spacing.sm,borderWidth:1,borderColor:l.default.border},passengerHeader:{flexDirection:'row',justifyContent:'space-between',marginBottom:4},passengerName:{fontFamily:_r(d[22]).fontFamily.semiBold,fontSize:15,color:l.default.textPrimary},passengerRating:{fontFamily:_r(d[22]).fontFamily.medium,fontSize:13,color:l.default.success},passengerPickup:{fontFamily:_r(d[22]).fontFamily.regular,fontSize:13,color:l.default.textSecondary,marginBottom:_r(d[22]).spacing.sm},doneRow:{paddingVertical:_r(d[22]).spacing.sm},doneCheck:{fontFamily:_r(d[22]).fontFamily.semiBold,fontSize:14,color:l.default.success},noShowLabel:{fontFamily:_r(d[22]).fontFamily.semiBold,fontSize:14,color:l.default.destructive??l.default.error},arrivedHint:{fontFamily:_r(d[22]).fontFamily.medium,fontSize:13,color:l.default.textSecondary,marginBottom:_r(d[22]).spacing.sm}})},1447,[1,5,106,26,161,19,379,1653,672,1645,1534,1485,1520,183,382,572,501,1450,1487,756,1488,682,377]);
+__d(
+  function (g, _r, _i, a, m, _e, d) {
+    var e = _r(d[0]);
+    (Object.defineProperty(_e, '__esModule', { value: !0 }),
+      (_e.default = function () {
+        const e = (0, _r(d[14]).useNavigation)(),
+          r = (0, _r(d[15]).useSafeAreaInsets)(),
+          { profile: l } = (0, _r(d[16]).useAuth)(),
+          {
+            activeRide: h,
+            driverLocation: S,
+            rideEarnings: v,
+            allDroppedOff: R,
+            arriveAtPickup: C,
+            startPassengerTrip: w,
+            dropoffPassenger: T,
+            markPassengerNoShow: k,
+            endRide: P,
+            cancelActiveRide: F,
+            loading: D,
+          } = (0, _r(d[17]).useTRDriverRide)(),
+          [_, B] = (0, t.useState)(!1),
+          [H, A] = (0, t.useState)(!1),
+          [L, M] = (0, t.useState)(!1),
+          [E, z] = (0, t.useState)(null),
+          N = h?.passengers ?? [],
+          O = S ?? null,
+          I = S?.speedKmh ?? 0,
+          $ = S?.heading ?? 0,
+          W = h?.corridor ?? 'Tech Junction \u2192 Ayeduase',
+          V = (0, t.useMemo)(() => (0, _r(d[18]).buildActiveRideWaypoints)(O, N, W), [O, N, W]),
+          G = (0, t.useMemo)(() => (0, _r(d[18]).getNextRideStop)(N, W), [N, W]),
+          U = (0, t.useMemo)(() => {
+            if (!N.length) return [];
+            const e = [];
+            return (
+              N.forEach(t => {
+                e.push({ type: 'pickup', label: `${t.name} \xb7 ${t.pickup}`, id: `pu-${t.id}` });
+              }),
+              N.forEach(t => {
+                e.push({ type: 'dropoff', label: `${t.name} \xb7 ${t.dropoff}`, id: `do-${t.id}` });
+              }),
+              e
+            );
+          }, [N]),
+          K = (0, _r(d[19]).getTrafficColor)(I || 28),
+          q = !R && N.some(e => 'dropped_off' !== e.status);
+        if (!h)
+          return (0, y.jsx)(u.default, {
+            icon: 'car-outline',
+            title: 'No active ride',
+            message: 'Accept a request from the Dashboard to start your shared car ride.',
+            actionLabel: 'Go to Dashboard',
+            onAction: () =>
+              (0, _r(d[20]).navigateToMainTab)(e, _r(d[21]).ROUTES.TR_DRIVER_DASHBOARD),
+          });
+        const J = N.length,
+          Y = {
+            rideId: h.id,
+            route: h.corridor,
+            etaMin: 15,
+            driverName: l?.full_name ?? 'You',
+            vehicleModel: l?.vehicle_type,
+            plateNumber: l?.vehicle_registration,
+            passengerNames: N.map(e => e.name).join(', '),
+            latitude: O?.latitude,
+            longitude: O?.longitude,
+          };
+        return (0, y.jsxs)(n.default, {
+          style: j.container,
+          children: [
+            (0, y.jsxs)(n.default, {
+              style: [j.rideHeader, { paddingTop: r.top + _r(d[22]).spacing.sm }],
+              children: [
+                (0, y.jsx)(i.default, { style: j.rideHeaderTitle, children: 'Active Ride' }),
+                (0, y.jsx)(s.TripGuardianShield, { onPress: () => B(!0) }),
+              ],
+            }),
+            (0, y.jsxs)(n.default, {
+              style: j.topSection,
+              children: [
+                (0, y.jsx)(i.default, { style: j.routeTitle, children: h.corridor }),
+                (0, y.jsx)(o.default, {
+                  horizontal: !0,
+                  showsHorizontalScrollIndicator: !1,
+                  style: j.stopsScroll,
+                  children: U.map((e, t) =>
+                    (0, y.jsx)(
+                      x,
+                      { label: e.label, type: e.type, isLast: t === U.length - 1 },
+                      e.id
+                    )
+                  ),
+                }),
+              ],
+            }),
+            (0, y.jsxs)(n.default, {
+              style: j.mapSection,
+              children: [
+                (0, y.jsx)(p.default, {
+                  waypoints: V,
+                  corridor: W,
+                  driverCoord: O,
+                  heading: $,
+                  speedKmh: I,
+                  nextStop: G,
+                  fitRoute: !0,
+                  showCorridor: !1,
+                  showNavBanner: !0,
+                }),
+                (0, y.jsx)(n.default, {
+                  style: [j.trafficBadge, { backgroundColor: K }],
+                  children: (0, y.jsxs)(i.default, {
+                    style: j.trafficText,
+                    children: [
+                      I >= 24 ? 'Clear' : I >= 15 ? 'Moderate' : 'Heavy',
+                      ' traffic',
+                      I > 0 ? ` \xb7 ${Math.round(I)} km/h` : '',
+                    ],
+                  }),
+                }),
+              ],
+            }),
+            (0, y.jsxs)(n.default, {
+              style: j.bottomSection,
+              children: [
+                (0, y.jsxs)(i.default, {
+                  style: j.earningsLabel,
+                  children: ['This ride: GHS ', v.toFixed(2), ' (', J, ' pax)'],
+                }),
+                (0, y.jsx)(o.default, {
+                  style: j.passengerList,
+                  contentContainerStyle: j.passengerListContent,
+                  children: N.map(e =>
+                    (0, y.jsx)(
+                      b,
+                      { passenger: e, onArrive: C, onStartTrip: w, onDropoff: T, onNoShow: z },
+                      e.id
+                    )
+                  ),
+                }),
+                R
+                  ? (0, y.jsx)(c.default, { title: 'End Ride', onPress: () => A(!0), loading: D })
+                  : null,
+                q
+                  ? (0, y.jsx)(c.default, {
+                      title: 'Cancel ride',
+                      variant: 'ghost',
+                      onPress: () => M(!0),
+                      loading: D,
+                    })
+                  : null,
+              ],
+            }),
+            (0, y.jsx)(f.default, {
+              visible: H,
+              title: 'End ride?',
+              message: 'Confirm all passengers have been dropped off.',
+              confirmLabel: 'End Ride',
+              onConfirm: async () => {
+                A(!1);
+                const { error: t } = await P();
+                t || (0, _r(d[20]).navigateToMainTab)(e, _r(d[21]).ROUTES.TR_DRIVER_DASHBOARD);
+              },
+              onCancel: () => A(!1),
+              loading: D,
+            }),
+            (0, y.jsx)(f.default, {
+              visible: L,
+              title: 'Cancel ride?',
+              message: 'Passengers will be notified. Only cancel if you cannot complete this trip.',
+              confirmLabel: 'Cancel ride',
+              destructive: !0,
+              onConfirm: async () => {
+                M(!1);
+                const { error: t } = await F();
+                t || (0, _r(d[20]).navigateToMainTab)(e, _r(d[21]).ROUTES.TR_DRIVER_DASHBOARD);
+              },
+              onCancel: () => M(!1),
+              loading: D,
+            }),
+            (0, y.jsx)(f.default, {
+              visible: Boolean(E),
+              title: 'Mark passenger no-show?',
+              message: E
+                ? `${E.name} will be released from this ride and notified.`
+                : 'Passenger will be released from this ride.',
+              confirmLabel: 'Mark no-show',
+              destructive: !0,
+              onConfirm: async () => {
+                if (!E?.id) return;
+                const t = E.id;
+                z(null);
+                const { error: o, rideEnded: r } = await k(t);
+                !o &&
+                  r &&
+                  (0, _r(d[20]).navigateToMainTab)(e, _r(d[21]).ROUTES.TR_DRIVER_DASHBOARD);
+              },
+              onCancel: () => z(null),
+              loading: D,
+            }),
+            (0, y.jsx)(s.default, { visible: _, onClose: () => B(!1), role: 'driver', trip: Y }),
+          ],
+        });
+      }));
+    var t = _r(d[1]),
+      o = e(_r(d[2])),
+      r = e(_r(d[3])),
+      i = e(_r(d[4])),
+      n = e(_r(d[5])),
+      l = e(_r(d[6])),
+      s = (function (e, t) {
+        if ('function' == typeof WeakMap)
+          var o = new WeakMap(),
+            r = new WeakMap();
+        return (function (e, t) {
+          if (!t && e && e.__esModule) return e;
+          var i,
+            n,
+            l = { __proto__: null, default: e };
+          if (null === e || ('object' != typeof e && 'function' != typeof e)) return l;
+          if ((i = t ? r : o)) {
+            if (i.has(e)) return i.get(e);
+            i.set(e, l);
+          }
+          for (const t in e)
+            'default' !== t &&
+              {}.hasOwnProperty.call(e, t) &&
+              ((n = (i = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) &&
+              (n.get || n.set)
+                ? i(l, t, n)
+                : (l[t] = e[t]));
+          return l;
+        })(e, t);
+      })(_r(d[7])),
+      c = e(_r(d[8])),
+      f = e(_r(d[9])),
+      u = e(_r(d[10])),
+      p = e(_r(d[11])),
+      h = e(_r(d[12])),
+      y = _r(d[13]);
+    function x({ label: e, type: t, isLast: o }) {
+      return (0, y.jsxs)(n.default, {
+        style: j.stopRow,
+        children: [
+          (0, y.jsx)(n.default, {
+            style: [j.stopDot, 'pickup' === t && j.stopPickup, 'dropoff' === t && j.stopDropoff],
+          }),
+          o ? null : (0, y.jsx)(n.default, { style: j.stopLine }),
+          (0, y.jsxs)(n.default, {
+            style: j.stopContent,
+            children: [
+              (0, y.jsx)(i.default, {
+                style: j.stopType,
+                children: 'pickup' === t ? 'Pickup' : 'Drop-off',
+              }),
+              (0, y.jsx)(i.default, { style: j.stopLabel, children: e }),
+            ],
+          }),
+        ],
+      });
+    }
+    function b({ passenger: e, onArrive: t, onStartTrip: o, onDropoff: r, onNoShow: l }) {
+      const s = 'pending_pickup' === e.status,
+        f = 'arrived' === e.status,
+        u = 'in_ride' === e.status,
+        p = 'dropped_off' === e.status,
+        x = 'cancelled' === e.status,
+        b = s || f;
+      return (0, y.jsxs)(n.default, {
+        style: j.passengerCard,
+        children: [
+          (0, y.jsxs)(n.default, {
+            style: j.passengerHeader,
+            children: [
+              (0, y.jsx)(i.default, { style: j.passengerName, children: e.name }),
+              (0, y.jsx)(i.default, {
+                style: j.passengerRating,
+                children: Number(e.rating ?? 0).toFixed(1),
+              }),
+            ],
+          }),
+          (0, y.jsxs)(i.default, {
+            style: j.passengerPickup,
+            children: [e.pickup, ' \u2192 ', e.dropoff],
+          }),
+          x
+            ? null
+            : (0, y.jsx)(h.default, {
+                phone: e.phone,
+                operatorName: e.name ?? 'Passenger',
+                message: `Hi ${e.name ?? ''}, I'm your TrotroRide driver. I'm at the pickup for ${e.pickup}.`,
+                compact: !0,
+              }),
+          x
+            ? (0, y.jsx)(n.default, {
+                style: j.doneRow,
+                children: (0, y.jsx)(i.default, {
+                  style: j.noShowLabel,
+                  children: 'No-show \xb7 seat released',
+                }),
+              })
+            : null,
+          p
+            ? (0, y.jsx)(n.default, {
+                style: j.doneRow,
+                children: (0, y.jsxs)(i.default, {
+                  style: j.doneCheck,
+                  children: ['Collected GHS ', e.fare.toFixed(2)],
+                }),
+              })
+            : null,
+          s
+            ? (0, y.jsx)(c.default, {
+                title: "I've arrived at pickup",
+                compact: !0,
+                onPress: () => t(e.id),
+              })
+            : null,
+          f
+            ? (0, y.jsxs)(y.Fragment, {
+                children: [
+                  (0, y.jsx)(i.default, {
+                    style: j.arrivedHint,
+                    children: 'Passenger notified \xb7 waiting at pickup',
+                  }),
+                  (0, y.jsx)(c.default, {
+                    title: 'Start trip',
+                    compact: !0,
+                    onPress: () => o(e.id),
+                  }),
+                ],
+              })
+            : null,
+          u
+            ? (0, y.jsx)(c.default, {
+                title: 'Complete drop-off',
+                variant: 'primary',
+                compact: !0,
+                onPress: () => r(e.id),
+              })
+            : null,
+          b
+            ? (0, y.jsx)(c.default, {
+                title: 'Passenger no-show',
+                variant: 'ghost',
+                compact: !0,
+                onPress: () => l(e),
+              })
+            : null,
+        ],
+      });
+    }
+    const j = r.default.create({
+      container: { flex: 1, backgroundColor: l.default.background },
+      rideHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: _r(d[22]).spacing.md,
+        paddingBottom: _r(d[22]).spacing.sm,
+        backgroundColor: l.default.surfaceElevated,
+        borderBottomWidth: 1,
+        borderBottomColor: l.default.border,
+      },
+      rideHeaderTitle: {
+        fontFamily: _r(d[22]).fontFamily.bold,
+        fontSize: 18,
+        color: l.default.textPrimary,
+      },
+      topSection: {
+        padding: _r(d[22]).spacing.md,
+        backgroundColor: l.default.surfaceElevated,
+        borderBottomWidth: 1,
+        borderBottomColor: l.default.border,
+      },
+      routeTitle: {
+        fontFamily: _r(d[22]).fontFamily.bold,
+        fontSize: 18,
+        color: l.default.textPrimary,
+        marginBottom: _r(d[22]).spacing.sm,
+      },
+      stopsScroll: { maxHeight: 100 },
+      stopRow: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginRight: _r(d[22]).spacing.lg,
+        minWidth: 160,
+      },
+      stopDot: {
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        backgroundColor: l.default.textMuted,
+        marginTop: 4,
+        marginRight: _r(d[22]).spacing.sm,
+      },
+      stopPickup: { backgroundColor: l.default.primary },
+      stopDropoff: { backgroundColor: l.default.warning },
+      stopLine: {
+        position: 'absolute',
+        left: 4,
+        top: 14,
+        width: 2,
+        height: 30,
+        backgroundColor: l.default.border,
+      },
+      stopContent: { flex: 1 },
+      stopType: {
+        fontFamily: _r(d[22]).fontFamily.medium,
+        fontSize: 11,
+        color: l.default.textSecondary,
+      },
+      stopLabel: {
+        fontFamily: _r(d[22]).fontFamily.medium,
+        fontSize: 13,
+        color: l.default.textPrimary,
+      },
+      mapSection: { flex: 1, position: 'relative' },
+      trafficBadge: {
+        position: 'absolute',
+        top: _r(d[22]).spacing.md,
+        right: _r(d[22]).spacing.md,
+        paddingHorizontal: _r(d[22]).spacing.md,
+        paddingVertical: _r(d[22]).spacing.sm,
+        borderRadius: _r(d[22]).radius.pill,
+      },
+      trafficText: {
+        fontFamily: _r(d[22]).fontFamily.semiBold,
+        fontSize: 12,
+        color: l.default.textPrimary,
+      },
+      bottomSection: {
+        maxHeight: '42%',
+        backgroundColor: l.default.surfaceElevated,
+        borderTopWidth: 1,
+        borderTopColor: l.default.border,
+        padding: _r(d[22]).spacing.md,
+      },
+      earningsLabel: {
+        fontFamily: _r(d[22]).fontFamily.bold,
+        fontSize: 17,
+        color: l.default.textPrimary,
+        marginBottom: _r(d[22]).spacing.sm,
+      },
+      passengerList: { flex: 1 },
+      passengerListContent: { paddingBottom: _r(d[22]).spacing.sm },
+      passengerCard: {
+        backgroundColor: l.default.surface,
+        borderRadius: _r(d[22]).radius.md,
+        padding: _r(d[22]).spacing.md,
+        marginBottom: _r(d[22]).spacing.sm,
+        borderWidth: 1,
+        borderColor: l.default.border,
+      },
+      passengerHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
+      passengerName: {
+        fontFamily: _r(d[22]).fontFamily.semiBold,
+        fontSize: 15,
+        color: l.default.textPrimary,
+      },
+      passengerRating: {
+        fontFamily: _r(d[22]).fontFamily.medium,
+        fontSize: 13,
+        color: l.default.success,
+      },
+      passengerPickup: {
+        fontFamily: _r(d[22]).fontFamily.regular,
+        fontSize: 13,
+        color: l.default.textSecondary,
+        marginBottom: _r(d[22]).spacing.sm,
+      },
+      doneRow: { paddingVertical: _r(d[22]).spacing.sm },
+      doneCheck: {
+        fontFamily: _r(d[22]).fontFamily.semiBold,
+        fontSize: 14,
+        color: l.default.success,
+      },
+      noShowLabel: {
+        fontFamily: _r(d[22]).fontFamily.semiBold,
+        fontSize: 14,
+        color: l.default.destructive ?? l.default.error,
+      },
+      arrivedHint: {
+        fontFamily: _r(d[22]).fontFamily.medium,
+        fontSize: 13,
+        color: l.default.textSecondary,
+        marginBottom: _r(d[22]).spacing.sm,
+      },
+    });
+  },
+  1447,
+  [
+    1, 5, 106, 26, 161, 19, 379, 1653, 672, 1645, 1534, 1485, 1520, 183, 382, 572, 501, 1450, 1487,
+    756, 1488, 682, 377,
+  ]
+);

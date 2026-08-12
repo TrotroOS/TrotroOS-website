@@ -1,2 +1,402 @@
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const{colors:t}=(0,r(d[9]).useTheme)(),{t:n,fontScale:h}=(0,r(d[10]).useLanguage)(),y=u(t,h);return(0,f.jsxs)(s.default,{title:n('appMode.title'),subtitle:n('appMode.subtitle'),children:[(0,f.jsx)(o.default,{style:y.intro,children:n('appMode.hint')}),(0,f.jsx)(c.default,{elevated:!0,children:(0,f.jsx)(p.default,{})}),(0,f.jsxs)(l.default,{style:y.infoCard,children:[(0,f.jsx)(o.default,{style:y.infoTitle,children:n('appMode.whatChanges')}),(0,f.jsx)(o.default,{style:y.infoBody,children:n('appMode.whatChangesBody')}),(0,f.jsxs)(l.default,{style:y.tipRow,children:[(0,f.jsx)(r(d[11]).Ionicons,{name:"shield-checkmark-outline",size:16,color:t.primary}),(0,f.jsx)(o.default,{style:y.tipText,children:n('language.tip3')})]})]})]})};var o=t(r(d[1])),n=t(r(d[2])),l=t(r(d[3])),s=t(r(d[4])),c=t(r(d[5])),p=t(r(d[6])),f=r(d[7]);const u=(t,o)=>n.default.create({intro:Object.assign({},r(d[8]).typography.body,{fontSize:15*o,lineHeight:22*o,color:t.textSecondary,marginBottom:r(d[8]).spacing.lg}),infoCard:{marginTop:r(d[8]).spacing.lg,padding:r(d[8]).spacing.md,borderRadius:r(d[8]).radius.md,borderWidth:1,borderColor:t.border,backgroundColor:t.surface},infoTitle:{fontFamily:r(d[8]).fontFamily.bold,fontSize:15*o,color:t.textPrimary,marginBottom:r(d[8]).spacing.xs},infoBody:Object.assign({},r(d[8]).typography.caption,{fontSize:13*o,lineHeight:19*o}),tipRow:{flexDirection:'row',gap:r(d[8]).spacing.sm,marginTop:r(d[8]).spacing.md,padding:r(d[8]).spacing.sm,borderRadius:r(d[8]).radius.sm,backgroundColor:t.primaryAlpha06??t.surfaceElevated},tipText:Object.assign({},r(d[8]).typography.caption,{flex:1,lineHeight:18*o,fontSize:13*o})})},1465,[1,161,26,19,1710,684,1803,183,377,381,1381,578]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({compact:t=!1}){const c=(0,r(d[10]).useNavigation)(),{activeRole:h,setAppMode:R}=(0,r(d[11]).useAppMode)(),{profile:E}=(0,r(d[12]).useAuth)(),{colors:x}=(0,r(d[13]).useTheme)(),{t:M,fontScale:S}=(0,r(d[14]).useLanguage)(),{showToast:O}=(0,r(d[15]).useToast)(),j=f(x,S),[T,b]=(0,o.useState)(''),[v,D]=(0,o.useState)(null),I=Boolean(E?.phone_number?.trim()),_=Boolean(E?.vehicle_registration?.trim()),K=(0,o.useMemo)(()=>y.find(t=>t.role===h)??y[0],[h]),U=async t=>{if(t===h||v)return;if(t!==r(d[8]).USER_ROLES.PASSENGER&&!I)return void b(M('appMode.phoneRequired'));D(t),b('');const{error:o}=await R(t);if(D(null),o)b(M('appMode.syncWarning'));else{if(t===r(d[8]).USER_ROLES.TROTRORIDE_DRIVER&&!_)return O({type:'info',title:M('appMode.switched'),message:M('appMode.vehicleRequired')}),void c.navigate(r(d[16]).ROUTES.PROFILE_EDIT);O({type:'success',title:M('appMode.switched'),message:t===r(d[8]).USER_ROLES.VENDOR?M('appMode.switchedVendor'):t===r(d[8]).USER_ROLES.COURIER?M('appMode.switchedCourier'):M('appMode.switchedMessage')}),t!==r(d[8]).USER_ROLES.VENDOR?t===r(d[8]).USER_ROLES.COURIER&&c.navigate('MainTabs',{screen:r(d[16]).ROUTES.COURIER_DASHBOARD}):c.navigate('MainTabs',{screen:r(d[16]).ROUTES.VENDOR_PROFILE})}};return(0,u.jsxs)(n.default,{style:j.container,children:[t?null:(0,u.jsxs)(u.Fragment,{children:[(0,u.jsx)(s.default,{style:j.heading,children:M('appMode.heading')}),(0,u.jsx)(s.default,{style:j.hint,children:M('appMode.hint')}),(0,u.jsxs)(n.default,{style:j.currentBadge,children:[(0,u.jsx)(r(d[17]).Ionicons,{name:"radio-button-on",size:12,color:x.primary}),(0,u.jsxs)(s.default,{style:j.currentBadgeText,children:[M('appMode.currentMode'),": ",M(K.titleKey)]})]}),(0,u.jsxs)(n.default,{style:j.reqCard,children:[(0,u.jsx)(s.default,{style:j.reqTitle,children:M('appMode.requirements')}),(0,u.jsxs)(n.default,{style:j.reqRow,children:[(0,u.jsx)(r(d[17]).Ionicons,{name:I?'checkmark-circle':'alert-circle-outline',size:18,color:I?x.success??x.primary:x.warning??x.destructive}),(0,u.jsx)(s.default,{style:j.reqText,children:M(I?'appMode.reqPhoneDone':'appMode.reqPhoneMissing')})]}),(0,u.jsxs)(n.default,{style:j.reqRow,children:[(0,u.jsx)(r(d[17]).Ionicons,{name:_?'checkmark-circle':'alert-circle-outline',size:18,color:_?x.success??x.primary:x.textMuted}),(0,u.jsx)(s.default,{style:j.reqText,children:M(_?'appMode.reqVehicleDone':'appMode.reqVehicleMissing')})]}),I&&_?null:(0,u.jsx)(l.default,{onPress:()=>c.navigate(r(d[16]).ROUTES.PROFILE_EDIT),children:(0,u.jsx)(s.default,{style:[j.reqText,{color:x.primary,fontFamily:r(d[9]).fontFamily.semiBold}],children:"Edit Profile \u2192"})})]})]}),y.map(o=>{const c=h===o.role,y=v===o.role;return(0,u.jsxs)(l.default,{style:[j.card,c&&j.cardActive],onPress:()=>U(o.role),disabled:Boolean(v),children:[(0,u.jsx)(n.default,{style:[j.iconWrap,c&&j.iconWrapActive],children:(0,u.jsx)(r(d[17]).Ionicons,{name:o.icon,size:22,color:c?x.primary:x.textMuted})}),(0,u.jsxs)(n.default,{style:j.cardText,children:[(0,u.jsx)(s.default,{style:j.cardTitle,children:M(o.titleKey)}),(0,u.jsx)(s.default,{style:j.cardDescription,children:M(o.descKey)}),t?null:(0,u.jsx)(s.default,{style:j.features,children:M(o.featuresKey)})]}),y?(0,u.jsx)(p.default,{color:x.primary,size:"small"}):c?(0,u.jsx)(r(d[17]).Ionicons,{name:"checkmark-circle",size:22,color:x.primary}):(0,u.jsx)(r(d[17]).Ionicons,{name:"chevron-forward",size:18,color:x.textMuted})]},o.role)}),T?(0,u.jsx)(s.default,{style:j.note,children:T}):null]})};var o=r(d[1]),n=t(r(d[2])),s=t(r(d[3])),l=t(r(d[4])),c=t(r(d[5])),p=t(r(d[6])),u=r(d[7]);const y=[{role:r(d[8]).USER_ROLES.PASSENGER,titleKey:'appMode.passengerTitle',descKey:'appMode.passengerDesc',featuresKey:'appMode.passengerFeatures',icon:'person-outline'},{role:r(d[8]).USER_ROLES.MATE,titleKey:'appMode.mateTitle',descKey:'appMode.mateDesc',featuresKey:'appMode.mateFeatures',icon:'bus-outline'},{role:r(d[8]).USER_ROLES.TROTRORIDE_DRIVER,titleKey:'appMode.driverTitle',descKey:'appMode.driverDesc',featuresKey:'appMode.driverFeatures',icon:'car-outline'},{role:r(d[8]).USER_ROLES.COURIER,titleKey:'appMode.courierTitle',descKey:'appMode.courierDesc',featuresKey:'appMode.courierFeatures',icon:'cube-outline'},{role:r(d[8]).USER_ROLES.VENDOR,titleKey:'appMode.vendorTitle',descKey:'appMode.vendorDesc',featuresKey:'appMode.vendorFeatures',icon:'storefront-outline'}],f=(t,o)=>c.default.create({container:{width:'100%'},heading:Object.assign({},r(d[9]).typography.subheading,{fontSize:17*o,marginBottom:r(d[9]).spacing.xs}),hint:Object.assign({},r(d[9]).typography.caption,{fontSize:13*o,marginBottom:r(d[9]).spacing.md}),currentBadge:{alignSelf:'flex-start',flexDirection:'row',alignItems:'center',gap:r(d[9]).spacing.xs,paddingHorizontal:r(d[9]).spacing.sm,paddingVertical:r(d[9]).spacing.xs,borderRadius:r(d[9]).radius.sm,backgroundColor:t.primaryAlpha12??t.surfaceElevated,marginBottom:r(d[9]).spacing.md},currentBadgeText:{fontFamily:r(d[9]).fontFamily.semiBold,fontSize:12*o,color:t.primary},reqCard:{padding:r(d[9]).spacing.md,borderRadius:r(d[9]).radius.md,borderWidth:1,borderColor:t.border,backgroundColor:t.surfaceElevated,marginBottom:r(d[9]).spacing.md,gap:r(d[9]).spacing.sm},reqTitle:{fontFamily:r(d[9]).fontFamily.semiBold,fontSize:14*o,color:t.textPrimary},reqRow:{flexDirection:'row',alignItems:'center',gap:r(d[9]).spacing.sm},reqText:Object.assign({},r(d[9]).typography.caption,{fontSize:13*o,flex:1}),card:{minHeight:72,flexDirection:'row',alignItems:'center',backgroundColor:t.surface,borderRadius:r(d[9]).radius.lg,padding:r(d[9]).spacing.md,marginBottom:r(d[9]).spacing.sm,borderWidth:1,borderColor:t.border},cardActive:{borderColor:t.primary,backgroundColor:t.primaryAlpha06??t.surface},iconWrap:{width:48,height:48,borderRadius:24,backgroundColor:t.surfaceElevated,alignItems:'center',justifyContent:'center',marginRight:r(d[9]).spacing.md},iconWrapActive:{backgroundColor:t.primaryAlpha12??t.surfaceElevated},cardText:{flex:1,paddingRight:r(d[9]).spacing.sm},cardTitle:{fontFamily:r(d[9]).fontFamily.bold,fontSize:16*o,color:t.textPrimary},cardDescription:Object.assign({},r(d[9]).typography.caption,{fontSize:13*o,marginTop:2}),features:Object.assign({},r(d[9]).typography.caption,{fontSize:12*o,marginTop:r(d[9]).spacing.xs,color:t.textMuted,lineHeight:16*o}),note:Object.assign({},r(d[9]).typography.caption,{color:t.warning??t.destructive,marginTop:r(d[9]).spacing.sm,fontSize:13*o})})},1803,[1,5,19,161,326,26,373,183,508,377,382,1484,501,381,1381,1386,682,578]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const { colors: t } = (0, r(d[9]).useTheme)(),
+          { t: n, fontScale: h } = (0, r(d[10]).useLanguage)(),
+          y = u(t, h);
+        return (0, f.jsxs)(s.default, {
+          title: n('appMode.title'),
+          subtitle: n('appMode.subtitle'),
+          children: [
+            (0, f.jsx)(o.default, { style: y.intro, children: n('appMode.hint') }),
+            (0, f.jsx)(c.default, { elevated: !0, children: (0, f.jsx)(p.default, {}) }),
+            (0, f.jsxs)(l.default, {
+              style: y.infoCard,
+              children: [
+                (0, f.jsx)(o.default, { style: y.infoTitle, children: n('appMode.whatChanges') }),
+                (0, f.jsx)(o.default, {
+                  style: y.infoBody,
+                  children: n('appMode.whatChangesBody'),
+                }),
+                (0, f.jsxs)(l.default, {
+                  style: y.tipRow,
+                  children: [
+                    (0, f.jsx)(r(d[11]).Ionicons, {
+                      name: 'shield-checkmark-outline',
+                      size: 16,
+                      color: t.primary,
+                    }),
+                    (0, f.jsx)(o.default, { style: y.tipText, children: n('language.tip3') }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        });
+      }));
+    var o = t(r(d[1])),
+      n = t(r(d[2])),
+      l = t(r(d[3])),
+      s = t(r(d[4])),
+      c = t(r(d[5])),
+      p = t(r(d[6])),
+      f = r(d[7]);
+    const u = (t, o) =>
+      n.default.create({
+        intro: Object.assign({}, r(d[8]).typography.body, {
+          fontSize: 15 * o,
+          lineHeight: 22 * o,
+          color: t.textSecondary,
+          marginBottom: r(d[8]).spacing.lg,
+        }),
+        infoCard: {
+          marginTop: r(d[8]).spacing.lg,
+          padding: r(d[8]).spacing.md,
+          borderRadius: r(d[8]).radius.md,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+        },
+        infoTitle: {
+          fontFamily: r(d[8]).fontFamily.bold,
+          fontSize: 15 * o,
+          color: t.textPrimary,
+          marginBottom: r(d[8]).spacing.xs,
+        },
+        infoBody: Object.assign({}, r(d[8]).typography.caption, {
+          fontSize: 13 * o,
+          lineHeight: 19 * o,
+        }),
+        tipRow: {
+          flexDirection: 'row',
+          gap: r(d[8]).spacing.sm,
+          marginTop: r(d[8]).spacing.md,
+          padding: r(d[8]).spacing.sm,
+          borderRadius: r(d[8]).radius.sm,
+          backgroundColor: t.primaryAlpha06 ?? t.surfaceElevated,
+        },
+        tipText: Object.assign({}, r(d[8]).typography.caption, {
+          flex: 1,
+          lineHeight: 18 * o,
+          fontSize: 13 * o,
+        }),
+      });
+  },
+  1465,
+  [1, 161, 26, 19, 1710, 684, 1803, 183, 377, 381, 1381, 578]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({ compact: t = !1 }) {
+        const c = (0, r(d[10]).useNavigation)(),
+          { activeRole: h, setAppMode: R } = (0, r(d[11]).useAppMode)(),
+          { profile: E } = (0, r(d[12]).useAuth)(),
+          { colors: x } = (0, r(d[13]).useTheme)(),
+          { t: M, fontScale: S } = (0, r(d[14]).useLanguage)(),
+          { showToast: O } = (0, r(d[15]).useToast)(),
+          j = f(x, S),
+          [T, b] = (0, o.useState)(''),
+          [v, D] = (0, o.useState)(null),
+          I = Boolean(E?.phone_number?.trim()),
+          _ = Boolean(E?.vehicle_registration?.trim()),
+          K = (0, o.useMemo)(() => y.find(t => t.role === h) ?? y[0], [h]),
+          U = async t => {
+            if (t === h || v) return;
+            if (t !== r(d[8]).USER_ROLES.PASSENGER && !I) return void b(M('appMode.phoneRequired'));
+            (D(t), b(''));
+            const { error: o } = await R(t);
+            if ((D(null), o)) b(M('appMode.syncWarning'));
+            else {
+              if (t === r(d[8]).USER_ROLES.TROTRORIDE_DRIVER && !_)
+                return (
+                  O({
+                    type: 'info',
+                    title: M('appMode.switched'),
+                    message: M('appMode.vehicleRequired'),
+                  }),
+                  void c.navigate(r(d[16]).ROUTES.PROFILE_EDIT)
+                );
+              (O({
+                type: 'success',
+                title: M('appMode.switched'),
+                message:
+                  t === r(d[8]).USER_ROLES.VENDOR
+                    ? M('appMode.switchedVendor')
+                    : t === r(d[8]).USER_ROLES.COURIER
+                      ? M('appMode.switchedCourier')
+                      : M('appMode.switchedMessage'),
+              }),
+                t !== r(d[8]).USER_ROLES.VENDOR
+                  ? t === r(d[8]).USER_ROLES.COURIER &&
+                    c.navigate('MainTabs', { screen: r(d[16]).ROUTES.COURIER_DASHBOARD })
+                  : c.navigate('MainTabs', { screen: r(d[16]).ROUTES.VENDOR_PROFILE }));
+            }
+          };
+        return (0, u.jsxs)(n.default, {
+          style: j.container,
+          children: [
+            t
+              ? null
+              : (0, u.jsxs)(u.Fragment, {
+                  children: [
+                    (0, u.jsx)(s.default, { style: j.heading, children: M('appMode.heading') }),
+                    (0, u.jsx)(s.default, { style: j.hint, children: M('appMode.hint') }),
+                    (0, u.jsxs)(n.default, {
+                      style: j.currentBadge,
+                      children: [
+                        (0, u.jsx)(r(d[17]).Ionicons, {
+                          name: 'radio-button-on',
+                          size: 12,
+                          color: x.primary,
+                        }),
+                        (0, u.jsxs)(s.default, {
+                          style: j.currentBadgeText,
+                          children: [M('appMode.currentMode'), ': ', M(K.titleKey)],
+                        }),
+                      ],
+                    }),
+                    (0, u.jsxs)(n.default, {
+                      style: j.reqCard,
+                      children: [
+                        (0, u.jsx)(s.default, {
+                          style: j.reqTitle,
+                          children: M('appMode.requirements'),
+                        }),
+                        (0, u.jsxs)(n.default, {
+                          style: j.reqRow,
+                          children: [
+                            (0, u.jsx)(r(d[17]).Ionicons, {
+                              name: I ? 'checkmark-circle' : 'alert-circle-outline',
+                              size: 18,
+                              color: I ? (x.success ?? x.primary) : (x.warning ?? x.destructive),
+                            }),
+                            (0, u.jsx)(s.default, {
+                              style: j.reqText,
+                              children: M(I ? 'appMode.reqPhoneDone' : 'appMode.reqPhoneMissing'),
+                            }),
+                          ],
+                        }),
+                        (0, u.jsxs)(n.default, {
+                          style: j.reqRow,
+                          children: [
+                            (0, u.jsx)(r(d[17]).Ionicons, {
+                              name: _ ? 'checkmark-circle' : 'alert-circle-outline',
+                              size: 18,
+                              color: _ ? (x.success ?? x.primary) : x.textMuted,
+                            }),
+                            (0, u.jsx)(s.default, {
+                              style: j.reqText,
+                              children: M(
+                                _ ? 'appMode.reqVehicleDone' : 'appMode.reqVehicleMissing'
+                              ),
+                            }),
+                          ],
+                        }),
+                        I && _
+                          ? null
+                          : (0, u.jsx)(l.default, {
+                              onPress: () => c.navigate(r(d[16]).ROUTES.PROFILE_EDIT),
+                              children: (0, u.jsx)(s.default, {
+                                style: [
+                                  j.reqText,
+                                  { color: x.primary, fontFamily: r(d[9]).fontFamily.semiBold },
+                                ],
+                                children: 'Edit Profile \u2192',
+                              }),
+                            }),
+                      ],
+                    }),
+                  ],
+                }),
+            y.map(o => {
+              const c = h === o.role,
+                y = v === o.role;
+              return (0, u.jsxs)(
+                l.default,
+                {
+                  style: [j.card, c && j.cardActive],
+                  onPress: () => U(o.role),
+                  disabled: Boolean(v),
+                  children: [
+                    (0, u.jsx)(n.default, {
+                      style: [j.iconWrap, c && j.iconWrapActive],
+                      children: (0, u.jsx)(r(d[17]).Ionicons, {
+                        name: o.icon,
+                        size: 22,
+                        color: c ? x.primary : x.textMuted,
+                      }),
+                    }),
+                    (0, u.jsxs)(n.default, {
+                      style: j.cardText,
+                      children: [
+                        (0, u.jsx)(s.default, { style: j.cardTitle, children: M(o.titleKey) }),
+                        (0, u.jsx)(s.default, { style: j.cardDescription, children: M(o.descKey) }),
+                        t
+                          ? null
+                          : (0, u.jsx)(s.default, {
+                              style: j.features,
+                              children: M(o.featuresKey),
+                            }),
+                      ],
+                    }),
+                    y
+                      ? (0, u.jsx)(p.default, { color: x.primary, size: 'small' })
+                      : c
+                        ? (0, u.jsx)(r(d[17]).Ionicons, {
+                            name: 'checkmark-circle',
+                            size: 22,
+                            color: x.primary,
+                          })
+                        : (0, u.jsx)(r(d[17]).Ionicons, {
+                            name: 'chevron-forward',
+                            size: 18,
+                            color: x.textMuted,
+                          }),
+                  ],
+                },
+                o.role
+              );
+            }),
+            T ? (0, u.jsx)(s.default, { style: j.note, children: T }) : null,
+          ],
+        });
+      }));
+    var o = r(d[1]),
+      n = t(r(d[2])),
+      s = t(r(d[3])),
+      l = t(r(d[4])),
+      c = t(r(d[5])),
+      p = t(r(d[6])),
+      u = r(d[7]);
+    const y = [
+        {
+          role: r(d[8]).USER_ROLES.PASSENGER,
+          titleKey: 'appMode.passengerTitle',
+          descKey: 'appMode.passengerDesc',
+          featuresKey: 'appMode.passengerFeatures',
+          icon: 'person-outline',
+        },
+        {
+          role: r(d[8]).USER_ROLES.MATE,
+          titleKey: 'appMode.mateTitle',
+          descKey: 'appMode.mateDesc',
+          featuresKey: 'appMode.mateFeatures',
+          icon: 'bus-outline',
+        },
+        {
+          role: r(d[8]).USER_ROLES.TROTRORIDE_DRIVER,
+          titleKey: 'appMode.driverTitle',
+          descKey: 'appMode.driverDesc',
+          featuresKey: 'appMode.driverFeatures',
+          icon: 'car-outline',
+        },
+        {
+          role: r(d[8]).USER_ROLES.COURIER,
+          titleKey: 'appMode.courierTitle',
+          descKey: 'appMode.courierDesc',
+          featuresKey: 'appMode.courierFeatures',
+          icon: 'cube-outline',
+        },
+        {
+          role: r(d[8]).USER_ROLES.VENDOR,
+          titleKey: 'appMode.vendorTitle',
+          descKey: 'appMode.vendorDesc',
+          featuresKey: 'appMode.vendorFeatures',
+          icon: 'storefront-outline',
+        },
+      ],
+      f = (t, o) =>
+        c.default.create({
+          container: { width: '100%' },
+          heading: Object.assign({}, r(d[9]).typography.subheading, {
+            fontSize: 17 * o,
+            marginBottom: r(d[9]).spacing.xs,
+          }),
+          hint: Object.assign({}, r(d[9]).typography.caption, {
+            fontSize: 13 * o,
+            marginBottom: r(d[9]).spacing.md,
+          }),
+          currentBadge: {
+            alignSelf: 'flex-start',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: r(d[9]).spacing.xs,
+            paddingHorizontal: r(d[9]).spacing.sm,
+            paddingVertical: r(d[9]).spacing.xs,
+            borderRadius: r(d[9]).radius.sm,
+            backgroundColor: t.primaryAlpha12 ?? t.surfaceElevated,
+            marginBottom: r(d[9]).spacing.md,
+          },
+          currentBadgeText: {
+            fontFamily: r(d[9]).fontFamily.semiBold,
+            fontSize: 12 * o,
+            color: t.primary,
+          },
+          reqCard: {
+            padding: r(d[9]).spacing.md,
+            borderRadius: r(d[9]).radius.md,
+            borderWidth: 1,
+            borderColor: t.border,
+            backgroundColor: t.surfaceElevated,
+            marginBottom: r(d[9]).spacing.md,
+            gap: r(d[9]).spacing.sm,
+          },
+          reqTitle: {
+            fontFamily: r(d[9]).fontFamily.semiBold,
+            fontSize: 14 * o,
+            color: t.textPrimary,
+          },
+          reqRow: { flexDirection: 'row', alignItems: 'center', gap: r(d[9]).spacing.sm },
+          reqText: Object.assign({}, r(d[9]).typography.caption, { fontSize: 13 * o, flex: 1 }),
+          card: {
+            minHeight: 72,
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: t.surface,
+            borderRadius: r(d[9]).radius.lg,
+            padding: r(d[9]).spacing.md,
+            marginBottom: r(d[9]).spacing.sm,
+            borderWidth: 1,
+            borderColor: t.border,
+          },
+          cardActive: { borderColor: t.primary, backgroundColor: t.primaryAlpha06 ?? t.surface },
+          iconWrap: {
+            width: 48,
+            height: 48,
+            borderRadius: 24,
+            backgroundColor: t.surfaceElevated,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: r(d[9]).spacing.md,
+          },
+          iconWrapActive: { backgroundColor: t.primaryAlpha12 ?? t.surfaceElevated },
+          cardText: { flex: 1, paddingRight: r(d[9]).spacing.sm },
+          cardTitle: {
+            fontFamily: r(d[9]).fontFamily.bold,
+            fontSize: 16 * o,
+            color: t.textPrimary,
+          },
+          cardDescription: Object.assign({}, r(d[9]).typography.caption, {
+            fontSize: 13 * o,
+            marginTop: 2,
+          }),
+          features: Object.assign({}, r(d[9]).typography.caption, {
+            fontSize: 12 * o,
+            marginTop: r(d[9]).spacing.xs,
+            color: t.textMuted,
+            lineHeight: 16 * o,
+          }),
+          note: Object.assign({}, r(d[9]).typography.caption, {
+            color: t.warning ?? t.destructive,
+            marginTop: r(d[9]).spacing.sm,
+            fontSize: 13 * o,
+          }),
+        });
+  },
+  1803,
+  [1, 5, 19, 161, 326, 26, 373, 183, 508, 377, 382, 1484, 501, 381, 1381, 1386, 682, 578]
+);

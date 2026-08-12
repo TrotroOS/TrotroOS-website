@@ -5,13 +5,13 @@
   <text x="80" y="120" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">TrotroOS</text>
   <text x="80" y="280" font-family="Georgia,serif" font-size="64" font-weight="700" fill="#FFFFFF">Live trotro mobility</text>
   <text x="80" y="340" font-family="Georgia,serif" font-size="64" font-weight="700" fill="#FF6B1A">for Kumasi</text>
-  <text x="80" y="400" font-family="system-ui,sans-serif" font-size="22" fill="rgba(255,255,255,0.7)">Seats · GPS · MoMo · Trip Guardian</text>
+  <text x="80" y="400" font-family="system-ui,sans-serif" font-size="22" fill="rgba(255,255,255,0.7)">Seats ï¿½ GPS ï¿½ MoMo ï¿½ Trip Guardian</text>
   <rect x="720" y="100" width="200" height="430" rx="32" fill="#1a1a1a" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
   <rect x="736" y="130" width="168" height="360" rx="16" fill="#152019"/>
   <circle cx="820" cy="220" r="8" fill="#E04A00"/>
   <path d="M760 360 C800 320, 840 280, 880 240" stroke="#E04A00" stroke-width="2" stroke-dasharray="6 6"/>
   <rect x="752" y="400" width="136" height="60" rx="10" fill="rgba(255,255,255,0.08)"/>
-  <text x="768" y="436" font-family="system-ui,sans-serif" font-size="11" fill="#14B8A6">LIVE · Tech Junction</text>
+  <text x="768" y="436" font-family="system-ui,sans-serif" font-size="11" fill="#14B8A6">LIVE ï¿½ Tech Junction</text>
   <rect x="860" y="520" width="280" height="48" rx="24" fill="#E04A00"/>
   <text x="920" y="550" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">trotroos.app</text>
 </svg>

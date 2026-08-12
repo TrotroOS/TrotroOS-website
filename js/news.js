@@ -95,9 +95,7 @@
     const date = formatDate(item.published_at);
     const iso = item.published_at ? item.published_at.slice(0, 10) : '';
     const body =
-      item.body && item.body.trim()
-        ? `<div class="news-body">${escapeHtml(item.body)}</div>`
-        : '';
+      item.body && item.body.trim() ? `<div class="news-body">${escapeHtml(item.body)}</div>` : '';
     return `
       <article class="news-card" id="${escapeHtml(item.slug)}">
         <time class="news-date" datetime="${escapeHtml(iso)}">${escapeHtml(date)}</time>
@@ -128,9 +126,7 @@
       }
 
       const html =
-        layout === 'full'
-          ? items.map(renderFullItem).join('')
-          : items.map(renderHomeItem).join('');
+        layout === 'full' ? items.map(renderFullItem).join('') : items.map(renderHomeItem).join('');
 
       container.innerHTML = html;
       container.classList.add('is-loaded');

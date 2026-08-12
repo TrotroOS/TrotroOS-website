@@ -1,1 +1,335 @@
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const t=(0,r(d[11]).useNavigation)(),{user:o}=(0,r(d[12]).useAuth)(),{prefs:x,updateSection:y}=(0,r(d[13]).useUserPreferences)(o?.id),{isDark:j,setDarkMode:T,colors:v}=(0,r(d[14]).useTheme)(),{language:C,setLanguage:S,textSize:w,setTextSize:z,ghanaLocale:k,setGhanaLocale:F,fontScale:A,t:L}=(0,r(d[15]).useLanguage)(),{showToast:M}=(0,r(d[16]).useToast)(),P=b(v,A),R=x.appSettings,D=(t,l)=>y('appSettings',{[t]:l}),B=async t=>{t.available&&t.id!==C&&(await S(t.id),M({type:'success',title:L('language.savedToast'),message:L('language.savedToastMessage')}))};return(0,h.jsxs)(c.default,{title:L('language.title'),subtitle:L('language.subtitle'),children:[(0,h.jsx)(u.default,{title:L('language.sectionLanguage'),children:r(d[17]).SUPPORTED_LANGUAGES.map(t=>{const o=C===t.id;return(0,h.jsx)(l.default,{disabled:!t.available,onPress:()=>B(t),children:(0,h.jsxs)(s.default,{style:[P.langCard,o&&P.langCardActive,!t.available&&P.langCardDisabled],children:[(0,h.jsxs)(s.default,{style:P.langHeader,children:[(0,h.jsx)(n.default,{style:P.flag,children:t.flag}),(0,h.jsxs)(s.default,{style:P.langTitleRow,children:[(0,h.jsx)(n.default,{style:P.langTitle,children:t.label}),(0,h.jsx)(n.default,{style:P.langNative,children:t.nativeLabel})]}),o?(0,h.jsx)(r(d[18]).Ionicons,{name:"checkmark-circle",size:22,color:v.primary}):null]}),(0,h.jsx)(n.default,{style:P.langDesc,children:t.description}),(0,h.jsxs)(s.default,{style:P.previewBox,children:[(0,h.jsx)(n.default,{style:P.previewLabel,children:L('language.previewLabel')}),(0,h.jsx)(n.default,{style:P.previewText,children:t.preview})]}),(0,h.jsxs)(s.default,{style:P.badgeRow,children:[o?(0,h.jsx)(s.default,{style:P.badge,children:(0,h.jsx)(n.default,{style:P.badgeText,children:L('language.activeLabel')})}):null,t.available?null:(0,h.jsx)(s.default,{style:[P.badge,P.badgeSoon],children:(0,h.jsx)(n.default,{style:[P.badgeText,P.badgeTextMuted],children:L('language.comingSoon')})})]})]})},t.id)})}),(0,h.jsxs)(u.default,{title:L('language.sectionDisplay'),children:[(0,h.jsx)(n.default,{style:[P.langDesc,{marginBottom:r(d[10]).spacing.sm}],children:L('language.textSize')}),(0,h.jsx)(s.default,{style:P.sizeRow,children:r(d[17]).TEXT_SIZE_OPTIONS.map(t=>{const o=w===t.id;return(0,h.jsx)(l.default,{style:[P.sizeChip,o&&P.sizeChipActive],onPress:()=>z(t.id),children:(0,h.jsx)(n.default,{style:[P.sizeChipText,o&&P.sizeChipTextActive],children:L(t.labelKey)})},t.id)})}),(0,h.jsx)(p.default,{icon:"calendar-outline",title:L('language.ghanaLocale'),subtitle:L('language.ghanaLocaleSub'),toggle:!0,toggleValue:k,onToggle:F,showChevron:!1})]}),(0,h.jsxs)(u.default,{title:L('language.sectionApp'),children:[(0,h.jsx)(p.default,{icon:"phone-portrait-outline",title:L('language.haptic'),subtitle:L('language.hapticSub'),toggle:!0,toggleValue:R.hapticFeedback,onToggle:t=>{(0,r(d[19]).setHapticFeedbackEnabled)(t),D('hapticFeedback',t)},showChevron:!1}),(0,h.jsx)(p.default,{icon:"accessibility-outline",title:L('language.reduceMotion'),subtitle:L('language.reduceMotionSub'),toggle:!0,toggleValue:R.reduceMotion,onToggle:t=>D('reduceMotion',t),showChevron:!1}),(0,h.jsx)(p.default,{icon:"moon-outline",title:L('language.darkTheme'),subtitle:L(j?'language.darkOn':'language.darkOff'),toggle:!0,toggleValue:j,onToggle:T,showChevron:!1})]}),(0,h.jsx)(u.default,{title:L('language.sectionMode'),children:(0,h.jsx)(p.default,{icon:"swap-horizontal-outline",title:L('language.switchMode'),subtitle:L('language.switchModeSub'),onPress:()=>t.navigate(r(d[20]).ROUTES.PROFILE_APP_MODE)})}),(0,h.jsx)(f.default,{elevated:!0,children:r(d[17]).LANGUAGE_TIPS.map(t=>(0,h.jsxs)(s.default,{style:P.tipRow,children:[(0,h.jsx)(r(d[18]).Ionicons,{name:"information-circle-outline",size:16,color:v.primary}),(0,h.jsx)(n.default,{style:P.tipText,children:L(t)})]},t))})]})};var l=t(r(d[1])),o=t(r(d[2])),n=t(r(d[3])),s=t(r(d[4])),c=t(r(d[5])),u=t(r(d[6])),p=t(r(d[7])),f=t(r(d[8])),h=r(d[9]);const b=(t,l)=>o.default.create({langCard:{borderRadius:r(d[10]).radius.md,borderWidth:1,borderColor:t.border,backgroundColor:t.surface,padding:r(d[10]).spacing.md,marginBottom:r(d[10]).spacing.sm},langCardActive:{borderColor:t.primary,backgroundColor:t.primaryAlpha06??t.surface},langCardDisabled:{opacity:.55},langHeader:{flexDirection:'row',alignItems:'center',gap:r(d[10]).spacing.md,marginBottom:r(d[10]).spacing.xs},flag:{fontSize:28*l},langTitleRow:{flex:1},langTitle:{fontFamily:r(d[10]).fontFamily.bold,fontSize:16*l,color:t.textPrimary},langNative:{fontFamily:r(d[10]).fontFamily.regular,fontSize:13*l,color:t.textMuted,marginTop:2},langDesc:Object.assign({},r(d[10]).typography.caption,{fontSize:13*l,lineHeight:18*l,marginBottom:r(d[10]).spacing.sm}),previewBox:{padding:r(d[10]).spacing.sm,borderRadius:r(d[10]).radius.sm,backgroundColor:t.surfaceElevated,borderWidth:1,borderColor:t.border},previewLabel:{fontFamily:r(d[10]).fontFamily.semiBold,fontSize:11*l,color:t.primary,textTransform:'uppercase',letterSpacing:.4,marginBottom:4},previewText:{fontFamily:r(d[10]).fontFamily.regular,fontSize:14*l,color:t.textPrimary,lineHeight:20*l},badgeRow:{flexDirection:'row',alignItems:'center',gap:r(d[10]).spacing.xs,marginTop:r(d[10]).spacing.sm},badge:{paddingHorizontal:r(d[10]).spacing.sm,paddingVertical:3,borderRadius:r(d[10]).radius.sm,backgroundColor:t.primaryAlpha12??t.surface},badgeSoon:{backgroundColor:t.surfaceElevated,borderWidth:1,borderColor:t.border},badgeText:{fontFamily:r(d[10]).fontFamily.semiBold,fontSize:11*l,color:t.primary},badgeTextMuted:{color:t.textMuted},sizeRow:{flexDirection:'row',gap:r(d[10]).spacing.sm,marginBottom:r(d[10]).spacing.md},sizeChip:{flex:1,paddingVertical:r(d[10]).spacing.sm,borderRadius:r(d[10]).radius.sm,borderWidth:1,borderColor:t.border,alignItems:'center',backgroundColor:t.surface},sizeChipActive:{borderColor:t.primary,backgroundColor:t.primary},sizeChipText:{fontFamily:r(d[10]).fontFamily.semiBold,fontSize:14*l,color:t.textSecondary},sizeChipTextActive:{color:t.onPrimary},tipRow:{flexDirection:'row',gap:r(d[10]).spacing.sm,marginBottom:r(d[10]).spacing.sm},tipText:Object.assign({},r(d[10]).typography.caption,{flex:1,lineHeight:18*l,fontSize:13*l})})},1464,[1,326,26,161,19,1710,1667,1670,684,183,377,382,501,1614,381,1381,1386,1382,578,674,682]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const t = (0, r(d[11]).useNavigation)(),
+          { user: o } = (0, r(d[12]).useAuth)(),
+          { prefs: x, updateSection: y } = (0, r(d[13]).useUserPreferences)(o?.id),
+          { isDark: j, setDarkMode: T, colors: v } = (0, r(d[14]).useTheme)(),
+          {
+            language: C,
+            setLanguage: S,
+            textSize: w,
+            setTextSize: z,
+            ghanaLocale: k,
+            setGhanaLocale: F,
+            fontScale: A,
+            t: L,
+          } = (0, r(d[15]).useLanguage)(),
+          { showToast: M } = (0, r(d[16]).useToast)(),
+          P = b(v, A),
+          R = x.appSettings,
+          D = (t, l) => y('appSettings', { [t]: l }),
+          B = async t => {
+            t.available &&
+              t.id !== C &&
+              (await S(t.id),
+              M({
+                type: 'success',
+                title: L('language.savedToast'),
+                message: L('language.savedToastMessage'),
+              }));
+          };
+        return (0, h.jsxs)(c.default, {
+          title: L('language.title'),
+          subtitle: L('language.subtitle'),
+          children: [
+            (0, h.jsx)(u.default, {
+              title: L('language.sectionLanguage'),
+              children: r(d[17]).SUPPORTED_LANGUAGES.map(t => {
+                const o = C === t.id;
+                return (0, h.jsx)(
+                  l.default,
+                  {
+                    disabled: !t.available,
+                    onPress: () => B(t),
+                    children: (0, h.jsxs)(s.default, {
+                      style: [
+                        P.langCard,
+                        o && P.langCardActive,
+                        !t.available && P.langCardDisabled,
+                      ],
+                      children: [
+                        (0, h.jsxs)(s.default, {
+                          style: P.langHeader,
+                          children: [
+                            (0, h.jsx)(n.default, { style: P.flag, children: t.flag }),
+                            (0, h.jsxs)(s.default, {
+                              style: P.langTitleRow,
+                              children: [
+                                (0, h.jsx)(n.default, { style: P.langTitle, children: t.label }),
+                                (0, h.jsx)(n.default, {
+                                  style: P.langNative,
+                                  children: t.nativeLabel,
+                                }),
+                              ],
+                            }),
+                            o
+                              ? (0, h.jsx)(r(d[18]).Ionicons, {
+                                  name: 'checkmark-circle',
+                                  size: 22,
+                                  color: v.primary,
+                                })
+                              : null,
+                          ],
+                        }),
+                        (0, h.jsx)(n.default, { style: P.langDesc, children: t.description }),
+                        (0, h.jsxs)(s.default, {
+                          style: P.previewBox,
+                          children: [
+                            (0, h.jsx)(n.default, {
+                              style: P.previewLabel,
+                              children: L('language.previewLabel'),
+                            }),
+                            (0, h.jsx)(n.default, { style: P.previewText, children: t.preview }),
+                          ],
+                        }),
+                        (0, h.jsxs)(s.default, {
+                          style: P.badgeRow,
+                          children: [
+                            o
+                              ? (0, h.jsx)(s.default, {
+                                  style: P.badge,
+                                  children: (0, h.jsx)(n.default, {
+                                    style: P.badgeText,
+                                    children: L('language.activeLabel'),
+                                  }),
+                                })
+                              : null,
+                            t.available
+                              ? null
+                              : (0, h.jsx)(s.default, {
+                                  style: [P.badge, P.badgeSoon],
+                                  children: (0, h.jsx)(n.default, {
+                                    style: [P.badgeText, P.badgeTextMuted],
+                                    children: L('language.comingSoon'),
+                                  }),
+                                }),
+                          ],
+                        }),
+                      ],
+                    }),
+                  },
+                  t.id
+                );
+              }),
+            }),
+            (0, h.jsxs)(u.default, {
+              title: L('language.sectionDisplay'),
+              children: [
+                (0, h.jsx)(n.default, {
+                  style: [P.langDesc, { marginBottom: r(d[10]).spacing.sm }],
+                  children: L('language.textSize'),
+                }),
+                (0, h.jsx)(s.default, {
+                  style: P.sizeRow,
+                  children: r(d[17]).TEXT_SIZE_OPTIONS.map(t => {
+                    const o = w === t.id;
+                    return (0, h.jsx)(
+                      l.default,
+                      {
+                        style: [P.sizeChip, o && P.sizeChipActive],
+                        onPress: () => z(t.id),
+                        children: (0, h.jsx)(n.default, {
+                          style: [P.sizeChipText, o && P.sizeChipTextActive],
+                          children: L(t.labelKey),
+                        }),
+                      },
+                      t.id
+                    );
+                  }),
+                }),
+                (0, h.jsx)(p.default, {
+                  icon: 'calendar-outline',
+                  title: L('language.ghanaLocale'),
+                  subtitle: L('language.ghanaLocaleSub'),
+                  toggle: !0,
+                  toggleValue: k,
+                  onToggle: F,
+                  showChevron: !1,
+                }),
+              ],
+            }),
+            (0, h.jsxs)(u.default, {
+              title: L('language.sectionApp'),
+              children: [
+                (0, h.jsx)(p.default, {
+                  icon: 'phone-portrait-outline',
+                  title: L('language.haptic'),
+                  subtitle: L('language.hapticSub'),
+                  toggle: !0,
+                  toggleValue: R.hapticFeedback,
+                  onToggle: t => {
+                    ((0, r(d[19]).setHapticFeedbackEnabled)(t), D('hapticFeedback', t));
+                  },
+                  showChevron: !1,
+                }),
+                (0, h.jsx)(p.default, {
+                  icon: 'accessibility-outline',
+                  title: L('language.reduceMotion'),
+                  subtitle: L('language.reduceMotionSub'),
+                  toggle: !0,
+                  toggleValue: R.reduceMotion,
+                  onToggle: t => D('reduceMotion', t),
+                  showChevron: !1,
+                }),
+                (0, h.jsx)(p.default, {
+                  icon: 'moon-outline',
+                  title: L('language.darkTheme'),
+                  subtitle: L(j ? 'language.darkOn' : 'language.darkOff'),
+                  toggle: !0,
+                  toggleValue: j,
+                  onToggle: T,
+                  showChevron: !1,
+                }),
+              ],
+            }),
+            (0, h.jsx)(u.default, {
+              title: L('language.sectionMode'),
+              children: (0, h.jsx)(p.default, {
+                icon: 'swap-horizontal-outline',
+                title: L('language.switchMode'),
+                subtitle: L('language.switchModeSub'),
+                onPress: () => t.navigate(r(d[20]).ROUTES.PROFILE_APP_MODE),
+              }),
+            }),
+            (0, h.jsx)(f.default, {
+              elevated: !0,
+              children: r(d[17]).LANGUAGE_TIPS.map(t =>
+                (0, h.jsxs)(
+                  s.default,
+                  {
+                    style: P.tipRow,
+                    children: [
+                      (0, h.jsx)(r(d[18]).Ionicons, {
+                        name: 'information-circle-outline',
+                        size: 16,
+                        color: v.primary,
+                      }),
+                      (0, h.jsx)(n.default, { style: P.tipText, children: L(t) }),
+                    ],
+                  },
+                  t
+                )
+              ),
+            }),
+          ],
+        });
+      }));
+    var l = t(r(d[1])),
+      o = t(r(d[2])),
+      n = t(r(d[3])),
+      s = t(r(d[4])),
+      c = t(r(d[5])),
+      u = t(r(d[6])),
+      p = t(r(d[7])),
+      f = t(r(d[8])),
+      h = r(d[9]);
+    const b = (t, l) =>
+      o.default.create({
+        langCard: {
+          borderRadius: r(d[10]).radius.md,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+          padding: r(d[10]).spacing.md,
+          marginBottom: r(d[10]).spacing.sm,
+        },
+        langCardActive: { borderColor: t.primary, backgroundColor: t.primaryAlpha06 ?? t.surface },
+        langCardDisabled: { opacity: 0.55 },
+        langHeader: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[10]).spacing.md,
+          marginBottom: r(d[10]).spacing.xs,
+        },
+        flag: { fontSize: 28 * l },
+        langTitleRow: { flex: 1 },
+        langTitle: { fontFamily: r(d[10]).fontFamily.bold, fontSize: 16 * l, color: t.textPrimary },
+        langNative: {
+          fontFamily: r(d[10]).fontFamily.regular,
+          fontSize: 13 * l,
+          color: t.textMuted,
+          marginTop: 2,
+        },
+        langDesc: Object.assign({}, r(d[10]).typography.caption, {
+          fontSize: 13 * l,
+          lineHeight: 18 * l,
+          marginBottom: r(d[10]).spacing.sm,
+        }),
+        previewBox: {
+          padding: r(d[10]).spacing.sm,
+          borderRadius: r(d[10]).radius.sm,
+          backgroundColor: t.surfaceElevated,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        previewLabel: {
+          fontFamily: r(d[10]).fontFamily.semiBold,
+          fontSize: 11 * l,
+          color: t.primary,
+          textTransform: 'uppercase',
+          letterSpacing: 0.4,
+          marginBottom: 4,
+        },
+        previewText: {
+          fontFamily: r(d[10]).fontFamily.regular,
+          fontSize: 14 * l,
+          color: t.textPrimary,
+          lineHeight: 20 * l,
+        },
+        badgeRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[10]).spacing.xs,
+          marginTop: r(d[10]).spacing.sm,
+        },
+        badge: {
+          paddingHorizontal: r(d[10]).spacing.sm,
+          paddingVertical: 3,
+          borderRadius: r(d[10]).radius.sm,
+          backgroundColor: t.primaryAlpha12 ?? t.surface,
+        },
+        badgeSoon: { backgroundColor: t.surfaceElevated, borderWidth: 1, borderColor: t.border },
+        badgeText: { fontFamily: r(d[10]).fontFamily.semiBold, fontSize: 11 * l, color: t.primary },
+        badgeTextMuted: { color: t.textMuted },
+        sizeRow: {
+          flexDirection: 'row',
+          gap: r(d[10]).spacing.sm,
+          marginBottom: r(d[10]).spacing.md,
+        },
+        sizeChip: {
+          flex: 1,
+          paddingVertical: r(d[10]).spacing.sm,
+          borderRadius: r(d[10]).radius.sm,
+          borderWidth: 1,
+          borderColor: t.border,
+          alignItems: 'center',
+          backgroundColor: t.surface,
+        },
+        sizeChipActive: { borderColor: t.primary, backgroundColor: t.primary },
+        sizeChipText: {
+          fontFamily: r(d[10]).fontFamily.semiBold,
+          fontSize: 14 * l,
+          color: t.textSecondary,
+        },
+        sizeChipTextActive: { color: t.onPrimary },
+        tipRow: {
+          flexDirection: 'row',
+          gap: r(d[10]).spacing.sm,
+          marginBottom: r(d[10]).spacing.sm,
+        },
+        tipText: Object.assign({}, r(d[10]).typography.caption, {
+          flex: 1,
+          lineHeight: 18 * l,
+          fontSize: 13 * l,
+        }),
+      });
+  },
+  1464,
+  [
+    1, 326, 26, 161, 19, 1710, 1667, 1670, 684, 183, 377, 382, 501, 1614, 381, 1381, 1386, 1382,
+    578, 674, 682,
+  ]
+);

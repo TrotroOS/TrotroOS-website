@@ -1,1 +1,165 @@
-__d(function(g,r,i,a,m,e,d){var o=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const o=(0,r(d[10]).useNavigation)(),{user:t}=(0,r(d[11]).useAuth)(),{prefs:f,updateSection:v}=(0,r(d[12]).useUserPreferences)(t?.id),{showToast:w}=(0,r(d[13]).useToast)(),{colors:x}=(0,r(d[14]).useTheme)(),T=y(x),b=f.privacy,j=async(o,t)=>{await v('privacy',{[o]:t}),'analyticsEnabled'!==o?('shareLocationWithDriver'!==o||t||w({type:'info',title:'Pickup still needed',message:'Drivers still get your pickup stop for matching. Live GPS precision is limited when this is off.'}),'showProfileToCoPassengers'===o&&w({type:'success',title:t?'Full name shared':'First name only',message:t?'Drivers and co-passengers see your full profile name on new bookings.':'New bookings share first name only for privacy.'})):w({type:'info',title:t?'Analytics on':'Analytics off',message:t?'Anonymous usage signals help improve TrotroOS.':'Optional analytics paused. Crash reports still follow Data & privacy.'})};return(0,p.jsxs)(n.default,{title:"Privacy",subtitle:"Control what others see",children:[(0,p.jsxs)(l.default,{style:T.hero,children:[(0,p.jsx)(r(d[15]).Ionicons,{name:"eye-off-outline",size:28,color:x.primary}),(0,p.jsxs)(l.default,{style:T.heroText,children:[(0,p.jsx)(s.default,{style:T.heroTitle,children:"Your trip visibility"}),(0,p.jsx)(s.default,{style:T.heroBody,children:"These settings apply to new bookings and Trip Guardian sharing. Safety tools still work when you need them."})]})]}),(0,p.jsxs)(c.default,{title:"During trips",children:[(0,p.jsx)(u.default,{icon:"location-outline",title:"Share precise location with driver",subtitle:"Live GPS for pickup; corridor stop is always shared for matching",toggle:!0,toggleValue:!1!==b.shareLocationWithDriver,onToggle:o=>j('shareLocationWithDriver',o),showChevron:!1}),(0,p.jsx)(u.default,{icon:"people-outline",title:"Show full name to drivers & co-passengers",subtitle:"Off = first name only on new bookings",toggle:!0,toggleValue:!0===b.showProfileToCoPassengers,onToggle:o=>j('showProfileToCoPassengers',o),showChevron:!1}),(0,p.jsx)(u.default,{icon:"share-social-outline",title:"Allow trip status sharing",subtitle:"Lets you share live trip links from Trip Guardian",toggle:!0,toggleValue:!1!==b.shareTripStatus,onToggle:o=>j('shareTripStatus',o),showChevron:!1})]}),(0,p.jsx)(c.default,{title:"Analytics",children:(0,p.jsx)(u.default,{icon:"analytics-outline",title:"Usage analytics",subtitle:"Help improve TrotroOS with anonymous usage data",toggle:!0,toggleValue:!1!==b.analyticsEnabled,onToggle:o=>j('analyticsEnabled',o),showChevron:!1})}),(0,p.jsxs)(h.default,{elevated:!0,children:[(0,p.jsx)(u.default,{icon:"document-text-outline",title:"Data export & deletion",subtitle:"Download a copy or request account deletion",onPress:()=>o.navigate(r(d[16]).ROUTES.PROFILE_DATA_PRIVACY)}),(0,p.jsx)(s.default,{style:T.note,children:"Crash reporting is controlled separately under Data & privacy. Emergency SOS always works."})]})]})};var t=o(r(d[1])),s=o(r(d[2])),l=o(r(d[3])),n=o(r(d[4])),c=o(r(d[5])),u=o(r(d[6])),h=o(r(d[7])),p=r(d[8]);const y=o=>t.default.create({hero:{flexDirection:'row',gap:r(d[9]).spacing.md,padding:r(d[9]).spacing.md,borderRadius:r(d[9]).radius.md,backgroundColor:o.primaryAlpha06??o.surface,borderWidth:1,borderColor:o.border,marginBottom:r(d[9]).spacing.lg},heroText:{flex:1},heroTitle:{fontFamily:r(d[9]).fontFamily.bold,fontSize:16,color:o.textPrimary,marginBottom:r(d[9]).spacing.xs},heroBody:Object.assign({},r(d[9]).typography.caption,{lineHeight:18}),note:Object.assign({},r(d[9]).typography.caption,{lineHeight:18,color:o.textMuted,marginTop:r(d[9]).spacing.sm})})},1462,[1,26,161,19,1710,1667,1670,684,183,377,382,501,1614,1386,381,578,682]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var o = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const o = (0, r(d[10]).useNavigation)(),
+          { user: t } = (0, r(d[11]).useAuth)(),
+          { prefs: f, updateSection: v } = (0, r(d[12]).useUserPreferences)(t?.id),
+          { showToast: w } = (0, r(d[13]).useToast)(),
+          { colors: x } = (0, r(d[14]).useTheme)(),
+          T = y(x),
+          b = f.privacy,
+          j = async (o, t) => {
+            (await v('privacy', { [o]: t }),
+              'analyticsEnabled' !== o
+                ? ('shareLocationWithDriver' !== o ||
+                    t ||
+                    w({
+                      type: 'info',
+                      title: 'Pickup still needed',
+                      message:
+                        'Drivers still get your pickup stop for matching. Live GPS precision is limited when this is off.',
+                    }),
+                  'showProfileToCoPassengers' === o &&
+                    w({
+                      type: 'success',
+                      title: t ? 'Full name shared' : 'First name only',
+                      message: t
+                        ? 'Drivers and co-passengers see your full profile name on new bookings.'
+                        : 'New bookings share first name only for privacy.',
+                    }))
+                : w({
+                    type: 'info',
+                    title: t ? 'Analytics on' : 'Analytics off',
+                    message: t
+                      ? 'Anonymous usage signals help improve TrotroOS.'
+                      : 'Optional analytics paused. Crash reports still follow Data & privacy.',
+                  }));
+          };
+        return (0, p.jsxs)(n.default, {
+          title: 'Privacy',
+          subtitle: 'Control what others see',
+          children: [
+            (0, p.jsxs)(l.default, {
+              style: T.hero,
+              children: [
+                (0, p.jsx)(r(d[15]).Ionicons, {
+                  name: 'eye-off-outline',
+                  size: 28,
+                  color: x.primary,
+                }),
+                (0, p.jsxs)(l.default, {
+                  style: T.heroText,
+                  children: [
+                    (0, p.jsx)(s.default, { style: T.heroTitle, children: 'Your trip visibility' }),
+                    (0, p.jsx)(s.default, {
+                      style: T.heroBody,
+                      children:
+                        'These settings apply to new bookings and Trip Guardian sharing. Safety tools still work when you need them.',
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            (0, p.jsxs)(c.default, {
+              title: 'During trips',
+              children: [
+                (0, p.jsx)(u.default, {
+                  icon: 'location-outline',
+                  title: 'Share precise location with driver',
+                  subtitle: 'Live GPS for pickup; corridor stop is always shared for matching',
+                  toggle: !0,
+                  toggleValue: !1 !== b.shareLocationWithDriver,
+                  onToggle: o => j('shareLocationWithDriver', o),
+                  showChevron: !1,
+                }),
+                (0, p.jsx)(u.default, {
+                  icon: 'people-outline',
+                  title: 'Show full name to drivers & co-passengers',
+                  subtitle: 'Off = first name only on new bookings',
+                  toggle: !0,
+                  toggleValue: !0 === b.showProfileToCoPassengers,
+                  onToggle: o => j('showProfileToCoPassengers', o),
+                  showChevron: !1,
+                }),
+                (0, p.jsx)(u.default, {
+                  icon: 'share-social-outline',
+                  title: 'Allow trip status sharing',
+                  subtitle: 'Lets you share live trip links from Trip Guardian',
+                  toggle: !0,
+                  toggleValue: !1 !== b.shareTripStatus,
+                  onToggle: o => j('shareTripStatus', o),
+                  showChevron: !1,
+                }),
+              ],
+            }),
+            (0, p.jsx)(c.default, {
+              title: 'Analytics',
+              children: (0, p.jsx)(u.default, {
+                icon: 'analytics-outline',
+                title: 'Usage analytics',
+                subtitle: 'Help improve TrotroOS with anonymous usage data',
+                toggle: !0,
+                toggleValue: !1 !== b.analyticsEnabled,
+                onToggle: o => j('analyticsEnabled', o),
+                showChevron: !1,
+              }),
+            }),
+            (0, p.jsxs)(h.default, {
+              elevated: !0,
+              children: [
+                (0, p.jsx)(u.default, {
+                  icon: 'document-text-outline',
+                  title: 'Data export & deletion',
+                  subtitle: 'Download a copy or request account deletion',
+                  onPress: () => o.navigate(r(d[16]).ROUTES.PROFILE_DATA_PRIVACY),
+                }),
+                (0, p.jsx)(s.default, {
+                  style: T.note,
+                  children:
+                    'Crash reporting is controlled separately under Data & privacy. Emergency SOS always works.',
+                }),
+              ],
+            }),
+          ],
+        });
+      }));
+    var t = o(r(d[1])),
+      s = o(r(d[2])),
+      l = o(r(d[3])),
+      n = o(r(d[4])),
+      c = o(r(d[5])),
+      u = o(r(d[6])),
+      h = o(r(d[7])),
+      p = r(d[8]);
+    const y = o =>
+      t.default.create({
+        hero: {
+          flexDirection: 'row',
+          gap: r(d[9]).spacing.md,
+          padding: r(d[9]).spacing.md,
+          borderRadius: r(d[9]).radius.md,
+          backgroundColor: o.primaryAlpha06 ?? o.surface,
+          borderWidth: 1,
+          borderColor: o.border,
+          marginBottom: r(d[9]).spacing.lg,
+        },
+        heroText: { flex: 1 },
+        heroTitle: {
+          fontFamily: r(d[9]).fontFamily.bold,
+          fontSize: 16,
+          color: o.textPrimary,
+          marginBottom: r(d[9]).spacing.xs,
+        },
+        heroBody: Object.assign({}, r(d[9]).typography.caption, { lineHeight: 18 }),
+        note: Object.assign({}, r(d[9]).typography.caption, {
+          lineHeight: 18,
+          color: o.textMuted,
+          marginTop: r(d[9]).spacing.sm,
+        }),
+      });
+  },
+  1462,
+  [1, 26, 161, 19, 1710, 1667, 1670, 684, 183, 377, 382, 501, 1614, 1386, 381, 578, 682]
+);

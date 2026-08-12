@@ -1,1 +1,594 @@
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const t=(0,r(d[15]).useNavigation)(),{user:n}=(0,r(d[16]).useAuth)(),{prefs:T,patch:w}=(0,r(d[17]).useUserPreferences)(n?.id),{showToast:k}=(0,r(d[18]).useToast)(),{colors:v}=(0,r(d[19]).useTheme)(),{locale:P}=(0,r(d[20]).useLanguage)(),R=j(v),C=T.myLocation,[S,I]=(0,o.useState)(!1),[L,O]=(0,o.useState)('undetermined'),B=(0,o.useCallback)(async()=>{const{status:t}=await(0,r(d[21]).getLocationPermissionStatus)();O(t)},[]);(0,o.useEffect)(()=>{B()},[B]);const A=r(d[22]).PERMISSION_COPY[L]??r(d[22]).PERMISSION_COPY.undetermined,z='granted'===L?R.permGranted:'denied'===L?R.permDenied:R.permPending,E=(0,o.useMemo)(()=>C?.latitude&&C?.longitude?{latitude:C.latitude,longitude:C.longitude,latitudeDelta:.015,longitudeDelta:.015}:null,[C?.latitude,C?.longitude]),F=async t=>{await w({myLocation:t}),k({type:'success',title:'Location saved',message:t.label})},_=async t=>{const o=(0,r(d[21]).buildLandmarkLocation)(t.label);o&&await F(o)},D=async t=>{const o=(0,r(d[21]).buildLandmarkLocation)(t.address||t.label),s=(0,r(d[21]).buildMyLocationRecord)({latitude:o?.latitude,longitude:o?.longitude,label:`${t.label} \xb7 ${t.address}`,source:'saved_place'});s.latitude?await F(s):k({type:'info',title:'Could not resolve place',message:'Try a Kumasi landmark or GPS capture instead.'})},M=(0,r(d[22]).formatAccuracyMeters)(C?.accuracy);return(0,b.jsxs)(y.default,{title:"My Location",subtitle:"Used for pickup suggestions and nearby rides",children:[(0,b.jsxs)(u.default,{style:R.hero,children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"location",size:28,color:v.primary}),(0,b.jsxs)(u.default,{style:R.heroText,children:[(0,b.jsx)(c.default,{style:R.heroTitle,children:"Your pickup point"}),(0,b.jsx)(c.default,{style:R.heroBody,children:r(d[22]).MY_LOCATION_INTRO})]})]}),(0,b.jsxs)(u.default,{style:[R.permBanner,z],children:[(0,b.jsx)(r(d[23]).Ionicons,{name:A.icon,size:22,color:'granted'===L?v.success??v.primary:'denied'===L?v.destructive:v.primary}),(0,b.jsxs)(u.default,{style:{flex:1},children:[(0,b.jsx)(c.default,{style:R.permTitle,children:A.title}),(0,b.jsx)(c.default,{style:R.permBody,children:A.body}),'denied'===L?(0,b.jsxs)(l.default,{style:R.settingsLink,onPress:()=>{s.default.openSettings()},children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"settings-outline",size:16,color:v.primary}),(0,b.jsx)(c.default,{style:R.linkText,children:"Open phone settings"})]}):null]})]}),C?(0,b.jsxs)(b.Fragment,{children:[E?(0,b.jsx)(u.default,{style:R.mapWrap,children:(0,b.jsx)(p.default,{style:R.map,region:E,scrollEnabled:!1,zoomEnabled:!1,children:(0,b.jsx)(r(d[24]).Marker,{coordinate:{latitude:C.latitude,longitude:C.longitude},title:C.label})})}):null,(0,b.jsxs)(u.default,{style:R.savedCard,children:[(0,b.jsxs)(u.default,{style:R.savedHeader,children:[(0,b.jsx)(u.default,{style:R.savedIcon,children:(0,b.jsx)(r(d[23]).Ionicons,{name:"navigate",size:22,color:v.onPrimary})}),(0,b.jsxs)(u.default,{style:{flex:1},children:[(0,b.jsx)(c.default,{style:R.savedTitle,children:C.label}),(0,b.jsxs)(c.default,{style:R.savedMeta,children:["Updated ",(0,r(d[21]).formatLocationUpdated)(C.updatedAt,P)]})]})]}),(0,b.jsx)(c.default,{style:R.coords,children:(0,r(d[21]).formatCoordinates)(C.latitude,C.longitude)}),(0,b.jsxs)(u.default,{style:R.badgeRow,children:[C.nearestLandmark?(0,b.jsx)(u.default,{style:R.badge,children:(0,b.jsxs)(c.default,{style:R.badgeText,children:["Near ",C.nearestLandmark]})}):null,M?(0,b.jsx)(u.default,{style:R.badge,children:(0,b.jsx)(c.default,{style:R.badgeText,children:M})}):null,'landmark'===C.source?(0,b.jsx)(u.default,{style:R.badge,children:(0,b.jsx)(c.default,{style:R.badgeText,children:"Landmark"})}):null]})]})]}):(0,b.jsx)(u.default,{style:R.emptyBox,children:(0,b.jsx)(c.default,{style:R.emptyText,children:"No location saved yet. Capture GPS for the best pickup ETAs, or choose a Kumasi landmark below."})}),(0,b.jsx)(h.default,{title:S?'Getting location\u2026':C?'Refresh GPS location':'Use current GPS location',onPress:async()=>{I(!0);const t=await(0,r(d[21]).captureGpsLocation)();await B(),I(!1),t.error?k({type:'error',title:'Permission denied',message:t.error.message??'Enable location or pick a landmark below.'}):await F(t.data)},loading:S}),C?(0,b.jsx)(u.default,{style:R.actionRow,children:(0,b.jsx)(h.default,{title:"Clear location",variant:"ghost",onPress:async()=>{await w({myLocation:null}),k({type:'info',title:'Location cleared',message:'Pickup ETAs will use route text only.'})},compact:!0})}):null,(0,b.jsxs)(x.default,{title:"Kumasi landmarks",children:[(0,b.jsx)(c.default,{style:[R.heroBody,{marginBottom:r(d[14]).spacing.sm}],children:"Useful when GPS is unavailable or you are between stops."}),(0,b.jsx)(u.default,{style:R.chipRow,children:r(d[22]).LOCATION_LANDMARKS.map(t=>{const o=C?.nearestLandmark===t.label||C?.label?.includes(t.label);return(0,b.jsx)(l.default,{style:[R.chip,o&&R.chipActive],onPress:()=>_(t),children:(0,b.jsx)(c.default,{style:[R.chipText,o&&R.chipTextActive],children:t.label})},t.label)})})]}),T.savedPlaces?.length>0?(0,b.jsxs)(x.default,{title:"From saved places",children:[T.savedPlaces.map(t=>(0,b.jsxs)(l.default,{style:R.placeRow,onPress:()=>D(t),children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"bookmark-outline",size:18,color:v.primary}),(0,b.jsxs)(c.default,{style:R.placeText,children:[t.label," \xb7 ",t.address]}),(0,b.jsx)(r(d[23]).Ionicons,{name:"chevron-forward",size:16,color:v.textMuted})]},t.id)),(0,b.jsxs)(l.default,{style:R.linkRow,onPress:()=>t.navigate(r(d[25]).ROUTES.PROFILE_SAVED_PLACES),children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"add-circle-outline",size:16,color:v.primary}),(0,b.jsx)(c.default,{style:R.linkText,children:"Manage saved places"})]})]}):(0,b.jsxs)(f.default,{elevated:!0,children:[(0,b.jsx)(c.default,{style:R.useText,children:"Save Home or Work for faster pickups."}),(0,b.jsxs)(l.default,{style:R.linkRow,onPress:()=>t.navigate(r(d[25]).ROUTES.PROFILE_SAVED_PLACES),children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"bookmark-outline",size:16,color:v.primary}),(0,b.jsx)(c.default,{style:R.linkText,children:"Add saved places"})]})]}),(0,b.jsxs)(f.default,{elevated:!0,children:[(0,b.jsx)(c.default,{style:[R.heroTitle,{fontSize:15,marginBottom:r(d[14]).spacing.sm}],children:"How we use this"}),r(d[22]).MY_LOCATION_USES.map(t=>(0,b.jsxs)(u.default,{style:R.useRow,children:[(0,b.jsx)(r(d[23]).Ionicons,{name:t.icon,size:16,color:v.primary}),(0,b.jsx)(c.default,{style:R.useText,children:t.text})]},t.text)),(0,b.jsxs)(l.default,{style:R.linkRow,onPress:()=>t.navigate(r(d[25]).ROUTES.PROFILE_PRIVACY),children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"lock-closed-outline",size:16,color:v.primary}),(0,b.jsx)(c.default,{style:R.linkText,children:"Privacy settings"})]})]}),(0,b.jsx)(f.default,{elevated:!0,children:r(d[22]).MY_LOCATION_TIPS.map(t=>(0,b.jsxs)(u.default,{style:R.tipRow,children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"information-circle-outline",size:16,color:v.primary}),(0,b.jsx)(c.default,{style:R.tipText,children:t})]},t))})]})};var o=r(d[1]),s=t(r(d[2])),l=(t(r(d[3])),t(r(d[4]))),n=t(r(d[5])),c=t(r(d[6])),u=t(r(d[7])),p=t(r(d[8])),y=t(r(d[9])),x=t(r(d[10])),f=t(r(d[11])),h=t(r(d[12])),b=r(d[13]);const j=t=>n.default.create({hero:{flexDirection:'row',gap:r(d[14]).spacing.md,padding:r(d[14]).spacing.md,borderRadius:r(d[14]).radius.md,backgroundColor:t.primaryAlpha06??t.surface,borderWidth:1,borderColor:t.border,marginBottom:r(d[14]).spacing.lg},heroText:{flex:1},heroTitle:{fontFamily:r(d[14]).fontFamily.bold,fontSize:16,color:t.textPrimary,marginBottom:r(d[14]).spacing.xs},heroBody:Object.assign({},r(d[14]).typography.caption,{lineHeight:18}),permBanner:{flexDirection:'row',alignItems:'flex-start',gap:r(d[14]).spacing.md,padding:r(d[14]).spacing.md,borderRadius:r(d[14]).radius.md,borderWidth:1,marginBottom:r(d[14]).spacing.lg},permGranted:{borderColor:t.success??t.primary,backgroundColor:'rgba(0, 0, 0, 0.06)'},permDenied:{borderColor:t.destructive,backgroundColor:'rgba(0, 0, 0, 0.06)'},permPending:{borderColor:t.border,backgroundColor:t.surface},permTitle:{fontFamily:r(d[14]).fontFamily.bold,fontSize:15,color:t.textPrimary,marginBottom:4},permBody:Object.assign({},r(d[14]).typography.caption,{lineHeight:18,marginBottom:r(d[14]).spacing.sm}),mapWrap:{height:180,borderRadius:r(d[14]).radius.md,overflow:'hidden',marginBottom:r(d[14]).spacing.md,borderWidth:1,borderColor:t.border},map:{flex:1},savedCard:{padding:r(d[14]).spacing.md,borderRadius:r(d[14]).radius.md,borderWidth:1,borderColor:t.border,backgroundColor:t.surface,marginBottom:r(d[14]).spacing.md},savedHeader:{flexDirection:'row',alignItems:'center',gap:r(d[14]).spacing.md,marginBottom:r(d[14]).spacing.sm},savedIcon:{width:44,height:44,borderRadius:22,backgroundColor:t.primary,alignItems:'center',justifyContent:'center'},savedTitle:{fontFamily:r(d[14]).fontFamily.bold,fontSize:16,color:t.textPrimary},savedMeta:Object.assign({},r(d[14]).typography.caption,{marginTop:2}),coords:Object.assign({},r(d[14]).typography.caption,{marginTop:r(d[14]).spacing.xs}),badgeRow:{flexDirection:'row',flexWrap:'wrap',gap:r(d[14]).spacing.xs,marginTop:r(d[14]).spacing.sm},badge:{paddingHorizontal:r(d[14]).spacing.sm,paddingVertical:3,borderRadius:r(d[14]).radius.sm,backgroundColor:t.primaryAlpha12??t.surfaceElevated},badgeText:{fontFamily:r(d[14]).fontFamily.semiBold,fontSize:11,color:t.primary},emptyBox:{padding:r(d[14]).spacing.md,borderRadius:r(d[14]).radius.md,borderWidth:1,borderColor:t.border,borderStyle:'dashed',marginBottom:r(d[14]).spacing.md},emptyText:Object.assign({},r(d[14]).typography.body,{lineHeight:22,color:t.textSecondary}),chipRow:{flexDirection:'row',flexWrap:'wrap',gap:r(d[14]).spacing.sm,marginBottom:r(d[14]).spacing.md},chip:{paddingHorizontal:r(d[14]).spacing.md,paddingVertical:r(d[14]).spacing.sm,borderRadius:r(d[14]).radius.sm,borderWidth:1,borderColor:t.border,backgroundColor:t.surface},chipActive:{borderColor:t.primary,backgroundColor:t.primary},chipText:{fontFamily:r(d[14]).fontFamily.medium,fontSize:13,color:t.textSecondary},chipTextActive:{color:t.onPrimary},useRow:{flexDirection:'row',gap:r(d[14]).spacing.sm,marginBottom:r(d[14]).spacing.sm,alignItems:'flex-start'},useText:Object.assign({},r(d[14]).typography.caption,{flex:1,lineHeight:18}),placeRow:{flexDirection:'row',alignItems:'center',gap:r(d[14]).spacing.sm,paddingVertical:r(d[14]).spacing.sm,borderBottomWidth:1,borderBottomColor:t.border},placeText:{flex:1,fontFamily:r(d[14]).fontFamily.medium,fontSize:14,color:t.textPrimary},linkRow:{flexDirection:'row',alignItems:'center',gap:r(d[14]).spacing.xs,marginTop:r(d[14]).spacing.sm},linkText:{fontFamily:r(d[14]).fontFamily.semiBold,fontSize:13,color:t.primary},tipRow:{flexDirection:'row',gap:r(d[14]).spacing.sm,marginBottom:r(d[14]).spacing.sm},tipText:Object.assign({},r(d[14]).typography.caption,{flex:1,lineHeight:18}),actionRow:{flexDirection:'row',gap:r(d[14]).spacing.sm,marginTop:r(d[14]).spacing.sm},settingsLink:{flexDirection:'row',alignItems:'center',gap:r(d[14]).spacing.xs,marginTop:r(d[14]).spacing.sm}})},1452,[1,5,667,14,326,26,161,19,746,1710,1667,684,672,183,377,382,501,1614,1386,381,1381,1711,1712,578,747,682]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const t = (0, r(d[15]).useNavigation)(),
+          { user: n } = (0, r(d[16]).useAuth)(),
+          { prefs: T, patch: w } = (0, r(d[17]).useUserPreferences)(n?.id),
+          { showToast: k } = (0, r(d[18]).useToast)(),
+          { colors: v } = (0, r(d[19]).useTheme)(),
+          { locale: P } = (0, r(d[20]).useLanguage)(),
+          R = j(v),
+          C = T.myLocation,
+          [S, I] = (0, o.useState)(!1),
+          [L, O] = (0, o.useState)('undetermined'),
+          B = (0, o.useCallback)(async () => {
+            const { status: t } = await (0, r(d[21]).getLocationPermissionStatus)();
+            O(t);
+          }, []);
+        (0, o.useEffect)(() => {
+          B();
+        }, [B]);
+        const A = r(d[22]).PERMISSION_COPY[L] ?? r(d[22]).PERMISSION_COPY.undetermined,
+          z = 'granted' === L ? R.permGranted : 'denied' === L ? R.permDenied : R.permPending,
+          E = (0, o.useMemo)(
+            () =>
+              C?.latitude && C?.longitude
+                ? {
+                    latitude: C.latitude,
+                    longitude: C.longitude,
+                    latitudeDelta: 0.015,
+                    longitudeDelta: 0.015,
+                  }
+                : null,
+            [C?.latitude, C?.longitude]
+          ),
+          F = async t => {
+            (await w({ myLocation: t }),
+              k({ type: 'success', title: 'Location saved', message: t.label }));
+          },
+          _ = async t => {
+            const o = (0, r(d[21]).buildLandmarkLocation)(t.label);
+            o && (await F(o));
+          },
+          D = async t => {
+            const o = (0, r(d[21]).buildLandmarkLocation)(t.address || t.label),
+              s = (0, r(d[21]).buildMyLocationRecord)({
+                latitude: o?.latitude,
+                longitude: o?.longitude,
+                label: `${t.label} \xb7 ${t.address}`,
+                source: 'saved_place',
+              });
+            s.latitude
+              ? await F(s)
+              : k({
+                  type: 'info',
+                  title: 'Could not resolve place',
+                  message: 'Try a Kumasi landmark or GPS capture instead.',
+                });
+          },
+          M = (0, r(d[22]).formatAccuracyMeters)(C?.accuracy);
+        return (0, b.jsxs)(y.default, {
+          title: 'My Location',
+          subtitle: 'Used for pickup suggestions and nearby rides',
+          children: [
+            (0, b.jsxs)(u.default, {
+              style: R.hero,
+              children: [
+                (0, b.jsx)(r(d[23]).Ionicons, { name: 'location', size: 28, color: v.primary }),
+                (0, b.jsxs)(u.default, {
+                  style: R.heroText,
+                  children: [
+                    (0, b.jsx)(c.default, { style: R.heroTitle, children: 'Your pickup point' }),
+                    (0, b.jsx)(c.default, {
+                      style: R.heroBody,
+                      children: r(d[22]).MY_LOCATION_INTRO,
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            (0, b.jsxs)(u.default, {
+              style: [R.permBanner, z],
+              children: [
+                (0, b.jsx)(r(d[23]).Ionicons, {
+                  name: A.icon,
+                  size: 22,
+                  color:
+                    'granted' === L
+                      ? (v.success ?? v.primary)
+                      : 'denied' === L
+                        ? v.destructive
+                        : v.primary,
+                }),
+                (0, b.jsxs)(u.default, {
+                  style: { flex: 1 },
+                  children: [
+                    (0, b.jsx)(c.default, { style: R.permTitle, children: A.title }),
+                    (0, b.jsx)(c.default, { style: R.permBody, children: A.body }),
+                    'denied' === L
+                      ? (0, b.jsxs)(l.default, {
+                          style: R.settingsLink,
+                          onPress: () => {
+                            s.default.openSettings();
+                          },
+                          children: [
+                            (0, b.jsx)(r(d[23]).Ionicons, {
+                              name: 'settings-outline',
+                              size: 16,
+                              color: v.primary,
+                            }),
+                            (0, b.jsx)(c.default, {
+                              style: R.linkText,
+                              children: 'Open phone settings',
+                            }),
+                          ],
+                        })
+                      : null,
+                  ],
+                }),
+              ],
+            }),
+            C
+              ? (0, b.jsxs)(b.Fragment, {
+                  children: [
+                    E
+                      ? (0, b.jsx)(u.default, {
+                          style: R.mapWrap,
+                          children: (0, b.jsx)(p.default, {
+                            style: R.map,
+                            region: E,
+                            scrollEnabled: !1,
+                            zoomEnabled: !1,
+                            children: (0, b.jsx)(r(d[24]).Marker, {
+                              coordinate: { latitude: C.latitude, longitude: C.longitude },
+                              title: C.label,
+                            }),
+                          }),
+                        })
+                      : null,
+                    (0, b.jsxs)(u.default, {
+                      style: R.savedCard,
+                      children: [
+                        (0, b.jsxs)(u.default, {
+                          style: R.savedHeader,
+                          children: [
+                            (0, b.jsx)(u.default, {
+                              style: R.savedIcon,
+                              children: (0, b.jsx)(r(d[23]).Ionicons, {
+                                name: 'navigate',
+                                size: 22,
+                                color: v.onPrimary,
+                              }),
+                            }),
+                            (0, b.jsxs)(u.default, {
+                              style: { flex: 1 },
+                              children: [
+                                (0, b.jsx)(c.default, { style: R.savedTitle, children: C.label }),
+                                (0, b.jsxs)(c.default, {
+                                  style: R.savedMeta,
+                                  children: [
+                                    'Updated ',
+                                    (0, r(d[21]).formatLocationUpdated)(C.updatedAt, P),
+                                  ],
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                        (0, b.jsx)(c.default, {
+                          style: R.coords,
+                          children: (0, r(d[21]).formatCoordinates)(C.latitude, C.longitude),
+                        }),
+                        (0, b.jsxs)(u.default, {
+                          style: R.badgeRow,
+                          children: [
+                            C.nearestLandmark
+                              ? (0, b.jsx)(u.default, {
+                                  style: R.badge,
+                                  children: (0, b.jsxs)(c.default, {
+                                    style: R.badgeText,
+                                    children: ['Near ', C.nearestLandmark],
+                                  }),
+                                })
+                              : null,
+                            M
+                              ? (0, b.jsx)(u.default, {
+                                  style: R.badge,
+                                  children: (0, b.jsx)(c.default, {
+                                    style: R.badgeText,
+                                    children: M,
+                                  }),
+                                })
+                              : null,
+                            'landmark' === C.source
+                              ? (0, b.jsx)(u.default, {
+                                  style: R.badge,
+                                  children: (0, b.jsx)(c.default, {
+                                    style: R.badgeText,
+                                    children: 'Landmark',
+                                  }),
+                                })
+                              : null,
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
+                })
+              : (0, b.jsx)(u.default, {
+                  style: R.emptyBox,
+                  children: (0, b.jsx)(c.default, {
+                    style: R.emptyText,
+                    children:
+                      'No location saved yet. Capture GPS for the best pickup ETAs, or choose a Kumasi landmark below.',
+                  }),
+                }),
+            (0, b.jsx)(h.default, {
+              title: S
+                ? 'Getting location\u2026'
+                : C
+                  ? 'Refresh GPS location'
+                  : 'Use current GPS location',
+              onPress: async () => {
+                I(!0);
+                const t = await (0, r(d[21]).captureGpsLocation)();
+                (await B(),
+                  I(!1),
+                  t.error
+                    ? k({
+                        type: 'error',
+                        title: 'Permission denied',
+                        message: t.error.message ?? 'Enable location or pick a landmark below.',
+                      })
+                    : await F(t.data));
+              },
+              loading: S,
+            }),
+            C
+              ? (0, b.jsx)(u.default, {
+                  style: R.actionRow,
+                  children: (0, b.jsx)(h.default, {
+                    title: 'Clear location',
+                    variant: 'ghost',
+                    onPress: async () => {
+                      (await w({ myLocation: null }),
+                        k({
+                          type: 'info',
+                          title: 'Location cleared',
+                          message: 'Pickup ETAs will use route text only.',
+                        }));
+                    },
+                    compact: !0,
+                  }),
+                })
+              : null,
+            (0, b.jsxs)(x.default, {
+              title: 'Kumasi landmarks',
+              children: [
+                (0, b.jsx)(c.default, {
+                  style: [R.heroBody, { marginBottom: r(d[14]).spacing.sm }],
+                  children: 'Useful when GPS is unavailable or you are between stops.',
+                }),
+                (0, b.jsx)(u.default, {
+                  style: R.chipRow,
+                  children: r(d[22]).LOCATION_LANDMARKS.map(t => {
+                    const o = C?.nearestLandmark === t.label || C?.label?.includes(t.label);
+                    return (0, b.jsx)(
+                      l.default,
+                      {
+                        style: [R.chip, o && R.chipActive],
+                        onPress: () => _(t),
+                        children: (0, b.jsx)(c.default, {
+                          style: [R.chipText, o && R.chipTextActive],
+                          children: t.label,
+                        }),
+                      },
+                      t.label
+                    );
+                  }),
+                }),
+              ],
+            }),
+            T.savedPlaces?.length > 0
+              ? (0, b.jsxs)(x.default, {
+                  title: 'From saved places',
+                  children: [
+                    T.savedPlaces.map(t =>
+                      (0, b.jsxs)(
+                        l.default,
+                        {
+                          style: R.placeRow,
+                          onPress: () => D(t),
+                          children: [
+                            (0, b.jsx)(r(d[23]).Ionicons, {
+                              name: 'bookmark-outline',
+                              size: 18,
+                              color: v.primary,
+                            }),
+                            (0, b.jsxs)(c.default, {
+                              style: R.placeText,
+                              children: [t.label, ' \xb7 ', t.address],
+                            }),
+                            (0, b.jsx)(r(d[23]).Ionicons, {
+                              name: 'chevron-forward',
+                              size: 16,
+                              color: v.textMuted,
+                            }),
+                          ],
+                        },
+                        t.id
+                      )
+                    ),
+                    (0, b.jsxs)(l.default, {
+                      style: R.linkRow,
+                      onPress: () => t.navigate(r(d[25]).ROUTES.PROFILE_SAVED_PLACES),
+                      children: [
+                        (0, b.jsx)(r(d[23]).Ionicons, {
+                          name: 'add-circle-outline',
+                          size: 16,
+                          color: v.primary,
+                        }),
+                        (0, b.jsx)(c.default, {
+                          style: R.linkText,
+                          children: 'Manage saved places',
+                        }),
+                      ],
+                    }),
+                  ],
+                })
+              : (0, b.jsxs)(f.default, {
+                  elevated: !0,
+                  children: [
+                    (0, b.jsx)(c.default, {
+                      style: R.useText,
+                      children: 'Save Home or Work for faster pickups.',
+                    }),
+                    (0, b.jsxs)(l.default, {
+                      style: R.linkRow,
+                      onPress: () => t.navigate(r(d[25]).ROUTES.PROFILE_SAVED_PLACES),
+                      children: [
+                        (0, b.jsx)(r(d[23]).Ionicons, {
+                          name: 'bookmark-outline',
+                          size: 16,
+                          color: v.primary,
+                        }),
+                        (0, b.jsx)(c.default, { style: R.linkText, children: 'Add saved places' }),
+                      ],
+                    }),
+                  ],
+                }),
+            (0, b.jsxs)(f.default, {
+              elevated: !0,
+              children: [
+                (0, b.jsx)(c.default, {
+                  style: [R.heroTitle, { fontSize: 15, marginBottom: r(d[14]).spacing.sm }],
+                  children: 'How we use this',
+                }),
+                r(d[22]).MY_LOCATION_USES.map(t =>
+                  (0, b.jsxs)(
+                    u.default,
+                    {
+                      style: R.useRow,
+                      children: [
+                        (0, b.jsx)(r(d[23]).Ionicons, { name: t.icon, size: 16, color: v.primary }),
+                        (0, b.jsx)(c.default, { style: R.useText, children: t.text }),
+                      ],
+                    },
+                    t.text
+                  )
+                ),
+                (0, b.jsxs)(l.default, {
+                  style: R.linkRow,
+                  onPress: () => t.navigate(r(d[25]).ROUTES.PROFILE_PRIVACY),
+                  children: [
+                    (0, b.jsx)(r(d[23]).Ionicons, {
+                      name: 'lock-closed-outline',
+                      size: 16,
+                      color: v.primary,
+                    }),
+                    (0, b.jsx)(c.default, { style: R.linkText, children: 'Privacy settings' }),
+                  ],
+                }),
+              ],
+            }),
+            (0, b.jsx)(f.default, {
+              elevated: !0,
+              children: r(d[22]).MY_LOCATION_TIPS.map(t =>
+                (0, b.jsxs)(
+                  u.default,
+                  {
+                    style: R.tipRow,
+                    children: [
+                      (0, b.jsx)(r(d[23]).Ionicons, {
+                        name: 'information-circle-outline',
+                        size: 16,
+                        color: v.primary,
+                      }),
+                      (0, b.jsx)(c.default, { style: R.tipText, children: t }),
+                    ],
+                  },
+                  t
+                )
+              ),
+            }),
+          ],
+        });
+      }));
+    var o = r(d[1]),
+      s = t(r(d[2])),
+      l = (t(r(d[3])), t(r(d[4]))),
+      n = t(r(d[5])),
+      c = t(r(d[6])),
+      u = t(r(d[7])),
+      p = t(r(d[8])),
+      y = t(r(d[9])),
+      x = t(r(d[10])),
+      f = t(r(d[11])),
+      h = t(r(d[12])),
+      b = r(d[13]);
+    const j = t =>
+      n.default.create({
+        hero: {
+          flexDirection: 'row',
+          gap: r(d[14]).spacing.md,
+          padding: r(d[14]).spacing.md,
+          borderRadius: r(d[14]).radius.md,
+          backgroundColor: t.primaryAlpha06 ?? t.surface,
+          borderWidth: 1,
+          borderColor: t.border,
+          marginBottom: r(d[14]).spacing.lg,
+        },
+        heroText: { flex: 1 },
+        heroTitle: {
+          fontFamily: r(d[14]).fontFamily.bold,
+          fontSize: 16,
+          color: t.textPrimary,
+          marginBottom: r(d[14]).spacing.xs,
+        },
+        heroBody: Object.assign({}, r(d[14]).typography.caption, { lineHeight: 18 }),
+        permBanner: {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          gap: r(d[14]).spacing.md,
+          padding: r(d[14]).spacing.md,
+          borderRadius: r(d[14]).radius.md,
+          borderWidth: 1,
+          marginBottom: r(d[14]).spacing.lg,
+        },
+        permGranted: {
+          borderColor: t.success ?? t.primary,
+          backgroundColor: 'rgba(0, 0, 0, 0.06)',
+        },
+        permDenied: { borderColor: t.destructive, backgroundColor: 'rgba(0, 0, 0, 0.06)' },
+        permPending: { borderColor: t.border, backgroundColor: t.surface },
+        permTitle: {
+          fontFamily: r(d[14]).fontFamily.bold,
+          fontSize: 15,
+          color: t.textPrimary,
+          marginBottom: 4,
+        },
+        permBody: Object.assign({}, r(d[14]).typography.caption, {
+          lineHeight: 18,
+          marginBottom: r(d[14]).spacing.sm,
+        }),
+        mapWrap: {
+          height: 180,
+          borderRadius: r(d[14]).radius.md,
+          overflow: 'hidden',
+          marginBottom: r(d[14]).spacing.md,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        map: { flex: 1 },
+        savedCard: {
+          padding: r(d[14]).spacing.md,
+          borderRadius: r(d[14]).radius.md,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+          marginBottom: r(d[14]).spacing.md,
+        },
+        savedHeader: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[14]).spacing.md,
+          marginBottom: r(d[14]).spacing.sm,
+        },
+        savedIcon: {
+          width: 44,
+          height: 44,
+          borderRadius: 22,
+          backgroundColor: t.primary,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        savedTitle: { fontFamily: r(d[14]).fontFamily.bold, fontSize: 16, color: t.textPrimary },
+        savedMeta: Object.assign({}, r(d[14]).typography.caption, { marginTop: 2 }),
+        coords: Object.assign({}, r(d[14]).typography.caption, { marginTop: r(d[14]).spacing.xs }),
+        badgeRow: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: r(d[14]).spacing.xs,
+          marginTop: r(d[14]).spacing.sm,
+        },
+        badge: {
+          paddingHorizontal: r(d[14]).spacing.sm,
+          paddingVertical: 3,
+          borderRadius: r(d[14]).radius.sm,
+          backgroundColor: t.primaryAlpha12 ?? t.surfaceElevated,
+        },
+        badgeText: { fontFamily: r(d[14]).fontFamily.semiBold, fontSize: 11, color: t.primary },
+        emptyBox: {
+          padding: r(d[14]).spacing.md,
+          borderRadius: r(d[14]).radius.md,
+          borderWidth: 1,
+          borderColor: t.border,
+          borderStyle: 'dashed',
+          marginBottom: r(d[14]).spacing.md,
+        },
+        emptyText: Object.assign({}, r(d[14]).typography.body, {
+          lineHeight: 22,
+          color: t.textSecondary,
+        }),
+        chipRow: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: r(d[14]).spacing.sm,
+          marginBottom: r(d[14]).spacing.md,
+        },
+        chip: {
+          paddingHorizontal: r(d[14]).spacing.md,
+          paddingVertical: r(d[14]).spacing.sm,
+          borderRadius: r(d[14]).radius.sm,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+        },
+        chipActive: { borderColor: t.primary, backgroundColor: t.primary },
+        chipText: { fontFamily: r(d[14]).fontFamily.medium, fontSize: 13, color: t.textSecondary },
+        chipTextActive: { color: t.onPrimary },
+        useRow: {
+          flexDirection: 'row',
+          gap: r(d[14]).spacing.sm,
+          marginBottom: r(d[14]).spacing.sm,
+          alignItems: 'flex-start',
+        },
+        useText: Object.assign({}, r(d[14]).typography.caption, { flex: 1, lineHeight: 18 }),
+        placeRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[14]).spacing.sm,
+          paddingVertical: r(d[14]).spacing.sm,
+          borderBottomWidth: 1,
+          borderBottomColor: t.border,
+        },
+        placeText: {
+          flex: 1,
+          fontFamily: r(d[14]).fontFamily.medium,
+          fontSize: 14,
+          color: t.textPrimary,
+        },
+        linkRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[14]).spacing.xs,
+          marginTop: r(d[14]).spacing.sm,
+        },
+        linkText: { fontFamily: r(d[14]).fontFamily.semiBold, fontSize: 13, color: t.primary },
+        tipRow: {
+          flexDirection: 'row',
+          gap: r(d[14]).spacing.sm,
+          marginBottom: r(d[14]).spacing.sm,
+        },
+        tipText: Object.assign({}, r(d[14]).typography.caption, { flex: 1, lineHeight: 18 }),
+        actionRow: {
+          flexDirection: 'row',
+          gap: r(d[14]).spacing.sm,
+          marginTop: r(d[14]).spacing.sm,
+        },
+        settingsLink: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[14]).spacing.xs,
+          marginTop: r(d[14]).spacing.sm,
+        },
+      });
+  },
+  1452,
+  [
+    1, 5, 667, 14, 326, 26, 161, 19, 746, 1710, 1667, 684, 672, 183, 377, 382, 501, 1614, 1386, 381,
+    1381, 1711, 1712, 578, 747, 682,
+  ]
+);

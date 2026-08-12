@@ -1,3 +1,664 @@
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const t=(0,r(d[14]).useNavigation)(),{user:c,profile:T}=(0,r(d[15]).useAuth)(),{prefs:S,patch:R}=(0,r(d[16]).useUserPreferences)(c?.id),{showToast:v}=(0,r(d[17]).useToast)(),{colors:I}=(0,r(d[18]).useTheme)(),B=j(I),[P,A]=(0,s.useState)(r(d[19]).ISSUE_CATEGORIES[0].id),[E,w]=(0,s.useState)(''),[F,O]=(0,s.useState)(null),[L,z]=(0,s.useState)([]),[M,k]=(0,s.useState)(!1),_=(0,s.useMemo)(()=>(0,r(d[19]).getIssueCategory)(P),[P]),U=(0,s.useMemo)(()=>L.find(t=>(t.id??t.tripId)===F)??null,[L,F]),D=(S.reportedIssues??[]).slice().reverse().slice(0,5);(0,s.useEffect)(()=>{c?.id&&(0,r(d[20]).fetchPassengerTrips)(c.id).then(({data:t})=>{const s=[...t?.active??[],...t?.history??[]].filter(t=>t?.route||t?.origin);z(s.slice(0,8))})},[c?.id]);return(0,b.jsxs)(y.default,{title:"Report Issue",subtitle:"Payments, safety, bookings, or app bugs",children:[(0,r(d[19]).isUrgentIssue)(P)?(0,b.jsxs)(p.default,{style:B.urgentBanner,children:[(0,b.jsx)(u.default,{style:B.urgentTitle,children:"Urgent safety issue?"}),(0,b.jsx)(u.default,{style:B.urgentBody,children:"Call emergency services first. If you are on an active trip, open Trip Guardian from My Trips for WhatsApp share and discreet alerts."}),(0,b.jsxs)(p.default,{style:B.urgentActions,children:[(0,b.jsxs)(n.default,{style:B.urgentBtn,onPress:()=>{o.default.openURL('tel:112').catch(()=>{v({type:'error',title:'Could not dial',message:'Call 112 manually.'})})},children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"call",size:16,color:I.onPrimary??'#FFF'}),(0,b.jsx)(u.default,{style:[B.urgentBtnText,B.urgentBtnTextPrimary],children:"Call 112"})]}),(0,b.jsxs)(n.default,{style:[B.urgentBtn,B.urgentBtnSecondary],onPress:()=>t.navigate('MainTabs',{screen:r(d[24]).ROUTES.PASSENGER_MY_TRIPS}),children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"shield-checkmark",size:16,color:I.primary}),(0,b.jsx)(u.default,{style:B.urgentBtnText,children:"My Trips"})]})]})]}):null,(0,b.jsxs)(f.default,{elevated:!0,children:[(0,b.jsx)(u.default,{style:B.sectionLabel,children:"What is this about?"}),(0,b.jsx)(p.default,{style:B.categoryGrid,children:r(d[19]).ISSUE_CATEGORIES.map(t=>{const s=P===t.id;return(0,b.jsxs)(n.default,{style:[B.categoryChip,s&&B.categoryChipActive],onPress:()=>A(t.id),children:[(0,b.jsx)(r(d[23]).Ionicons,{name:t.icon,size:16,color:s?I.onPrimary:I.primary}),(0,b.jsx)(u.default,{style:[B.categoryText,s&&B.categoryTextActive],children:t.label})]},t.id)})}),(0,b.jsx)(u.default,{style:B.hint,children:_.hint}),L.length>0?(0,b.jsxs)(b.Fragment,{children:[(0,b.jsx)(u.default,{style:B.sectionLabel,children:"Link a trip (optional)"}),(0,b.jsxs)(l.default,{horizontal:!0,showsHorizontalScrollIndicator:!1,style:B.tripScroll,contentContainerStyle:B.tripRow,children:[(0,b.jsx)(n.default,{style:[B.tripChip,!F&&B.tripChipActive],onPress:()=>O(null),children:(0,b.jsx)(u.default,{style:B.tripRoute,children:"No trip"})}),L.map(t=>{const s=t.id??t.tripId,o=F===s;return(0,b.jsxs)(n.default,{style:[B.tripChip,o&&B.tripChipActive],onPress:()=>O(s),children:[(0,b.jsx)(u.default,{style:B.tripRoute,numberOfLines:1,children:t.route??`${t.origin} \u2192 ${t.destination}`}),(0,b.jsx)(u.default,{style:B.tripMeta,numberOfLines:1,children:t.driverName??t.mateName??t.status??'Recent'})]},String(s))})]})]}):null,(0,b.jsx)(x.default,{label:"Describe the issue",value:E,onChangeText:w,placeholder:_.placeholder,multiline:!0,numberOfLines:5}),(0,b.jsx)(h.default,{title:"Submit report",onPress:async()=>{if(!E.trim())return void v({type:'error',title:'Add details',message:_.hint});k(!0);const t=C(U),{data:s,error:o}=await(0,r(d[21]).submitIssueReport)({userId:c?.id,user:c,profile:T,categoryId:P,description:E,tripContext:t});if(o)return k(!1),void v({type:'error',title:'Report failed',message:o.message});await R({reportedIssues:[...S.reportedIssues??[],s.report]}),k(!1),w(''),O(null);const n=s.synced?'Sent to our safety team and saved on your device.':s.emailed?`Email draft opened for ${r(d[22]).SUPPORT_EMAIL}.`:'Saved on your device. Email support if you need a faster response.';v({type:'success',title:'Report submitted',message:(0,r(d[19]).isUrgentIssue)(P)?`${n} Call 112 if you are in immediate danger.`:n})},loading:M}),(0,b.jsx)(u.default,{style:B.supportEmail,children:r(d[22]).SUPPORT_EMAIL})]}),(0,b.jsxs)(f.default,{elevated:!0,style:B.tipsCard,children:[(0,b.jsx)(u.default,{style:B.sectionLabel,children:"Tips for a faster response"}),r(d[19]).REPORT_TIPS.map(t=>(0,b.jsxs)(p.default,{style:B.tipRow,children:[(0,b.jsx)(r(d[23]).Ionicons,{name:"checkmark-circle",size:16,color:I.primary}),(0,b.jsx)(u.default,{style:B.tipText,children:t})]},t))]}),D.length>0?(0,b.jsxs)(f.default,{elevated:!0,style:B.historyCard,children:[(0,b.jsx)(u.default,{style:B.sectionLabel,children:"Your recent reports"}),D.map((t,s)=>(0,b.jsxs)(p.default,{style:[B.historyRow,s===D.length-1&&B.historyRowLast],children:[(0,b.jsx)(u.default,{style:B.historyType,children:t.type}),(0,b.jsxs)(u.default,{style:B.historyMeta,children:[(0,r(d[21]).formatReportDate)(t.createdAt),' \xb7 ',r(d[19]).REPORT_STATUS_LABELS[t.status]??t.status,t.tripRoute?` \xb7 ${t.tripRoute}`:'']}),(0,b.jsx)(u.default,{style:B.historyDesc,numberOfLines:2,children:t.description})]},t.id))]}):null]})};var s=r(d[1]),o=t(r(d[2])),n=t(r(d[3])),l=t(r(d[4])),c=t(r(d[5])),u=t(r(d[6])),p=t(r(d[7])),y=t(r(d[8])),f=t(r(d[9])),h=t(r(d[10])),x=t(r(d[11])),b=r(d[12]);const j=t=>c.default.create({urgentBanner:{backgroundColor:t.surface,borderRadius:r(d[13]).radius.md,borderWidth:1,borderColor:t.destructive,padding:r(d[13]).spacing.md,marginBottom:r(d[13]).spacing.lg},urgentTitle:{fontFamily:r(d[13]).fontFamily.bold,fontSize:15,color:t.destructive,marginBottom:r(d[13]).spacing.xs},urgentBody:Object.assign({},r(d[13]).typography.caption,{lineHeight:18,marginBottom:r(d[13]).spacing.md}),urgentActions:{flexDirection:'row',gap:r(d[13]).spacing.sm},urgentBtn:{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center',gap:r(d[13]).spacing.xs,paddingVertical:r(d[13]).spacing.sm,borderRadius:r(d[13]).radius.sm,backgroundColor:t.destructive},urgentBtnSecondary:{backgroundColor:t.surfaceElevated,borderWidth:1,borderColor:t.border},urgentBtnText:{fontFamily:r(d[13]).fontFamily.semiBold,fontSize:13,color:t.textPrimary},urgentBtnTextPrimary:{color:t.onPrimary??'#FFF'},sectionLabel:Object.assign({},r(d[13]).typography.label,{marginBottom:r(d[13]).spacing.sm}),categoryGrid:{flexDirection:'row',flexWrap:'wrap',gap:r(d[13]).spacing.sm,marginBottom:r(d[13]).spacing.lg},categoryChip:{flexDirection:'row',alignItems:'center',gap:6,paddingHorizontal:r(d[13]).spacing.md,paddingVertical:r(d[13]).spacing.sm,borderRadius:r(d[13]).radius.sm,borderWidth:1,borderColor:t.border,backgroundColor:t.surface},categoryChipActive:{borderColor:t.primary,backgroundColor:t.primary},categoryText:{fontFamily:r(d[13]).fontFamily.semiBold,fontSize:13,color:t.textSecondary},categoryTextActive:{color:t.onPrimary},hint:Object.assign({},r(d[13]).typography.caption,{marginBottom:r(d[13]).spacing.md,lineHeight:18,color:t.textMuted}),tripScroll:{marginBottom:r(d[13]).spacing.md},tripRow:{flexDirection:'row',gap:r(d[13]).spacing.sm,paddingRight:r(d[13]).spacing.lg},tripChip:{maxWidth:200,paddingHorizontal:r(d[13]).spacing.md,paddingVertical:r(d[13]).spacing.sm,borderRadius:r(d[13]).radius.sm,borderWidth:1,borderColor:t.border,backgroundColor:t.surface},tripChipActive:{borderColor:t.primary,backgroundColor:t.surfaceElevated},tripRoute:{fontFamily:r(d[13]).fontFamily.semiBold,fontSize:13,color:t.textPrimary},tripMeta:Object.assign({},r(d[13]).typography.caption,{marginTop:2}),tipsCard:{marginBottom:r(d[13]).spacing.lg},tipRow:{flexDirection:'row',gap:r(d[13]).spacing.sm,marginBottom:r(d[13]).spacing.sm},tipText:Object.assign({},r(d[13]).typography.caption,{flex:1,lineHeight:18}),historyCard:{marginBottom:r(d[13]).spacing.lg},historyRow:{paddingVertical:r(d[13]).spacing.sm,borderBottomWidth:1,borderBottomColor:t.border},historyRowLast:{borderBottomWidth:0},historyType:{fontFamily:r(d[13]).fontFamily.semiBold,fontSize:14,color:t.textPrimary},historyMeta:Object.assign({},r(d[13]).typography.caption,{marginTop:2}),historyDesc:Object.assign({},r(d[13]).typography.caption,{marginTop:r(d[13]).spacing.xs,color:t.textSecondary}),supportEmail:{fontFamily:r(d[13]).fontFamily.semiBold,fontSize:14,color:t.primary,textAlign:'center',marginTop:r(d[13]).spacing.md}});function C(t){return t?{id:t.id??t.tripId??t.rideId,tripId:t.tripId??t.id,rideId:t.rideId,route:t.route??`${t.origin??''} \u2192 ${t.destination??''}`.trim(),driverName:t.driverName??t.mateName,plateNumber:t.plateNumber,latitude:t.latitude,longitude:t.longitude}:null}},1467,[1,5,667,326,106,26,161,19,1710,684,672,679,183,377,382,501,1614,1386,381,1805,1666,1806,508,578,682]);
-__d(function(g,r,i,a,m,e,d){Object.defineProperty(e,"__esModule",{value:!0}),e.REPORT_TIPS=e.REPORT_STATUS_LABELS=e.ISSUE_CATEGORIES=void 0,e.getIssueCategory=o,e.isUrgentIssue=function(t){return'urgent'===o(t).severity};const t=e.ISSUE_CATEGORIES=[{id:'safety',label:'Safety',icon:'shield-outline',severity:'urgent',reportType:'safety_concern',placeholder:'What happened? Include route, time, driver/mate name, and plate number if you have them.',hint:'For immediate danger, call 112 first. If you are on an active trip, use Trip Guardian in My Trips.'},{id:'payment',label:'Payment / MoMo',icon:'wallet-outline',severity:'normal',reportType:'payment_issue',placeholder:'Describe the payment problem \u2014 amount, reference number, mate/driver, and route.',hint:'Include your MoMo transaction reference if you paid the platform fee in-app.'},{id:'driver',label:'Driver / mate',icon:'person-outline',severity:'normal',reportType:'operator_concern',placeholder:'Describe the behaviour or service issue. Include route and vehicle plate if known.',hint:'We may adjust trust scores after verified reports.'},{id:'booking',label:'Booking / queue',icon:'ticket-outline',severity:'normal',reportType:'booking_issue',placeholder:'Reservation not honoured? Queue invite missing? Tell us the route and what you expected.',hint:'Include whether it was trotro, TrotroRide, or a queue invite.'},{id:'bug',label:'App bug',icon:'bug-outline',severity:'low',reportType:'app_bug',placeholder:'What were you trying to do? What happened instead? Steps to reproduce help us fix it faster.',hint:'Mention your phone model if the app crashed or froze.'},{id:'feedback',label:'Feedback',icon:'star-outline',severity:'low',reportType:'general',placeholder:'What do you love? What could be better?',hint:'Quick feedback helps us improve Kumasi corridors and features.'},{id:'other',label:'Other',icon:'chatbubble-ellipses-outline',severity:'low',reportType:'general',placeholder:'Describe your issue or feedback.',hint:'We typically respond within 24 hours by email.'}];function o(o){return t.find(t=>t.id===o)??t[t.length-1]}e.REPORT_STATUS_LABELS={submitted:'Submitted',emailed:'Emailed to support',synced:'Sent to safety team'},e.REPORT_TIPS=['Attach the route (e.g. Tech Junction \u2192 Ayeduase) and approximate time.','For payments, copy your MoMo reference from the confirmation SMS.','Safety reports are reviewed promptly \u2014 call 112 if you need help now.']},1805,[]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.formatReportDate=function(t){if(!t)return'\u2014';try{return new Date(t).toLocaleString('en-GH',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch{return t}},e.submitIssueReport=async function({userId:t,user:u,profile:l,categoryId:p,description:c,tripContext:y=null,role:f="passenger"}){const I=String(c??'').trim();if(!I)return{data:null,error:new Error('Please describe the issue before submitting.')};const b=(0,r(d[2]).getIssueCategory)(p),$={id:`issue-${Date.now()}`,categoryId:b.id,type:b.label,description:I,tripId:y?.id??null,tripRoute:y?.route??null,createdAt:(new Date).toISOString(),status:'submitted'},h=await s({userId:t,role:f,categoryId:p,description:I,tripContext:y});h.synced&&($.status='synced');const _=o({issueType:b.label,description:I,profile:l,user:u,tripContext:y,categoryId:p});let C=!1;try{await n.default.canOpenURL(_)&&(await n.default.openURL(_),C=!0,'submitted'===$.status&&($.status='emailed'))}catch{}return{data:{report:$,emailed:C,synced:h.synced},error:null}};var n=t(r(d[1]));function o({issueType:t,description:n,profile:o,user:s,tripContext:u,categoryId:l}){const p=(0,r(d[2]).getIssueCategory)(l),c=encodeURIComponent(`${r(d[3]).APP_NAME} report: ${t}`),y=[`Issue type: ${t}`,`Category: ${p.id}`,`User: ${o?.full_name??s?.email??'Unknown'}`,`Email: ${s?.email??'N/A'}`,`Phone: ${o?.phone_number??'N/A'}`,`User ID: ${s?.id??'N/A'}`];u?.route&&y.push(`Trip route: ${u.route}`),u?.id&&y.push(`Trip / booking ID: ${u.id}`),u?.driverName&&y.push(`Operator: ${u.driverName}`),u?.plateNumber&&y.push(`Plate: ${u.plateNumber}`),y.push('',n.trim(),'','\u2014 Sent from TrotroOS app');const f=encodeURIComponent(y.join('\n'));return`mailto:${r(d[3]).SUPPORT_EMAIL}?subject=${c}&body=${f}`}async function s({userId:t,role:n,categoryId:o,description:s,tripContext:u}){const l=(0,r(d[4]).getSupabase)();if(!l||!t)return{synced:!1};const p=(0,r(d[2]).getIssueCategory)(o);if(!('urgent'===p.severity||'safety'===p.id||'driver'===p.id||'payment'===p.id))return{synced:!1};try{const c={ride_id:u?.rideId??null,trip_id:u?.tripId??u?.id??null,reporter_id:t,reporter_role:n??'passenger',route:[u?.route,s.slice(0,500)].filter(Boolean).join(' \xb7 '),latitude:u?.latitude??null,longitude:u?.longitude??null,report_type:p.reportType,status:'open'},{error:y}=await l.from('safety_reports').insert(c);return!y||(0,r(d[5],"./db").isMissingTableError)(y)||(0,r(d[5],"./db").isRlsError)(y)?((0,r(d[2]).isUrgentIssue)(o)&&await(0,r(d[6]).notifySafetyTeamAlert)(t).catch(()=>{}),{synced:!y}):{synced:!1,error:y}}catch{return{synced:!1}}}},1806,[1,667,1805,508,502,558,760]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const t = (0, r(d[14]).useNavigation)(),
+          { user: c, profile: T } = (0, r(d[15]).useAuth)(),
+          { prefs: S, patch: R } = (0, r(d[16]).useUserPreferences)(c?.id),
+          { showToast: v } = (0, r(d[17]).useToast)(),
+          { colors: I } = (0, r(d[18]).useTheme)(),
+          B = j(I),
+          [P, A] = (0, s.useState)(r(d[19]).ISSUE_CATEGORIES[0].id),
+          [E, w] = (0, s.useState)(''),
+          [F, O] = (0, s.useState)(null),
+          [L, z] = (0, s.useState)([]),
+          [M, k] = (0, s.useState)(!1),
+          _ = (0, s.useMemo)(() => (0, r(d[19]).getIssueCategory)(P), [P]),
+          U = (0, s.useMemo)(() => L.find(t => (t.id ?? t.tripId) === F) ?? null, [L, F]),
+          D = (S.reportedIssues ?? []).slice().reverse().slice(0, 5);
+        (0, s.useEffect)(() => {
+          c?.id &&
+            (0, r(d[20]).fetchPassengerTrips)(c.id).then(({ data: t }) => {
+              const s = [...(t?.active ?? []), ...(t?.history ?? [])].filter(
+                t => t?.route || t?.origin
+              );
+              z(s.slice(0, 8));
+            });
+        }, [c?.id]);
+        return (0, b.jsxs)(y.default, {
+          title: 'Report Issue',
+          subtitle: 'Payments, safety, bookings, or app bugs',
+          children: [
+            (0, r(d[19]).isUrgentIssue)(P)
+              ? (0, b.jsxs)(p.default, {
+                  style: B.urgentBanner,
+                  children: [
+                    (0, b.jsx)(u.default, {
+                      style: B.urgentTitle,
+                      children: 'Urgent safety issue?',
+                    }),
+                    (0, b.jsx)(u.default, {
+                      style: B.urgentBody,
+                      children:
+                        'Call emergency services first. If you are on an active trip, open Trip Guardian from My Trips for WhatsApp share and discreet alerts.',
+                    }),
+                    (0, b.jsxs)(p.default, {
+                      style: B.urgentActions,
+                      children: [
+                        (0, b.jsxs)(n.default, {
+                          style: B.urgentBtn,
+                          onPress: () => {
+                            o.default.openURL('tel:112').catch(() => {
+                              v({
+                                type: 'error',
+                                title: 'Could not dial',
+                                message: 'Call 112 manually.',
+                              });
+                            });
+                          },
+                          children: [
+                            (0, b.jsx)(r(d[23]).Ionicons, {
+                              name: 'call',
+                              size: 16,
+                              color: I.onPrimary ?? '#FFF',
+                            }),
+                            (0, b.jsx)(u.default, {
+                              style: [B.urgentBtnText, B.urgentBtnTextPrimary],
+                              children: 'Call 112',
+                            }),
+                          ],
+                        }),
+                        (0, b.jsxs)(n.default, {
+                          style: [B.urgentBtn, B.urgentBtnSecondary],
+                          onPress: () =>
+                            t.navigate('MainTabs', { screen: r(d[24]).ROUTES.PASSENGER_MY_TRIPS }),
+                          children: [
+                            (0, b.jsx)(r(d[23]).Ionicons, {
+                              name: 'shield-checkmark',
+                              size: 16,
+                              color: I.primary,
+                            }),
+                            (0, b.jsx)(u.default, { style: B.urgentBtnText, children: 'My Trips' }),
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
+                })
+              : null,
+            (0, b.jsxs)(f.default, {
+              elevated: !0,
+              children: [
+                (0, b.jsx)(u.default, { style: B.sectionLabel, children: 'What is this about?' }),
+                (0, b.jsx)(p.default, {
+                  style: B.categoryGrid,
+                  children: r(d[19]).ISSUE_CATEGORIES.map(t => {
+                    const s = P === t.id;
+                    return (0, b.jsxs)(
+                      n.default,
+                      {
+                        style: [B.categoryChip, s && B.categoryChipActive],
+                        onPress: () => A(t.id),
+                        children: [
+                          (0, b.jsx)(r(d[23]).Ionicons, {
+                            name: t.icon,
+                            size: 16,
+                            color: s ? I.onPrimary : I.primary,
+                          }),
+                          (0, b.jsx)(u.default, {
+                            style: [B.categoryText, s && B.categoryTextActive],
+                            children: t.label,
+                          }),
+                        ],
+                      },
+                      t.id
+                    );
+                  }),
+                }),
+                (0, b.jsx)(u.default, { style: B.hint, children: _.hint }),
+                L.length > 0
+                  ? (0, b.jsxs)(b.Fragment, {
+                      children: [
+                        (0, b.jsx)(u.default, {
+                          style: B.sectionLabel,
+                          children: 'Link a trip (optional)',
+                        }),
+                        (0, b.jsxs)(l.default, {
+                          horizontal: !0,
+                          showsHorizontalScrollIndicator: !1,
+                          style: B.tripScroll,
+                          contentContainerStyle: B.tripRow,
+                          children: [
+                            (0, b.jsx)(n.default, {
+                              style: [B.tripChip, !F && B.tripChipActive],
+                              onPress: () => O(null),
+                              children: (0, b.jsx)(u.default, {
+                                style: B.tripRoute,
+                                children: 'No trip',
+                              }),
+                            }),
+                            L.map(t => {
+                              const s = t.id ?? t.tripId,
+                                o = F === s;
+                              return (0, b.jsxs)(
+                                n.default,
+                                {
+                                  style: [B.tripChip, o && B.tripChipActive],
+                                  onPress: () => O(s),
+                                  children: [
+                                    (0, b.jsx)(u.default, {
+                                      style: B.tripRoute,
+                                      numberOfLines: 1,
+                                      children: t.route ?? `${t.origin} \u2192 ${t.destination}`,
+                                    }),
+                                    (0, b.jsx)(u.default, {
+                                      style: B.tripMeta,
+                                      numberOfLines: 1,
+                                      children: t.driverName ?? t.mateName ?? t.status ?? 'Recent',
+                                    }),
+                                  ],
+                                },
+                                String(s)
+                              );
+                            }),
+                          ],
+                        }),
+                      ],
+                    })
+                  : null,
+                (0, b.jsx)(x.default, {
+                  label: 'Describe the issue',
+                  value: E,
+                  onChangeText: w,
+                  placeholder: _.placeholder,
+                  multiline: !0,
+                  numberOfLines: 5,
+                }),
+                (0, b.jsx)(h.default, {
+                  title: 'Submit report',
+                  onPress: async () => {
+                    if (!E.trim())
+                      return void v({ type: 'error', title: 'Add details', message: _.hint });
+                    k(!0);
+                    const t = C(U),
+                      { data: s, error: o } = await (0, r(d[21]).submitIssueReport)({
+                        userId: c?.id,
+                        user: c,
+                        profile: T,
+                        categoryId: P,
+                        description: E,
+                        tripContext: t,
+                      });
+                    if (o)
+                      return (
+                        k(!1),
+                        void v({ type: 'error', title: 'Report failed', message: o.message })
+                      );
+                    (await R({ reportedIssues: [...(S.reportedIssues ?? []), s.report] }),
+                      k(!1),
+                      w(''),
+                      O(null));
+                    const n = s.synced
+                      ? 'Sent to our safety team and saved on your device.'
+                      : s.emailed
+                        ? `Email draft opened for ${r(d[22]).SUPPORT_EMAIL}.`
+                        : 'Saved on your device. Email support if you need a faster response.';
+                    v({
+                      type: 'success',
+                      title: 'Report submitted',
+                      message: (0, r(d[19]).isUrgentIssue)(P)
+                        ? `${n} Call 112 if you are in immediate danger.`
+                        : n,
+                    });
+                  },
+                  loading: M,
+                }),
+                (0, b.jsx)(u.default, { style: B.supportEmail, children: r(d[22]).SUPPORT_EMAIL }),
+              ],
+            }),
+            (0, b.jsxs)(f.default, {
+              elevated: !0,
+              style: B.tipsCard,
+              children: [
+                (0, b.jsx)(u.default, {
+                  style: B.sectionLabel,
+                  children: 'Tips for a faster response',
+                }),
+                r(d[19]).REPORT_TIPS.map(t =>
+                  (0, b.jsxs)(
+                    p.default,
+                    {
+                      style: B.tipRow,
+                      children: [
+                        (0, b.jsx)(r(d[23]).Ionicons, {
+                          name: 'checkmark-circle',
+                          size: 16,
+                          color: I.primary,
+                        }),
+                        (0, b.jsx)(u.default, { style: B.tipText, children: t }),
+                      ],
+                    },
+                    t
+                  )
+                ),
+              ],
+            }),
+            D.length > 0
+              ? (0, b.jsxs)(f.default, {
+                  elevated: !0,
+                  style: B.historyCard,
+                  children: [
+                    (0, b.jsx)(u.default, {
+                      style: B.sectionLabel,
+                      children: 'Your recent reports',
+                    }),
+                    D.map((t, s) =>
+                      (0, b.jsxs)(
+                        p.default,
+                        {
+                          style: [B.historyRow, s === D.length - 1 && B.historyRowLast],
+                          children: [
+                            (0, b.jsx)(u.default, { style: B.historyType, children: t.type }),
+                            (0, b.jsxs)(u.default, {
+                              style: B.historyMeta,
+                              children: [
+                                (0, r(d[21]).formatReportDate)(t.createdAt),
+                                ' \xb7 ',
+                                r(d[19]).REPORT_STATUS_LABELS[t.status] ?? t.status,
+                                t.tripRoute ? ` \xb7 ${t.tripRoute}` : '',
+                              ],
+                            }),
+                            (0, b.jsx)(u.default, {
+                              style: B.historyDesc,
+                              numberOfLines: 2,
+                              children: t.description,
+                            }),
+                          ],
+                        },
+                        t.id
+                      )
+                    ),
+                  ],
+                })
+              : null,
+          ],
+        });
+      }));
+    var s = r(d[1]),
+      o = t(r(d[2])),
+      n = t(r(d[3])),
+      l = t(r(d[4])),
+      c = t(r(d[5])),
+      u = t(r(d[6])),
+      p = t(r(d[7])),
+      y = t(r(d[8])),
+      f = t(r(d[9])),
+      h = t(r(d[10])),
+      x = t(r(d[11])),
+      b = r(d[12]);
+    const j = t =>
+      c.default.create({
+        urgentBanner: {
+          backgroundColor: t.surface,
+          borderRadius: r(d[13]).radius.md,
+          borderWidth: 1,
+          borderColor: t.destructive,
+          padding: r(d[13]).spacing.md,
+          marginBottom: r(d[13]).spacing.lg,
+        },
+        urgentTitle: {
+          fontFamily: r(d[13]).fontFamily.bold,
+          fontSize: 15,
+          color: t.destructive,
+          marginBottom: r(d[13]).spacing.xs,
+        },
+        urgentBody: Object.assign({}, r(d[13]).typography.caption, {
+          lineHeight: 18,
+          marginBottom: r(d[13]).spacing.md,
+        }),
+        urgentActions: { flexDirection: 'row', gap: r(d[13]).spacing.sm },
+        urgentBtn: {
+          flex: 1,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: r(d[13]).spacing.xs,
+          paddingVertical: r(d[13]).spacing.sm,
+          borderRadius: r(d[13]).radius.sm,
+          backgroundColor: t.destructive,
+        },
+        urgentBtnSecondary: {
+          backgroundColor: t.surfaceElevated,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        urgentBtnText: {
+          fontFamily: r(d[13]).fontFamily.semiBold,
+          fontSize: 13,
+          color: t.textPrimary,
+        },
+        urgentBtnTextPrimary: { color: t.onPrimary ?? '#FFF' },
+        sectionLabel: Object.assign({}, r(d[13]).typography.label, {
+          marginBottom: r(d[13]).spacing.sm,
+        }),
+        categoryGrid: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: r(d[13]).spacing.sm,
+          marginBottom: r(d[13]).spacing.lg,
+        },
+        categoryChip: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 6,
+          paddingHorizontal: r(d[13]).spacing.md,
+          paddingVertical: r(d[13]).spacing.sm,
+          borderRadius: r(d[13]).radius.sm,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+        },
+        categoryChipActive: { borderColor: t.primary, backgroundColor: t.primary },
+        categoryText: {
+          fontFamily: r(d[13]).fontFamily.semiBold,
+          fontSize: 13,
+          color: t.textSecondary,
+        },
+        categoryTextActive: { color: t.onPrimary },
+        hint: Object.assign({}, r(d[13]).typography.caption, {
+          marginBottom: r(d[13]).spacing.md,
+          lineHeight: 18,
+          color: t.textMuted,
+        }),
+        tripScroll: { marginBottom: r(d[13]).spacing.md },
+        tripRow: {
+          flexDirection: 'row',
+          gap: r(d[13]).spacing.sm,
+          paddingRight: r(d[13]).spacing.lg,
+        },
+        tripChip: {
+          maxWidth: 200,
+          paddingHorizontal: r(d[13]).spacing.md,
+          paddingVertical: r(d[13]).spacing.sm,
+          borderRadius: r(d[13]).radius.sm,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+        },
+        tripChipActive: { borderColor: t.primary, backgroundColor: t.surfaceElevated },
+        tripRoute: { fontFamily: r(d[13]).fontFamily.semiBold, fontSize: 13, color: t.textPrimary },
+        tripMeta: Object.assign({}, r(d[13]).typography.caption, { marginTop: 2 }),
+        tipsCard: { marginBottom: r(d[13]).spacing.lg },
+        tipRow: {
+          flexDirection: 'row',
+          gap: r(d[13]).spacing.sm,
+          marginBottom: r(d[13]).spacing.sm,
+        },
+        tipText: Object.assign({}, r(d[13]).typography.caption, { flex: 1, lineHeight: 18 }),
+        historyCard: { marginBottom: r(d[13]).spacing.lg },
+        historyRow: {
+          paddingVertical: r(d[13]).spacing.sm,
+          borderBottomWidth: 1,
+          borderBottomColor: t.border,
+        },
+        historyRowLast: { borderBottomWidth: 0 },
+        historyType: {
+          fontFamily: r(d[13]).fontFamily.semiBold,
+          fontSize: 14,
+          color: t.textPrimary,
+        },
+        historyMeta: Object.assign({}, r(d[13]).typography.caption, { marginTop: 2 }),
+        historyDesc: Object.assign({}, r(d[13]).typography.caption, {
+          marginTop: r(d[13]).spacing.xs,
+          color: t.textSecondary,
+        }),
+        supportEmail: {
+          fontFamily: r(d[13]).fontFamily.semiBold,
+          fontSize: 14,
+          color: t.primary,
+          textAlign: 'center',
+          marginTop: r(d[13]).spacing.md,
+        },
+      });
+    function C(t) {
+      return t
+        ? {
+            id: t.id ?? t.tripId ?? t.rideId,
+            tripId: t.tripId ?? t.id,
+            rideId: t.rideId,
+            route: t.route ?? `${t.origin ?? ''} \u2192 ${t.destination ?? ''}`.trim(),
+            driverName: t.driverName ?? t.mateName,
+            plateNumber: t.plateNumber,
+            latitude: t.latitude,
+            longitude: t.longitude,
+          }
+        : null;
+    }
+  },
+  1467,
+  [
+    1, 5, 667, 326, 106, 26, 161, 19, 1710, 684, 672, 679, 183, 377, 382, 501, 1614, 1386, 381,
+    1805, 1666, 1806, 508, 578, 682,
+  ]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.REPORT_TIPS = e.REPORT_STATUS_LABELS = e.ISSUE_CATEGORIES = void 0),
+      (e.getIssueCategory = o),
+      (e.isUrgentIssue = function (t) {
+        return 'urgent' === o(t).severity;
+      }));
+    const t = (e.ISSUE_CATEGORIES = [
+      {
+        id: 'safety',
+        label: 'Safety',
+        icon: 'shield-outline',
+        severity: 'urgent',
+        reportType: 'safety_concern',
+        placeholder:
+          'What happened? Include route, time, driver/mate name, and plate number if you have them.',
+        hint: 'For immediate danger, call 112 first. If you are on an active trip, use Trip Guardian in My Trips.',
+      },
+      {
+        id: 'payment',
+        label: 'Payment / MoMo',
+        icon: 'wallet-outline',
+        severity: 'normal',
+        reportType: 'payment_issue',
+        placeholder:
+          'Describe the payment problem \u2014 amount, reference number, mate/driver, and route.',
+        hint: 'Include your MoMo transaction reference if you paid the platform fee in-app.',
+      },
+      {
+        id: 'driver',
+        label: 'Driver / mate',
+        icon: 'person-outline',
+        severity: 'normal',
+        reportType: 'operator_concern',
+        placeholder:
+          'Describe the behaviour or service issue. Include route and vehicle plate if known.',
+        hint: 'We may adjust trust scores after verified reports.',
+      },
+      {
+        id: 'booking',
+        label: 'Booking / queue',
+        icon: 'ticket-outline',
+        severity: 'normal',
+        reportType: 'booking_issue',
+        placeholder:
+          'Reservation not honoured? Queue invite missing? Tell us the route and what you expected.',
+        hint: 'Include whether it was trotro, TrotroRide, or a queue invite.',
+      },
+      {
+        id: 'bug',
+        label: 'App bug',
+        icon: 'bug-outline',
+        severity: 'low',
+        reportType: 'app_bug',
+        placeholder:
+          'What were you trying to do? What happened instead? Steps to reproduce help us fix it faster.',
+        hint: 'Mention your phone model if the app crashed or froze.',
+      },
+      {
+        id: 'feedback',
+        label: 'Feedback',
+        icon: 'star-outline',
+        severity: 'low',
+        reportType: 'general',
+        placeholder: 'What do you love? What could be better?',
+        hint: 'Quick feedback helps us improve Kumasi corridors and features.',
+      },
+      {
+        id: 'other',
+        label: 'Other',
+        icon: 'chatbubble-ellipses-outline',
+        severity: 'low',
+        reportType: 'general',
+        placeholder: 'Describe your issue or feedback.',
+        hint: 'We typically respond within 24 hours by email.',
+      },
+    ]);
+    function o(o) {
+      return t.find(t => t.id === o) ?? t[t.length - 1];
+    }
+    ((e.REPORT_STATUS_LABELS = {
+      submitted: 'Submitted',
+      emailed: 'Emailed to support',
+      synced: 'Sent to safety team',
+    }),
+      (e.REPORT_TIPS = [
+        'Attach the route (e.g. Tech Junction \u2192 Ayeduase) and approximate time.',
+        'For payments, copy your MoMo reference from the confirmation SMS.',
+        'Safety reports are reviewed promptly \u2014 call 112 if you need help now.',
+      ]));
+  },
+  1805,
+  []
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.formatReportDate = function (t) {
+        if (!t) return '\u2014';
+        try {
+          return new Date(t).toLocaleString('en-GH', {
+            day: 'numeric',
+            month: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+          });
+        } catch {
+          return t;
+        }
+      }),
+      (e.submitIssueReport = async function ({
+        userId: t,
+        user: u,
+        profile: l,
+        categoryId: p,
+        description: c,
+        tripContext: y = null,
+        role: f = 'passenger',
+      }) {
+        const I = String(c ?? '').trim();
+        if (!I)
+          return { data: null, error: new Error('Please describe the issue before submitting.') };
+        const b = (0, r(d[2]).getIssueCategory)(p),
+          $ = {
+            id: `issue-${Date.now()}`,
+            categoryId: b.id,
+            type: b.label,
+            description: I,
+            tripId: y?.id ?? null,
+            tripRoute: y?.route ?? null,
+            createdAt: new Date().toISOString(),
+            status: 'submitted',
+          },
+          h = await s({ userId: t, role: f, categoryId: p, description: I, tripContext: y });
+        h.synced && ($.status = 'synced');
+        const _ = o({
+          issueType: b.label,
+          description: I,
+          profile: l,
+          user: u,
+          tripContext: y,
+          categoryId: p,
+        });
+        let C = !1;
+        try {
+          (await n.default.canOpenURL(_)) &&
+            (await n.default.openURL(_),
+            (C = !0),
+            'submitted' === $.status && ($.status = 'emailed'));
+        } catch {}
+        return { data: { report: $, emailed: C, synced: h.synced }, error: null };
+      }));
+    var n = t(r(d[1]));
+    function o({
+      issueType: t,
+      description: n,
+      profile: o,
+      user: s,
+      tripContext: u,
+      categoryId: l,
+    }) {
+      const p = (0, r(d[2]).getIssueCategory)(l),
+        c = encodeURIComponent(`${r(d[3]).APP_NAME} report: ${t}`),
+        y = [
+          `Issue type: ${t}`,
+          `Category: ${p.id}`,
+          `User: ${o?.full_name ?? s?.email ?? 'Unknown'}`,
+          `Email: ${s?.email ?? 'N/A'}`,
+          `Phone: ${o?.phone_number ?? 'N/A'}`,
+          `User ID: ${s?.id ?? 'N/A'}`,
+        ];
+      (u?.route && y.push(`Trip route: ${u.route}`),
+        u?.id && y.push(`Trip / booking ID: ${u.id}`),
+        u?.driverName && y.push(`Operator: ${u.driverName}`),
+        u?.plateNumber && y.push(`Plate: ${u.plateNumber}`),
+        y.push('', n.trim(), '', '\u2014 Sent from TrotroOS app'));
+      const f = encodeURIComponent(y.join('\n'));
+      return `mailto:${r(d[3]).SUPPORT_EMAIL}?subject=${c}&body=${f}`;
+    }
+    async function s({ userId: t, role: n, categoryId: o, description: s, tripContext: u }) {
+      const l = (0, r(d[4]).getSupabase)();
+      if (!l || !t) return { synced: !1 };
+      const p = (0, r(d[2]).getIssueCategory)(o);
+      if (!(
+        'urgent' === p.severity ||
+        'safety' === p.id ||
+        'driver' === p.id ||
+        'payment' === p.id
+      ))
+        return { synced: !1 };
+      try {
+        const c = {
+            ride_id: u?.rideId ?? null,
+            trip_id: u?.tripId ?? u?.id ?? null,
+            reporter_id: t,
+            reporter_role: n ?? 'passenger',
+            route: [u?.route, s.slice(0, 500)].filter(Boolean).join(' \xb7 '),
+            latitude: u?.latitude ?? null,
+            longitude: u?.longitude ?? null,
+            report_type: p.reportType,
+            status: 'open',
+          },
+          { error: y } = await l.from('safety_reports').insert(c);
+        return !y ||
+          (0, r(d[5], './db').isMissingTableError)(y) ||
+          (0, r(d[5], './db').isRlsError)(y)
+          ? ((0, r(d[2]).isUrgentIssue)(o) &&
+              (await (0, r(d[6]).notifySafetyTeamAlert)(t).catch(() => {})),
+            { synced: !y })
+          : { synced: !1, error: y };
+      } catch {
+        return { synced: !1 };
+      }
+    }
+  },
+  1806,
+  [1, 667, 1805, 508, 502, 558, 760]
+);

@@ -1,5 +1,1913 @@
-__d(function(g,r,i,a,_m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const t=(0,r(d[17]).useNavigation)(),{colors:u}=(0,r(d[18]).useTheme)(),{compact:R}=(0,r(d[19]).useCompactLayout)(),I=(0,s.useMemo)(()=>F(u,R),[u,R]),{profile:M,user:P}=(0,r(d[20]).useAuth)(),{activeTrip:A,demandRoutes:B,demandUpdatedAt:H,demandLive:k,recentTrips:z,todayStats:$,refreshing:_,refreshDemand:D,startTrip:E,deleteRecentTrip:L}=(0,r(d[21]).useMateTrip)(),{showToast:O}=(0,r(d[22]).useToast)(),[W,G]=(0,s.useState)(!1),[V,U]=(0,s.useState)(!1),[N,K]=(0,s.useState)(!1),[Q,q]=(0,s.useState)(null),[J,X]=(0,s.useState)(0),[Y,Z]=(0,s.useState)(0),ee=B[0]??null;(0,s.useEffect)(()=>{if(!A)return;const t=setInterval(()=>Z(t=>t+1),1e3);return()=>clearInterval(t)},[A]);const te=M?.full_name??'Mate',ae=M?.trust_score??72,se=M?.vehicle_type??'Trotro',re=(0,s.useMemo)(()=>A?C(A.startedAt):'',[A,Y]),ne=t=>t?.message??'Try again.',ie=(t=null)=>{q(t),G(!0)};return(0,v.jsxs)(p.default,{testID:"mate-dashboard",title:`${S()}, ${te}`,subtitle:"Mate operations",kicker:"Operations",noPadding:!0,gradientHeader:!0,headerRight:(0,v.jsx)(y.default,{score:ae,compact:!0}),children:[(0,v.jsxs)(c.default,{style:I.page,children:[(0,v.jsxs)(c.default,{style:I.fixedSection,children:[(0,v.jsxs)(m.default,{elevated:!0,style:I.earningsCard,children:[(0,v.jsxs)(o.default,{style:I.earningsToggle,onPress:()=>K(t=>!t),accessibilityRole:"button",accessibilityState:{expanded:N},children:[(0,v.jsxs)(c.default,{style:I.earningsToggleText,children:[(0,v.jsx)(l.default,{style:I.earningsLabel,children:"Today's earnings"}),N?null:(0,v.jsx)(l.default,{style:I.earningsHint,children:"Tap to view amount"})]}),(0,v.jsx)(r(d[25]).Ionicons,{name:N?'chevron-up':'chevron-down',size:22,color:u.textSecondary})]}),N?(0,v.jsxs)(v.Fragment,{children:[(0,v.jsxs)(c.default,{style:I.earningsHeader,children:[(0,v.jsxs)(c.default,{children:[(0,v.jsxs)(l.default,{style:I.earningsValue,children:["GHS ",$.earned.toFixed(2)]}),(0,v.jsxs)(l.default,{style:I.earningsMeta,children:[$.trips," trips completed"]})]}),(0,v.jsx)(r(d[25]).Ionicons,{name:"wallet-outline",size:28,color:u.primaryLight})]}),(0,v.jsx)(o.default,{onPress:()=>t.navigate(r(d[23]).ROUTES.MATE_EARNINGS),children:(0,v.jsx)(l.default,{style:I.earningsLink,children:"View earnings breakdown \u2192"})})]}):null]}),(0,v.jsx)(b.default,{vehicleKind:"trotro",title:"Accept corridor packages",hint:"Get parcel jobs along your trotro corridor while you are available."}),A?(0,v.jsxs)(m.default,{elevated:!0,glow:!0,children:[(0,v.jsx)(l.default,{style:I.activeRoute,children:A.route}),(0,v.jsxs)(c.default,{style:I.activeMetaRow,children:[(0,v.jsx)(c.default,{style:[I.seatBadge,w(A.seatsAvailable,I)],children:(0,v.jsxs)(l.default,{style:I.seatBadgeText,children:[A.seatsAvailable," seats left"]})}),(0,v.jsx)(l.default,{style:I.elapsed,children:re})]}),(0,v.jsx)(f.default,{title:"Go to active trip",onPress:()=>t.navigate(r(d[23]).ROUTES.MATE_ACTIVE_TRIP),compact:!0})]}):(0,v.jsxs)(v.Fragment,{children:[(0,v.jsx)(T.default,{mateId:P?.id,refreshKey:J,onSelectPreset:t=>ie(t)}),(0,v.jsxs)(m.default,{elevated:!0,glow:!0,style:I.startCard,children:[(0,v.jsxs)(c.default,{style:I.startHeader,children:[(0,v.jsx)(c.default,{style:I.startIconWrap,children:(0,v.jsx)(r(d[25]).Ionicons,{name:"bus",size:24,color:u.primaryLight})}),(0,v.jsxs)(c.default,{style:I.startTextCol,children:[(0,v.jsx)(l.default,{style:I.startTitle,children:"Ready to depart?"}),(0,v.jsx)(l.default,{style:I.startSubtitle,children:ee&&ee.waiting>0?`${ee.waiting} passengers waiting on ${ee.route}`:'Start broadcasting your route to passengers'})]})]}),ee&&ee.waiting>0?(0,v.jsx)(f.default,{title:`Quick start \xb7 ${ee.route}`,onPress:()=>ie({origin:ee.origin,destination:ee.destination}),compact:!0}):null,(0,v.jsx)(f.default,{title:"Start new trip",variant:ee?.waiting>0?'secondary':'primary',onPress:()=>ie(),compact:ee?.waiting>0})]})]})]}),(0,v.jsx)(c.default,{style:I.demandSection,children:(0,v.jsx)(x.default,{routes:B,scrollable:!0,lastUpdated:H,live:k,refreshControl:(0,v.jsx)(n.default,{refreshing:_,onRefresh:D,tintColor:u.primary})})}),(0,v.jsx)(c.default,{style:I.recentSection,children:(0,v.jsx)(j.default,{trips:z,onDelete:async t=>{const{error:s}=await L(t);O(s?{type:'error',title:'Could not remove trip',message:s.message??'Try again.'}:{type:'success',title:'Trip removed',message:'Removed from your recent trips list.'})},scrollable:!0})})]}),(0,v.jsx)(h.default,{visible:W,onClose:()=>{G(!1),q(null)},onDepart:async s=>{U(!0);try{const{data:n,error:o,gpsWarning:l}=await E(s);if(o)return void O({type:'error',title:'Could not start trip',message:ne(o)});G(!1),q(null),O({type:'success',title:'Trip started',message:`${s.origin} \u2192 ${s.destination} is now live for passengers.`}),l&&O({type:'info',title:'Location off',message:l}),t.navigate(r(d[23],"../../constants/routes").ROUTES.MATE_ACTIVE_TRIP,{justDeparted:!0})}catch(t){O({type:'error',title:'Could not start trip',message:ne(t)})}finally{U(!1)}},defaultVehicleType:se,demandRoutes:B,recentTrips:z,departing:V,initialPreset:Q,onSavePreset:async t=>{if(!P?.id)return;const{error:s}=await(0,r(d[24]).saveMateRoutePreset)(P.id,t);s?O({type:'error',title:'Could not save route',message:s.message??'Try again.'}):(X(t=>t+1),O({type:'success',title:'Route saved',message:`${t.origin} \u2192 ${t.destination} is ready for one-tap depart.`}))}})]})};var s=r(d[1]),n=t(r(d[2])),o=t(r(d[3])),l=t(r(d[4])),c=t(r(d[5])),u=t(r(d[6])),p=t(r(d[7])),m=t(r(d[8])),f=t(r(d[9])),y=t(r(d[10])),h=t(r(d[11])),x=t(r(d[12])),j=t(r(d[13])),T=t(r(d[14])),b=t(r(d[15])),v=r(d[16]);function S(){const t=(new Date).getHours();return t<12?'Good morning':t<17?'Good afternoon':'Good evening'}function w(t,s){return t>=5?s.seatsPlenty:t>=2?s.seatsFilling:1===t?s.seatsAlmostFull:s.seatsFull}function C(t){const s=Math.floor((Date.now()-t)/1e3),n=Math.floor(s/3600),o=Math.floor(s%3600/60),l=s%60;return`${String(n).padStart(2,'0')}:${String(o).padStart(2,'0')}:${String(l).padStart(2,'0')}`}const F=(t,s=!1)=>u.default.create({page:{flex:1},fixedSection:{paddingHorizontal:s?r(d[26]).spacing.md:r(d[26]).spacing.lg,paddingBottom:r(d[26]).spacing.md},earningsCard:{marginBottom:r(d[26]).spacing.md},earningsToggle:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:r(d[26]).spacing.sm},earningsToggleText:{flex:1},earningsHint:Object.assign({},r(d[26]).typography.caption,{color:t.textMuted,marginTop:2}),earningsHeader:{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',alignItems:'flex-start',gap:r(d[26]).spacing.sm,marginTop:r(d[26]).spacing.sm,marginBottom:r(d[26]).spacing.sm},earningsLabel:Object.assign({},r(d[26]).typography.label,{marginBottom:r(d[26]).spacing.xs}),earningsValue:{fontFamily:r(d[26]).fontFamily.bold,fontSize:s?22:26,color:t.primaryLight},earningsMeta:Object.assign({},r(d[26]).typography.caption,{marginTop:r(d[26]).spacing.xs}),earningsLink:{fontFamily:r(d[26]).fontFamily.semiBold,fontSize:14,color:t.primary},demandSection:{flex:1,minHeight:0,paddingHorizontal:s?r(d[26]).spacing.md:r(d[26]).spacing.lg,borderTopWidth:u.default.hairlineWidth,borderTopColor:t.borderSoft,paddingTop:r(d[26]).spacing.sm},recentSection:{flex:1,minHeight:0,paddingHorizontal:s?r(d[26]).spacing.md:r(d[26]).spacing.lg,paddingBottom:120,borderTopWidth:u.default.hairlineWidth,borderTopColor:t.borderSoft,paddingTop:r(d[26]).spacing.sm},startCard:{marginBottom:0},startHeader:{flexDirection:'row',alignItems:'flex-start',gap:r(d[26]).spacing.md,marginBottom:r(d[26]).spacing.lg},startIconWrap:{width:48,height:48,borderRadius:24,alignItems:'center',justifyContent:'center',backgroundColor:t.primaryAlpha08},startTextCol:{flex:1},startTitle:{fontFamily:r(d[26]).fontFamily.bold,fontSize:20,color:t.textPrimary,marginBottom:r(d[26]).spacing.xs},startSubtitle:Object.assign({},r(d[26]).typography.body,{color:t.textSecondary,lineHeight:20}),activeRoute:{fontFamily:r(d[26]).fontFamily.bold,fontSize:18,color:t.textPrimary,marginBottom:r(d[26]).spacing.md},activeMetaRow:{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',alignItems:'center',gap:r(d[26]).spacing.sm,marginBottom:r(d[26]).spacing.md},seatBadge:{borderRadius:r(d[26]).radius.pill,paddingHorizontal:r(d[26]).spacing.md,paddingVertical:6},seatBadgeText:{fontFamily:r(d[26]).fontFamily.semiBold,fontSize:13,color:t.onPrimary},seatsPlenty:{backgroundColor:t.seatsAvailable},seatsFilling:{backgroundColor:t.seatsFilling},seatsAlmostFull:{backgroundColor:t.seatsAlmostFull},seatsFull:{backgroundColor:t.seatsFull},elapsed:Object.assign({},r(d[26]).typography.caption)})},1443,[1,5,105,326,161,19,26,1510,684,672,1486,1762,1763,1764,1765,1704,183,382,381,1671,501,1482,1386,682,692,578,377]);
-__d(function(g,_r,i,_a,m,e,d){var t=_r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({visible:t,onClose:j,onDepart:S,defaultVehicleType:w="Trotro",demandRoutes:T=[],recentTrips:C=[],departing:v=!1,initialPreset:R=null,onSavePreset:F=null}){const B=(0,_r(d[14]).useSafeAreaInsets)(),{colors:k}=(0,_r(d[15]).useTheme)(),I=b(k),P=w in _r(d[16]).VEHICLE_DEFAULTS?w:'Trotro',O=_r(d[16]).VEHICLE_DEFAULTS[P]??_r(d[16]).VEHICLE_DEFAULTS.Trotro,z=(0,r.useMemo)(()=>[..._r(d[16]).TROTRO_ROUTES].sort((t,r)=>{const a=y(T,t.origin,t.destination)?.waiting??0;return(y(T,r.origin,r.destination)?.waiting??0)-a}),[T]),H=T[0]??null,L=C[0]??null,E=x(L?.route),[A,D]=(0,r.useState)(z[0]?.id??_r(d[16]).TROTRO_ROUTES[0].id),[W,M]=(0,r.useState)(String(O.seats)),[V,_]=(0,r.useState)(String(_r(d[16]).TROTRO_ROUTES[0].baseFare)),[U,q]=(0,r.useState)(!1),[G,$]=(0,r.useState)(''),[K,N]=(0,r.useState)(''),[J,Q]=(0,r.useState)(''),X=z.find(t=>t.id===A)??z[0],Y=(t,r)=>{const a=_r(d[16]).TROTRO_ROUTES.find(a=>a.origin===t&&a.destination===r);a?(q(!1),D(a.id),_(String(a.baseFare))):(q(!0),$(t),N(r)),Q('')};(0,r.useEffect)(()=>{if(!t)return;const r=R??(H?.origin&&H?.destination?{origin:H.origin,destination:H.destination}:null);M(String(O.seats)),q(!1),$(''),N(''),Q(''),r?.origin&&r?.destination?(Y(r.origin,r.destination),null!=r.totalSeats&&M(String(r.totalSeats)),null!=r.farePerSeat&&_(String(r.farePerSeat))):(D(z[0]?.id??_r(d[16]).TROTRO_ROUTES[0].id),_(String(z[0]?.baseFare??_r(d[16]).TROTRO_ROUTES[0].baseFare)))},[t,P,R?.origin,R?.destination,R?.totalSeats,R?.farePerSeat]),(0,r.useEffect)(()=>{!U&&X&&_(String(X.baseFare))},[A,U,X]);const Z=U?G.trim():X?.origin,ee=U?K.trim():X?.destination,te=Math.min(30,Math.max(1,parseInt(W,10)||1)),ie=Math.max(0,parseFloat(V)||0),re=te*ie,ae=y(T,Z,ee),oe=t=>{M(String(Math.min(30,Math.max(1,te+t))))};return(0,h.jsx)(o.default,{visible:t,transparent:!0,animationType:"slide",onRequestClose:j,children:(0,h.jsxs)(p.default,{style:I.overlay,pointerEvents:"box-none",children:[(0,h.jsx)(n.default,{style:s.default.absoluteFill,onPress:j,accessibilityRole:"button"}),(0,h.jsx)(a.default,{style:I.sheetWrap,behavior:void 0,pointerEvents:"box-none",children:(0,h.jsxs)(p.default,{style:I.sheet,pointerEvents:"auto",children:[(0,h.jsxs)(p.default,{style:I.headerRow,children:[(0,h.jsx)(n.default,{style:I.iconBtn,onPress:j,hitSlop:12,children:(0,h.jsx)(_r(d[17]).Ionicons,{name:"close",size:22,color:k.textMuted})}),(0,h.jsx)(c.default,{style:I.title,children:"Start new trip"}),(0,h.jsx)(p.default,{style:{width:40}})]}),(0,h.jsxs)(l.default,{style:I.scroll,contentContainerStyle:I.scrollContent,keyboardShouldPersistTaps:"handled",showsVerticalScrollIndicator:!1,children:[(0,h.jsx)(c.default,{style:I.subtitle,children:"Broadcast your route to passengers. Routes with waiting queue demand are listed first."}),H||E?(0,h.jsxs)(p.default,{style:I.quickRow,children:[H&&H.waiting>0?(0,h.jsxs)(n.default,{style:I.quickChip,onPress:()=>Y(H.origin,H.destination),children:[(0,h.jsx)(_r(d[17]).Ionicons,{name:"flash",size:14,color:k.primaryLight}),(0,h.jsxs)(c.default,{style:I.quickChipText,children:["Hot: ",H.waiting," waiting \xb7 ",H.route]})]}):null,E?(0,h.jsxs)(n.default,{style:I.quickChip,onPress:()=>Y(E.origin,E.destination),children:[(0,h.jsx)(_r(d[17]).Ionicons,{name:"repeat",size:14,color:k.textSecondary}),(0,h.jsx)(c.default,{style:I.quickChipText,children:"Repeat last trip"})]}):null]}):null,U?(0,h.jsxs)(p.default,{style:I.customPanel,children:[(0,h.jsx)(c.default,{style:I.label,children:"Custom route"}),(0,h.jsx)(c.default,{style:I.subtitle,children:"Tap a landmark or type your stops."}),(0,h.jsx)(c.default,{style:[I.label,{marginTop:0}],children:"Origin"}),(0,h.jsx)(p.default,{style:I.locationChips,children:_r(d[18]).KUMASI_LOCATIONS.slice(0,6).map(t=>(0,h.jsx)(n.default,{style:I.locationChip,onPress:()=>$(t),children:(0,h.jsx)(c.default,{style:I.locationChipText,children:t})},`o-${t}`))}),(0,h.jsx)(u.default,{style:I.customInput,placeholder:"Origin",placeholderTextColor:k.textMuted,value:G,onChangeText:$}),(0,h.jsx)(c.default,{style:I.label,children:"Destination"}),(0,h.jsx)(p.default,{style:I.locationChips,children:_r(d[18]).KUMASI_LOCATIONS.slice(0,6).map(t=>(0,h.jsx)(n.default,{style:I.locationChip,onPress:()=>N(t),children:(0,h.jsx)(c.default,{style:I.locationChipText,children:t})},`d-${t}`))}),(0,h.jsx)(u.default,{style:I.customInput,placeholder:"Destination",placeholderTextColor:k.textMuted,value:K,onChangeText:N}),(0,h.jsxs)(n.default,{style:I.backLink,onPress:()=>q(!1),children:[(0,h.jsx)(_r(d[17]).Ionicons,{name:"arrow-back",size:16,color:k.textSecondary}),(0,h.jsx)(c.default,{style:I.backLinkText,children:"Use predefined routes"})]})]}):(0,h.jsxs)(h.Fragment,{children:[(0,h.jsx)(c.default,{style:I.label,children:"Select route"}),z.map(t=>{const r=t.id===A,a=y(T,t.origin,t.destination),o=(a?.waiting??0)>=4;return(0,h.jsxs)(n.default,{style:[I.routeOption,r&&I.routeOptionSelected],onPress:()=>{D(t.id),Q('')},children:[(0,h.jsxs)(p.default,{style:I.routeHeader,children:[(0,h.jsxs)(c.default,{style:I.routeText,children:[t.origin," \u2192 ",t.destination]}),a?.waiting>0?(0,h.jsxs)(p.default,{style:[I.demandBadge,o&&I.demandBadgeHot],children:[(0,h.jsx)(_r(d[17]).Ionicons,{name:o?'people':'person',size:11,color:o?k.primaryLight:k.greenAccent}),(0,h.jsx)(c.default,{style:[I.demandBadgeText,o&&I.demandBadgeTextHot],children:a.waiting})]}):null]}),(0,h.jsxs)(c.default,{style:I.routeMeta,children:["GHS ",t.baseFare.toFixed(2),"/seat \xb7 ~",t.avgTimeMin," min \xb7",' ',t.distanceKm," km"]})]},t.id)}),(0,h.jsxs)(n.default,{style:I.customButton,onPress:()=>q(!0),children:[(0,h.jsx)(_r(d[17]).Ionicons,{name:"map-outline",size:22,color:k.primaryLight}),(0,h.jsxs)(p.default,{style:I.customTextWrap,children:[(0,h.jsx)(c.default,{style:I.customButtonTitle,children:"Custom route"}),(0,h.jsx)(c.default,{style:I.customButtonSubtitle,children:"Set your own origin and destination"})]}),(0,h.jsx)(_r(d[17]).Ionicons,{name:"chevron-forward",size:18,color:k.primaryLight})]})]}),(0,h.jsx)(c.default,{style:I.label,children:"Vehicle & seats"}),(0,h.jsxs)(p.default,{style:I.seatRow,children:[(0,h.jsxs)(p.default,{style:I.seatStepper,children:[(0,h.jsx)(n.default,{style:I.stepBtn,onPress:()=>oe(-1),children:(0,h.jsx)(_r(d[17]).Ionicons,{name:"remove",size:20,color:k.textPrimary})}),(0,h.jsx)(u.default,{style:I.seatInput,keyboardType:"number-pad",value:W,onChangeText:M,maxLength:2}),(0,h.jsx)(n.default,{style:I.stepBtn,onPress:()=>oe(1),children:(0,h.jsx)(_r(d[17]).Ionicons,{name:"add",size:20,color:k.textPrimary})})]}),(0,h.jsxs)(c.default,{style:I.vehicleHint,children:[O.label," \xb7 default ",O.seats," seats"]})]}),(0,h.jsx)(c.default,{style:I.label,children:"Fare per seat"}),(0,h.jsxs)(p.default,{style:I.fareRow,children:[(0,h.jsx)(c.default,{style:I.farePrefix,children:"GHS"}),(0,h.jsx)(u.default,{style:I.fareInput,keyboardType:"decimal-pad",value:V,onChangeText:_})]}),Z&&ee?(0,h.jsxs)(p.default,{style:I.previewCard,children:[(0,h.jsx)(c.default,{style:I.previewTitle,children:"Trip preview"}),(0,h.jsxs)(c.default,{style:I.previewRoute,children:[Z," \u2192 ",ee]}),(0,h.jsxs)(p.default,{style:I.previewRow,children:[(0,h.jsx)(c.default,{style:I.previewLabel,children:"Seats available"}),(0,h.jsx)(c.default,{style:I.previewValue,children:te})]}),(0,h.jsxs)(p.default,{style:I.previewRow,children:[(0,h.jsx)(c.default,{style:I.previewLabel,children:"Fare per seat"}),(0,h.jsxs)(c.default,{style:I.previewValue,children:["GHS ",ie.toFixed(2)]})]}),ae?.waiting>0?(0,h.jsxs)(p.default,{style:I.previewRow,children:[(0,h.jsx)(c.default,{style:I.previewLabel,children:"Passengers in queue"}),(0,h.jsxs)(c.default,{style:[I.previewValue,I.previewHighlight],children:[ae.waiting," waiting now"]})]}):null,(0,h.jsxs)(p.default,{style:I.previewRow,children:[(0,h.jsx)(c.default,{style:I.previewLabel,children:"Max if full"}),(0,h.jsxs)(c.default,{style:[I.previewValue,I.previewHighlight],children:["GHS ",re.toFixed(2)]})]})]}):null,J?(0,h.jsx)(c.default,{style:I.errorText,children:J}):null,F&&Z&&ee?(0,h.jsx)(f.default,{title:"Save as route preset",variant:"secondary",onPress:()=>F({origin:Z,destination:ee,totalSeats:te,farePerSeat:ie,vehicleType:P}),compact:!0}):null]}),(0,h.jsxs)(p.default,{style:[I.footer,{paddingBottom:B.bottom+_r(d[13]).spacing.md}],children:[(0,h.jsx)(f.default,{title:v?'Starting trip\u2026':'Depart now',onPress:async()=>{if(Z&&ee)if(ie<=0)Q('Set a fare per seat greater than zero.');else{Q('');try{await S({origin:Z,destination:ee,vehicleType:P,totalSeats:te,farePerSeat:ie})}catch(t){Q(t?.message??'Could not start trip. Try again.')}}else Q('Enter both origin and destination to depart.')},loading:v,disabled:v,testID:"mate-depart-now"}),(0,h.jsx)(f.default,{title:"Cancel",variant:"ghost",onPress:j,compact:!0,noMargin:!0})]})]})})]})})};var r=_r(d[1]),a=t(_r(d[2])),o=t(_r(d[3])),n=(t(_r(d[4])),t(_r(d[5]))),l=t(_r(d[6])),s=t(_r(d[7])),c=t(_r(d[8])),u=t(_r(d[9])),p=t(_r(d[10])),f=t(_r(d[11])),h=_r(d[12]);function x(t){if(!t)return null;const r=String(t).split('\u2192').map(t=>t.trim());return 2===r.length&&r[0]&&r[1]?{origin:r[0],destination:r[1]}:null}function y(t,r,a){return(t??[]).find(t=>t.origin===r&&t.destination===a)??(t??[]).find(t=>t.route===`${r} \u2192 ${a}`)}const b=t=>s.default.create({overlay:{flex:1,backgroundColor:t.overlay,justifyContent:'flex-end'},sheetWrap:{width:'100%',maxHeight:'94%',zIndex:2,elevation:8},sheet:{backgroundColor:t.surfaceElevated,borderTopLeftRadius:_r(d[13]).radius.xl,borderTopRightRadius:_r(d[13]).radius.xl,borderWidth:1,borderColor:t.border,borderBottomWidth:0,maxHeight:'94%',flexShrink:1},headerRow:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:_r(d[13]).spacing.lg,paddingTop:_r(d[13]).spacing.md,paddingBottom:_r(d[13]).spacing.sm},title:{flex:1,textAlign:'center',fontFamily:_r(d[13]).fontFamily.bold,fontSize:20,color:t.textPrimary},iconBtn:{width:40,height:40,borderRadius:20,alignItems:'center',justifyContent:'center',backgroundColor:t.surfaceSoft},scroll:{paddingHorizontal:_r(d[13]).spacing.lg,flexGrow:0,flexShrink:1},scrollContent:{paddingBottom:_r(d[13]).spacing.lg},subtitle:Object.assign({},_r(d[13]).typography.caption,{marginBottom:_r(d[13]).spacing.md,lineHeight:18}),quickRow:{flexDirection:'row',flexWrap:'wrap',gap:_r(d[13]).spacing.sm,marginBottom:_r(d[13]).spacing.md},quickChip:{flexDirection:'row',alignItems:'center',gap:_r(d[13]).spacing.xs,paddingHorizontal:_r(d[13]).spacing.sm,paddingVertical:_r(d[13]).spacing.xs,borderRadius:_r(d[13]).radius.pill,borderWidth:1,borderColor:t.border,backgroundColor:t.surface},quickChipText:{fontFamily:_r(d[13]).fontFamily.medium,fontSize:12,color:t.textSecondary},label:{fontFamily:_r(d[13]).fontFamily.semiBold,fontSize:14,color:t.textPrimary,marginBottom:_r(d[13]).spacing.sm,marginTop:_r(d[13]).spacing.sm},routeOption:{backgroundColor:t.surface,borderRadius:_r(d[13]).radius.md,padding:_r(d[13]).spacing.md,marginBottom:_r(d[13]).spacing.sm,borderWidth:1,borderColor:t.border},routeOptionSelected:{borderColor:t.primary,backgroundColor:t.primaryAlpha06??t.surface},routeHeader:{flexDirection:'row',alignItems:'flex-start',justifyContent:'space-between',gap:_r(d[13]).spacing.sm},routeText:{flex:1,fontFamily:_r(d[13]).fontFamily.semiBold,fontSize:15,color:t.textPrimary},routeMeta:Object.assign({},_r(d[13]).typography.caption,{marginTop:4}),demandBadge:{flexDirection:'row',alignItems:'center',gap:4,paddingHorizontal:_r(d[13]).spacing.sm,paddingVertical:4,borderRadius:_r(d[13]).radius.pill,backgroundColor:t.greenAlpha12},demandBadgeHot:{backgroundColor:t.primaryAlpha12??t.primaryAlpha08},demandBadgeText:{fontFamily:_r(d[13]).fontFamily.semiBold,fontSize:11,color:t.greenAccent},demandBadgeTextHot:{color:t.primaryLight},customButton:{flexDirection:'row',alignItems:'center',gap:_r(d[13]).spacing.md,padding:_r(d[13]).spacing.md,borderRadius:_r(d[13]).radius.lg,borderWidth:1,borderColor:t.primaryAlpha35??t.primary,borderStyle:'dashed',backgroundColor:t.primaryAlpha06??t.surface,marginBottom:_r(d[13]).spacing.md},customTextWrap:{flex:1},customButtonTitle:{fontFamily:_r(d[13]).fontFamily.bold,fontSize:15,color:t.primaryLight},customButtonSubtitle:Object.assign({},_r(d[13]).typography.caption,{marginTop:2}),customPanel:{padding:_r(d[13]).spacing.md,borderRadius:_r(d[13]).radius.lg,borderWidth:1,borderColor:t.border,backgroundColor:t.surface,marginBottom:_r(d[13]).spacing.md},customInput:{backgroundColor:t.surfaceElevated,color:t.textPrimary,borderRadius:_r(d[13]).radius.md,padding:_r(d[13]).spacing.md,fontSize:16,fontFamily:_r(d[13]).fontFamily.medium,minHeight:48,marginBottom:_r(d[13]).spacing.sm,borderWidth:1,borderColor:t.border},locationChips:{flexDirection:'row',flexWrap:'wrap',gap:_r(d[13]).spacing.xs,marginBottom:_r(d[13]).spacing.sm},locationChip:{paddingHorizontal:_r(d[13]).spacing.sm,paddingVertical:6,borderRadius:_r(d[13]).radius.pill,backgroundColor:t.surfaceSoft,borderWidth:1,borderColor:t.borderSoft},locationChipText:{fontFamily:_r(d[13]).fontFamily.medium,fontSize:12,color:t.textSecondary},backLink:{flexDirection:'row',alignItems:'center',gap:_r(d[13]).spacing.xs,marginTop:_r(d[13]).spacing.xs},backLinkText:{fontFamily:_r(d[13]).fontFamily.medium,fontSize:14,color:t.textSecondary},seatRow:{flexDirection:'row',alignItems:'center',gap:_r(d[13]).spacing.md,marginBottom:_r(d[13]).spacing.sm},seatStepper:{flexDirection:'row',alignItems:'center',gap:_r(d[13]).spacing.sm},stepBtn:{width:40,height:40,borderRadius:_r(d[13]).radius.md,alignItems:'center',justifyContent:'center',backgroundColor:t.surfaceSoft,borderWidth:1,borderColor:t.border},seatInput:{minWidth:56,textAlign:'center',backgroundColor:t.surface,color:t.textPrimary,borderRadius:_r(d[13]).radius.md,paddingVertical:_r(d[13]).spacing.sm,paddingHorizontal:_r(d[13]).spacing.sm,fontSize:18,fontFamily:_r(d[13]).fontFamily.bold,borderWidth:1,borderColor:t.border},vehicleHint:Object.assign({},_r(d[13]).typography.caption,{flex:1}),fareRow:{flexDirection:'row',alignItems:'center',backgroundColor:t.surface,borderRadius:_r(d[13]).radius.md,paddingHorizontal:_r(d[13]).spacing.md,minHeight:48,marginBottom:_r(d[13]).spacing.md,borderWidth:1,borderColor:t.border},farePrefix:{fontFamily:_r(d[13]).fontFamily.medium,fontSize:16,color:t.textSecondary,marginRight:_r(d[13]).spacing.sm},fareInput:{flex:1,color:t.textPrimary,fontSize:18,fontFamily:_r(d[13]).fontFamily.semiBold,paddingVertical:_r(d[13]).spacing.sm},previewCard:{padding:_r(d[13]).spacing.md,borderRadius:_r(d[13]).radius.md,backgroundColor:t.primaryAlpha06??t.surface,borderWidth:1,borderColor:t.primaryAlpha18??t.border,marginBottom:_r(d[13]).spacing.md},previewTitle:{fontFamily:_r(d[13]).fontFamily.semiBold,fontSize:13,color:t.primaryLight,marginBottom:_r(d[13]).spacing.xs,textTransform:'uppercase',letterSpacing:.4},previewRoute:{fontFamily:_r(d[13]).fontFamily.bold,fontSize:16,color:t.textPrimary,marginBottom:_r(d[13]).spacing.sm},previewRow:{flexDirection:'row',justifyContent:'space-between',marginBottom:4},previewLabel:Object.assign({},_r(d[13]).typography.caption),previewValue:{fontFamily:_r(d[13]).fontFamily.medium,fontSize:13,color:t.textPrimary},previewHighlight:{fontFamily:_r(d[13]).fontFamily.bold,color:t.success??t.primaryLight},errorText:Object.assign({},_r(d[13]).typography.caption,{color:t.destructive??t.error,marginBottom:_r(d[13]).spacing.sm}),footer:{paddingHorizontal:_r(d[13]).spacing.lg,paddingTop:_r(d[13]).spacing.sm,borderTopWidth:1,borderTopColor:t.border,backgroundColor:t.surfaceElevated,gap:_r(d[13]).spacing.xs}})},1762,[1,5,681,948,14,326,106,26,161,255,19,672,183,377,572,381,682,578,1514]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({routes:t=[],scrollable:u=!1,refreshControl:c=null,lastUpdated:j=null,live:b=!1}){const w=(0,l.useMemo)(()=>(0,r(d[10]).summarizeQueueActivity)(t),[t]),C=(0,r(d[10]).formatRelativeUpdated)(j),F=(0,h.jsxs)(s.default,{style:[p.wrap,u&&p.wrapScrollable],children:[(0,h.jsxs)(s.default,{style:p.headerRow,children:[(0,h.jsx)(o.default,{style:p.title,children:"Passenger demand"}),(0,h.jsx)(o.default,{style:p.subtitle,children:"Waiting passengers by route"}),(0,h.jsxs)(s.default,{style:p.statusRow,children:[(0,h.jsx)(o.default,{style:p.updatedText,children:C}),(0,h.jsx)(y.default,{active:b,variant:"inline"})]})]}),(0,h.jsxs)(s.default,{style:p.summaryCard,children:[(0,h.jsxs)(s.default,{style:p.summaryTile,children:[(0,h.jsx)(o.default,{style:p.summaryValue,children:w.totalWaiting}),(0,h.jsx)(o.default,{style:p.summaryLabel,children:"Waiting"})]}),(0,h.jsx)(s.default,{style:p.summaryDivider}),(0,h.jsxs)(s.default,{style:p.summaryTile,children:[(0,h.jsx)(o.default,{style:p.summaryValue,children:w.recentJoins}),(0,h.jsx)(o.default,{style:p.summaryLabel,children:"Joined (15m)"})]}),(0,h.jsx)(s.default,{style:p.summaryDivider}),(0,h.jsxs)(s.default,{style:p.summaryTile,children:[(0,h.jsx)(o.default,{style:p.summaryValue,children:w.highPriority}),(0,h.jsx)(o.default,{style:p.summaryLabel,children:"High demand"})]})]}),(0,h.jsx)(f.default,{elevated:!0,padding:"none",style:p.listCard,children:0===t.length?(0,h.jsxs)(s.default,{style:p.emptyState,children:[(0,h.jsx)(o.default,{style:p.emptyTitle,children:"No passengers in queue"}),(0,h.jsx)(o.default,{style:p.emptyBody,children:b?'Updates automatically when passengers join.':'Connect to load queue data, or pull to refresh.'})]}):t.map((l,n)=>(0,h.jsxs)(s.default,{children:[(0,h.jsx)(x,{item:l}),n<t.length-1?(0,h.jsx)(s.default,{style:p.rowDivider}):null]},l.id??`${l.route}-${n}`))})]});return u?(0,h.jsx)(n.default,{style:p.scroll,contentContainerStyle:p.scrollContent,showsVerticalScrollIndicator:!1,nestedScrollEnabled:!0,refreshControl:c,children:F}):F};var l=r(d[1]),n=t(r(d[2])),s=t(r(d[3])),o=t(r(d[4])),u=t(r(d[5])),c=t(r(d[6])),f=t(r(d[7])),y=t(r(d[8])),h=r(d[9]);function x({item:t}){return(0,h.jsxs)(s.default,{style:p.routeRow,children:[(0,h.jsxs)(s.default,{style:p.routeMain,children:[(0,h.jsx)(o.default,{style:p.routeName,numberOfLines:2,children:t.route}),t.longestWaitMin>0?(0,h.jsxs)(o.default,{style:p.routeMeta,children:["Longest wait ",t.longestWaitMin," min"]}):null]}),(0,h.jsxs)(s.default,{style:p.routeCountCol,children:[(0,h.jsx)(o.default,{style:p.waitingCount,children:t.waiting}),(0,h.jsx)(o.default,{style:p.waitingLabel,children:"waiting"})]})]})}const p=u.default.create({scroll:{flex:1},scrollContent:{flexGrow:1,paddingBottom:r(d[11]).spacing.sm},wrap:{marginBottom:r(d[11]).spacing.lg},wrapScrollable:{marginBottom:0},headerRow:{marginBottom:r(d[11]).spacing.md},title:{fontFamily:r(d[11]).fontFamily.semiBold,fontSize:17,color:c.default.textPrimary,marginBottom:2},subtitle:Object.assign({},r(d[11]).typography.caption,{lineHeight:18}),statusRow:{flexDirection:'row',alignItems:'center',gap:r(d[11]).spacing.sm,marginTop:r(d[11]).spacing.xs},updatedText:{fontFamily:r(d[11]).fontFamily.regular,fontSize:12,color:c.default.textMuted},summaryCard:{flexDirection:'row',alignItems:'stretch',borderRadius:r(d[11]).radius.md,borderWidth:u.default.hairlineWidth,borderColor:c.default.borderStrong,backgroundColor:c.default.surfaceElevated,paddingVertical:r(d[11]).spacing.md,marginBottom:r(d[11]).spacing.md},summaryTile:{flex:1,alignItems:'center',paddingHorizontal:r(d[11]).spacing.sm,gap:2},summaryValue:{fontFamily:r(d[11]).fontFamily.semiBold,fontSize:20,color:c.default.textPrimary},summaryLabel:{fontFamily:r(d[11]).fontFamily.regular,fontSize:12,color:c.default.textMuted,textAlign:'center'},summaryDivider:{width:u.default.hairlineWidth,backgroundColor:c.default.border,marginVertical:r(d[11]).spacing.xs},listCard:{marginBottom:r(d[11]).spacing.sm},routeRow:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:r(d[11]).spacing.md,paddingHorizontal:r(d[11]).spacing.lg,paddingVertical:r(d[11]).spacing.md},routeMain:{flex:1},routeName:{fontFamily:r(d[11]).fontFamily.medium,fontSize:15,color:c.default.textPrimary,lineHeight:20},routeMeta:{fontFamily:r(d[11]).fontFamily.regular,fontSize:12,color:c.default.textMuted,marginTop:2},routeCountCol:{alignItems:'flex-end',minWidth:48},waitingCount:{fontFamily:r(d[11]).fontFamily.semiBold,fontSize:18,color:c.default.textPrimary,lineHeight:22},waitingLabel:{fontFamily:r(d[11]).fontFamily.regular,fontSize:12,color:c.default.textMuted},rowDivider:{height:u.default.hairlineWidth,backgroundColor:c.default.borderSoft,marginLeft:r(d[11]).spacing.lg},emptyState:{paddingHorizontal:r(d[11]).spacing.xl,paddingVertical:r(d[11]).spacing.xl},emptyTitle:{fontFamily:r(d[11]).fontFamily.medium,fontSize:15,color:c.default.textPrimary,marginBottom:r(d[11]).spacing.xs},emptyBody:Object.assign({},r(d[11]).typography.caption,{lineHeight:18})})},1763,[1,5,106,19,161,26,379,684,752,183,1502,377]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({trips:t=[],onDelete:p,scrollable:j=!1}){const[b,w]=(0,l.useState)(null),[B,C]=(0,l.useState)(!1),S=0===t.length?(0,h.jsxs)(u.default,{elevated:!0,style:x.emptyCard,children:[(0,h.jsx)(c.default,{style:x.emptyIconWrap,children:(0,h.jsx)(r(d[11]).Ionicons,{name:"time-outline",size:22,color:f.default.textMuted})}),(0,h.jsx)(s.default,{style:x.emptyTitle,children:"No recent trips"}),(0,h.jsx)(s.default,{style:x.emptyBody,children:"Completed trips will appear here after you end a run from the active trip screen."})]}):(0,h.jsx)(u.default,{elevated:!0,padding:"none",style:x.listCard,children:t.map((l,o)=>(0,h.jsxs)(c.default,{children:[(0,h.jsxs)(c.default,{style:x.tripRow,children:[(0,h.jsxs)(c.default,{style:x.tripInfo,children:[(0,h.jsx)(s.default,{style:x.tripRoute,numberOfLines:2,children:l.route}),(0,h.jsxs)(c.default,{style:x.tripMetaRow,children:[(0,h.jsxs)(s.default,{style:x.tripEarnings,children:["GHS ",l.earnings.toFixed(2)]}),(0,h.jsx)(s.default,{style:x.tripTime,children:l.time})]})]}),(0,h.jsx)(n.default,{onPress:()=>w(l),hitSlop:8,style:x.deleteButton,accessibilityRole:"button",accessibilityLabel:"Delete trip from history",children:(0,h.jsx)(r(d[11]).Ionicons,{name:"trash-outline",size:18,color:f.default.error})})]}),o<t.length-1?(0,h.jsx)(c.default,{style:x.rowDivider}):null]},l.id))});return(0,h.jsxs)(c.default,{style:[x.wrap,j&&x.wrapScrollable],children:[(0,h.jsx)(s.default,{style:x.sectionTitle,children:"Recent trips"}),j?(0,h.jsx)(o.default,{style:x.scroll,contentContainerStyle:x.scrollContent,showsVerticalScrollIndicator:!1,nestedScrollEnabled:!0,children:S}):S,(0,h.jsx)(y.default,{visible:Boolean(b),title:"Remove trip?",message:"This removes the trip from your recent list. Earnings totals are not changed.",confirmLabel:"Remove",destructive:!0,loading:B,onConfirm:async()=>{b&&p&&(C(!0),await p(b),C(!1),w(null))},onCancel:()=>w(null)})]})};var l=r(d[1]),n=t(r(d[2])),o=t(r(d[3])),s=t(r(d[4])),c=t(r(d[5])),p=t(r(d[6])),f=t(r(d[7])),u=t(r(d[8])),y=t(r(d[9])),h=r(d[10]);const x=p.default.create({wrap:{marginBottom:r(d[12]).spacing.lg},wrapScrollable:{flex:1,marginBottom:0},scroll:{flex:1},scrollContent:{paddingBottom:r(d[12]).spacing.sm},sectionTitle:{fontFamily:r(d[12]).fontFamily.semiBold,fontSize:17,color:f.default.textPrimary,marginBottom:r(d[12]).spacing.md},listCard:{marginBottom:0},tripRow:{flexDirection:'row',alignItems:'center',paddingHorizontal:r(d[12]).spacing.lg,paddingVertical:r(d[12]).spacing.md,gap:r(d[12]).spacing.md},tripInfo:{flex:1},tripRoute:{fontFamily:r(d[12]).fontFamily.semiBold,fontSize:15,color:f.default.textPrimary,marginBottom:4,lineHeight:20},tripMetaRow:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:r(d[12]).spacing.md},tripEarnings:{fontFamily:r(d[12]).fontFamily.bold,fontSize:14,color:f.default.primaryLight},tripTime:Object.assign({},r(d[12]).typography.caption,{flexShrink:1,textAlign:'right'}),deleteButton:{width:36,height:36,borderRadius:18,alignItems:'center',justifyContent:'center',backgroundColor:'rgba(232, 93, 93, 0.1)'},rowDivider:{height:1,backgroundColor:f.default.borderSoft,marginLeft:r(d[12]).spacing.lg,marginRight:r(d[12]).spacing.lg},emptyCard:{alignItems:'center',paddingVertical:r(d[12]).spacing.xl},emptyIconWrap:{width:44,height:44,borderRadius:22,backgroundColor:f.default.surfaceInset,alignItems:'center',justifyContent:'center',marginBottom:r(d[12]).spacing.md},emptyTitle:{fontFamily:r(d[12]).fontFamily.semiBold,fontSize:15,color:f.default.textPrimary,marginBottom:r(d[12]).spacing.xs},emptyBody:Object.assign({},r(d[12]).typography.caption,{textAlign:'center',lineHeight:18,maxWidth:280})})},1764,[1,5,326,106,161,19,26,379,684,1645,183,578,377]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({mateId:t,onSelectPreset:s,onSaveCurrent:y,refreshKey:x=0}){const[b,j]=(0,n.useState)([]),S=(0,n.useCallback)(async()=>{if(!t)return void j([]);const n=await(0,r(d[9]).getMateRoutePresets)(t);j(n)},[t]);(0,n.useEffect)(()=>{S()},[S,x]);const v=async n=>{await(0,r(d[9]).deleteMateRoutePreset)(t,n),S()};return 0!==b.length||y?(0,p.jsxs)(u.default,{style:h.wrap,children:[(0,p.jsxs)(u.default,{style:h.header,children:[(0,p.jsx)(c.default,{style:h.title,children:"Saved routes"}),y?(0,p.jsxs)(l.default,{style:h.saveBtn,onPress:y,children:[(0,p.jsx)(r(d[10]).Ionicons,{name:"bookmark-outline",size:14,color:f.default.primaryLight}),(0,p.jsx)(c.default,{style:h.saveBtnText,children:"Save current"})]}):null]}),(0,p.jsxs)(o.default,{horizontal:!0,showsHorizontalScrollIndicator:!1,contentContainerStyle:h.scroll,children:[b.map(t=>(0,p.jsxs)(l.default,{style:h.chip,onPress:()=>s?.(t),onLongPress:()=>v(t.id),children:[(0,p.jsx)(c.default,{style:h.chipLabel,numberOfLines:1,children:t.label}),(0,p.jsxs)(c.default,{style:h.chipRoute,numberOfLines:2,children:[t.origin," \u2192 ",t.destination]}),(0,p.jsxs)(c.default,{style:h.chipMeta,children:[t.totalSeats," seats \xb7 GHS ",Number(t.farePerSeat).toFixed(0)]})]},t.id)),0===b.length?(0,p.jsx)(c.default,{style:h.emptyHint,children:"Save a route from trip setup for one-tap depart."}):null]})]}):null};var n=r(d[1]),l=t(r(d[2])),o=t(r(d[3])),s=t(r(d[4])),c=t(r(d[5])),u=t(r(d[6])),f=t(r(d[7])),p=r(d[8]);const h=s.default.create({wrap:{marginBottom:r(d[11]).spacing.md},header:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginBottom:r(d[11]).spacing.sm},title:{fontFamily:r(d[11]).fontFamily.semiBold,fontSize:15,color:f.default.textPrimary},saveBtn:{flexDirection:'row',alignItems:'center',gap:4},saveBtnText:{fontFamily:r(d[11]).fontFamily.medium,fontSize:12,color:f.default.primaryLight},scroll:{gap:r(d[11]).spacing.sm,paddingRight:r(d[11]).spacing.lg},chip:{width:156,padding:r(d[11]).spacing.md,borderRadius:r(d[11]).radius.lg,backgroundColor:f.default.surfaceElevated,borderWidth:1,borderColor:f.default.borderSoft},chipLabel:{fontFamily:r(d[11]).fontFamily.bold,fontSize:13,color:f.default.textPrimary,marginBottom:4},chipRoute:Object.assign({},r(d[11]).typography.caption,{lineHeight:16,marginBottom:r(d[11]).spacing.xs}),chipMeta:{fontFamily:r(d[11]).fontFamily.medium,fontSize:11,color:f.default.textMuted},emptyHint:Object.assign({},r(d[11]).typography.caption,{paddingVertical:r(d[11]).spacing.sm,maxWidth:240})})},1765,[1,5,326,106,26,161,19,379,183,692,578,377]);
+__d(
+  function (g, r, i, a, _m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const t = (0, r(d[17]).useNavigation)(),
+          { colors: u } = (0, r(d[18]).useTheme)(),
+          { compact: R } = (0, r(d[19]).useCompactLayout)(),
+          I = (0, s.useMemo)(() => F(u, R), [u, R]),
+          { profile: M, user: P } = (0, r(d[20]).useAuth)(),
+          {
+            activeTrip: A,
+            demandRoutes: B,
+            demandUpdatedAt: H,
+            demandLive: k,
+            recentTrips: z,
+            todayStats: $,
+            refreshing: _,
+            refreshDemand: D,
+            startTrip: E,
+            deleteRecentTrip: L,
+          } = (0, r(d[21]).useMateTrip)(),
+          { showToast: O } = (0, r(d[22]).useToast)(),
+          [W, G] = (0, s.useState)(!1),
+          [V, U] = (0, s.useState)(!1),
+          [N, K] = (0, s.useState)(!1),
+          [Q, q] = (0, s.useState)(null),
+          [J, X] = (0, s.useState)(0),
+          [Y, Z] = (0, s.useState)(0),
+          ee = B[0] ?? null;
+        (0, s.useEffect)(() => {
+          if (!A) return;
+          const t = setInterval(() => Z(t => t + 1), 1e3);
+          return () => clearInterval(t);
+        }, [A]);
+        const te = M?.full_name ?? 'Mate',
+          ae = M?.trust_score ?? 72,
+          se = M?.vehicle_type ?? 'Trotro',
+          re = (0, s.useMemo)(() => (A ? C(A.startedAt) : ''), [A, Y]),
+          ne = t => t?.message ?? 'Try again.',
+          ie = (t = null) => {
+            (q(t), G(!0));
+          };
+        return (0, v.jsxs)(p.default, {
+          testID: 'mate-dashboard',
+          title: `${S()}, ${te}`,
+          subtitle: 'Mate operations',
+          kicker: 'Operations',
+          noPadding: !0,
+          gradientHeader: !0,
+          headerRight: (0, v.jsx)(y.default, { score: ae, compact: !0 }),
+          children: [
+            (0, v.jsxs)(c.default, {
+              style: I.page,
+              children: [
+                (0, v.jsxs)(c.default, {
+                  style: I.fixedSection,
+                  children: [
+                    (0, v.jsxs)(m.default, {
+                      elevated: !0,
+                      style: I.earningsCard,
+                      children: [
+                        (0, v.jsxs)(o.default, {
+                          style: I.earningsToggle,
+                          onPress: () => K(t => !t),
+                          accessibilityRole: 'button',
+                          accessibilityState: { expanded: N },
+                          children: [
+                            (0, v.jsxs)(c.default, {
+                              style: I.earningsToggleText,
+                              children: [
+                                (0, v.jsx)(l.default, {
+                                  style: I.earningsLabel,
+                                  children: "Today's earnings",
+                                }),
+                                N
+                                  ? null
+                                  : (0, v.jsx)(l.default, {
+                                      style: I.earningsHint,
+                                      children: 'Tap to view amount',
+                                    }),
+                              ],
+                            }),
+                            (0, v.jsx)(r(d[25]).Ionicons, {
+                              name: N ? 'chevron-up' : 'chevron-down',
+                              size: 22,
+                              color: u.textSecondary,
+                            }),
+                          ],
+                        }),
+                        N
+                          ? (0, v.jsxs)(v.Fragment, {
+                              children: [
+                                (0, v.jsxs)(c.default, {
+                                  style: I.earningsHeader,
+                                  children: [
+                                    (0, v.jsxs)(c.default, {
+                                      children: [
+                                        (0, v.jsxs)(l.default, {
+                                          style: I.earningsValue,
+                                          children: ['GHS ', $.earned.toFixed(2)],
+                                        }),
+                                        (0, v.jsxs)(l.default, {
+                                          style: I.earningsMeta,
+                                          children: [$.trips, ' trips completed'],
+                                        }),
+                                      ],
+                                    }),
+                                    (0, v.jsx)(r(d[25]).Ionicons, {
+                                      name: 'wallet-outline',
+                                      size: 28,
+                                      color: u.primaryLight,
+                                    }),
+                                  ],
+                                }),
+                                (0, v.jsx)(o.default, {
+                                  onPress: () => t.navigate(r(d[23]).ROUTES.MATE_EARNINGS),
+                                  children: (0, v.jsx)(l.default, {
+                                    style: I.earningsLink,
+                                    children: 'View earnings breakdown \u2192',
+                                  }),
+                                }),
+                              ],
+                            })
+                          : null,
+                      ],
+                    }),
+                    (0, v.jsx)(b.default, {
+                      vehicleKind: 'trotro',
+                      title: 'Accept corridor packages',
+                      hint: 'Get parcel jobs along your trotro corridor while you are available.',
+                    }),
+                    A
+                      ? (0, v.jsxs)(m.default, {
+                          elevated: !0,
+                          glow: !0,
+                          children: [
+                            (0, v.jsx)(l.default, { style: I.activeRoute, children: A.route }),
+                            (0, v.jsxs)(c.default, {
+                              style: I.activeMetaRow,
+                              children: [
+                                (0, v.jsx)(c.default, {
+                                  style: [I.seatBadge, w(A.seatsAvailable, I)],
+                                  children: (0, v.jsxs)(l.default, {
+                                    style: I.seatBadgeText,
+                                    children: [A.seatsAvailable, ' seats left'],
+                                  }),
+                                }),
+                                (0, v.jsx)(l.default, { style: I.elapsed, children: re }),
+                              ],
+                            }),
+                            (0, v.jsx)(f.default, {
+                              title: 'Go to active trip',
+                              onPress: () => t.navigate(r(d[23]).ROUTES.MATE_ACTIVE_TRIP),
+                              compact: !0,
+                            }),
+                          ],
+                        })
+                      : (0, v.jsxs)(v.Fragment, {
+                          children: [
+                            (0, v.jsx)(T.default, {
+                              mateId: P?.id,
+                              refreshKey: J,
+                              onSelectPreset: t => ie(t),
+                            }),
+                            (0, v.jsxs)(m.default, {
+                              elevated: !0,
+                              glow: !0,
+                              style: I.startCard,
+                              children: [
+                                (0, v.jsxs)(c.default, {
+                                  style: I.startHeader,
+                                  children: [
+                                    (0, v.jsx)(c.default, {
+                                      style: I.startIconWrap,
+                                      children: (0, v.jsx)(r(d[25]).Ionicons, {
+                                        name: 'bus',
+                                        size: 24,
+                                        color: u.primaryLight,
+                                      }),
+                                    }),
+                                    (0, v.jsxs)(c.default, {
+                                      style: I.startTextCol,
+                                      children: [
+                                        (0, v.jsx)(l.default, {
+                                          style: I.startTitle,
+                                          children: 'Ready to depart?',
+                                        }),
+                                        (0, v.jsx)(l.default, {
+                                          style: I.startSubtitle,
+                                          children:
+                                            ee && ee.waiting > 0
+                                              ? `${ee.waiting} passengers waiting on ${ee.route}`
+                                              : 'Start broadcasting your route to passengers',
+                                        }),
+                                      ],
+                                    }),
+                                  ],
+                                }),
+                                ee && ee.waiting > 0
+                                  ? (0, v.jsx)(f.default, {
+                                      title: `Quick start \xb7 ${ee.route}`,
+                                      onPress: () =>
+                                        ie({ origin: ee.origin, destination: ee.destination }),
+                                      compact: !0,
+                                    })
+                                  : null,
+                                (0, v.jsx)(f.default, {
+                                  title: 'Start new trip',
+                                  variant: ee?.waiting > 0 ? 'secondary' : 'primary',
+                                  onPress: () => ie(),
+                                  compact: ee?.waiting > 0,
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                  ],
+                }),
+                (0, v.jsx)(c.default, {
+                  style: I.demandSection,
+                  children: (0, v.jsx)(x.default, {
+                    routes: B,
+                    scrollable: !0,
+                    lastUpdated: H,
+                    live: k,
+                    refreshControl: (0, v.jsx)(n.default, {
+                      refreshing: _,
+                      onRefresh: D,
+                      tintColor: u.primary,
+                    }),
+                  }),
+                }),
+                (0, v.jsx)(c.default, {
+                  style: I.recentSection,
+                  children: (0, v.jsx)(j.default, {
+                    trips: z,
+                    onDelete: async t => {
+                      const { error: s } = await L(t);
+                      O(
+                        s
+                          ? {
+                              type: 'error',
+                              title: 'Could not remove trip',
+                              message: s.message ?? 'Try again.',
+                            }
+                          : {
+                              type: 'success',
+                              title: 'Trip removed',
+                              message: 'Removed from your recent trips list.',
+                            }
+                      );
+                    },
+                    scrollable: !0,
+                  }),
+                }),
+              ],
+            }),
+            (0, v.jsx)(h.default, {
+              visible: W,
+              onClose: () => {
+                (G(!1), q(null));
+              },
+              onDepart: async s => {
+                U(!0);
+                try {
+                  const { data: n, error: o, gpsWarning: l } = await E(s);
+                  if (o)
+                    return void O({ type: 'error', title: 'Could not start trip', message: ne(o) });
+                  (G(!1),
+                    q(null),
+                    O({
+                      type: 'success',
+                      title: 'Trip started',
+                      message: `${s.origin} \u2192 ${s.destination} is now live for passengers.`,
+                    }),
+                    l && O({ type: 'info', title: 'Location off', message: l }),
+                    t.navigate(r(d[23], '../../constants/routes').ROUTES.MATE_ACTIVE_TRIP, {
+                      justDeparted: !0,
+                    }));
+                } catch (t) {
+                  O({ type: 'error', title: 'Could not start trip', message: ne(t) });
+                } finally {
+                  U(!1);
+                }
+              },
+              defaultVehicleType: se,
+              demandRoutes: B,
+              recentTrips: z,
+              departing: V,
+              initialPreset: Q,
+              onSavePreset: async t => {
+                if (!P?.id) return;
+                const { error: s } = await (0, r(d[24]).saveMateRoutePreset)(P.id, t);
+                s
+                  ? O({
+                      type: 'error',
+                      title: 'Could not save route',
+                      message: s.message ?? 'Try again.',
+                    })
+                  : (X(t => t + 1),
+                    O({
+                      type: 'success',
+                      title: 'Route saved',
+                      message: `${t.origin} \u2192 ${t.destination} is ready for one-tap depart.`,
+                    }));
+              },
+            }),
+          ],
+        });
+      }));
+    var s = r(d[1]),
+      n = t(r(d[2])),
+      o = t(r(d[3])),
+      l = t(r(d[4])),
+      c = t(r(d[5])),
+      u = t(r(d[6])),
+      p = t(r(d[7])),
+      m = t(r(d[8])),
+      f = t(r(d[9])),
+      y = t(r(d[10])),
+      h = t(r(d[11])),
+      x = t(r(d[12])),
+      j = t(r(d[13])),
+      T = t(r(d[14])),
+      b = t(r(d[15])),
+      v = r(d[16]);
+    function S() {
+      const t = new Date().getHours();
+      return t < 12 ? 'Good morning' : t < 17 ? 'Good afternoon' : 'Good evening';
+    }
+    function w(t, s) {
+      return t >= 5
+        ? s.seatsPlenty
+        : t >= 2
+          ? s.seatsFilling
+          : 1 === t
+            ? s.seatsAlmostFull
+            : s.seatsFull;
+    }
+    function C(t) {
+      const s = Math.floor((Date.now() - t) / 1e3),
+        n = Math.floor(s / 3600),
+        o = Math.floor((s % 3600) / 60),
+        l = s % 60;
+      return `${String(n).padStart(2, '0')}:${String(o).padStart(2, '0')}:${String(l).padStart(2, '0')}`;
+    }
+    const F = (t, s = !1) =>
+      u.default.create({
+        page: { flex: 1 },
+        fixedSection: {
+          paddingHorizontal: s ? r(d[26]).spacing.md : r(d[26]).spacing.lg,
+          paddingBottom: r(d[26]).spacing.md,
+        },
+        earningsCard: { marginBottom: r(d[26]).spacing.md },
+        earningsToggle: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: r(d[26]).spacing.sm,
+        },
+        earningsToggleText: { flex: 1 },
+        earningsHint: Object.assign({}, r(d[26]).typography.caption, {
+          color: t.textMuted,
+          marginTop: 2,
+        }),
+        earningsHeader: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          gap: r(d[26]).spacing.sm,
+          marginTop: r(d[26]).spacing.sm,
+          marginBottom: r(d[26]).spacing.sm,
+        },
+        earningsLabel: Object.assign({}, r(d[26]).typography.label, {
+          marginBottom: r(d[26]).spacing.xs,
+        }),
+        earningsValue: {
+          fontFamily: r(d[26]).fontFamily.bold,
+          fontSize: s ? 22 : 26,
+          color: t.primaryLight,
+        },
+        earningsMeta: Object.assign({}, r(d[26]).typography.caption, {
+          marginTop: r(d[26]).spacing.xs,
+        }),
+        earningsLink: { fontFamily: r(d[26]).fontFamily.semiBold, fontSize: 14, color: t.primary },
+        demandSection: {
+          flex: 1,
+          minHeight: 0,
+          paddingHorizontal: s ? r(d[26]).spacing.md : r(d[26]).spacing.lg,
+          borderTopWidth: u.default.hairlineWidth,
+          borderTopColor: t.borderSoft,
+          paddingTop: r(d[26]).spacing.sm,
+        },
+        recentSection: {
+          flex: 1,
+          minHeight: 0,
+          paddingHorizontal: s ? r(d[26]).spacing.md : r(d[26]).spacing.lg,
+          paddingBottom: 120,
+          borderTopWidth: u.default.hairlineWidth,
+          borderTopColor: t.borderSoft,
+          paddingTop: r(d[26]).spacing.sm,
+        },
+        startCard: { marginBottom: 0 },
+        startHeader: {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          gap: r(d[26]).spacing.md,
+          marginBottom: r(d[26]).spacing.lg,
+        },
+        startIconWrap: {
+          width: 48,
+          height: 48,
+          borderRadius: 24,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: t.primaryAlpha08,
+        },
+        startTextCol: { flex: 1 },
+        startTitle: {
+          fontFamily: r(d[26]).fontFamily.bold,
+          fontSize: 20,
+          color: t.textPrimary,
+          marginBottom: r(d[26]).spacing.xs,
+        },
+        startSubtitle: Object.assign({}, r(d[26]).typography.body, {
+          color: t.textSecondary,
+          lineHeight: 20,
+        }),
+        activeRoute: {
+          fontFamily: r(d[26]).fontFamily.bold,
+          fontSize: 18,
+          color: t.textPrimary,
+          marginBottom: r(d[26]).spacing.md,
+        },
+        activeMetaRow: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: r(d[26]).spacing.sm,
+          marginBottom: r(d[26]).spacing.md,
+        },
+        seatBadge: {
+          borderRadius: r(d[26]).radius.pill,
+          paddingHorizontal: r(d[26]).spacing.md,
+          paddingVertical: 6,
+        },
+        seatBadgeText: {
+          fontFamily: r(d[26]).fontFamily.semiBold,
+          fontSize: 13,
+          color: t.onPrimary,
+        },
+        seatsPlenty: { backgroundColor: t.seatsAvailable },
+        seatsFilling: { backgroundColor: t.seatsFilling },
+        seatsAlmostFull: { backgroundColor: t.seatsAlmostFull },
+        seatsFull: { backgroundColor: t.seatsFull },
+        elapsed: Object.assign({}, r(d[26]).typography.caption),
+      });
+  },
+  1443,
+  [
+    1, 5, 105, 326, 161, 19, 26, 1510, 684, 672, 1486, 1762, 1763, 1764, 1765, 1704, 183, 382, 381,
+    1671, 501, 1482, 1386, 682, 692, 578, 377,
+  ]
+);
+__d(
+  function (g, _r, i, _a, m, e, d) {
+    var t = _r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({
+        visible: t,
+        onClose: j,
+        onDepart: S,
+        defaultVehicleType: w = 'Trotro',
+        demandRoutes: T = [],
+        recentTrips: C = [],
+        departing: v = !1,
+        initialPreset: R = null,
+        onSavePreset: F = null,
+      }) {
+        const B = (0, _r(d[14]).useSafeAreaInsets)(),
+          { colors: k } = (0, _r(d[15]).useTheme)(),
+          I = b(k),
+          P = w in _r(d[16]).VEHICLE_DEFAULTS ? w : 'Trotro',
+          O = _r(d[16]).VEHICLE_DEFAULTS[P] ?? _r(d[16]).VEHICLE_DEFAULTS.Trotro,
+          z = (0, r.useMemo)(
+            () =>
+              [..._r(d[16]).TROTRO_ROUTES].sort((t, r) => {
+                const a = y(T, t.origin, t.destination)?.waiting ?? 0;
+                return (y(T, r.origin, r.destination)?.waiting ?? 0) - a;
+              }),
+            [T]
+          ),
+          H = T[0] ?? null,
+          L = C[0] ?? null,
+          E = x(L?.route),
+          [A, D] = (0, r.useState)(z[0]?.id ?? _r(d[16]).TROTRO_ROUTES[0].id),
+          [W, M] = (0, r.useState)(String(O.seats)),
+          [V, _] = (0, r.useState)(String(_r(d[16]).TROTRO_ROUTES[0].baseFare)),
+          [U, q] = (0, r.useState)(!1),
+          [G, $] = (0, r.useState)(''),
+          [K, N] = (0, r.useState)(''),
+          [J, Q] = (0, r.useState)(''),
+          X = z.find(t => t.id === A) ?? z[0],
+          Y = (t, r) => {
+            const a = _r(d[16]).TROTRO_ROUTES.find(a => a.origin === t && a.destination === r);
+            (a ? (q(!1), D(a.id), _(String(a.baseFare))) : (q(!0), $(t), N(r)), Q(''));
+          };
+        ((0, r.useEffect)(() => {
+          if (!t) return;
+          const r =
+            R ??
+            (H?.origin && H?.destination ? { origin: H.origin, destination: H.destination } : null);
+          (M(String(O.seats)),
+            q(!1),
+            $(''),
+            N(''),
+            Q(''),
+            r?.origin && r?.destination
+              ? (Y(r.origin, r.destination),
+                null != r.totalSeats && M(String(r.totalSeats)),
+                null != r.farePerSeat && _(String(r.farePerSeat)))
+              : (D(z[0]?.id ?? _r(d[16]).TROTRO_ROUTES[0].id),
+                _(String(z[0]?.baseFare ?? _r(d[16]).TROTRO_ROUTES[0].baseFare))));
+        }, [t, P, R?.origin, R?.destination, R?.totalSeats, R?.farePerSeat]),
+          (0, r.useEffect)(() => {
+            !U && X && _(String(X.baseFare));
+          }, [A, U, X]));
+        const Z = U ? G.trim() : X?.origin,
+          ee = U ? K.trim() : X?.destination,
+          te = Math.min(30, Math.max(1, parseInt(W, 10) || 1)),
+          ie = Math.max(0, parseFloat(V) || 0),
+          re = te * ie,
+          ae = y(T, Z, ee),
+          oe = t => {
+            M(String(Math.min(30, Math.max(1, te + t))));
+          };
+        return (0, h.jsx)(o.default, {
+          visible: t,
+          transparent: !0,
+          animationType: 'slide',
+          onRequestClose: j,
+          children: (0, h.jsxs)(p.default, {
+            style: I.overlay,
+            pointerEvents: 'box-none',
+            children: [
+              (0, h.jsx)(n.default, {
+                style: s.default.absoluteFill,
+                onPress: j,
+                accessibilityRole: 'button',
+              }),
+              (0, h.jsx)(a.default, {
+                style: I.sheetWrap,
+                behavior: void 0,
+                pointerEvents: 'box-none',
+                children: (0, h.jsxs)(p.default, {
+                  style: I.sheet,
+                  pointerEvents: 'auto',
+                  children: [
+                    (0, h.jsxs)(p.default, {
+                      style: I.headerRow,
+                      children: [
+                        (0, h.jsx)(n.default, {
+                          style: I.iconBtn,
+                          onPress: j,
+                          hitSlop: 12,
+                          children: (0, h.jsx)(_r(d[17]).Ionicons, {
+                            name: 'close',
+                            size: 22,
+                            color: k.textMuted,
+                          }),
+                        }),
+                        (0, h.jsx)(c.default, { style: I.title, children: 'Start new trip' }),
+                        (0, h.jsx)(p.default, { style: { width: 40 } }),
+                      ],
+                    }),
+                    (0, h.jsxs)(l.default, {
+                      style: I.scroll,
+                      contentContainerStyle: I.scrollContent,
+                      keyboardShouldPersistTaps: 'handled',
+                      showsVerticalScrollIndicator: !1,
+                      children: [
+                        (0, h.jsx)(c.default, {
+                          style: I.subtitle,
+                          children:
+                            'Broadcast your route to passengers. Routes with waiting queue demand are listed first.',
+                        }),
+                        H || E
+                          ? (0, h.jsxs)(p.default, {
+                              style: I.quickRow,
+                              children: [
+                                H && H.waiting > 0
+                                  ? (0, h.jsxs)(n.default, {
+                                      style: I.quickChip,
+                                      onPress: () => Y(H.origin, H.destination),
+                                      children: [
+                                        (0, h.jsx)(_r(d[17]).Ionicons, {
+                                          name: 'flash',
+                                          size: 14,
+                                          color: k.primaryLight,
+                                        }),
+                                        (0, h.jsxs)(c.default, {
+                                          style: I.quickChipText,
+                                          children: ['Hot: ', H.waiting, ' waiting \xb7 ', H.route],
+                                        }),
+                                      ],
+                                    })
+                                  : null,
+                                E
+                                  ? (0, h.jsxs)(n.default, {
+                                      style: I.quickChip,
+                                      onPress: () => Y(E.origin, E.destination),
+                                      children: [
+                                        (0, h.jsx)(_r(d[17]).Ionicons, {
+                                          name: 'repeat',
+                                          size: 14,
+                                          color: k.textSecondary,
+                                        }),
+                                        (0, h.jsx)(c.default, {
+                                          style: I.quickChipText,
+                                          children: 'Repeat last trip',
+                                        }),
+                                      ],
+                                    })
+                                  : null,
+                              ],
+                            })
+                          : null,
+                        U
+                          ? (0, h.jsxs)(p.default, {
+                              style: I.customPanel,
+                              children: [
+                                (0, h.jsx)(c.default, { style: I.label, children: 'Custom route' }),
+                                (0, h.jsx)(c.default, {
+                                  style: I.subtitle,
+                                  children: 'Tap a landmark or type your stops.',
+                                }),
+                                (0, h.jsx)(c.default, {
+                                  style: [I.label, { marginTop: 0 }],
+                                  children: 'Origin',
+                                }),
+                                (0, h.jsx)(p.default, {
+                                  style: I.locationChips,
+                                  children: _r(d[18])
+                                    .KUMASI_LOCATIONS.slice(0, 6)
+                                    .map(t =>
+                                      (0, h.jsx)(
+                                        n.default,
+                                        {
+                                          style: I.locationChip,
+                                          onPress: () => $(t),
+                                          children: (0, h.jsx)(c.default, {
+                                            style: I.locationChipText,
+                                            children: t,
+                                          }),
+                                        },
+                                        `o-${t}`
+                                      )
+                                    ),
+                                }),
+                                (0, h.jsx)(u.default, {
+                                  style: I.customInput,
+                                  placeholder: 'Origin',
+                                  placeholderTextColor: k.textMuted,
+                                  value: G,
+                                  onChangeText: $,
+                                }),
+                                (0, h.jsx)(c.default, { style: I.label, children: 'Destination' }),
+                                (0, h.jsx)(p.default, {
+                                  style: I.locationChips,
+                                  children: _r(d[18])
+                                    .KUMASI_LOCATIONS.slice(0, 6)
+                                    .map(t =>
+                                      (0, h.jsx)(
+                                        n.default,
+                                        {
+                                          style: I.locationChip,
+                                          onPress: () => N(t),
+                                          children: (0, h.jsx)(c.default, {
+                                            style: I.locationChipText,
+                                            children: t,
+                                          }),
+                                        },
+                                        `d-${t}`
+                                      )
+                                    ),
+                                }),
+                                (0, h.jsx)(u.default, {
+                                  style: I.customInput,
+                                  placeholder: 'Destination',
+                                  placeholderTextColor: k.textMuted,
+                                  value: K,
+                                  onChangeText: N,
+                                }),
+                                (0, h.jsxs)(n.default, {
+                                  style: I.backLink,
+                                  onPress: () => q(!1),
+                                  children: [
+                                    (0, h.jsx)(_r(d[17]).Ionicons, {
+                                      name: 'arrow-back',
+                                      size: 16,
+                                      color: k.textSecondary,
+                                    }),
+                                    (0, h.jsx)(c.default, {
+                                      style: I.backLinkText,
+                                      children: 'Use predefined routes',
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            })
+                          : (0, h.jsxs)(h.Fragment, {
+                              children: [
+                                (0, h.jsx)(c.default, { style: I.label, children: 'Select route' }),
+                                z.map(t => {
+                                  const r = t.id === A,
+                                    a = y(T, t.origin, t.destination),
+                                    o = (a?.waiting ?? 0) >= 4;
+                                  return (0, h.jsxs)(
+                                    n.default,
+                                    {
+                                      style: [I.routeOption, r && I.routeOptionSelected],
+                                      onPress: () => {
+                                        (D(t.id), Q(''));
+                                      },
+                                      children: [
+                                        (0, h.jsxs)(p.default, {
+                                          style: I.routeHeader,
+                                          children: [
+                                            (0, h.jsxs)(c.default, {
+                                              style: I.routeText,
+                                              children: [t.origin, ' \u2192 ', t.destination],
+                                            }),
+                                            a?.waiting > 0
+                                              ? (0, h.jsxs)(p.default, {
+                                                  style: [I.demandBadge, o && I.demandBadgeHot],
+                                                  children: [
+                                                    (0, h.jsx)(_r(d[17]).Ionicons, {
+                                                      name: o ? 'people' : 'person',
+                                                      size: 11,
+                                                      color: o ? k.primaryLight : k.greenAccent,
+                                                    }),
+                                                    (0, h.jsx)(c.default, {
+                                                      style: [
+                                                        I.demandBadgeText,
+                                                        o && I.demandBadgeTextHot,
+                                                      ],
+                                                      children: a.waiting,
+                                                    }),
+                                                  ],
+                                                })
+                                              : null,
+                                          ],
+                                        }),
+                                        (0, h.jsxs)(c.default, {
+                                          style: I.routeMeta,
+                                          children: [
+                                            'GHS ',
+                                            t.baseFare.toFixed(2),
+                                            '/seat \xb7 ~',
+                                            t.avgTimeMin,
+                                            ' min \xb7',
+                                            ' ',
+                                            t.distanceKm,
+                                            ' km',
+                                          ],
+                                        }),
+                                      ],
+                                    },
+                                    t.id
+                                  );
+                                }),
+                                (0, h.jsxs)(n.default, {
+                                  style: I.customButton,
+                                  onPress: () => q(!0),
+                                  children: [
+                                    (0, h.jsx)(_r(d[17]).Ionicons, {
+                                      name: 'map-outline',
+                                      size: 22,
+                                      color: k.primaryLight,
+                                    }),
+                                    (0, h.jsxs)(p.default, {
+                                      style: I.customTextWrap,
+                                      children: [
+                                        (0, h.jsx)(c.default, {
+                                          style: I.customButtonTitle,
+                                          children: 'Custom route',
+                                        }),
+                                        (0, h.jsx)(c.default, {
+                                          style: I.customButtonSubtitle,
+                                          children: 'Set your own origin and destination',
+                                        }),
+                                      ],
+                                    }),
+                                    (0, h.jsx)(_r(d[17]).Ionicons, {
+                                      name: 'chevron-forward',
+                                      size: 18,
+                                      color: k.primaryLight,
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            }),
+                        (0, h.jsx)(c.default, { style: I.label, children: 'Vehicle & seats' }),
+                        (0, h.jsxs)(p.default, {
+                          style: I.seatRow,
+                          children: [
+                            (0, h.jsxs)(p.default, {
+                              style: I.seatStepper,
+                              children: [
+                                (0, h.jsx)(n.default, {
+                                  style: I.stepBtn,
+                                  onPress: () => oe(-1),
+                                  children: (0, h.jsx)(_r(d[17]).Ionicons, {
+                                    name: 'remove',
+                                    size: 20,
+                                    color: k.textPrimary,
+                                  }),
+                                }),
+                                (0, h.jsx)(u.default, {
+                                  style: I.seatInput,
+                                  keyboardType: 'number-pad',
+                                  value: W,
+                                  onChangeText: M,
+                                  maxLength: 2,
+                                }),
+                                (0, h.jsx)(n.default, {
+                                  style: I.stepBtn,
+                                  onPress: () => oe(1),
+                                  children: (0, h.jsx)(_r(d[17]).Ionicons, {
+                                    name: 'add',
+                                    size: 20,
+                                    color: k.textPrimary,
+                                  }),
+                                }),
+                              ],
+                            }),
+                            (0, h.jsxs)(c.default, {
+                              style: I.vehicleHint,
+                              children: [O.label, ' \xb7 default ', O.seats, ' seats'],
+                            }),
+                          ],
+                        }),
+                        (0, h.jsx)(c.default, { style: I.label, children: 'Fare per seat' }),
+                        (0, h.jsxs)(p.default, {
+                          style: I.fareRow,
+                          children: [
+                            (0, h.jsx)(c.default, { style: I.farePrefix, children: 'GHS' }),
+                            (0, h.jsx)(u.default, {
+                              style: I.fareInput,
+                              keyboardType: 'decimal-pad',
+                              value: V,
+                              onChangeText: _,
+                            }),
+                          ],
+                        }),
+                        Z && ee
+                          ? (0, h.jsxs)(p.default, {
+                              style: I.previewCard,
+                              children: [
+                                (0, h.jsx)(c.default, {
+                                  style: I.previewTitle,
+                                  children: 'Trip preview',
+                                }),
+                                (0, h.jsxs)(c.default, {
+                                  style: I.previewRoute,
+                                  children: [Z, ' \u2192 ', ee],
+                                }),
+                                (0, h.jsxs)(p.default, {
+                                  style: I.previewRow,
+                                  children: [
+                                    (0, h.jsx)(c.default, {
+                                      style: I.previewLabel,
+                                      children: 'Seats available',
+                                    }),
+                                    (0, h.jsx)(c.default, { style: I.previewValue, children: te }),
+                                  ],
+                                }),
+                                (0, h.jsxs)(p.default, {
+                                  style: I.previewRow,
+                                  children: [
+                                    (0, h.jsx)(c.default, {
+                                      style: I.previewLabel,
+                                      children: 'Fare per seat',
+                                    }),
+                                    (0, h.jsxs)(c.default, {
+                                      style: I.previewValue,
+                                      children: ['GHS ', ie.toFixed(2)],
+                                    }),
+                                  ],
+                                }),
+                                ae?.waiting > 0
+                                  ? (0, h.jsxs)(p.default, {
+                                      style: I.previewRow,
+                                      children: [
+                                        (0, h.jsx)(c.default, {
+                                          style: I.previewLabel,
+                                          children: 'Passengers in queue',
+                                        }),
+                                        (0, h.jsxs)(c.default, {
+                                          style: [I.previewValue, I.previewHighlight],
+                                          children: [ae.waiting, ' waiting now'],
+                                        }),
+                                      ],
+                                    })
+                                  : null,
+                                (0, h.jsxs)(p.default, {
+                                  style: I.previewRow,
+                                  children: [
+                                    (0, h.jsx)(c.default, {
+                                      style: I.previewLabel,
+                                      children: 'Max if full',
+                                    }),
+                                    (0, h.jsxs)(c.default, {
+                                      style: [I.previewValue, I.previewHighlight],
+                                      children: ['GHS ', re.toFixed(2)],
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            })
+                          : null,
+                        J ? (0, h.jsx)(c.default, { style: I.errorText, children: J }) : null,
+                        F && Z && ee
+                          ? (0, h.jsx)(f.default, {
+                              title: 'Save as route preset',
+                              variant: 'secondary',
+                              onPress: () =>
+                                F({
+                                  origin: Z,
+                                  destination: ee,
+                                  totalSeats: te,
+                                  farePerSeat: ie,
+                                  vehicleType: P,
+                                }),
+                              compact: !0,
+                            })
+                          : null,
+                      ],
+                    }),
+                    (0, h.jsxs)(p.default, {
+                      style: [I.footer, { paddingBottom: B.bottom + _r(d[13]).spacing.md }],
+                      children: [
+                        (0, h.jsx)(f.default, {
+                          title: v ? 'Starting trip\u2026' : 'Depart now',
+                          onPress: async () => {
+                            if (Z && ee)
+                              if (ie <= 0) Q('Set a fare per seat greater than zero.');
+                              else {
+                                Q('');
+                                try {
+                                  await S({
+                                    origin: Z,
+                                    destination: ee,
+                                    vehicleType: P,
+                                    totalSeats: te,
+                                    farePerSeat: ie,
+                                  });
+                                } catch (t) {
+                                  Q(t?.message ?? 'Could not start trip. Try again.');
+                                }
+                              }
+                            else Q('Enter both origin and destination to depart.');
+                          },
+                          loading: v,
+                          disabled: v,
+                          testID: 'mate-depart-now',
+                        }),
+                        (0, h.jsx)(f.default, {
+                          title: 'Cancel',
+                          variant: 'ghost',
+                          onPress: j,
+                          compact: !0,
+                          noMargin: !0,
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+              }),
+            ],
+          }),
+        });
+      }));
+    var r = _r(d[1]),
+      a = t(_r(d[2])),
+      o = t(_r(d[3])),
+      n = (t(_r(d[4])), t(_r(d[5]))),
+      l = t(_r(d[6])),
+      s = t(_r(d[7])),
+      c = t(_r(d[8])),
+      u = t(_r(d[9])),
+      p = t(_r(d[10])),
+      f = t(_r(d[11])),
+      h = _r(d[12]);
+    function x(t) {
+      if (!t) return null;
+      const r = String(t)
+        .split('\u2192')
+        .map(t => t.trim());
+      return 2 === r.length && r[0] && r[1] ? { origin: r[0], destination: r[1] } : null;
+    }
+    function y(t, r, a) {
+      return (
+        (t ?? []).find(t => t.origin === r && t.destination === a) ??
+        (t ?? []).find(t => t.route === `${r} \u2192 ${a}`)
+      );
+    }
+    const b = t =>
+      s.default.create({
+        overlay: { flex: 1, backgroundColor: t.overlay, justifyContent: 'flex-end' },
+        sheetWrap: { width: '100%', maxHeight: '94%', zIndex: 2, elevation: 8 },
+        sheet: {
+          backgroundColor: t.surfaceElevated,
+          borderTopLeftRadius: _r(d[13]).radius.xl,
+          borderTopRightRadius: _r(d[13]).radius.xl,
+          borderWidth: 1,
+          borderColor: t.border,
+          borderBottomWidth: 0,
+          maxHeight: '94%',
+          flexShrink: 1,
+        },
+        headerRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingHorizontal: _r(d[13]).spacing.lg,
+          paddingTop: _r(d[13]).spacing.md,
+          paddingBottom: _r(d[13]).spacing.sm,
+        },
+        title: {
+          flex: 1,
+          textAlign: 'center',
+          fontFamily: _r(d[13]).fontFamily.bold,
+          fontSize: 20,
+          color: t.textPrimary,
+        },
+        iconBtn: {
+          width: 40,
+          height: 40,
+          borderRadius: 20,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: t.surfaceSoft,
+        },
+        scroll: { paddingHorizontal: _r(d[13]).spacing.lg, flexGrow: 0, flexShrink: 1 },
+        scrollContent: { paddingBottom: _r(d[13]).spacing.lg },
+        subtitle: Object.assign({}, _r(d[13]).typography.caption, {
+          marginBottom: _r(d[13]).spacing.md,
+          lineHeight: 18,
+        }),
+        quickRow: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: _r(d[13]).spacing.sm,
+          marginBottom: _r(d[13]).spacing.md,
+        },
+        quickChip: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: _r(d[13]).spacing.xs,
+          paddingHorizontal: _r(d[13]).spacing.sm,
+          paddingVertical: _r(d[13]).spacing.xs,
+          borderRadius: _r(d[13]).radius.pill,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+        },
+        quickChipText: {
+          fontFamily: _r(d[13]).fontFamily.medium,
+          fontSize: 12,
+          color: t.textSecondary,
+        },
+        label: {
+          fontFamily: _r(d[13]).fontFamily.semiBold,
+          fontSize: 14,
+          color: t.textPrimary,
+          marginBottom: _r(d[13]).spacing.sm,
+          marginTop: _r(d[13]).spacing.sm,
+        },
+        routeOption: {
+          backgroundColor: t.surface,
+          borderRadius: _r(d[13]).radius.md,
+          padding: _r(d[13]).spacing.md,
+          marginBottom: _r(d[13]).spacing.sm,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        routeOptionSelected: {
+          borderColor: t.primary,
+          backgroundColor: t.primaryAlpha06 ?? t.surface,
+        },
+        routeHeader: {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          gap: _r(d[13]).spacing.sm,
+        },
+        routeText: {
+          flex: 1,
+          fontFamily: _r(d[13]).fontFamily.semiBold,
+          fontSize: 15,
+          color: t.textPrimary,
+        },
+        routeMeta: Object.assign({}, _r(d[13]).typography.caption, { marginTop: 4 }),
+        demandBadge: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 4,
+          paddingHorizontal: _r(d[13]).spacing.sm,
+          paddingVertical: 4,
+          borderRadius: _r(d[13]).radius.pill,
+          backgroundColor: t.greenAlpha12,
+        },
+        demandBadgeHot: { backgroundColor: t.primaryAlpha12 ?? t.primaryAlpha08 },
+        demandBadgeText: {
+          fontFamily: _r(d[13]).fontFamily.semiBold,
+          fontSize: 11,
+          color: t.greenAccent,
+        },
+        demandBadgeTextHot: { color: t.primaryLight },
+        customButton: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: _r(d[13]).spacing.md,
+          padding: _r(d[13]).spacing.md,
+          borderRadius: _r(d[13]).radius.lg,
+          borderWidth: 1,
+          borderColor: t.primaryAlpha35 ?? t.primary,
+          borderStyle: 'dashed',
+          backgroundColor: t.primaryAlpha06 ?? t.surface,
+          marginBottom: _r(d[13]).spacing.md,
+        },
+        customTextWrap: { flex: 1 },
+        customButtonTitle: {
+          fontFamily: _r(d[13]).fontFamily.bold,
+          fontSize: 15,
+          color: t.primaryLight,
+        },
+        customButtonSubtitle: Object.assign({}, _r(d[13]).typography.caption, { marginTop: 2 }),
+        customPanel: {
+          padding: _r(d[13]).spacing.md,
+          borderRadius: _r(d[13]).radius.lg,
+          borderWidth: 1,
+          borderColor: t.border,
+          backgroundColor: t.surface,
+          marginBottom: _r(d[13]).spacing.md,
+        },
+        customInput: {
+          backgroundColor: t.surfaceElevated,
+          color: t.textPrimary,
+          borderRadius: _r(d[13]).radius.md,
+          padding: _r(d[13]).spacing.md,
+          fontSize: 16,
+          fontFamily: _r(d[13]).fontFamily.medium,
+          minHeight: 48,
+          marginBottom: _r(d[13]).spacing.sm,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        locationChips: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: _r(d[13]).spacing.xs,
+          marginBottom: _r(d[13]).spacing.sm,
+        },
+        locationChip: {
+          paddingHorizontal: _r(d[13]).spacing.sm,
+          paddingVertical: 6,
+          borderRadius: _r(d[13]).radius.pill,
+          backgroundColor: t.surfaceSoft,
+          borderWidth: 1,
+          borderColor: t.borderSoft,
+        },
+        locationChipText: {
+          fontFamily: _r(d[13]).fontFamily.medium,
+          fontSize: 12,
+          color: t.textSecondary,
+        },
+        backLink: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: _r(d[13]).spacing.xs,
+          marginTop: _r(d[13]).spacing.xs,
+        },
+        backLinkText: {
+          fontFamily: _r(d[13]).fontFamily.medium,
+          fontSize: 14,
+          color: t.textSecondary,
+        },
+        seatRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: _r(d[13]).spacing.md,
+          marginBottom: _r(d[13]).spacing.sm,
+        },
+        seatStepper: { flexDirection: 'row', alignItems: 'center', gap: _r(d[13]).spacing.sm },
+        stepBtn: {
+          width: 40,
+          height: 40,
+          borderRadius: _r(d[13]).radius.md,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: t.surfaceSoft,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        seatInput: {
+          minWidth: 56,
+          textAlign: 'center',
+          backgroundColor: t.surface,
+          color: t.textPrimary,
+          borderRadius: _r(d[13]).radius.md,
+          paddingVertical: _r(d[13]).spacing.sm,
+          paddingHorizontal: _r(d[13]).spacing.sm,
+          fontSize: 18,
+          fontFamily: _r(d[13]).fontFamily.bold,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        vehicleHint: Object.assign({}, _r(d[13]).typography.caption, { flex: 1 }),
+        fareRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          backgroundColor: t.surface,
+          borderRadius: _r(d[13]).radius.md,
+          paddingHorizontal: _r(d[13]).spacing.md,
+          minHeight: 48,
+          marginBottom: _r(d[13]).spacing.md,
+          borderWidth: 1,
+          borderColor: t.border,
+        },
+        farePrefix: {
+          fontFamily: _r(d[13]).fontFamily.medium,
+          fontSize: 16,
+          color: t.textSecondary,
+          marginRight: _r(d[13]).spacing.sm,
+        },
+        fareInput: {
+          flex: 1,
+          color: t.textPrimary,
+          fontSize: 18,
+          fontFamily: _r(d[13]).fontFamily.semiBold,
+          paddingVertical: _r(d[13]).spacing.sm,
+        },
+        previewCard: {
+          padding: _r(d[13]).spacing.md,
+          borderRadius: _r(d[13]).radius.md,
+          backgroundColor: t.primaryAlpha06 ?? t.surface,
+          borderWidth: 1,
+          borderColor: t.primaryAlpha18 ?? t.border,
+          marginBottom: _r(d[13]).spacing.md,
+        },
+        previewTitle: {
+          fontFamily: _r(d[13]).fontFamily.semiBold,
+          fontSize: 13,
+          color: t.primaryLight,
+          marginBottom: _r(d[13]).spacing.xs,
+          textTransform: 'uppercase',
+          letterSpacing: 0.4,
+        },
+        previewRoute: {
+          fontFamily: _r(d[13]).fontFamily.bold,
+          fontSize: 16,
+          color: t.textPrimary,
+          marginBottom: _r(d[13]).spacing.sm,
+        },
+        previewRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
+        previewLabel: Object.assign({}, _r(d[13]).typography.caption),
+        previewValue: {
+          fontFamily: _r(d[13]).fontFamily.medium,
+          fontSize: 13,
+          color: t.textPrimary,
+        },
+        previewHighlight: {
+          fontFamily: _r(d[13]).fontFamily.bold,
+          color: t.success ?? t.primaryLight,
+        },
+        errorText: Object.assign({}, _r(d[13]).typography.caption, {
+          color: t.destructive ?? t.error,
+          marginBottom: _r(d[13]).spacing.sm,
+        }),
+        footer: {
+          paddingHorizontal: _r(d[13]).spacing.lg,
+          paddingTop: _r(d[13]).spacing.sm,
+          borderTopWidth: 1,
+          borderTopColor: t.border,
+          backgroundColor: t.surfaceElevated,
+          gap: _r(d[13]).spacing.xs,
+        },
+      });
+  },
+  1762,
+  [1, 5, 681, 948, 14, 326, 106, 26, 161, 255, 19, 672, 183, 377, 572, 381, 682, 578, 1514]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({
+        routes: t = [],
+        scrollable: u = !1,
+        refreshControl: c = null,
+        lastUpdated: j = null,
+        live: b = !1,
+      }) {
+        const w = (0, l.useMemo)(() => (0, r(d[10]).summarizeQueueActivity)(t), [t]),
+          C = (0, r(d[10]).formatRelativeUpdated)(j),
+          F = (0, h.jsxs)(s.default, {
+            style: [p.wrap, u && p.wrapScrollable],
+            children: [
+              (0, h.jsxs)(s.default, {
+                style: p.headerRow,
+                children: [
+                  (0, h.jsx)(o.default, { style: p.title, children: 'Passenger demand' }),
+                  (0, h.jsx)(o.default, {
+                    style: p.subtitle,
+                    children: 'Waiting passengers by route',
+                  }),
+                  (0, h.jsxs)(s.default, {
+                    style: p.statusRow,
+                    children: [
+                      (0, h.jsx)(o.default, { style: p.updatedText, children: C }),
+                      (0, h.jsx)(y.default, { active: b, variant: 'inline' }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, h.jsxs)(s.default, {
+                style: p.summaryCard,
+                children: [
+                  (0, h.jsxs)(s.default, {
+                    style: p.summaryTile,
+                    children: [
+                      (0, h.jsx)(o.default, { style: p.summaryValue, children: w.totalWaiting }),
+                      (0, h.jsx)(o.default, { style: p.summaryLabel, children: 'Waiting' }),
+                    ],
+                  }),
+                  (0, h.jsx)(s.default, { style: p.summaryDivider }),
+                  (0, h.jsxs)(s.default, {
+                    style: p.summaryTile,
+                    children: [
+                      (0, h.jsx)(o.default, { style: p.summaryValue, children: w.recentJoins }),
+                      (0, h.jsx)(o.default, { style: p.summaryLabel, children: 'Joined (15m)' }),
+                    ],
+                  }),
+                  (0, h.jsx)(s.default, { style: p.summaryDivider }),
+                  (0, h.jsxs)(s.default, {
+                    style: p.summaryTile,
+                    children: [
+                      (0, h.jsx)(o.default, { style: p.summaryValue, children: w.highPriority }),
+                      (0, h.jsx)(o.default, { style: p.summaryLabel, children: 'High demand' }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, h.jsx)(f.default, {
+                elevated: !0,
+                padding: 'none',
+                style: p.listCard,
+                children:
+                  0 === t.length
+                    ? (0, h.jsxs)(s.default, {
+                        style: p.emptyState,
+                        children: [
+                          (0, h.jsx)(o.default, {
+                            style: p.emptyTitle,
+                            children: 'No passengers in queue',
+                          }),
+                          (0, h.jsx)(o.default, {
+                            style: p.emptyBody,
+                            children: b
+                              ? 'Updates automatically when passengers join.'
+                              : 'Connect to load queue data, or pull to refresh.',
+                          }),
+                        ],
+                      })
+                    : t.map((l, n) =>
+                        (0, h.jsxs)(
+                          s.default,
+                          {
+                            children: [
+                              (0, h.jsx)(x, { item: l }),
+                              n < t.length - 1
+                                ? (0, h.jsx)(s.default, { style: p.rowDivider })
+                                : null,
+                            ],
+                          },
+                          l.id ?? `${l.route}-${n}`
+                        )
+                      ),
+              }),
+            ],
+          });
+        return u
+          ? (0, h.jsx)(n.default, {
+              style: p.scroll,
+              contentContainerStyle: p.scrollContent,
+              showsVerticalScrollIndicator: !1,
+              nestedScrollEnabled: !0,
+              refreshControl: c,
+              children: F,
+            })
+          : F;
+      }));
+    var l = r(d[1]),
+      n = t(r(d[2])),
+      s = t(r(d[3])),
+      o = t(r(d[4])),
+      u = t(r(d[5])),
+      c = t(r(d[6])),
+      f = t(r(d[7])),
+      y = t(r(d[8])),
+      h = r(d[9]);
+    function x({ item: t }) {
+      return (0, h.jsxs)(s.default, {
+        style: p.routeRow,
+        children: [
+          (0, h.jsxs)(s.default, {
+            style: p.routeMain,
+            children: [
+              (0, h.jsx)(o.default, { style: p.routeName, numberOfLines: 2, children: t.route }),
+              t.longestWaitMin > 0
+                ? (0, h.jsxs)(o.default, {
+                    style: p.routeMeta,
+                    children: ['Longest wait ', t.longestWaitMin, ' min'],
+                  })
+                : null,
+            ],
+          }),
+          (0, h.jsxs)(s.default, {
+            style: p.routeCountCol,
+            children: [
+              (0, h.jsx)(o.default, { style: p.waitingCount, children: t.waiting }),
+              (0, h.jsx)(o.default, { style: p.waitingLabel, children: 'waiting' }),
+            ],
+          }),
+        ],
+      });
+    }
+    const p = u.default.create({
+      scroll: { flex: 1 },
+      scrollContent: { flexGrow: 1, paddingBottom: r(d[11]).spacing.sm },
+      wrap: { marginBottom: r(d[11]).spacing.lg },
+      wrapScrollable: { marginBottom: 0 },
+      headerRow: { marginBottom: r(d[11]).spacing.md },
+      title: {
+        fontFamily: r(d[11]).fontFamily.semiBold,
+        fontSize: 17,
+        color: c.default.textPrimary,
+        marginBottom: 2,
+      },
+      subtitle: Object.assign({}, r(d[11]).typography.caption, { lineHeight: 18 }),
+      statusRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: r(d[11]).spacing.sm,
+        marginTop: r(d[11]).spacing.xs,
+      },
+      updatedText: {
+        fontFamily: r(d[11]).fontFamily.regular,
+        fontSize: 12,
+        color: c.default.textMuted,
+      },
+      summaryCard: {
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        borderRadius: r(d[11]).radius.md,
+        borderWidth: u.default.hairlineWidth,
+        borderColor: c.default.borderStrong,
+        backgroundColor: c.default.surfaceElevated,
+        paddingVertical: r(d[11]).spacing.md,
+        marginBottom: r(d[11]).spacing.md,
+      },
+      summaryTile: {
+        flex: 1,
+        alignItems: 'center',
+        paddingHorizontal: r(d[11]).spacing.sm,
+        gap: 2,
+      },
+      summaryValue: {
+        fontFamily: r(d[11]).fontFamily.semiBold,
+        fontSize: 20,
+        color: c.default.textPrimary,
+      },
+      summaryLabel: {
+        fontFamily: r(d[11]).fontFamily.regular,
+        fontSize: 12,
+        color: c.default.textMuted,
+        textAlign: 'center',
+      },
+      summaryDivider: {
+        width: u.default.hairlineWidth,
+        backgroundColor: c.default.border,
+        marginVertical: r(d[11]).spacing.xs,
+      },
+      listCard: { marginBottom: r(d[11]).spacing.sm },
+      routeRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: r(d[11]).spacing.md,
+        paddingHorizontal: r(d[11]).spacing.lg,
+        paddingVertical: r(d[11]).spacing.md,
+      },
+      routeMain: { flex: 1 },
+      routeName: {
+        fontFamily: r(d[11]).fontFamily.medium,
+        fontSize: 15,
+        color: c.default.textPrimary,
+        lineHeight: 20,
+      },
+      routeMeta: {
+        fontFamily: r(d[11]).fontFamily.regular,
+        fontSize: 12,
+        color: c.default.textMuted,
+        marginTop: 2,
+      },
+      routeCountCol: { alignItems: 'flex-end', minWidth: 48 },
+      waitingCount: {
+        fontFamily: r(d[11]).fontFamily.semiBold,
+        fontSize: 18,
+        color: c.default.textPrimary,
+        lineHeight: 22,
+      },
+      waitingLabel: {
+        fontFamily: r(d[11]).fontFamily.regular,
+        fontSize: 12,
+        color: c.default.textMuted,
+      },
+      rowDivider: {
+        height: u.default.hairlineWidth,
+        backgroundColor: c.default.borderSoft,
+        marginLeft: r(d[11]).spacing.lg,
+      },
+      emptyState: { paddingHorizontal: r(d[11]).spacing.xl, paddingVertical: r(d[11]).spacing.xl },
+      emptyTitle: {
+        fontFamily: r(d[11]).fontFamily.medium,
+        fontSize: 15,
+        color: c.default.textPrimary,
+        marginBottom: r(d[11]).spacing.xs,
+      },
+      emptyBody: Object.assign({}, r(d[11]).typography.caption, { lineHeight: 18 }),
+    });
+  },
+  1763,
+  [1, 5, 106, 19, 161, 26, 379, 684, 752, 183, 1502, 377]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({ trips: t = [], onDelete: p, scrollable: j = !1 }) {
+        const [b, w] = (0, l.useState)(null),
+          [B, C] = (0, l.useState)(!1),
+          S =
+            0 === t.length
+              ? (0, h.jsxs)(u.default, {
+                  elevated: !0,
+                  style: x.emptyCard,
+                  children: [
+                    (0, h.jsx)(c.default, {
+                      style: x.emptyIconWrap,
+                      children: (0, h.jsx)(r(d[11]).Ionicons, {
+                        name: 'time-outline',
+                        size: 22,
+                        color: f.default.textMuted,
+                      }),
+                    }),
+                    (0, h.jsx)(s.default, { style: x.emptyTitle, children: 'No recent trips' }),
+                    (0, h.jsx)(s.default, {
+                      style: x.emptyBody,
+                      children:
+                        'Completed trips will appear here after you end a run from the active trip screen.',
+                    }),
+                  ],
+                })
+              : (0, h.jsx)(u.default, {
+                  elevated: !0,
+                  padding: 'none',
+                  style: x.listCard,
+                  children: t.map((l, o) =>
+                    (0, h.jsxs)(
+                      c.default,
+                      {
+                        children: [
+                          (0, h.jsxs)(c.default, {
+                            style: x.tripRow,
+                            children: [
+                              (0, h.jsxs)(c.default, {
+                                style: x.tripInfo,
+                                children: [
+                                  (0, h.jsx)(s.default, {
+                                    style: x.tripRoute,
+                                    numberOfLines: 2,
+                                    children: l.route,
+                                  }),
+                                  (0, h.jsxs)(c.default, {
+                                    style: x.tripMetaRow,
+                                    children: [
+                                      (0, h.jsxs)(s.default, {
+                                        style: x.tripEarnings,
+                                        children: ['GHS ', l.earnings.toFixed(2)],
+                                      }),
+                                      (0, h.jsx)(s.default, {
+                                        style: x.tripTime,
+                                        children: l.time,
+                                      }),
+                                    ],
+                                  }),
+                                ],
+                              }),
+                              (0, h.jsx)(n.default, {
+                                onPress: () => w(l),
+                                hitSlop: 8,
+                                style: x.deleteButton,
+                                accessibilityRole: 'button',
+                                accessibilityLabel: 'Delete trip from history',
+                                children: (0, h.jsx)(r(d[11]).Ionicons, {
+                                  name: 'trash-outline',
+                                  size: 18,
+                                  color: f.default.error,
+                                }),
+                              }),
+                            ],
+                          }),
+                          o < t.length - 1 ? (0, h.jsx)(c.default, { style: x.rowDivider }) : null,
+                        ],
+                      },
+                      l.id
+                    )
+                  ),
+                });
+        return (0, h.jsxs)(c.default, {
+          style: [x.wrap, j && x.wrapScrollable],
+          children: [
+            (0, h.jsx)(s.default, { style: x.sectionTitle, children: 'Recent trips' }),
+            j
+              ? (0, h.jsx)(o.default, {
+                  style: x.scroll,
+                  contentContainerStyle: x.scrollContent,
+                  showsVerticalScrollIndicator: !1,
+                  nestedScrollEnabled: !0,
+                  children: S,
+                })
+              : S,
+            (0, h.jsx)(y.default, {
+              visible: Boolean(b),
+              title: 'Remove trip?',
+              message:
+                'This removes the trip from your recent list. Earnings totals are not changed.',
+              confirmLabel: 'Remove',
+              destructive: !0,
+              loading: B,
+              onConfirm: async () => {
+                b && p && (C(!0), await p(b), C(!1), w(null));
+              },
+              onCancel: () => w(null),
+            }),
+          ],
+        });
+      }));
+    var l = r(d[1]),
+      n = t(r(d[2])),
+      o = t(r(d[3])),
+      s = t(r(d[4])),
+      c = t(r(d[5])),
+      p = t(r(d[6])),
+      f = t(r(d[7])),
+      u = t(r(d[8])),
+      y = t(r(d[9])),
+      h = r(d[10]);
+    const x = p.default.create({
+      wrap: { marginBottom: r(d[12]).spacing.lg },
+      wrapScrollable: { flex: 1, marginBottom: 0 },
+      scroll: { flex: 1 },
+      scrollContent: { paddingBottom: r(d[12]).spacing.sm },
+      sectionTitle: {
+        fontFamily: r(d[12]).fontFamily.semiBold,
+        fontSize: 17,
+        color: f.default.textPrimary,
+        marginBottom: r(d[12]).spacing.md,
+      },
+      listCard: { marginBottom: 0 },
+      tripRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: r(d[12]).spacing.lg,
+        paddingVertical: r(d[12]).spacing.md,
+        gap: r(d[12]).spacing.md,
+      },
+      tripInfo: { flex: 1 },
+      tripRoute: {
+        fontFamily: r(d[12]).fontFamily.semiBold,
+        fontSize: 15,
+        color: f.default.textPrimary,
+        marginBottom: 4,
+        lineHeight: 20,
+      },
+      tripMetaRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: r(d[12]).spacing.md,
+      },
+      tripEarnings: {
+        fontFamily: r(d[12]).fontFamily.bold,
+        fontSize: 14,
+        color: f.default.primaryLight,
+      },
+      tripTime: Object.assign({}, r(d[12]).typography.caption, {
+        flexShrink: 1,
+        textAlign: 'right',
+      }),
+      deleteButton: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(232, 93, 93, 0.1)',
+      },
+      rowDivider: {
+        height: 1,
+        backgroundColor: f.default.borderSoft,
+        marginLeft: r(d[12]).spacing.lg,
+        marginRight: r(d[12]).spacing.lg,
+      },
+      emptyCard: { alignItems: 'center', paddingVertical: r(d[12]).spacing.xl },
+      emptyIconWrap: {
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        backgroundColor: f.default.surfaceInset,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: r(d[12]).spacing.md,
+      },
+      emptyTitle: {
+        fontFamily: r(d[12]).fontFamily.semiBold,
+        fontSize: 15,
+        color: f.default.textPrimary,
+        marginBottom: r(d[12]).spacing.xs,
+      },
+      emptyBody: Object.assign({}, r(d[12]).typography.caption, {
+        textAlign: 'center',
+        lineHeight: 18,
+        maxWidth: 280,
+      }),
+    });
+  },
+  1764,
+  [1, 5, 326, 106, 161, 19, 26, 379, 684, 1645, 183, 578, 377]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({
+        mateId: t,
+        onSelectPreset: s,
+        onSaveCurrent: y,
+        refreshKey: x = 0,
+      }) {
+        const [b, j] = (0, n.useState)([]),
+          S = (0, n.useCallback)(async () => {
+            if (!t) return void j([]);
+            const n = await (0, r(d[9]).getMateRoutePresets)(t);
+            j(n);
+          }, [t]);
+        (0, n.useEffect)(() => {
+          S();
+        }, [S, x]);
+        const v = async n => {
+          (await (0, r(d[9]).deleteMateRoutePreset)(t, n), S());
+        };
+        return 0 !== b.length || y
+          ? (0, p.jsxs)(u.default, {
+              style: h.wrap,
+              children: [
+                (0, p.jsxs)(u.default, {
+                  style: h.header,
+                  children: [
+                    (0, p.jsx)(c.default, { style: h.title, children: 'Saved routes' }),
+                    y
+                      ? (0, p.jsxs)(l.default, {
+                          style: h.saveBtn,
+                          onPress: y,
+                          children: [
+                            (0, p.jsx)(r(d[10]).Ionicons, {
+                              name: 'bookmark-outline',
+                              size: 14,
+                              color: f.default.primaryLight,
+                            }),
+                            (0, p.jsx)(c.default, {
+                              style: h.saveBtnText,
+                              children: 'Save current',
+                            }),
+                          ],
+                        })
+                      : null,
+                  ],
+                }),
+                (0, p.jsxs)(o.default, {
+                  horizontal: !0,
+                  showsHorizontalScrollIndicator: !1,
+                  contentContainerStyle: h.scroll,
+                  children: [
+                    b.map(t =>
+                      (0, p.jsxs)(
+                        l.default,
+                        {
+                          style: h.chip,
+                          onPress: () => s?.(t),
+                          onLongPress: () => v(t.id),
+                          children: [
+                            (0, p.jsx)(c.default, {
+                              style: h.chipLabel,
+                              numberOfLines: 1,
+                              children: t.label,
+                            }),
+                            (0, p.jsxs)(c.default, {
+                              style: h.chipRoute,
+                              numberOfLines: 2,
+                              children: [t.origin, ' \u2192 ', t.destination],
+                            }),
+                            (0, p.jsxs)(c.default, {
+                              style: h.chipMeta,
+                              children: [
+                                t.totalSeats,
+                                ' seats \xb7 GHS ',
+                                Number(t.farePerSeat).toFixed(0),
+                              ],
+                            }),
+                          ],
+                        },
+                        t.id
+                      )
+                    ),
+                    0 === b.length
+                      ? (0, p.jsx)(c.default, {
+                          style: h.emptyHint,
+                          children: 'Save a route from trip setup for one-tap depart.',
+                        })
+                      : null,
+                  ],
+                }),
+              ],
+            })
+          : null;
+      }));
+    var n = r(d[1]),
+      l = t(r(d[2])),
+      o = t(r(d[3])),
+      s = t(r(d[4])),
+      c = t(r(d[5])),
+      u = t(r(d[6])),
+      f = t(r(d[7])),
+      p = r(d[8]);
+    const h = s.default.create({
+      wrap: { marginBottom: r(d[11]).spacing.md },
+      header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: r(d[11]).spacing.sm,
+      },
+      title: {
+        fontFamily: r(d[11]).fontFamily.semiBold,
+        fontSize: 15,
+        color: f.default.textPrimary,
+      },
+      saveBtn: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+      saveBtnText: {
+        fontFamily: r(d[11]).fontFamily.medium,
+        fontSize: 12,
+        color: f.default.primaryLight,
+      },
+      scroll: { gap: r(d[11]).spacing.sm, paddingRight: r(d[11]).spacing.lg },
+      chip: {
+        width: 156,
+        padding: r(d[11]).spacing.md,
+        borderRadius: r(d[11]).radius.lg,
+        backgroundColor: f.default.surfaceElevated,
+        borderWidth: 1,
+        borderColor: f.default.borderSoft,
+      },
+      chipLabel: {
+        fontFamily: r(d[11]).fontFamily.bold,
+        fontSize: 13,
+        color: f.default.textPrimary,
+        marginBottom: 4,
+      },
+      chipRoute: Object.assign({}, r(d[11]).typography.caption, {
+        lineHeight: 16,
+        marginBottom: r(d[11]).spacing.xs,
+      }),
+      chipMeta: {
+        fontFamily: r(d[11]).fontFamily.medium,
+        fontSize: 11,
+        color: f.default.textMuted,
+      },
+      emptyHint: Object.assign({}, r(d[11]).typography.caption, {
+        paddingVertical: r(d[11]).spacing.sm,
+        maxWidth: 240,
+      }),
+    });
+  },
+  1765,
+  [1, 5, 326, 106, 26, 161, 19, 379, 183, 692, 578, 377]
+);

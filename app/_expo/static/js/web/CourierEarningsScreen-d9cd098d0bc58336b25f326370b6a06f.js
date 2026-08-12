@@ -1,1 +1,235 @@
-__d(function(g,r,i,a,m,e,d){var l=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const l=(0,r(d[12]).useNavigation)(),{colors:s,isDark:j}=(0,r(d[13]).useTheme)(),{t:b}=(0,r(d[14]).useLanguage)(),F=(0,t.useMemo)(()=>p(s),[s]),{user:S}=(0,r(d[15]).useAuth)(),[w,T]=(0,t.useState)({today:0,week:0,count:0}),[v,E]=(0,t.useState)(0),[B,C]=(0,t.useState)(!0),[D,L]=(0,t.useState)(!1),z=(0,t.useCallback)(async()=>{if(!S?.id)return;const[{data:l},{data:t}]=await Promise.all([(0,r(d[16]).fetchCourierEarningsSummary)(S.id),(0,r(d[17]).fetchWallet)()]);l&&T(l),E(Number(t?.balance_ghs??0))},[S?.id]);(0,t.useEffect)(()=>{z().finally(()=>C(!1))},[z]);const W=j?['#141414','#0D0D0D','#111111']:['#FFFFFF','#FAF8F3','#F5F0E6'];if(B)return(0,x.jsx)(f.default,{title:b('delivery.courierEarningsTitle'),scroll:!0,children:(0,x.jsx)(o.default,{color:s.primary,style:{marginTop:40}})});return(0,x.jsxs)(f.default,{title:b('delivery.courierEarningsTitle'),subtitle:b('delivery.courierEarningsSub'),scroll:!0,refreshControl:(0,x.jsx)(n.default,{refreshing:D,onRefresh:async()=>{L(!0),await z(),L(!1)},tintColor:s.primary}),children:[(0,x.jsx)(u.default,{style:F.heroShell,children:(0,x.jsx)(r(d[18]).LinearGradient,{colors:W,start:{x:0,y:0},end:{x:1,y:1},children:(0,x.jsxs)(u.default,{style:F.heroInner,children:[(0,x.jsxs)(u.default,{style:F.heroBadge,children:[(0,x.jsx)(r(d[19]).Ionicons,{name:"trending-up",size:14,color:s.goldDeep??s.gold}),(0,x.jsx)(c.default,{style:F.heroBadgeText,children:b('delivery.courierEarningsTitle')})]}),(0,x.jsx)(c.default,{style:F.heroLabel,children:b('delivery.courierEarningsToday')}),(0,x.jsx)(c.default,{style:F.heroAmount,children:(0,r(d[20]).formatGhs)(w.today)})]})})}),(0,x.jsxs)(u.default,{style:F.grid,children:[(0,x.jsxs)(u.default,{style:F.gridCard,children:[(0,x.jsx)(c.default,{style:F.gridValue,children:(0,r(d[20]).formatGhs)(w.week)}),(0,x.jsx)(c.default,{style:F.gridLabel,children:b('delivery.courierEarningsWeek')})]}),(0,x.jsxs)(u.default,{style:F.gridCard,children:[(0,x.jsx)(c.default,{style:F.gridValue,children:w.count}),(0,x.jsx)(c.default,{style:F.gridLabel,children:b('delivery.courierEarningsJobs')})]})]}),(0,x.jsxs)(h.default,{elevated:!0,style:F.walletCard,children:[(0,x.jsx)(r(d[19]).Ionicons,{name:"wallet-outline",size:26,color:s.goldDeep??s.gold}),(0,x.jsxs)(u.default,{style:{flex:1},children:[(0,x.jsx)(c.default,{style:F.walletTitle,children:b('wallet.modeCourierWalletTitle')}),(0,x.jsx)(c.default,{style:F.walletBalance,children:(0,r(d[20]).formatGhs)(v)}),(0,x.jsx)(c.default,{style:F.walletHint,children:b('delivery.courierEarningsWalletHint')}),(0,x.jsx)(y.default,{title:b('wallet.openWallet'),compact:!0,onPress:()=>(0,r(d[21]).navigateToRootScreen)(l,r(d[22]).ROUTES.PROFILE_WALLET)})]})]})]})};var t=r(d[1]),o=l(r(d[2])),n=l(r(d[3])),s=l(r(d[4])),c=l(r(d[5])),u=l(r(d[6])),f=l(r(d[7])),y=l(r(d[8])),h=l(r(d[9])),x=r(d[10]);const p=l=>s.default.create({heroShell:{borderRadius:r(d[11]).radius.xl,overflow:'hidden',marginBottom:r(d[11]).spacing.lg,borderWidth:1,borderColor:l.goldAlpha25??'rgba(201, 162, 39, 0.28)'},heroInner:{padding:r(d[11]).spacing.xl},heroBadge:{flexDirection:'row',alignItems:'center',gap:6,marginBottom:r(d[11]).spacing.md},heroBadgeText:{fontFamily:r(d[11]).fontFamily.semiBold,fontSize:11,letterSpacing:1.2,textTransform:'uppercase',color:l.goldDeep??l.gold},heroLabel:{fontFamily:r(d[11]).fontFamily.medium,fontSize:12,letterSpacing:.8,textTransform:'uppercase',color:l.textMuted},heroAmount:{fontFamily:r(d[11]).fontFamily.bold,fontSize:44,lineHeight:50,color:l.textPrimary,marginTop:4},grid:{flexDirection:'row',gap:r(d[11]).spacing.sm,marginBottom:r(d[11]).spacing.lg},gridCard:{flex:1,borderRadius:r(d[11]).radius.lg,borderWidth:1,borderColor:l.borderSoft??l.border,backgroundColor:l.surfaceElevated??l.surface,padding:r(d[11]).spacing.lg},gridValue:{fontFamily:r(d[11]).fontFamily.bold,fontSize:22,color:l.textPrimary},gridLabel:Object.assign({},r(d[11]).typography.caption,{color:l.textSecondary,marginTop:4}),walletCard:{flexDirection:'row',alignItems:'flex-start',gap:r(d[11]).spacing.md,marginBottom:r(d[11]).spacing.lg},walletTitle:{fontFamily:r(d[11]).fontFamily.semiBold,fontSize:15,color:l.textPrimary},walletBalance:{fontFamily:r(d[11]).fontFamily.bold,fontSize:24,color:l.success,marginVertical:4},walletHint:Object.assign({},r(d[11]).typography.caption,{color:l.textSecondary,lineHeight:18,marginBottom:r(d[11]).spacing.sm})})},1478,[1,5,373,105,26,161,19,1510,672,684,183,377,382,381,1381,501,1492,1491,1707,578,691,1488,682]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var l = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const l = (0, r(d[12]).useNavigation)(),
+          { colors: s, isDark: j } = (0, r(d[13]).useTheme)(),
+          { t: b } = (0, r(d[14]).useLanguage)(),
+          F = (0, t.useMemo)(() => p(s), [s]),
+          { user: S } = (0, r(d[15]).useAuth)(),
+          [w, T] = (0, t.useState)({ today: 0, week: 0, count: 0 }),
+          [v, E] = (0, t.useState)(0),
+          [B, C] = (0, t.useState)(!0),
+          [D, L] = (0, t.useState)(!1),
+          z = (0, t.useCallback)(async () => {
+            if (!S?.id) return;
+            const [{ data: l }, { data: t }] = await Promise.all([
+              (0, r(d[16]).fetchCourierEarningsSummary)(S.id),
+              (0, r(d[17]).fetchWallet)(),
+            ]);
+            (l && T(l), E(Number(t?.balance_ghs ?? 0)));
+          }, [S?.id]);
+        (0, t.useEffect)(() => {
+          z().finally(() => C(!1));
+        }, [z]);
+        const W = j ? ['#141414', '#0D0D0D', '#111111'] : ['#FFFFFF', '#FAF8F3', '#F5F0E6'];
+        if (B)
+          return (0, x.jsx)(f.default, {
+            title: b('delivery.courierEarningsTitle'),
+            scroll: !0,
+            children: (0, x.jsx)(o.default, { color: s.primary, style: { marginTop: 40 } }),
+          });
+        return (0, x.jsxs)(f.default, {
+          title: b('delivery.courierEarningsTitle'),
+          subtitle: b('delivery.courierEarningsSub'),
+          scroll: !0,
+          refreshControl: (0, x.jsx)(n.default, {
+            refreshing: D,
+            onRefresh: async () => {
+              (L(!0), await z(), L(!1));
+            },
+            tintColor: s.primary,
+          }),
+          children: [
+            (0, x.jsx)(u.default, {
+              style: F.heroShell,
+              children: (0, x.jsx)(r(d[18]).LinearGradient, {
+                colors: W,
+                start: { x: 0, y: 0 },
+                end: { x: 1, y: 1 },
+                children: (0, x.jsxs)(u.default, {
+                  style: F.heroInner,
+                  children: [
+                    (0, x.jsxs)(u.default, {
+                      style: F.heroBadge,
+                      children: [
+                        (0, x.jsx)(r(d[19]).Ionicons, {
+                          name: 'trending-up',
+                          size: 14,
+                          color: s.goldDeep ?? s.gold,
+                        }),
+                        (0, x.jsx)(c.default, {
+                          style: F.heroBadgeText,
+                          children: b('delivery.courierEarningsTitle'),
+                        }),
+                      ],
+                    }),
+                    (0, x.jsx)(c.default, {
+                      style: F.heroLabel,
+                      children: b('delivery.courierEarningsToday'),
+                    }),
+                    (0, x.jsx)(c.default, {
+                      style: F.heroAmount,
+                      children: (0, r(d[20]).formatGhs)(w.today),
+                    }),
+                  ],
+                }),
+              }),
+            }),
+            (0, x.jsxs)(u.default, {
+              style: F.grid,
+              children: [
+                (0, x.jsxs)(u.default, {
+                  style: F.gridCard,
+                  children: [
+                    (0, x.jsx)(c.default, {
+                      style: F.gridValue,
+                      children: (0, r(d[20]).formatGhs)(w.week),
+                    }),
+                    (0, x.jsx)(c.default, {
+                      style: F.gridLabel,
+                      children: b('delivery.courierEarningsWeek'),
+                    }),
+                  ],
+                }),
+                (0, x.jsxs)(u.default, {
+                  style: F.gridCard,
+                  children: [
+                    (0, x.jsx)(c.default, { style: F.gridValue, children: w.count }),
+                    (0, x.jsx)(c.default, {
+                      style: F.gridLabel,
+                      children: b('delivery.courierEarningsJobs'),
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            (0, x.jsxs)(h.default, {
+              elevated: !0,
+              style: F.walletCard,
+              children: [
+                (0, x.jsx)(r(d[19]).Ionicons, {
+                  name: 'wallet-outline',
+                  size: 26,
+                  color: s.goldDeep ?? s.gold,
+                }),
+                (0, x.jsxs)(u.default, {
+                  style: { flex: 1 },
+                  children: [
+                    (0, x.jsx)(c.default, {
+                      style: F.walletTitle,
+                      children: b('wallet.modeCourierWalletTitle'),
+                    }),
+                    (0, x.jsx)(c.default, {
+                      style: F.walletBalance,
+                      children: (0, r(d[20]).formatGhs)(v),
+                    }),
+                    (0, x.jsx)(c.default, {
+                      style: F.walletHint,
+                      children: b('delivery.courierEarningsWalletHint'),
+                    }),
+                    (0, x.jsx)(y.default, {
+                      title: b('wallet.openWallet'),
+                      compact: !0,
+                      onPress: () =>
+                        (0, r(d[21]).navigateToRootScreen)(l, r(d[22]).ROUTES.PROFILE_WALLET),
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        });
+      }));
+    var t = r(d[1]),
+      o = l(r(d[2])),
+      n = l(r(d[3])),
+      s = l(r(d[4])),
+      c = l(r(d[5])),
+      u = l(r(d[6])),
+      f = l(r(d[7])),
+      y = l(r(d[8])),
+      h = l(r(d[9])),
+      x = r(d[10]);
+    const p = l =>
+      s.default.create({
+        heroShell: {
+          borderRadius: r(d[11]).radius.xl,
+          overflow: 'hidden',
+          marginBottom: r(d[11]).spacing.lg,
+          borderWidth: 1,
+          borderColor: l.goldAlpha25 ?? 'rgba(201, 162, 39, 0.28)',
+        },
+        heroInner: { padding: r(d[11]).spacing.xl },
+        heroBadge: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 6,
+          marginBottom: r(d[11]).spacing.md,
+        },
+        heroBadgeText: {
+          fontFamily: r(d[11]).fontFamily.semiBold,
+          fontSize: 11,
+          letterSpacing: 1.2,
+          textTransform: 'uppercase',
+          color: l.goldDeep ?? l.gold,
+        },
+        heroLabel: {
+          fontFamily: r(d[11]).fontFamily.medium,
+          fontSize: 12,
+          letterSpacing: 0.8,
+          textTransform: 'uppercase',
+          color: l.textMuted,
+        },
+        heroAmount: {
+          fontFamily: r(d[11]).fontFamily.bold,
+          fontSize: 44,
+          lineHeight: 50,
+          color: l.textPrimary,
+          marginTop: 4,
+        },
+        grid: { flexDirection: 'row', gap: r(d[11]).spacing.sm, marginBottom: r(d[11]).spacing.lg },
+        gridCard: {
+          flex: 1,
+          borderRadius: r(d[11]).radius.lg,
+          borderWidth: 1,
+          borderColor: l.borderSoft ?? l.border,
+          backgroundColor: l.surfaceElevated ?? l.surface,
+          padding: r(d[11]).spacing.lg,
+        },
+        gridValue: { fontFamily: r(d[11]).fontFamily.bold, fontSize: 22, color: l.textPrimary },
+        gridLabel: Object.assign({}, r(d[11]).typography.caption, {
+          color: l.textSecondary,
+          marginTop: 4,
+        }),
+        walletCard: {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          gap: r(d[11]).spacing.md,
+          marginBottom: r(d[11]).spacing.lg,
+        },
+        walletTitle: {
+          fontFamily: r(d[11]).fontFamily.semiBold,
+          fontSize: 15,
+          color: l.textPrimary,
+        },
+        walletBalance: {
+          fontFamily: r(d[11]).fontFamily.bold,
+          fontSize: 24,
+          color: l.success,
+          marginVertical: 4,
+        },
+        walletHint: Object.assign({}, r(d[11]).typography.caption, {
+          color: l.textSecondary,
+          lineHeight: 18,
+          marginBottom: r(d[11]).spacing.sm,
+        }),
+      });
+  },
+  1478,
+  [
+    1, 5, 373, 105, 26, 161, 19, 1510, 672, 684, 183, 377, 382, 381, 1381, 501, 1492, 1491, 1707,
+    578, 691, 1488, 682,
+  ]
+);

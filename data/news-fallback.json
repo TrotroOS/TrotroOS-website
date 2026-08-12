@@ -1,5 +1,33 @@
 [
   {
+    "slug": "demand-heatmap-find-ride",
+    "title": "Corridor demand heat map",
+    "summary": "Find Ride now shows where passengers are waiting on a live heat map — warm hubs on Tech Junction, Kejetia, KNUST, and Ayeduase before you walk to the stop.",
+    "tags": ["Feature update", "Find Ride"],
+    "published_at": "2026-08-12T09:00:00+00:00"
+  },
+  {
+    "slug": "trip-chat-pilot",
+    "title": "Trip chat with your mate",
+    "summary": "After a reservation or bid is accepted, passengers and mates can chat in-app with quick replies and optional auto-translate.",
+    "tags": ["Feature update", "Trip chat"],
+    "published_at": "2026-08-12T08:00:00+00:00"
+  },
+  {
+    "slug": "smart-fare-lock",
+    "title": "Smart Fare Lock",
+    "summary": "Lock your quoted fare for five minutes when corridor demand spikes — no surprise cedi bumps while you wait for the van.",
+    "tags": ["Feature update", "Payments"],
+    "published_at": "2026-08-11T12:00:00+00:00"
+  },
+  {
+    "slug": "referral-rewards-pilot",
+    "title": "Refer friends, earn GHS 5",
+    "summary": "Share your invite code — earn GHS 5 when a friend completes their first ride. New riders get 3% off their first trip.",
+    "tags": ["Feature update", "Referrals"],
+    "published_at": "2026-08-11T10:00:00+00:00"
+  },
+  {
     "slug": "live-only-trips-bid-sync",
     "title": "Live-only trips & bid sync",
     "summary": "Browse feeds show mates with active GPS only. Bids reach the mate dashboard in real time with pickup codes on accept.",

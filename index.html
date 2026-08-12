@@ -6,17 +6,17 @@
     <title>TrotroOS — Trotro rides, live in Kumasi</title>
     <meta
       name="description"
-      content="Reserve a seat, track your mate live, pay with MoMo. TrotroOS connects passengers, mates, and stations on the corridors you already use."
+      content="Reserve a seat, see corridor demand on a live heat map, chat with your mate, lock fares for 5 minutes, and pay with MoMo. TrotroOS for Kumasi corridors you already use."
     />
     <meta
       name="keywords"
-      content="trotro, TrotroOS, Kumasi transport, Ghana mobility, MoMo, live tracking, mate app"
+      content="trotro, TrotroOS, Kumasi transport, Ghana mobility, MoMo, live tracking, demand heat map, trip chat, fare lock, mate app"
     />
     <meta name="author" content="TrotroOS" />
     <meta property="og:title" content="TrotroOS — Trotro rides, live in Kumasi" />
     <meta
       property="og:description"
-      content="Reserve seats, follow live GPS, share Trip Guardian links, and pay with MoMo."
+      content="Live corridor demand, seat reservations, trip chat, Smart Fare Lock, and MoMo — built for Kumasi trotro corridors."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://trotroos.app/" />
@@ -49,7 +49,7 @@
         "name": "TrotroOS",
         "applicationCategory": "TravelApplication",
         "operatingSystem": "Android, iOS, Web",
-        "description": "Live trotro mobility platform for Kumasi, Ghana.",
+        "description": "Live trotro mobility for Kumasi — demand heat map, reservations, trip chat, and MoMo payments.",
         "url": "https://trotroos.app",
         "author": { "@type": "Organization", "name": "TrotroOS" }
       }
@@ -77,6 +77,7 @@
           <span></span><span></span><span></span>
         </button>
         <nav class="site-nav" data-site-nav aria-label="Main">
+          <a href="#demand">Live demand</a>
           <a href="#passengers">Passengers</a>
           <a href="#operators">Operators</a>
           <a href="#commerce">Market &amp; Eats</a>
@@ -93,17 +94,20 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="hero-label">Kumasi · Kejetia · Tech Junction · KNUST</p>
-            <h1>The trotro you know — with a live seat map.</h1>
+            <h1>The trotro you know — with a live demand map.</h1>
             <p class="hero-lead">
-              Same vans, same mates, same roadside stops. TrotroOS adds live GPS, queue counts,
-              seat reservations, MoMo payment, and Trip Guardian sharing on corridors you already
-              run every day.
+              Same vans, same mates, same roadside stops. TrotroOS adds a corridor heat map, seat
+              reservations, in-trip chat with your mate, Smart Fare Lock, MoMo payment, and Trip
+              Guardian sharing on corridors you already run every day.
             </p>
             <div class="hero-actions" id="download">
-              <a class="btn btn-primary btn-lg" href="/app/" data-web-app-link>
-                Open web app
-              </a>
-              <button type="button" class="btn btn-outline btn-lg install-btn" data-install-app hidden>
+              <a class="btn btn-primary btn-lg" href="/app/" data-web-app-link> Open web app </a>
+              <button
+                type="button"
+                class="btn btn-outline btn-lg install-btn"
+                data-install-app
+                hidden
+              >
                 Install app
               </button>
               <a
@@ -154,47 +158,89 @@
         </div>
       </section>
 
-      <div class="corridor-bar" aria-label="Active corridors">
+      <div class="corridor-bar" aria-label="Live corridor demand">
         <div class="container corridor-bar-inner">
-          <span class="corridor-bar-label">Live corridors</span>
-          <ul class="corridor-list">
-            <li>Tech Junction — Ayeduase</li>
-            <li>Kejetia — KNUST</li>
-            <li>Adum — Asokwa</li>
-            <li>Santasi — Kejetia</li>
-            <li>Bantama — Tech Junction</li>
+          <span class="corridor-bar-label">Live demand</span>
+          <ul class="corridor-list" data-corridor-ticker>
+            <li>Tech Junction → Ayeduase · loading…</li>
+            <li>Kejetia → KNUST Campus · loading…</li>
+            <li>Tech Junction → KNUST Campus · loading…</li>
           </ul>
         </div>
       </div>
+
+      <section class="section section-dark" id="demand">
+        <div class="container">
+          <header class="section-intro">
+            <h2>See corridor demand before you walk</h2>
+            <p>
+              Find Ride shows a live heat map of where passengers are waiting — the same aggregate
+              counts mates and station masters see, with no names or phone numbers.
+            </p>
+          </header>
+          <div class="demand-panel" data-demand-panel>
+            <div class="demand-panel__map">
+              <img
+                src="/images/kumasi-corridor.svg"
+                width="1200"
+                height="600"
+                alt="Illustrated Kumasi trotro corridor map"
+                class="demand-panel__bg"
+                loading="lazy"
+              />
+              <svg
+                class="demand-panel__overlay"
+                viewBox="0 0 1200 600"
+                aria-hidden="true"
+                data-demand-svg
+              ></svg>
+            </div>
+            <aside class="demand-panel__aside">
+              <div class="demand-panel__status">
+                <span class="live-dot" data-demand-live hidden aria-hidden="true"></span>
+                <span data-demand-status>Loading demand…</span>
+              </div>
+              <ul
+                class="demand-routes"
+                data-demand-routes
+                aria-label="Top corridors by waiting count"
+              ></ul>
+              <p class="demand-panel__hint">Refreshes every 30 seconds · Kumasi pilot</p>
+              <a class="btn btn-light btn-sm" href="/app/" data-web-app-link>Open Find Ride</a>
+            </aside>
+          </div>
+        </div>
+      </section>
 
       <section class="section" id="passengers">
         <div class="container">
           <header class="section-intro">
             <h2>For passengers at the roadside</h2>
             <p>
-              You already know the drill — mate calls the fare, van fills fast, you chase the
-              one turning. TrotroOS shows which mate is actually moving on your corridor before
-              you leave the shade.
+              You already know the drill — mate calls the fare, van fills fast, you chase the one
+              turning. TrotroOS shows which mate is actually moving on your corridor before you
+              leave the shade.
             </p>
           </header>
           <div class="feature-rows">
             <article class="feature-row">
               <div class="feature-row__copy">
-                <h3>Find Ride</h3>
+                <h3>Find Ride &amp; demand heat map</h3>
                 <p>
-                  See mates broadcasting live GPS on Tech Junction, Kejetia, KNUST, and Ayeduase.
-                  Reserve a seat on a van that is actually en route — not a dead pin on a map.
+                  See where passengers are waiting before you leave the shade — warm hubs on Tech
+                  Junction, Kejetia, KNUST, and Ayeduase. Reserve a seat on a mate broadcasting live
+                  GPS, not a dead pin on a map.
                 </p>
               </div>
               <figure class="feature-row__photo">
                 <img
-                  src="/images/photos/trotro-queue.jpg"
-                  width="770"
-                  height="513"
-                  alt="Passengers waiting for trotro at a Ghana roadside"
+                  src="/images/screens/png/find-ride.png"
+                  width="720"
+                  height="1280"
+                  alt="Find Ride screen with corridor demand heat map"
                   loading="lazy"
                 />
-                <figcaption>Know the queue before you walk to the stop</figcaption>
+                <figcaption>Corridor demand before you walk to the stop</figcaption>
               </figure>
             </article>
             <article class="feature-row feature-row--reverse">
@@ -202,8 +248,8 @@
                 <h3>Bid &amp; Ride</h3>
                 <p>
                   Name your fare in cedis. If a mate accepts, you get a pickup code and live
-                  tracking until you board — same negotiation as the roadside, without shouting
-                  over traffic.
+                  tracking until you board — same negotiation as the roadside, without shouting over
+                  traffic.
                 </p>
               </div>
               <figure class="feature-row__photo">
@@ -221,8 +267,8 @@
               <div class="feature-row__copy">
                 <h3>Trip Guardian</h3>
                 <p>
-                  Send a WhatsApp link so family in Accra or abroad follows your Kejetia trip in
-                  the browser. No extra app download for them.
+                  Send a WhatsApp link so family in Accra or abroad follows your Kejetia trip in the
+                  browser. No extra app download for them.
                 </p>
                 <a class="text-link" href="/track.html">How track links work →</a>
               </div>
@@ -238,6 +284,37 @@
               </figure>
             </article>
           </div>
+
+          <div class="pilot-features" aria-label="Pilot passenger features">
+            <article class="pilot-feature">
+              <h3>Trip chat</h3>
+              <p>
+                Message your mate after they accept — quick replies for “where are you?” and “almost
+                at the stop”, with optional auto-translate when Twi and English mix.
+              </p>
+            </article>
+            <article class="pilot-feature">
+              <h3>Smart Fare Lock</h3>
+              <p>
+                Lock your quoted fare for 5 minutes while demand is high. No surprise cedi bumps
+                when the van is almost full.
+              </p>
+            </article>
+            <article class="pilot-feature">
+              <h3>Invite friends</h3>
+              <p>
+                Share your code — earn GHS 5 when a friend completes their first ride. They get 3%
+                off their first trip.
+              </p>
+            </article>
+            <article class="pilot-feature">
+              <h3>AI help in-app</h3>
+              <p>
+                Ask about fares, corridors, MoMo top-ups, and safety features. Built-in tips know
+                how TrotroOS works in Kumasi.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -246,8 +323,8 @@
           <header class="section-intro">
             <h2>For mates, drivers &amp; station masters</h2>
             <p>
-              The mate calling fares, the driver on the wheel, the station hand managing the
-              queue — all on one live feed.
+              The mate calling fares, the driver on the wheel, the station hand managing the queue —
+              all on one live feed.
             </p>
           </header>
           <div class="role-cards">
@@ -256,9 +333,8 @@
               <div class="role-card__body">
                 <h3>Mate dashboard</h3>
                 <p>
-                  Turn on GPS when you leave the station. Seat bids and reservations hit your
-                  phone before you reach the next stop. Issue a verification code when someone
-                  boards.
+                  Turn on GPS when you leave the station. Seat bids and reservations hit your phone
+                  before you reach the next stop. Issue a verification code when someone boards.
                 </p>
               </div>
             </article>
@@ -309,9 +385,9 @@
               <div class="commerce-card__body">
                 <h3>Trotro Market</h3>
                 <p>
-                  Peer listings from traders at Kejetia, Hong Kong Market, and Adum. Browse
-                  fabric, electronics, and everyday goods — add to cart and checkout with MoMo
-                  or cash meetup.
+                  Peer listings from traders at Kejetia, Hong Kong Market, and Adum. Browse fabric,
+                  electronics, and everyday goods — add to cart and checkout with MoMo or cash
+                  meetup.
                 </p>
               </div>
             </article>
@@ -328,8 +404,8 @@
               <div class="commerce-card__body">
                 <h3>Trotro Eats</h3>
                 <p>
-                  Local food vendors list jollof, waakye, kelewele, and banku on the app. Order
-                  for pickup at the station or delivery to your corridor stop.
+                  Local food vendors list jollof, waakye, kelewele, and banku on the app. Order for
+                  pickup at the station or delivery to your corridor stop.
                 </p>
               </div>
             </article>
@@ -360,8 +436,8 @@
           <header class="section-intro section-intro--narrow">
             <h2>Built for how Ghana actually moves</h2>
             <p>
-              TrotroOS is not a ride-hail replacement. It is a layer on top of the vans, queues,
-              and mates already running Kumasi every day.
+              TrotroOS is not a ride-hail replacement. It is a layer on top of the vans, queues, and
+              mates already running Kumasi every day.
             </p>
           </header>
           <div class="photo-grid">
@@ -407,18 +483,27 @@
           <ol class="steps-row">
             <li>
               <span class="steps-row__num">1</span>
-              <h3>Pick your corridor</h3>
-              <p>Tech Junction → Ayeduase. Kejetia → KNUST. The names you already shout at the stop.</p>
+              <h3>Check demand &amp; pick a corridor</h3>
+              <p>
+                See the heat map on Find Ride. Tech Junction → Ayeduase. Kejetia → KNUST. The names
+                you already shout at the stop.
+              </p>
             </li>
             <li>
               <span class="steps-row__num">2</span>
               <h3>Book, bid, or queue</h3>
-              <p>Reserve on a live mate, send a cedi bid, or wait until a van on your route matches.</p>
+              <p>
+                Reserve on a live mate, lock your fare for five minutes, send a cedi bid, or wait
+                until a van on your route matches.
+              </p>
             </li>
             <li>
               <span class="steps-row__num">3</span>
-              <h3>Board &amp; pay</h3>
-              <p>Show your six-digit code to the mate. Pay MoMo or cash on board — your choice.</p>
+              <h3>Board, chat &amp; pay</h3>
+              <p>
+                After accept, chat with your mate and follow live GPS. Show your six-digit code to
+                board. Pay MoMo or cash — your choice.
+              </p>
             </li>
           </ol>
         </div>
@@ -433,6 +518,8 @@
               It is proof of handoff if a fare or seat dispute comes up later.
             </p>
             <ul class="check-list">
+              <li>Driver details only after your reservation or bid is accepted</li>
+              <li>Trip chat with your mate once they accept</li>
               <li>Trip Guardian browser sharing for trusted contacts</li>
               <li>Profile verification tiers and trust scores</li>
               <li>SOS and emergency quick links in-app</li>
@@ -494,12 +581,7 @@
             </div>
             <a href="/news.html" class="text-link">All news →</a>
           </header>
-          <div
-            class="news-row"
-            data-news-feed
-            data-news-limit="2"
-            data-news-layout="home"
-          ></div>
+          <div class="news-row" data-news-feed data-news-limit="2" data-news-layout="home"></div>
         </div>
       </section>
 
@@ -510,10 +592,13 @@
             <p>Open the web app or email us for Android beta access in Kumasi.</p>
           </div>
           <div class="cta-band__actions">
-            <a class="btn btn-primary btn-lg" href="/app/" data-web-app-link
-              >Open web app</a
+            <a class="btn btn-primary btn-lg" href="/app/" data-web-app-link>Open web app</a>
+            <button
+              type="button"
+              class="btn btn-outline btn-lg install-btn"
+              data-install-app
+              hidden
             >
-            <button type="button" class="btn btn-outline btn-lg install-btn" data-install-app hidden>
               Install app
             </button>
             <a class="btn btn-outline btn-lg" href="mailto:trotroapp@gmail.com">Contact</a>
@@ -540,6 +625,7 @@
         <div>
           <strong>Product</strong>
           <ul class="footer-links">
+            <li><a href="#demand">Live demand</a></li>
             <li><a href="#passengers">Passengers</a></li>
             <li><a href="#operators">Operators</a></li>
             <li><a href="#commerce">Market &amp; Eats</a></li>
@@ -573,6 +659,7 @@
     </footer>
 
     <script src="/js/public-config.js" defer></script>
+    <script src="/js/demand-heatmap.js" defer></script>
     <script src="/js/news.js" defer></script>
     <script src="/js/site.js" defer></script>
   </body>

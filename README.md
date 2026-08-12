@@ -33,11 +33,11 @@ npm run website:preview
 
 The marketing site and Expo web export deploy together:
 
-| URL | Content |
-| --- | --- |
-| `/` | Marketing landing (static) |
-| `/app/` | Full TrotroOS app in the browser |
-| `/manifest.webmanifest` | Install-to-homescreen manifest |
+| URL                     | Content                          |
+| ----------------------- | -------------------------------- |
+| `/`                     | Marketing landing (static)       |
+| `/app/`                 | Full TrotroOS app in the browser |
+| `/manifest.webmanifest` | Install-to-homescreen manifest   |
 
 Rebuild the app after code changes:
 

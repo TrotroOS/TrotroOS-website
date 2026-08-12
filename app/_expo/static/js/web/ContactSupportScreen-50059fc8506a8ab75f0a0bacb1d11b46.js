@@ -1,1 +1,238 @@
-__d(function(g,_r,_i,a,m,_e,d){var e=_r(d[0]);Object.defineProperty(_e,"__esModule",{value:!0}),_e.default=function(){const e=(0,_r(d[13]).useNavigation)(),{user:i,profile:h}=(0,_r(d[14]).useAuth)(),{showToast:x}=(0,_r(d[15]).useToast)(),{colors:P}=(0,_r(d[16]).useTheme)(),j=f(P);return(0,p.jsxs)(l.default,{title:"Contact Support",subtitle:"We typically reply within 24 hours",children:[(0,p.jsxs)(s.default,{style:j.hero,children:[(0,p.jsx)(_r(d[17]).Ionicons,{name:"mail",size:28,color:P.primary}),(0,p.jsxs)(s.default,{style:j.heroText,children:[(0,p.jsx)(r.default,{style:j.heroTitle,children:"We\u2019re here to help"}),(0,p.jsx)(r.default,{style:j.heroBody,children:"Account, payments, safety, or bookings \u2014 include your registered email and trip details when you can."})]})]}),(0,p.jsxs)(c.default,{elevated:!0,children:[(0,p.jsx)(r.default,{style:j.email,children:_r(d[12]).SUPPORT_EMAIL}),(0,p.jsx)(r.default,{style:j.body,children:"For urgent danger during a trip, use Trip Guardian or call 112 first \u2014 email is for follow-up, not emergencies."}),(0,p.jsxs)(s.default,{style:j.actions,children:[(0,p.jsx)(u.default,{title:"Email support",onPress:()=>{o.default.openURL(y({email:i?.email,name:h?.full_name,userId:i?.id})).catch(()=>{x({type:'error',title:'Could not open mail',message:`Email us at ${_r(d[12]).SUPPORT_EMAIL}`})})}}),(0,p.jsx)(u.default,{title:"Copy email address",variant:"secondary",onPress:async()=>{await t.setStringAsync(_r(d[12]).SUPPORT_EMAIL),x({type:'success',title:'Email copied',message:_r(d[12]).SUPPORT_EMAIL})}})]}),(0,p.jsxs)(n.default,{style:j.linkRow,onPress:()=>e.navigate(_r(d[18]).ROUTES.PROFILE_HELP_FAQ),children:[(0,p.jsx)(_r(d[17]).Ionicons,{name:"help-circle-outline",size:20,color:P.primary}),(0,p.jsx)(r.default,{style:j.linkText,children:"Browse Help & FAQ"}),(0,p.jsx)(_r(d[17]).Ionicons,{name:"chevron-forward",size:18,color:P.textMuted})]}),(0,p.jsxs)(n.default,{style:j.linkRow,onPress:()=>e.navigate(_r(d[18]).ROUTES.PROFILE_REPORT_ISSUE),children:[(0,p.jsx)(_r(d[17]).Ionicons,{name:"flag-outline",size:20,color:P.primary}),(0,p.jsx)(r.default,{style:j.linkText,children:"Report an issue"}),(0,p.jsx)(_r(d[17]).Ionicons,{name:"chevron-forward",size:18,color:P.textMuted})]}),(0,p.jsxs)(n.default,{style:j.linkRow,onPress:()=>e.navigate(_r(d[18]).ROUTES.PROFILE_EMERGENCY_CONTACT),children:[(0,p.jsx)(_r(d[17]).Ionicons,{name:"call-outline",size:20,color:P.primary}),(0,p.jsx)(r.default,{style:j.linkText,children:"Emergency contacts"}),(0,p.jsx)(_r(d[17]).Ionicons,{name:"chevron-forward",size:18,color:P.textMuted})]}),(0,p.jsxs)(r.default,{style:j.meta,children:[_r(d[12]).APP_NAME," v",_r(d[12]).APP_VERSION]})]})]})};var t=(function(e,t){if("function"==typeof WeakMap)var o=new WeakMap,n=new WeakMap;return(function(e,t){if(!t&&e&&e.__esModule)return e;var i,r,s={__proto__:null,default:e};if(null===e||"object"!=typeof e&&"function"!=typeof e)return s;if(i=t?n:o){if(i.has(e))return i.get(e);i.set(e,s)}for(const t in e)"default"!==t&&{}.hasOwnProperty.call(e,t)&&((r=(i=Object.defineProperty)&&Object.getOwnPropertyDescriptor(e,t))&&(r.get||r.set)?i(s,t,r):s[t]=e[t]);return s})(e,t)})(_r(d[1])),o=e(_r(d[2])),n=e(_r(d[3])),i=e(_r(d[4])),r=e(_r(d[5])),s=e(_r(d[6])),l=e(_r(d[7])),c=e(_r(d[8])),u=e(_r(d[9])),p=_r(d[10]);const f=e=>i.default.create({hero:{flexDirection:'row',gap:_r(d[11]).spacing.md,padding:_r(d[11]).spacing.md,borderRadius:_r(d[11]).radius.md,backgroundColor:e.primaryAlpha06??e.surface,borderWidth:1,borderColor:e.border,marginBottom:_r(d[11]).spacing.lg},heroText:{flex:1},heroTitle:{fontFamily:_r(d[11]).fontFamily.bold,fontSize:16,color:e.textPrimary,marginBottom:_r(d[11]).spacing.xs},heroBody:Object.assign({},_r(d[11]).typography.caption,{lineHeight:18}),email:{fontFamily:_r(d[11]).fontFamily.bold,fontSize:17,color:e.primary,marginBottom:_r(d[11]).spacing.sm},body:Object.assign({},_r(d[11]).typography.body,{marginBottom:_r(d[11]).spacing.lg,lineHeight:22}),actions:{gap:_r(d[11]).spacing.sm,marginBottom:_r(d[11]).spacing.md},linkRow:{flexDirection:'row',alignItems:'center',gap:_r(d[11]).spacing.sm,paddingVertical:_r(d[11]).spacing.sm},linkText:{fontFamily:_r(d[11]).fontFamily.semiBold,fontSize:15,color:e.textPrimary,flex:1},meta:Object.assign({},_r(d[11]).typography.caption,{marginTop:_r(d[11]).spacing.md,textAlign:'center'})});function y({email:e,name:t,userId:o}){const n=encodeURIComponent(`${_r(d[12]).APP_NAME} Support`),i=encodeURIComponent([`Hi ${_r(d[12]).APP_NAME} team,`,'','I need help with:','','\u2014',`Name: ${t||'\u2014'}`,`Account email: ${e||'\u2014'}`,`User ID: ${o||'\u2014'}`,`App version: ${_r(d[12]).APP_VERSION}`,'','(Add trip route/time if this is about a booking.)'].join('\n'));return`mailto:${_r(d[12]).SUPPORT_EMAIL}?subject=${n}&body=${i}`}},1470,[1,1526,667,326,26,161,19,1710,684,672,183,377,508,382,501,1386,381,578,682]);
+__d(
+  function (g, _r, _i, a, m, _e, d) {
+    var e = _r(d[0]);
+    (Object.defineProperty(_e, '__esModule', { value: !0 }),
+      (_e.default = function () {
+        const e = (0, _r(d[13]).useNavigation)(),
+          { user: i, profile: h } = (0, _r(d[14]).useAuth)(),
+          { showToast: x } = (0, _r(d[15]).useToast)(),
+          { colors: P } = (0, _r(d[16]).useTheme)(),
+          j = f(P);
+        return (0, p.jsxs)(l.default, {
+          title: 'Contact Support',
+          subtitle: 'We typically reply within 24 hours',
+          children: [
+            (0, p.jsxs)(s.default, {
+              style: j.hero,
+              children: [
+                (0, p.jsx)(_r(d[17]).Ionicons, { name: 'mail', size: 28, color: P.primary }),
+                (0, p.jsxs)(s.default, {
+                  style: j.heroText,
+                  children: [
+                    (0, p.jsx)(r.default, {
+                      style: j.heroTitle,
+                      children: 'We\u2019re here to help',
+                    }),
+                    (0, p.jsx)(r.default, {
+                      style: j.heroBody,
+                      children:
+                        'Account, payments, safety, or bookings \u2014 include your registered email and trip details when you can.',
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            (0, p.jsxs)(c.default, {
+              elevated: !0,
+              children: [
+                (0, p.jsx)(r.default, { style: j.email, children: _r(d[12]).SUPPORT_EMAIL }),
+                (0, p.jsx)(r.default, {
+                  style: j.body,
+                  children:
+                    'For urgent danger during a trip, use Trip Guardian or call 112 first \u2014 email is for follow-up, not emergencies.',
+                }),
+                (0, p.jsxs)(s.default, {
+                  style: j.actions,
+                  children: [
+                    (0, p.jsx)(u.default, {
+                      title: 'Email support',
+                      onPress: () => {
+                        o.default
+                          .openURL(y({ email: i?.email, name: h?.full_name, userId: i?.id }))
+                          .catch(() => {
+                            x({
+                              type: 'error',
+                              title: 'Could not open mail',
+                              message: `Email us at ${_r(d[12]).SUPPORT_EMAIL}`,
+                            });
+                          });
+                      },
+                    }),
+                    (0, p.jsx)(u.default, {
+                      title: 'Copy email address',
+                      variant: 'secondary',
+                      onPress: async () => {
+                        (await t.setStringAsync(_r(d[12]).SUPPORT_EMAIL),
+                          x({
+                            type: 'success',
+                            title: 'Email copied',
+                            message: _r(d[12]).SUPPORT_EMAIL,
+                          }));
+                      },
+                    }),
+                  ],
+                }),
+                (0, p.jsxs)(n.default, {
+                  style: j.linkRow,
+                  onPress: () => e.navigate(_r(d[18]).ROUTES.PROFILE_HELP_FAQ),
+                  children: [
+                    (0, p.jsx)(_r(d[17]).Ionicons, {
+                      name: 'help-circle-outline',
+                      size: 20,
+                      color: P.primary,
+                    }),
+                    (0, p.jsx)(r.default, { style: j.linkText, children: 'Browse Help & FAQ' }),
+                    (0, p.jsx)(_r(d[17]).Ionicons, {
+                      name: 'chevron-forward',
+                      size: 18,
+                      color: P.textMuted,
+                    }),
+                  ],
+                }),
+                (0, p.jsxs)(n.default, {
+                  style: j.linkRow,
+                  onPress: () => e.navigate(_r(d[18]).ROUTES.PROFILE_REPORT_ISSUE),
+                  children: [
+                    (0, p.jsx)(_r(d[17]).Ionicons, {
+                      name: 'flag-outline',
+                      size: 20,
+                      color: P.primary,
+                    }),
+                    (0, p.jsx)(r.default, { style: j.linkText, children: 'Report an issue' }),
+                    (0, p.jsx)(_r(d[17]).Ionicons, {
+                      name: 'chevron-forward',
+                      size: 18,
+                      color: P.textMuted,
+                    }),
+                  ],
+                }),
+                (0, p.jsxs)(n.default, {
+                  style: j.linkRow,
+                  onPress: () => e.navigate(_r(d[18]).ROUTES.PROFILE_EMERGENCY_CONTACT),
+                  children: [
+                    (0, p.jsx)(_r(d[17]).Ionicons, {
+                      name: 'call-outline',
+                      size: 20,
+                      color: P.primary,
+                    }),
+                    (0, p.jsx)(r.default, { style: j.linkText, children: 'Emergency contacts' }),
+                    (0, p.jsx)(_r(d[17]).Ionicons, {
+                      name: 'chevron-forward',
+                      size: 18,
+                      color: P.textMuted,
+                    }),
+                  ],
+                }),
+                (0, p.jsxs)(r.default, {
+                  style: j.meta,
+                  children: [_r(d[12]).APP_NAME, ' v', _r(d[12]).APP_VERSION],
+                }),
+              ],
+            }),
+          ],
+        });
+      }));
+    var t = (function (e, t) {
+        if ('function' == typeof WeakMap)
+          var o = new WeakMap(),
+            n = new WeakMap();
+        return (function (e, t) {
+          if (!t && e && e.__esModule) return e;
+          var i,
+            r,
+            s = { __proto__: null, default: e };
+          if (null === e || ('object' != typeof e && 'function' != typeof e)) return s;
+          if ((i = t ? n : o)) {
+            if (i.has(e)) return i.get(e);
+            i.set(e, s);
+          }
+          for (const t in e)
+            'default' !== t &&
+              {}.hasOwnProperty.call(e, t) &&
+              ((r = (i = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) &&
+              (r.get || r.set)
+                ? i(s, t, r)
+                : (s[t] = e[t]));
+          return s;
+        })(e, t);
+      })(_r(d[1])),
+      o = e(_r(d[2])),
+      n = e(_r(d[3])),
+      i = e(_r(d[4])),
+      r = e(_r(d[5])),
+      s = e(_r(d[6])),
+      l = e(_r(d[7])),
+      c = e(_r(d[8])),
+      u = e(_r(d[9])),
+      p = _r(d[10]);
+    const f = e =>
+      i.default.create({
+        hero: {
+          flexDirection: 'row',
+          gap: _r(d[11]).spacing.md,
+          padding: _r(d[11]).spacing.md,
+          borderRadius: _r(d[11]).radius.md,
+          backgroundColor: e.primaryAlpha06 ?? e.surface,
+          borderWidth: 1,
+          borderColor: e.border,
+          marginBottom: _r(d[11]).spacing.lg,
+        },
+        heroText: { flex: 1 },
+        heroTitle: {
+          fontFamily: _r(d[11]).fontFamily.bold,
+          fontSize: 16,
+          color: e.textPrimary,
+          marginBottom: _r(d[11]).spacing.xs,
+        },
+        heroBody: Object.assign({}, _r(d[11]).typography.caption, { lineHeight: 18 }),
+        email: {
+          fontFamily: _r(d[11]).fontFamily.bold,
+          fontSize: 17,
+          color: e.primary,
+          marginBottom: _r(d[11]).spacing.sm,
+        },
+        body: Object.assign({}, _r(d[11]).typography.body, {
+          marginBottom: _r(d[11]).spacing.lg,
+          lineHeight: 22,
+        }),
+        actions: { gap: _r(d[11]).spacing.sm, marginBottom: _r(d[11]).spacing.md },
+        linkRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: _r(d[11]).spacing.sm,
+          paddingVertical: _r(d[11]).spacing.sm,
+        },
+        linkText: {
+          fontFamily: _r(d[11]).fontFamily.semiBold,
+          fontSize: 15,
+          color: e.textPrimary,
+          flex: 1,
+        },
+        meta: Object.assign({}, _r(d[11]).typography.caption, {
+          marginTop: _r(d[11]).spacing.md,
+          textAlign: 'center',
+        }),
+      });
+    function y({ email: e, name: t, userId: o }) {
+      const n = encodeURIComponent(`${_r(d[12]).APP_NAME} Support`),
+        i = encodeURIComponent(
+          [
+            `Hi ${_r(d[12]).APP_NAME} team,`,
+            '',
+            'I need help with:',
+            '',
+            '\u2014',
+            `Name: ${t || '\u2014'}`,
+            `Account email: ${e || '\u2014'}`,
+            `User ID: ${o || '\u2014'}`,
+            `App version: ${_r(d[12]).APP_VERSION}`,
+            '',
+            '(Add trip route/time if this is about a booking.)',
+          ].join('\n')
+        );
+      return `mailto:${_r(d[12]).SUPPORT_EMAIL}?subject=${n}&body=${i}`;
+    }
+  },
+  1470,
+  [1, 1526, 667, 326, 26, 161, 19, 1710, 684, 672, 183, 377, 508, 382, 501, 1386, 381, 578, 682]
+);

@@ -1,4 +1,556 @@
-__d(function(g,r,i,a,m,e,d){var o=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const o=(0,r(d[11]).useNavigation)(),{colors:t}=(0,r(d[12]).useTheme)(),{t:b}=(0,r(d[13]).useLanguage)(),x=(0,l.useMemo)(()=>v(t),[t]),{showToast:h}=(0,r(d[14]).useToast)(),{isOnline:j,goOnline:O,goOffline:T,todayStats:k,activeJob:w,pendingJob:C,acceptJob:I,loading:L}=(0,r(d[15]).useDeliveryCourier)(),E=C?.fare_breakdown?.courierEarnings??C?.fare_breakdown?.total??0,S=w?.fare_breakdown?.courierEarnings??w?.fare_breakdown?.total??0;return(0,p.jsxs)(c.default,{title:b('delivery.courierDashTitle'),subtitle:b('delivery.courierDashSub'),scroll:!0,children:[(0,p.jsx)(f.default,{isOnline:j,loading:L,onToggle:async()=>{if(j){const{error:o}=await T();return void h(o?{type:'error',title:b('delivery.couldNotGoOffline'),message:o.message}:{type:'info',title:b('delivery.courierOffline'),message:b('delivery.courierOfflineToast')})}const{error:o}=await O({vehicleKind:'bike'});h(o?{type:'error',title:b('delivery.couldNotGoOnline'),message:o.message}:{type:'success',title:b('delivery.courierOnline'),message:b('delivery.courierOnlineToast')})},goOnlineLabel:b('delivery.courierGoOnline').toUpperCase(),goOfflineLabel:b('delivery.courierGoOffline').toUpperCase(),statusOnline:b('delivery.courierOnline'),statusOffline:b('delivery.courierOffline'),todayDeliveriesLabel:b('delivery.courierTodayDeliveries'),todayEarnedLabel:b('delivery.courierTodayEarned'),deliveryCount:k.count,earnedFormatted:(0,r(d[18]).formatGhs)(k.earned)}),C?(0,p.jsxs)(s.default,{style:x.section,children:[(0,p.jsxs)(s.default,{style:x.sectionHeader,children:[(0,p.jsx)(r(d[19]).Ionicons,{name:"flash",size:16,color:t.incoming??t.warning}),(0,p.jsx)(n.default,{style:x.sectionTitle,children:b('delivery.courierIncoming')})]}),(0,p.jsx)(y.default,{pickup:C.pickup,dropoff:C.dropoff,pickupLabel:b('delivery.pickup'),dropoffLabel:b('delivery.dropoff'),kind:C.kind,kindLabel:'food'===C.kind?b('delivery.courierFoodOrder'):b('delivery.parcelLabel'),fare:E}),(0,p.jsx)(s.default,{style:x.actions,children:(0,p.jsx)(u.default,{title:b('delivery.accept'),loading:L,onPress:async()=>{if(!C?.id)return;const{error:l}=await I(C.id);l?h({type:'error',title:b('delivery.acceptFailed'),message:l.message}):(h({type:'success',title:b('delivery.accepted'),message:b('delivery.headToPickup')}),(0,r(d[16]).navigateToRootScreen)(o,r(d[17]).ROUTES.DELIVERY_ACTIVE))}})})]}):null,w?(0,p.jsxs)(s.default,{style:x.section,children:[(0,p.jsxs)(s.default,{style:x.sectionHeader,children:[(0,p.jsx)(r(d[19]).Ionicons,{name:"navigate-circle",size:16,color:t.success}),(0,p.jsx)(n.default,{style:x.sectionTitle,children:b('delivery.courierActive',{status:w.status?.replace(/_/g,' ')??''})})]}),(0,p.jsx)(y.default,{pickup:w.pickup,dropoff:w.dropoff,pickupLabel:b('delivery.pickup'),dropoffLabel:b('delivery.dropoff'),kind:w.kind,kindLabel:'food'===w.kind?b('delivery.courierFoodOrder'):b('delivery.parcelLabel'),fare:S}),(0,p.jsx)(s.default,{style:x.actions,children:(0,p.jsx)(u.default,{title:b('delivery.courierViewActive'),variant:"secondary",onPress:()=>(0,r(d[16]).navigateToRootScreen)(o,r(d[17]).ROUTES.DELIVERY_ACTIVE)})})]}):null,!j||C||w?null:(0,p.jsx)(s.default,{style:x.section,children:(0,p.jsxs)(s.default,{style:x.waitingCard,children:[(0,p.jsx)(r(d[19]).Ionicons,{name:"radio-outline",size:28,color:t.incoming??t.warning}),(0,p.jsx)(n.default,{style:x.waitingText,children:b('delivery.courierWaitingJobs')})]})}),j||C||w?null:(0,p.jsx)(s.default,{style:x.section,children:(0,p.jsxs)(s.default,{style:x.idleCard,children:[(0,p.jsx)(s.default,{style:x.idleIcon,children:(0,p.jsx)(r(d[19]).Ionicons,{name:"bicycle-outline",size:28,color:t.goldDeep??t.gold})}),(0,p.jsx)(n.default,{style:x.idleTitle,children:b('delivery.courierOffline')}),(0,p.jsx)(n.default,{style:x.idleHint,children:b('delivery.courierIdleHint')})]})})]})};var l=r(d[1]),t=o(r(d[2])),n=o(r(d[3])),s=o(r(d[4])),c=o(r(d[5])),u=o(r(d[6])),f=o(r(d[7])),y=o(r(d[8])),p=r(d[9]);const v=o=>t.default.create({section:{marginTop:r(d[10]).spacing.lg},sectionHeader:{flexDirection:'row',alignItems:'center',gap:r(d[10]).spacing.sm,marginBottom:r(d[10]).spacing.sm},sectionTitle:{fontFamily:r(d[10]).fontFamily.semiBold,fontSize:13,letterSpacing:1,textTransform:'uppercase',color:o.textMuted},idleCard:{borderRadius:r(d[10]).radius.lg,borderWidth:1,borderColor:o.borderSoft??o.border,backgroundColor:o.surfaceElevated??o.surface,padding:r(d[10]).spacing.xl,alignItems:'center'},idleIcon:{width:56,height:56,borderRadius:28,alignItems:'center',justifyContent:'center',backgroundColor:o.goldAlpha12??'rgba(201, 162, 39, 0.14)',marginBottom:r(d[10]).spacing.md},idleTitle:{fontFamily:r(d[10]).fontFamily.semiBold,fontSize:17,color:o.textPrimary,textAlign:'center',marginBottom:r(d[10]).spacing.xs},idleHint:Object.assign({},r(d[10]).typography.body,{color:o.textSecondary,textAlign:'center',lineHeight:22}),waitingCard:{flexDirection:'row',alignItems:'center',gap:r(d[10]).spacing.md,borderRadius:r(d[10]).radius.lg,borderWidth:1,borderColor:o.incomingAlpha18??o.border,backgroundColor:o.surfaceElevated??o.surface,padding:r(d[10]).spacing.lg},waitingText:Object.assign({flex:1},r(d[10]).typography.body,{color:o.textSecondary}),actions:{marginTop:r(d[10]).spacing.md}})},1476,[1,5,26,161,19,1510,672,1813,1489,183,377,382,381,1381,1386,1483,1488,682,691,578]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({isOnline:t,loading:n,onToggle:x,goOnlineLabel:p,goOfflineLabel:b,statusOnline:h,statusOffline:j,todayDeliveriesLabel:F,todayEarnedLabel:A,deliveryCount:w,earnedFormatted:L}){const{colors:O,isDark:R}=(0,r(d[9]).useTheme)(),S=(0,l.useMemo)(()=>y(O),[O]),B=R?['#141414','#0A0A0A','#111111']:['#FFFFFF','#FAFAF8','#F5F3EE'];return(0,f.jsx)(s.default,{style:S.shell,children:(0,f.jsx)(r(d[10]).LinearGradient,{colors:B,start:{x:0,y:0},end:{x:1,y:1},children:(0,f.jsxs)(s.default,{style:S.inner,children:[(0,f.jsx)(s.default,{style:S.badgeRow,children:(0,f.jsxs)(s.default,{style:S.badge,children:[(0,f.jsx)(r(d[11]).Ionicons,{name:"diamond-outline",size:12,color:O.goldDeep??O.gold,style:{marginRight:4}}),(0,f.jsx)(o.default,{style:S.badgeText,children:"Courier Pro"})]})}),(0,f.jsxs)(s.default,{style:S.statusRow,children:[t?(0,f.jsx)(c.default,{}):null,(0,f.jsx)(o.default,{style:[S.status,t&&S.statusOnline],children:t?h:j})]}),(0,f.jsxs)(s.default,{style:S.earnBlock,children:[(0,f.jsx)(o.default,{style:S.earnLabel,children:A}),(0,f.jsx)(o.default,{style:[S.earnValue,S.earnAccent],children:L})]}),(0,f.jsxs)(s.default,{style:S.statsRow,children:[(0,f.jsxs)(s.default,{style:S.statPill,children:[(0,f.jsx)(o.default,{style:S.statValue,children:w}),(0,f.jsx)(o.default,{style:S.statLabel,children:F})]}),(0,f.jsxs)(s.default,{style:S.statPill,children:[(0,f.jsx)(o.default,{style:[S.statValue,S.earnAccent],children:L}),(0,f.jsx)(o.default,{style:S.statLabel,children:A})]})]}),(0,f.jsx)(u.default,{isOnline:t,onToggle:x,loading:n,onlineLabel:b,offlineLabel:p})]})})})};var l=r(d[1]),n=t(r(d[2])),o=t(r(d[3])),s=t(r(d[4])),c=t(r(d[5])),u=t(r(d[6])),f=r(d[7]);const y=t=>n.default.create({shell:{borderRadius:r(d[8]).radius.xl,overflow:'hidden',borderWidth:1,borderColor:t.goldAlpha25??'rgba(201, 162, 39, 0.28)'},inner:{padding:r(d[8]).spacing.lg},badgeRow:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginBottom:r(d[8]).spacing.md},badge:{flexDirection:'row',alignItems:'center',paddingHorizontal:r(d[8]).spacing.sm,paddingVertical:4,borderRadius:r(d[8]).radius.pill,backgroundColor:t.goldAlpha12??'rgba(201, 162, 39, 0.14)'},badgeText:{fontFamily:r(d[8]).fontFamily.semiBold,fontSize:11,letterSpacing:1.4,color:t.goldDeep??t.gold,textTransform:'uppercase'},statusRow:{flexDirection:'row',alignItems:'center',marginBottom:r(d[8]).spacing.xs},status:{fontFamily:r(d[8]).fontFamily.semiBold,fontSize:16,color:t.textPrimary},statusOnline:{color:t.success??t.greenAccent},sub:Object.assign({},r(d[8]).typography.caption,{color:t.textSecondary,marginBottom:r(d[8]).spacing.lg}),earnBlock:{marginBottom:r(d[8]).spacing.sm},earnLabel:{fontFamily:r(d[8]).fontFamily.medium,fontSize:12,letterSpacing:.8,textTransform:'uppercase',color:t.textMuted,marginBottom:4},earnValue:{fontFamily:r(d[8]).fontFamily.bold,fontSize:36,lineHeight:42,color:t.textPrimary},earnAccent:{color:t.gold??'#C9A227'},statsRow:{flexDirection:'row',gap:r(d[8]).spacing.sm,marginTop:r(d[8]).spacing.md},statPill:{flex:1,paddingVertical:r(d[8]).spacing.sm,paddingHorizontal:r(d[8]).spacing.md,borderRadius:r(d[8]).radius.lg,backgroundColor:t.primaryAlpha06??t.surface,borderWidth:n.default.hairlineWidth,borderColor:t.borderSoft??t.border},statValue:{fontFamily:r(d[8]).fontFamily.bold,fontSize:18,color:t.textPrimary},statLabel:Object.assign({},r(d[8]).typography.caption,{color:t.textSecondary,marginTop:2})})},1813,[1,5,26,161,19,1814,1815,183,377,381,1707,578]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){const{colors:t}=(0,r(d[6]).useTheme)(),n=(0,u.useMemo)(()=>c(t),[t]),l=(0,u.useRef)(new o.default.Value(.35)).current;return(0,u.useEffect)(()=>{const t=o.default.loop(o.default.sequence([o.default.timing(l,{toValue:1,duration:900,useNativeDriver:!0}),o.default.timing(l,{toValue:.35,duration:900,useNativeDriver:!0})]));return t.start(),()=>t.stop()},[l]),(0,s.jsx)(o.default.View,{style:[n.dot,{opacity:l}]})};var u=r(d[1]),o=t(r(d[2])),n=t(r(d[3])),s=r(d[4]);const c=t=>n.default.create({dot:{width:10,height:10,borderRadius:5,backgroundColor:t.success??t.greenAccent,marginRight:r(d[5]).spacing.sm}})},1814,[1,5,7,26,183,377,381]);
-__d(function(g,r,i,a,m,e,d){var t=r(d[0]);Object.defineProperty(e,"__esModule",{value:!0}),e.default=function({isOnline:t,onToggle:l,loading:f,onlineLabel:b,offlineLabel:y}){const{colors:F}=(0,r(d[7]).useTheme)(),p=(0,o.useMemo)(()=>u(F),[F]);return(0,c.jsx)(n.default,{style:[p.toggle,t?p.on:p.off,f&&p.disabled],onPress:l,disabled:f,accessibilityRole:"button",accessibilityState:{disabled:f},children:(0,c.jsx)(s.default,{style:[p.text,t&&p.textOn],children:t?b:y})})};var o=r(d[1]),n=t(r(d[2])),l=t(r(d[3])),s=t(r(d[4])),c=r(d[5]);const u=t=>l.default.create({toggle:{minHeight:64,borderRadius:r(d[6]).radius.lg,alignItems:'center',justifyContent:'center',marginTop:r(d[6]).spacing.md},off:{backgroundColor:t.primary},on:{backgroundColor:t.success??t.greenAccent},disabled:{opacity:.6},text:{fontFamily:r(d[6]).fontFamily.bold,fontSize:18,color:t.onPrimary,letterSpacing:1.2},textOn:{color:'#FFFFFF'}})},1815,[1,5,326,26,161,183,377,381]);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var o = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const o = (0, r(d[11]).useNavigation)(),
+          { colors: t } = (0, r(d[12]).useTheme)(),
+          { t: b } = (0, r(d[13]).useLanguage)(),
+          x = (0, l.useMemo)(() => v(t), [t]),
+          { showToast: h } = (0, r(d[14]).useToast)(),
+          {
+            isOnline: j,
+            goOnline: O,
+            goOffline: T,
+            todayStats: k,
+            activeJob: w,
+            pendingJob: C,
+            acceptJob: I,
+            loading: L,
+          } = (0, r(d[15]).useDeliveryCourier)(),
+          E = C?.fare_breakdown?.courierEarnings ?? C?.fare_breakdown?.total ?? 0,
+          S = w?.fare_breakdown?.courierEarnings ?? w?.fare_breakdown?.total ?? 0;
+        return (0, p.jsxs)(c.default, {
+          title: b('delivery.courierDashTitle'),
+          subtitle: b('delivery.courierDashSub'),
+          scroll: !0,
+          children: [
+            (0, p.jsx)(f.default, {
+              isOnline: j,
+              loading: L,
+              onToggle: async () => {
+                if (j) {
+                  const { error: o } = await T();
+                  return void h(
+                    o
+                      ? {
+                          type: 'error',
+                          title: b('delivery.couldNotGoOffline'),
+                          message: o.message,
+                        }
+                      : {
+                          type: 'info',
+                          title: b('delivery.courierOffline'),
+                          message: b('delivery.courierOfflineToast'),
+                        }
+                  );
+                }
+                const { error: o } = await O({ vehicleKind: 'bike' });
+                h(
+                  o
+                    ? { type: 'error', title: b('delivery.couldNotGoOnline'), message: o.message }
+                    : {
+                        type: 'success',
+                        title: b('delivery.courierOnline'),
+                        message: b('delivery.courierOnlineToast'),
+                      }
+                );
+              },
+              goOnlineLabel: b('delivery.courierGoOnline').toUpperCase(),
+              goOfflineLabel: b('delivery.courierGoOffline').toUpperCase(),
+              statusOnline: b('delivery.courierOnline'),
+              statusOffline: b('delivery.courierOffline'),
+              todayDeliveriesLabel: b('delivery.courierTodayDeliveries'),
+              todayEarnedLabel: b('delivery.courierTodayEarned'),
+              deliveryCount: k.count,
+              earnedFormatted: (0, r(d[18]).formatGhs)(k.earned),
+            }),
+            C
+              ? (0, p.jsxs)(s.default, {
+                  style: x.section,
+                  children: [
+                    (0, p.jsxs)(s.default, {
+                      style: x.sectionHeader,
+                      children: [
+                        (0, p.jsx)(r(d[19]).Ionicons, {
+                          name: 'flash',
+                          size: 16,
+                          color: t.incoming ?? t.warning,
+                        }),
+                        (0, p.jsx)(n.default, {
+                          style: x.sectionTitle,
+                          children: b('delivery.courierIncoming'),
+                        }),
+                      ],
+                    }),
+                    (0, p.jsx)(y.default, {
+                      pickup: C.pickup,
+                      dropoff: C.dropoff,
+                      pickupLabel: b('delivery.pickup'),
+                      dropoffLabel: b('delivery.dropoff'),
+                      kind: C.kind,
+                      kindLabel:
+                        'food' === C.kind
+                          ? b('delivery.courierFoodOrder')
+                          : b('delivery.parcelLabel'),
+                      fare: E,
+                    }),
+                    (0, p.jsx)(s.default, {
+                      style: x.actions,
+                      children: (0, p.jsx)(u.default, {
+                        title: b('delivery.accept'),
+                        loading: L,
+                        onPress: async () => {
+                          if (!C?.id) return;
+                          const { error: l } = await I(C.id);
+                          l
+                            ? h({
+                                type: 'error',
+                                title: b('delivery.acceptFailed'),
+                                message: l.message,
+                              })
+                            : (h({
+                                type: 'success',
+                                title: b('delivery.accepted'),
+                                message: b('delivery.headToPickup'),
+                              }),
+                              (0, r(d[16]).navigateToRootScreen)(
+                                o,
+                                r(d[17]).ROUTES.DELIVERY_ACTIVE
+                              ));
+                        },
+                      }),
+                    }),
+                  ],
+                })
+              : null,
+            w
+              ? (0, p.jsxs)(s.default, {
+                  style: x.section,
+                  children: [
+                    (0, p.jsxs)(s.default, {
+                      style: x.sectionHeader,
+                      children: [
+                        (0, p.jsx)(r(d[19]).Ionicons, {
+                          name: 'navigate-circle',
+                          size: 16,
+                          color: t.success,
+                        }),
+                        (0, p.jsx)(n.default, {
+                          style: x.sectionTitle,
+                          children: b('delivery.courierActive', {
+                            status: w.status?.replace(/_/g, ' ') ?? '',
+                          }),
+                        }),
+                      ],
+                    }),
+                    (0, p.jsx)(y.default, {
+                      pickup: w.pickup,
+                      dropoff: w.dropoff,
+                      pickupLabel: b('delivery.pickup'),
+                      dropoffLabel: b('delivery.dropoff'),
+                      kind: w.kind,
+                      kindLabel:
+                        'food' === w.kind
+                          ? b('delivery.courierFoodOrder')
+                          : b('delivery.parcelLabel'),
+                      fare: S,
+                    }),
+                    (0, p.jsx)(s.default, {
+                      style: x.actions,
+                      children: (0, p.jsx)(u.default, {
+                        title: b('delivery.courierViewActive'),
+                        variant: 'secondary',
+                        onPress: () =>
+                          (0, r(d[16]).navigateToRootScreen)(o, r(d[17]).ROUTES.DELIVERY_ACTIVE),
+                      }),
+                    }),
+                  ],
+                })
+              : null,
+            !j || C || w
+              ? null
+              : (0, p.jsx)(s.default, {
+                  style: x.section,
+                  children: (0, p.jsxs)(s.default, {
+                    style: x.waitingCard,
+                    children: [
+                      (0, p.jsx)(r(d[19]).Ionicons, {
+                        name: 'radio-outline',
+                        size: 28,
+                        color: t.incoming ?? t.warning,
+                      }),
+                      (0, p.jsx)(n.default, {
+                        style: x.waitingText,
+                        children: b('delivery.courierWaitingJobs'),
+                      }),
+                    ],
+                  }),
+                }),
+            j || C || w
+              ? null
+              : (0, p.jsx)(s.default, {
+                  style: x.section,
+                  children: (0, p.jsxs)(s.default, {
+                    style: x.idleCard,
+                    children: [
+                      (0, p.jsx)(s.default, {
+                        style: x.idleIcon,
+                        children: (0, p.jsx)(r(d[19]).Ionicons, {
+                          name: 'bicycle-outline',
+                          size: 28,
+                          color: t.goldDeep ?? t.gold,
+                        }),
+                      }),
+                      (0, p.jsx)(n.default, {
+                        style: x.idleTitle,
+                        children: b('delivery.courierOffline'),
+                      }),
+                      (0, p.jsx)(n.default, {
+                        style: x.idleHint,
+                        children: b('delivery.courierIdleHint'),
+                      }),
+                    ],
+                  }),
+                }),
+          ],
+        });
+      }));
+    var l = r(d[1]),
+      t = o(r(d[2])),
+      n = o(r(d[3])),
+      s = o(r(d[4])),
+      c = o(r(d[5])),
+      u = o(r(d[6])),
+      f = o(r(d[7])),
+      y = o(r(d[8])),
+      p = r(d[9]);
+    const v = o =>
+      t.default.create({
+        section: { marginTop: r(d[10]).spacing.lg },
+        sectionHeader: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[10]).spacing.sm,
+          marginBottom: r(d[10]).spacing.sm,
+        },
+        sectionTitle: {
+          fontFamily: r(d[10]).fontFamily.semiBold,
+          fontSize: 13,
+          letterSpacing: 1,
+          textTransform: 'uppercase',
+          color: o.textMuted,
+        },
+        idleCard: {
+          borderRadius: r(d[10]).radius.lg,
+          borderWidth: 1,
+          borderColor: o.borderSoft ?? o.border,
+          backgroundColor: o.surfaceElevated ?? o.surface,
+          padding: r(d[10]).spacing.xl,
+          alignItems: 'center',
+        },
+        idleIcon: {
+          width: 56,
+          height: 56,
+          borderRadius: 28,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: o.goldAlpha12 ?? 'rgba(201, 162, 39, 0.14)',
+          marginBottom: r(d[10]).spacing.md,
+        },
+        idleTitle: {
+          fontFamily: r(d[10]).fontFamily.semiBold,
+          fontSize: 17,
+          color: o.textPrimary,
+          textAlign: 'center',
+          marginBottom: r(d[10]).spacing.xs,
+        },
+        idleHint: Object.assign({}, r(d[10]).typography.body, {
+          color: o.textSecondary,
+          textAlign: 'center',
+          lineHeight: 22,
+        }),
+        waitingCard: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: r(d[10]).spacing.md,
+          borderRadius: r(d[10]).radius.lg,
+          borderWidth: 1,
+          borderColor: o.incomingAlpha18 ?? o.border,
+          backgroundColor: o.surfaceElevated ?? o.surface,
+          padding: r(d[10]).spacing.lg,
+        },
+        waitingText: Object.assign({ flex: 1 }, r(d[10]).typography.body, {
+          color: o.textSecondary,
+        }),
+        actions: { marginTop: r(d[10]).spacing.md },
+      });
+  },
+  1476,
+  [
+    1, 5, 26, 161, 19, 1510, 672, 1813, 1489, 183, 377, 382, 381, 1381, 1386, 1483, 1488, 682, 691,
+    578,
+  ]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({
+        isOnline: t,
+        loading: n,
+        onToggle: x,
+        goOnlineLabel: p,
+        goOfflineLabel: b,
+        statusOnline: h,
+        statusOffline: j,
+        todayDeliveriesLabel: F,
+        todayEarnedLabel: A,
+        deliveryCount: w,
+        earnedFormatted: L,
+      }) {
+        const { colors: O, isDark: R } = (0, r(d[9]).useTheme)(),
+          S = (0, l.useMemo)(() => y(O), [O]),
+          B = R ? ['#141414', '#0A0A0A', '#111111'] : ['#FFFFFF', '#FAFAF8', '#F5F3EE'];
+        return (0, f.jsx)(s.default, {
+          style: S.shell,
+          children: (0, f.jsx)(r(d[10]).LinearGradient, {
+            colors: B,
+            start: { x: 0, y: 0 },
+            end: { x: 1, y: 1 },
+            children: (0, f.jsxs)(s.default, {
+              style: S.inner,
+              children: [
+                (0, f.jsx)(s.default, {
+                  style: S.badgeRow,
+                  children: (0, f.jsxs)(s.default, {
+                    style: S.badge,
+                    children: [
+                      (0, f.jsx)(r(d[11]).Ionicons, {
+                        name: 'diamond-outline',
+                        size: 12,
+                        color: O.goldDeep ?? O.gold,
+                        style: { marginRight: 4 },
+                      }),
+                      (0, f.jsx)(o.default, { style: S.badgeText, children: 'Courier Pro' }),
+                    ],
+                  }),
+                }),
+                (0, f.jsxs)(s.default, {
+                  style: S.statusRow,
+                  children: [
+                    t ? (0, f.jsx)(c.default, {}) : null,
+                    (0, f.jsx)(o.default, {
+                      style: [S.status, t && S.statusOnline],
+                      children: t ? h : j,
+                    }),
+                  ],
+                }),
+                (0, f.jsxs)(s.default, {
+                  style: S.earnBlock,
+                  children: [
+                    (0, f.jsx)(o.default, { style: S.earnLabel, children: A }),
+                    (0, f.jsx)(o.default, { style: [S.earnValue, S.earnAccent], children: L }),
+                  ],
+                }),
+                (0, f.jsxs)(s.default, {
+                  style: S.statsRow,
+                  children: [
+                    (0, f.jsxs)(s.default, {
+                      style: S.statPill,
+                      children: [
+                        (0, f.jsx)(o.default, { style: S.statValue, children: w }),
+                        (0, f.jsx)(o.default, { style: S.statLabel, children: F }),
+                      ],
+                    }),
+                    (0, f.jsxs)(s.default, {
+                      style: S.statPill,
+                      children: [
+                        (0, f.jsx)(o.default, { style: [S.statValue, S.earnAccent], children: L }),
+                        (0, f.jsx)(o.default, { style: S.statLabel, children: A }),
+                      ],
+                    }),
+                  ],
+                }),
+                (0, f.jsx)(u.default, {
+                  isOnline: t,
+                  onToggle: x,
+                  loading: n,
+                  onlineLabel: b,
+                  offlineLabel: p,
+                }),
+              ],
+            }),
+          }),
+        });
+      }));
+    var l = r(d[1]),
+      n = t(r(d[2])),
+      o = t(r(d[3])),
+      s = t(r(d[4])),
+      c = t(r(d[5])),
+      u = t(r(d[6])),
+      f = r(d[7]);
+    const y = t =>
+      n.default.create({
+        shell: {
+          borderRadius: r(d[8]).radius.xl,
+          overflow: 'hidden',
+          borderWidth: 1,
+          borderColor: t.goldAlpha25 ?? 'rgba(201, 162, 39, 0.28)',
+        },
+        inner: { padding: r(d[8]).spacing.lg },
+        badgeRow: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: r(d[8]).spacing.md,
+        },
+        badge: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: r(d[8]).spacing.sm,
+          paddingVertical: 4,
+          borderRadius: r(d[8]).radius.pill,
+          backgroundColor: t.goldAlpha12 ?? 'rgba(201, 162, 39, 0.14)',
+        },
+        badgeText: {
+          fontFamily: r(d[8]).fontFamily.semiBold,
+          fontSize: 11,
+          letterSpacing: 1.4,
+          color: t.goldDeep ?? t.gold,
+          textTransform: 'uppercase',
+        },
+        statusRow: { flexDirection: 'row', alignItems: 'center', marginBottom: r(d[8]).spacing.xs },
+        status: { fontFamily: r(d[8]).fontFamily.semiBold, fontSize: 16, color: t.textPrimary },
+        statusOnline: { color: t.success ?? t.greenAccent },
+        sub: Object.assign({}, r(d[8]).typography.caption, {
+          color: t.textSecondary,
+          marginBottom: r(d[8]).spacing.lg,
+        }),
+        earnBlock: { marginBottom: r(d[8]).spacing.sm },
+        earnLabel: {
+          fontFamily: r(d[8]).fontFamily.medium,
+          fontSize: 12,
+          letterSpacing: 0.8,
+          textTransform: 'uppercase',
+          color: t.textMuted,
+          marginBottom: 4,
+        },
+        earnValue: {
+          fontFamily: r(d[8]).fontFamily.bold,
+          fontSize: 36,
+          lineHeight: 42,
+          color: t.textPrimary,
+        },
+        earnAccent: { color: t.gold ?? '#C9A227' },
+        statsRow: { flexDirection: 'row', gap: r(d[8]).spacing.sm, marginTop: r(d[8]).spacing.md },
+        statPill: {
+          flex: 1,
+          paddingVertical: r(d[8]).spacing.sm,
+          paddingHorizontal: r(d[8]).spacing.md,
+          borderRadius: r(d[8]).radius.lg,
+          backgroundColor: t.primaryAlpha06 ?? t.surface,
+          borderWidth: n.default.hairlineWidth,
+          borderColor: t.borderSoft ?? t.border,
+        },
+        statValue: { fontFamily: r(d[8]).fontFamily.bold, fontSize: 18, color: t.textPrimary },
+        statLabel: Object.assign({}, r(d[8]).typography.caption, {
+          color: t.textSecondary,
+          marginTop: 2,
+        }),
+      });
+  },
+  1813,
+  [1, 5, 26, 161, 19, 1814, 1815, 183, 377, 381, 1707, 578]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function () {
+        const { colors: t } = (0, r(d[6]).useTheme)(),
+          n = (0, u.useMemo)(() => c(t), [t]),
+          l = (0, u.useRef)(new o.default.Value(0.35)).current;
+        return (
+          (0, u.useEffect)(() => {
+            const t = o.default.loop(
+              o.default.sequence([
+                o.default.timing(l, { toValue: 1, duration: 900, useNativeDriver: !0 }),
+                o.default.timing(l, { toValue: 0.35, duration: 900, useNativeDriver: !0 }),
+              ])
+            );
+            return (t.start(), () => t.stop());
+          }, [l]),
+          (0, s.jsx)(o.default.View, { style: [n.dot, { opacity: l }] })
+        );
+      }));
+    var u = r(d[1]),
+      o = t(r(d[2])),
+      n = t(r(d[3])),
+      s = r(d[4]);
+    const c = t =>
+      n.default.create({
+        dot: {
+          width: 10,
+          height: 10,
+          borderRadius: 5,
+          backgroundColor: t.success ?? t.greenAccent,
+          marginRight: r(d[5]).spacing.sm,
+        },
+      });
+  },
+  1814,
+  [1, 5, 7, 26, 183, 377, 381]
+);
+__d(
+  function (g, r, i, a, m, e, d) {
+    var t = r(d[0]);
+    (Object.defineProperty(e, '__esModule', { value: !0 }),
+      (e.default = function ({
+        isOnline: t,
+        onToggle: l,
+        loading: f,
+        onlineLabel: b,
+        offlineLabel: y,
+      }) {
+        const { colors: F } = (0, r(d[7]).useTheme)(),
+          p = (0, o.useMemo)(() => u(F), [F]);
+        return (0, c.jsx)(n.default, {
+          style: [p.toggle, t ? p.on : p.off, f && p.disabled],
+          onPress: l,
+          disabled: f,
+          accessibilityRole: 'button',
+          accessibilityState: { disabled: f },
+          children: (0, c.jsx)(s.default, { style: [p.text, t && p.textOn], children: t ? b : y }),
+        });
+      }));
+    var o = r(d[1]),
+      n = t(r(d[2])),
+      l = t(r(d[3])),
+      s = t(r(d[4])),
+      c = r(d[5]);
+    const u = t =>
+      l.default.create({
+        toggle: {
+          minHeight: 64,
+          borderRadius: r(d[6]).radius.lg,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: r(d[6]).spacing.md,
+        },
+        off: { backgroundColor: t.primary },
+        on: { backgroundColor: t.success ?? t.greenAccent },
+        disabled: { opacity: 0.6 },
+        text: {
+          fontFamily: r(d[6]).fontFamily.bold,
+          fontSize: 18,
+          color: t.onPrimary,
+          letterSpacing: 1.2,
+        },
+        textOn: { color: '#FFFFFF' },
+      });
+  },
+  1815,
+  [1, 5, 326, 26, 161, 183, 377, 381]
+);

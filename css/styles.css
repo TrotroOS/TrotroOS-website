@@ -152,7 +152,10 @@ a:hover {
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: background var(--ease), border-color var(--ease), color var(--ease);
+  transition:
+    background var(--ease),
+    border-color var(--ease),
+    color var(--ease);
   white-space: nowrap;
 }
 
@@ -403,6 +406,175 @@ a:hover {
   background: var(--orange);
   margin-right: 0.5rem;
   vertical-align: middle;
+}
+
+/* Demand heat map (marketing) */
+
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #14b8a6;
+  box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.55);
+  animation: live-pulse 2s ease-out infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(20, 184, 166, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+  }
+}
+
+.demand-panel {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.demand-panel__map {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0c1210;
+  min-height: 280px;
+}
+
+.demand-panel__bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.demand-panel__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.demand-pulse {
+  transform-origin: center;
+  animation: demand-ring 2.4s ease-out infinite;
+}
+
+@keyframes demand-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+.demand-panel__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.demand-panel__status {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.demand-routes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.demand-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.demand-route__count {
+  flex-shrink: 0;
+  min-width: 1.75rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.demand-route--high .demand-route__count {
+  background: rgba(224, 74, 0, 0.22);
+  color: #ffb899;
+}
+
+.demand-route--medium .demand-route__count {
+  background: rgba(201, 162, 39, 0.22);
+  color: #f0d78a;
+}
+
+.demand-route--low .demand-route__count {
+  background: rgba(20, 184, 166, 0.18);
+  color: #8eeddf;
+}
+
+.demand-panel__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.pilot-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 3.5rem;
+}
+
+.pilot-feature {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.35rem;
+}
+
+.pilot-feature h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.pilot-feature p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
 }
 
 /* ─── Sections ─── */
@@ -1348,6 +1520,8 @@ a:hover {
   .safety-layout,
   .role-cards,
   .commerce-grid,
+  .pilot-features,
+  .demand-panel,
   .steps-row,
   .news-row,
   .footer-grid {
